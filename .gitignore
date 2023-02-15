@@ -1,0 +1,6 @@
+/.vs
+/.vscode
+/TetrisWF/.vs
+/TetrisWF/bin
+/TetrisWF/obj
+.DS_Store
