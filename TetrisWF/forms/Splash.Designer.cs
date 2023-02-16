@@ -39,13 +39,13 @@ namespace AS_Coursework
             this.btn_ExitProgram = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pic_SideBar = new System.Windows.Forms.PictureBox();
             this.btn_Register = new System.Windows.Forms.Button();
             this.btn_Guest = new System.Windows.Forms.Button();
             this.lbl_usernameError = new System.Windows.Forms.Label();
             this.lbl_passwordError = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pic_TitleCard)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_SideBar)).BeginInit();
             this.SuspendLayout();
             // 
             // txt_username
@@ -102,7 +102,7 @@ namespace AS_Coursework
             this.btn_ExitProgram.BackColor = System.Drawing.Color.IndianRed;
             this.btn_ExitProgram.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_ExitProgram.ForeColor = System.Drawing.SystemColors.Window;
-            this.btn_ExitProgram.Location = new System.Drawing.Point(595, 12);
+            this.btn_ExitProgram.Location = new System.Drawing.Point(595, 9);
             this.btn_ExitProgram.Margin = new System.Windows.Forms.Padding(0);
             this.btn_ExitProgram.Name = "btn_ExitProgram";
             this.btn_ExitProgram.Size = new System.Drawing.Size(30, 30);
@@ -131,14 +131,14 @@ namespace AS_Coursework
             this.label2.TabIndex = 9;
             this.label2.Text = "Password";
             // 
-            // pictureBox1
+            // pic_SideBar
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.BlueViolet;
-            this.pictureBox1.Location = new System.Drawing.Point(325, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(310, 365);
-            this.pictureBox1.TabIndex = 10;
-            this.pictureBox1.TabStop = false;
+            this.pic_SideBar.BackColor = System.Drawing.Color.BlueViolet;
+            this.pic_SideBar.Location = new System.Drawing.Point(325, 0);
+            this.pic_SideBar.Name = "pic_SideBar";
+            this.pic_SideBar.Size = new System.Drawing.Size(310, 365);
+            this.pic_SideBar.TabIndex = 10;
+            this.pic_SideBar.TabStop = false;
             // 
             // btn_Register
             // 
@@ -199,11 +199,11 @@ namespace AS_Coursework
             this.Controls.Add(this.txt_password);
             this.Controls.Add(this.txt_username);
             this.Controls.Add(this.pic_TitleCard);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.pic_SideBar);
             this.Name = "Splash";
             this.Text = "Blocks · Login";
             ((System.ComponentModel.ISupportInitialize)(this.pic_TitleCard)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_SideBar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -218,7 +218,7 @@ namespace AS_Coursework
         private Button btn_ExitProgram;
         private Label label1;
         private Label label2;
-        private PictureBox pictureBox1;
+        private PictureBox pic_SideBar;
         private Button btn_Register;
         private Button btn_Guest;
         private Label lbl_usernameError;

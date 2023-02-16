@@ -41,16 +41,19 @@ namespace AS_Coursework
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.label2 = new System.Windows.Forms.Label();
+            this.pic_SideBar = new System.Windows.Forms.PictureBox();
+            this.btn_Exit = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_SideBar)).BeginInit();
             this.SuspendLayout();
             // 
             // lbl_currentPlayer
             // 
             this.lbl_currentPlayer.AutoSize = true;
             this.lbl_currentPlayer.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lbl_currentPlayer.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lbl_currentPlayer.Location = new System.Drawing.Point(61, 208);
+            this.lbl_currentPlayer.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lbl_currentPlayer.Location = new System.Drawing.Point(66, 321);
             this.lbl_currentPlayer.Name = "lbl_currentPlayer";
             this.lbl_currentPlayer.Size = new System.Drawing.Size(42, 15);
             this.lbl_currentPlayer.TabIndex = 3;
@@ -62,7 +65,7 @@ namespace AS_Coursework
             this.btn_StartGame.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btn_StartGame.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_StartGame.ForeColor = System.Drawing.SystemColors.Window;
-            this.btn_StartGame.Location = new System.Drawing.Point(163, 93);
+            this.btn_StartGame.Location = new System.Drawing.Point(12, 88);
             this.btn_StartGame.Name = "btn_StartGame";
             this.btn_StartGame.Size = new System.Drawing.Size(110, 38);
             this.btn_StartGame.TabIndex = 4;
@@ -74,7 +77,7 @@ namespace AS_Coursework
             this.btn_ContinueGame.BackColor = System.Drawing.Color.BlueViolet;
             this.btn_ContinueGame.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_ContinueGame.ForeColor = System.Drawing.SystemColors.Window;
-            this.btn_ContinueGame.Location = new System.Drawing.Point(290, 93);
+            this.btn_ContinueGame.Location = new System.Drawing.Point(11, 132);
             this.btn_ContinueGame.Name = "btn_ContinueGame";
             this.btn_ContinueGame.Size = new System.Drawing.Size(110, 38);
             this.btn_ContinueGame.TabIndex = 5;
@@ -86,7 +89,7 @@ namespace AS_Coursework
             this.btn_ExitProgram.BackColor = System.Drawing.Color.Red;
             this.btn_ExitProgram.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_ExitProgram.ForeColor = System.Drawing.SystemColors.Window;
-            this.btn_ExitProgram.Location = new System.Drawing.Point(234, 137);
+            this.btn_ExitProgram.Location = new System.Drawing.Point(12, 176);
             this.btn_ExitProgram.Name = "btn_ExitProgram";
             this.btn_ExitProgram.Size = new System.Drawing.Size(110, 39);
             this.btn_ExitProgram.TabIndex = 6;
@@ -97,7 +100,7 @@ namespace AS_Coursework
             // 
             this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pictureBox1.Image = global::AS_Coursework.Properties.Resources.Guest;
-            this.pictureBox1.Location = new System.Drawing.Point(6, 193);
+            this.pictureBox1.Location = new System.Drawing.Point(11, 306);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(51, 45);
@@ -108,8 +111,8 @@ namespace AS_Coursework
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label1.Location = new System.Drawing.Point(61, 193);
+            this.label1.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label1.Location = new System.Drawing.Point(66, 306);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(74, 15);
             this.label1.TabIndex = 8;
@@ -119,10 +122,10 @@ namespace AS_Coursework
             // 
             this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox2.Image = global::AS_Coursework.Properties.Resources.Blocks;
-            this.pictureBox2.Location = new System.Drawing.Point(114, 16);
+            this.pictureBox2.Location = new System.Drawing.Point(11, 9);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(0);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(334, 76);
+            this.pictureBox2.Size = new System.Drawing.Size(238, 76);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 10;
             this.pictureBox2.TabStop = false;
@@ -135,18 +138,43 @@ namespace AS_Coursework
             // 
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.label2.Location = new System.Drawing.Point(62, 223);
+            this.label2.Location = new System.Drawing.Point(67, 336);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(74, 15);
             this.label2.TabIndex = 11;
             this.label2.Text = "Change User";
             // 
-            // Splash
+            // pic_SideBar
+            // 
+            this.pic_SideBar.BackColor = System.Drawing.Color.BlueViolet;
+            this.pic_SideBar.Location = new System.Drawing.Point(325, 0);
+            this.pic_SideBar.Name = "pic_SideBar";
+            this.pic_SideBar.Size = new System.Drawing.Size(310, 365);
+            this.pic_SideBar.TabIndex = 24;
+            this.pic_SideBar.TabStop = false;
+            // 
+            // btn_Exit
+            // 
+            this.btn_Exit.BackColor = System.Drawing.Color.IndianRed;
+            this.btn_Exit.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_Exit.ForeColor = System.Drawing.SystemColors.Window;
+            this.btn_Exit.Location = new System.Drawing.Point(595, 9);
+            this.btn_Exit.Margin = new System.Windows.Forms.Padding(0);
+            this.btn_Exit.Name = "btn_Exit";
+            this.btn_Exit.Size = new System.Drawing.Size(30, 30);
+            this.btn_Exit.TabIndex = 25;
+            this.btn_Exit.Text = "X";
+            this.btn_Exit.UseVisualStyleBackColor = false;
+            this.btn_Exit.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Desktop;
-            this.ClientSize = new System.Drawing.Size(556, 240);
+            this.BackColor = System.Drawing.Color.AliceBlue;
+            this.ClientSize = new System.Drawing.Size(634, 361);
+            this.Controls.Add(this.btn_Exit);
+            this.Controls.Add(this.pic_SideBar);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
@@ -159,10 +187,11 @@ namespace AS_Coursework
             this.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "Splash";
+            this.Name = "MainMenu";
             this.Text = "Blocks · Main Menu";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_SideBar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -178,5 +207,7 @@ namespace AS_Coursework
         private PictureBox pictureBox2;
         private OpenFileDialog openFileDialog1;
         private Label label2;
+        private PictureBox pic_SideBar;
+        private Button btn_Exit;
     }
 }

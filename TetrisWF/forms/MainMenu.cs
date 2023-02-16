@@ -1,5 +1,6 @@
 ﻿using AS_Coursework.game;
 using AS_Coursework.@internal;
+using AS_Coursework.io;
 using AS_Coursework.models;
 using System;
 using System.Drawing;
@@ -103,6 +104,12 @@ namespace AS_Coursework
         private void pictureBox1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            DataManager.FinishUp();
+            Environment.Exit(0);
         }
     }
 }

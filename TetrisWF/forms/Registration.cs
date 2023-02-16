@@ -205,5 +205,16 @@ namespace AS_Coursework
                 pfpIndex = 0;
             pic_playerAvatar.Image = profilePictures[pfpIndex];
         }
+
+        private void pic_playerAvatar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_Exit_Click(object sender, EventArgs e)
+        {
+            DataManager.FinishUp();
+            Environment.Exit(0);
+        }
     }
 }
