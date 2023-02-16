@@ -40,9 +40,9 @@ namespace AS_Coursework
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.label2 = new System.Windows.Forms.Label();
             this.pic_SideBar = new System.Windows.Forms.PictureBox();
             this.btn_Exit = new System.Windows.Forms.Button();
+            this.btn_ChangeUser = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_SideBar)).BeginInit();
@@ -53,7 +53,7 @@ namespace AS_Coursework
             this.lbl_currentPlayer.AutoSize = true;
             this.lbl_currentPlayer.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lbl_currentPlayer.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lbl_currentPlayer.Location = new System.Drawing.Point(66, 321);
+            this.lbl_currentPlayer.Location = new System.Drawing.Point(76, 306);
             this.lbl_currentPlayer.Name = "lbl_currentPlayer";
             this.lbl_currentPlayer.Size = new System.Drawing.Size(42, 15);
             this.lbl_currentPlayer.TabIndex = 3;
@@ -65,7 +65,7 @@ namespace AS_Coursework
             this.btn_StartGame.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btn_StartGame.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_StartGame.ForeColor = System.Drawing.SystemColors.Window;
-            this.btn_StartGame.Location = new System.Drawing.Point(12, 88);
+            this.btn_StartGame.Location = new System.Drawing.Point(11, 78);
             this.btn_StartGame.Name = "btn_StartGame";
             this.btn_StartGame.Size = new System.Drawing.Size(110, 38);
             this.btn_StartGame.TabIndex = 4;
@@ -77,7 +77,7 @@ namespace AS_Coursework
             this.btn_ContinueGame.BackColor = System.Drawing.Color.BlueViolet;
             this.btn_ContinueGame.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_ContinueGame.ForeColor = System.Drawing.SystemColors.Window;
-            this.btn_ContinueGame.Location = new System.Drawing.Point(11, 132);
+            this.btn_ContinueGame.Location = new System.Drawing.Point(11, 122);
             this.btn_ContinueGame.Name = "btn_ContinueGame";
             this.btn_ContinueGame.Size = new System.Drawing.Size(110, 38);
             this.btn_ContinueGame.TabIndex = 5;
@@ -89,7 +89,7 @@ namespace AS_Coursework
             this.btn_ExitProgram.BackColor = System.Drawing.Color.Red;
             this.btn_ExitProgram.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_ExitProgram.ForeColor = System.Drawing.SystemColors.Window;
-            this.btn_ExitProgram.Location = new System.Drawing.Point(12, 176);
+            this.btn_ExitProgram.Location = new System.Drawing.Point(10, 166);
             this.btn_ExitProgram.Name = "btn_ExitProgram";
             this.btn_ExitProgram.Size = new System.Drawing.Size(110, 39);
             this.btn_ExitProgram.TabIndex = 6;
@@ -100,10 +100,10 @@ namespace AS_Coursework
             // 
             this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pictureBox1.Image = global::AS_Coursework.Properties.Resources.Guest;
-            this.pictureBox1.Location = new System.Drawing.Point(11, 306);
+            this.pictureBox1.Location = new System.Drawing.Point(11, 291);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(51, 45);
+            this.pictureBox1.Size = new System.Drawing.Size(60, 60);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 7;
             this.pictureBox1.TabStop = false;
@@ -112,7 +112,7 @@ namespace AS_Coursework
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label1.Location = new System.Drawing.Point(66, 306);
+            this.label1.Location = new System.Drawing.Point(76, 291);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(74, 15);
             this.label1.TabIndex = 8;
@@ -133,16 +133,6 @@ namespace AS_Coursework
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.label2.Location = new System.Drawing.Point(67, 336);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(74, 15);
-            this.label2.TabIndex = 11;
-            this.label2.Text = "Change User";
             // 
             // pic_SideBar
             // 
@@ -165,7 +155,17 @@ namespace AS_Coursework
             this.btn_Exit.TabIndex = 25;
             this.btn_Exit.Text = "X";
             this.btn_Exit.UseVisualStyleBackColor = false;
-            this.btn_Exit.Click += new System.EventHandler(this.button1_Click);
+            this.btn_Exit.Click += new System.EventHandler(this.btn_Exit_Click);
+            // 
+            // btn_ChangeUser
+            // 
+            this.btn_ChangeUser.Location = new System.Drawing.Point(76, 324);
+            this.btn_ChangeUser.Name = "btn_ChangeUser";
+            this.btn_ChangeUser.Size = new System.Drawing.Size(86, 23);
+            this.btn_ChangeUser.TabIndex = 26;
+            this.btn_ChangeUser.Text = "Change User";
+            this.btn_ChangeUser.UseVisualStyleBackColor = true;
+            this.btn_ChangeUser.Click += new System.EventHandler(this.btn_ChangeUser_Click);
             // 
             // MainMenu
             // 
@@ -173,9 +173,10 @@ namespace AS_Coursework
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.AliceBlue;
             this.ClientSize = new System.Drawing.Size(634, 361);
+            this.ControlBox = false;
+            this.Controls.Add(this.btn_ChangeUser);
             this.Controls.Add(this.btn_Exit);
             this.Controls.Add(this.pic_SideBar);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btn_ExitProgram);
@@ -206,8 +207,8 @@ namespace AS_Coursework
         private Label label1;
         private PictureBox pictureBox2;
         private OpenFileDialog openFileDialog1;
-        private Label label2;
         private PictureBox pic_SideBar;
         private Button btn_Exit;
+        private Button btn_ChangeUser;
     }
 }

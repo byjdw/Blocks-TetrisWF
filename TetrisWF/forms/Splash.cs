@@ -38,8 +38,8 @@ namespace AS_Coursework
             if (valid && !loggedInPlayer.Equals(null))
             {
                 MessageBox.Show("Welcome Back, " + loggedInPlayer.Username + "!\nYou are now logged in.", "Login Success", MessageBoxButtons.OK);
-                new MainMenu().Show();
-                this.Close();
+                new MainMenu(this).Show();
+                this.Hide();
             }
             else
             {
@@ -73,6 +73,8 @@ namespace AS_Coursework
                     Username = "Guest",
                     IsGuest = true,
                 };
+                new MainMenu(this).Show();
+                this.Hide();
             }
         }
     }

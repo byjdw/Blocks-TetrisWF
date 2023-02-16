@@ -10,9 +10,11 @@ namespace AS_Coursework
 {
     public partial class MainMenu : Form
     {
-        public MainMenu()
+        Form parentForm;
+        public MainMenu(Form parentForm)
         {
             InitializeComponent();
+            this.parentForm = parentForm;
         }
 
         private void btn_RegisterOnClick(object sender, EventArgs e)
@@ -106,10 +108,16 @@ namespace AS_Coursework
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btn_Exit_Click(object sender, EventArgs e)
         {
             DataManager.FinishUp();
             Environment.Exit(0);
+        }
+
+        private void btn_ChangeUser_Click(object sender, EventArgs e)
+        {
+            parentForm.Show();
+            this.Close();
         }
     }
 }
