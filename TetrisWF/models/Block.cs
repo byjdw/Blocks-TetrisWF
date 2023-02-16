@@ -25,7 +25,7 @@ namespace AS_Coursework.models
             this.rotatable = rotatable;
 
                     blockColor = Color.Yellow;
-                    blockTile = Properties.Resources.Board_Square;
+                    blockTile = Properties.Resources.Square;
                     positionOffsets = new int[,] { { x, y }, { x, y + 1 }, { x + 1, y }, { x + 1, y + 1 } };
             
         }

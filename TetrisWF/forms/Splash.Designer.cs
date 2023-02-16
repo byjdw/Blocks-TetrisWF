@@ -1,5 +1,4 @@
-﻿using AS_Coursework.controls;
-using System.Drawing;
+﻿using System.Drawing;
 using System.Windows.Forms;
 
 namespace AS_Coursework
@@ -7,12 +6,12 @@ namespace AS_Coursework
     partial class Splash
     {
         /// <summary>
-        ///  Required designer variable.
+        /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
         /// <summary>
-        ///  Clean up any resources being used.
+        /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
@@ -27,203 +26,202 @@ namespace AS_Coursework
         #region Windows Form Designer generated code
 
         /// <summary>
-        ///  Required method for Designer support - do not modify
-        ///  the contents of this method with the code editor.
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Splash));
-            btn_Register = new Button();
-            btn_Login = new Button();
-            lbl_currentPlayer = new Label();
-            btn_StartGame = new Button();
-            btn_ContinueGame = new Button();
-            btn_ExitProgram = new Button();
-            pictureBox1 = new CircularPictureBox();
-            label1 = new Label();
-            circularPictureBox1 = new CircularPictureBox();
-            pictureBox2 = new PictureBox();
-            openFileDialog1 = new OpenFileDialog();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)circularPictureBox1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
-            SuspendLayout();
+            this.txt_username = new System.Windows.Forms.TextBox();
+            this.txt_password = new System.Windows.Forms.TextBox();
+            this.btn_LoginUser = new System.Windows.Forms.Button();
+            this.lbl_Title = new System.Windows.Forms.Label();
+            this.pic_TitleCard = new System.Windows.Forms.PictureBox();
+            this.btn_ExitProgram = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btn_Register = new System.Windows.Forms.Button();
+            this.btn_Guest = new System.Windows.Forms.Button();
+            this.lbl_usernameError = new System.Windows.Forms.Label();
+            this.lbl_passwordError = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_TitleCard)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.SuspendLayout();
             // 
-            // btn_Register
+            // txt_username
             // 
-            btn_Register.BackColor = Color.MediumBlue;
-            btn_Register.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btn_Register.ForeColor = SystemColors.Window;
-            btn_Register.Location = new Point(538, 292);
-            btn_Register.Margin = new Padding(6);
-            btn_Register.Name = "btn_Register";
-            btn_Register.Size = new Size(204, 83);
-            btn_Register.TabIndex = 0;
-            btn_Register.Text = "REGISTER";
-            btn_Register.UseVisualStyleBackColor = false;
-            btn_Register.Click += btn_RegisterOnClick;
+            this.txt_username.Location = new System.Drawing.Point(12, 145);
+            this.txt_username.Name = "txt_username";
+            this.txt_username.PlaceholderText = "Username";
+            this.txt_username.Size = new System.Drawing.Size(181, 23);
+            this.txt_username.TabIndex = 1;
             // 
-            // btn_Login
+            // txt_password
             // 
-            btn_Login.BackColor = Color.DarkOrange;
-            btn_Login.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btn_Login.ForeColor = SystemColors.Window;
-            btn_Login.Location = new Point(303, 292);
-            btn_Login.Margin = new Padding(6);
-            btn_Login.Name = "btn_Login";
-            btn_Login.Size = new Size(204, 82);
-            btn_Login.TabIndex = 1;
-            btn_Login.Text = "LOGIN";
-            btn_Login.UseVisualStyleBackColor = false;
-            btn_Login.Click += btn_LoginOnClick;
+            this.txt_password.Location = new System.Drawing.Point(12, 189);
+            this.txt_password.Name = "txt_password";
+            this.txt_password.PasswordChar = '·';
+            this.txt_password.PlaceholderText = "Password";
+            this.txt_password.Size = new System.Drawing.Size(181, 23);
+            this.txt_password.TabIndex = 2;
             // 
-            // lbl_currentPlayer
+            // btn_LoginUser
             // 
-            lbl_currentPlayer.AutoSize = true;
-            lbl_currentPlayer.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            lbl_currentPlayer.ForeColor = SystemColors.ControlLightLight;
-            lbl_currentPlayer.Location = new Point(113, 460);
-            lbl_currentPlayer.Margin = new Padding(6, 0, 6, 0);
-            lbl_currentPlayer.Name = "lbl_currentPlayer";
-            lbl_currentPlayer.Size = new Size(81, 32);
-            lbl_currentPlayer.TabIndex = 3;
-            lbl_currentPlayer.Text = "Guest";
+            this.btn_LoginUser.Location = new System.Drawing.Point(12, 218);
+            this.btn_LoginUser.Name = "btn_LoginUser";
+            this.btn_LoginUser.Size = new System.Drawing.Size(100, 23);
+            this.btn_LoginUser.TabIndex = 3;
+            this.btn_LoginUser.Text = "Start Playing";
+            this.btn_LoginUser.UseVisualStyleBackColor = true;
+            this.btn_LoginUser.Click += new System.EventHandler(this.loginUser_onClick);
             // 
-            // btn_StartGame
+            // lbl_Title
             // 
-            btn_StartGame.BackColor = Color.Lime;
-            btn_StartGame.BackgroundImageLayout = ImageLayout.Center;
-            btn_StartGame.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btn_StartGame.ForeColor = SystemColors.Window;
-            btn_StartGame.Location = new Point(303, 198);
-            btn_StartGame.Margin = new Padding(6);
-            btn_StartGame.Name = "btn_StartGame";
-            btn_StartGame.Size = new Size(204, 82);
-            btn_StartGame.TabIndex = 4;
-            btn_StartGame.Text = "START";
-            btn_StartGame.UseVisualStyleBackColor = false;
-            btn_StartGame.Click += btn_StartGame_Click;
+            this.lbl_Title.AutoSize = true;
+            this.lbl_Title.Font = new System.Drawing.Font("Segoe UI Black", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lbl_Title.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.lbl_Title.Location = new System.Drawing.Point(12, 12);
+            this.lbl_Title.Name = "lbl_Title";
+            this.lbl_Title.Size = new System.Drawing.Size(154, 32);
+            this.lbl_Title.TabIndex = 4;
+            this.lbl_Title.Text = "Welcome to";
             // 
-            // btn_ContinueGame
+            // pic_TitleCard
             // 
-            btn_ContinueGame.BackColor = Color.BlueViolet;
-            btn_ContinueGame.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btn_ContinueGame.ForeColor = SystemColors.Window;
-            btn_ContinueGame.Location = new Point(538, 198);
-            btn_ContinueGame.Margin = new Padding(6);
-            btn_ContinueGame.Name = "btn_ContinueGame";
-            btn_ContinueGame.Size = new Size(204, 82);
-            btn_ContinueGame.TabIndex = 5;
-            btn_ContinueGame.Text = "CONTINUE";
-            btn_ContinueGame.UseVisualStyleBackColor = false;
-            btn_ContinueGame.Click += btn_ContinueGame_Click;
+            this.pic_TitleCard.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pic_TitleCard.Image = global::AS_Coursework.Properties.Resources.Blocks;
+            this.pic_TitleCard.Location = new System.Drawing.Point(12, 29);
+            this.pic_TitleCard.Name = "pic_TitleCard";
+            this.pic_TitleCard.Size = new System.Drawing.Size(226, 95);
+            this.pic_TitleCard.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pic_TitleCard.TabIndex = 5;
+            this.pic_TitleCard.TabStop = false;
             // 
             // btn_ExitProgram
             // 
-            btn_ExitProgram.BackColor = Color.Red;
-            btn_ExitProgram.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btn_ExitProgram.ForeColor = SystemColors.Window;
-            btn_ExitProgram.Location = new Point(428, 386);
-            btn_ExitProgram.Margin = new Padding(6);
-            btn_ExitProgram.Name = "btn_ExitProgram";
-            btn_ExitProgram.Size = new Size(204, 83);
-            btn_ExitProgram.TabIndex = 6;
-            btn_ExitProgram.Text = "EXIT";
-            btn_ExitProgram.UseVisualStyleBackColor = false;
-            btn_ExitProgram.Click += btn_ExitProgram_Click;
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.BorderStyle = BorderStyle.Fixed3D;
-            pictureBox1.Image = Properties.Resources.Guest;
-            pictureBox1.Location = new Point(12, 412);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(92, 92);
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox1.TabIndex = 7;
-            pictureBox1.TabStop = false;
-            pictureBox1.Click += pictureBox1_Click;
-            pictureBox1.DoubleClick += CurrentUser_DoubleClick;
+            this.btn_ExitProgram.BackColor = System.Drawing.Color.IndianRed;
+            this.btn_ExitProgram.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_ExitProgram.ForeColor = System.Drawing.SystemColors.Window;
+            this.btn_ExitProgram.Location = new System.Drawing.Point(595, 12);
+            this.btn_ExitProgram.Margin = new System.Windows.Forms.Padding(0);
+            this.btn_ExitProgram.Name = "btn_ExitProgram";
+            this.btn_ExitProgram.Size = new System.Drawing.Size(30, 30);
+            this.btn_ExitProgram.TabIndex = 7;
+            this.btn_ExitProgram.Text = "X";
+            this.btn_ExitProgram.UseVisualStyleBackColor = false;
+            this.btn_ExitProgram.Click += new System.EventHandler(this.btn_ExitProgram_Click);
             // 
             // label1
             // 
-            label1.AutoSize = true;
-            label1.ForeColor = SystemColors.ControlLightLight;
-            label1.Location = new Point(113, 428);
-            label1.Margin = new Padding(6, 0, 6, 0);
-            label1.Name = "label1";
-            label1.Size = new Size(150, 32);
-            label1.TabIndex = 8;
-            label1.Text = "Logged in as";
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.label1.Location = new System.Drawing.Point(12, 127);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(60, 15);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "Username";
             // 
-            // circularPictureBox1
+            // label2
             // 
-            circularPictureBox1.Location = new Point(236, 155);
-            circularPictureBox1.Name = "circularPictureBox1";
-            circularPictureBox1.Size = new Size(30, 65);
-            circularPictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            circularPictureBox1.TabIndex = 9;
-            circularPictureBox1.TabStop = false;
+            this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.label2.Location = new System.Drawing.Point(12, 171);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(57, 15);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "Password";
             // 
-            // pictureBox2
+            // pictureBox1
             // 
-            pictureBox2.BackColor = Color.Transparent;
-            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(211, 35);
-            pictureBox2.Margin = new Padding(0);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(620, 162);
-            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox2.TabIndex = 10;
-            pictureBox2.TabStop = false;
+            this.pictureBox1.BackColor = System.Drawing.Color.BlueViolet;
+            this.pictureBox1.Location = new System.Drawing.Point(325, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(310, 365);
+            this.pictureBox1.TabIndex = 10;
+            this.pictureBox1.TabStop = false;
             // 
-            // openFileDialog1
+            // btn_Register
             // 
-            openFileDialog1.FileName = "openFileDialog1";
+            this.btn_Register.Location = new System.Drawing.Point(12, 326);
+            this.btn_Register.Name = "btn_Register";
+            this.btn_Register.Size = new System.Drawing.Size(75, 23);
+            this.btn_Register.TabIndex = 13;
+            this.btn_Register.Text = "Register";
+            this.btn_Register.UseVisualStyleBackColor = true;
+            this.btn_Register.Click += new System.EventHandler(this.btn_Register_Click);
+            // 
+            // btn_Guest
+            // 
+            this.btn_Guest.Location = new System.Drawing.Point(93, 326);
+            this.btn_Guest.Name = "btn_Guest";
+            this.btn_Guest.Size = new System.Drawing.Size(100, 23);
+            this.btn_Guest.TabIndex = 14;
+            this.btn_Guest.Text = "Play as Guest";
+            this.btn_Guest.UseVisualStyleBackColor = true;
+            this.btn_Guest.Click += new System.EventHandler(this.btn_Guest_Click);
+            // 
+            // lbl_usernameError
+            // 
+            this.lbl_usernameError.AutoSize = true;
+            this.lbl_usernameError.ForeColor = System.Drawing.Color.IndianRed;
+            this.lbl_usernameError.Location = new System.Drawing.Point(74, 127);
+            this.lbl_usernameError.Name = "lbl_usernameError";
+            this.lbl_usernameError.Size = new System.Drawing.Size(87, 15);
+            this.lbl_usernameError.TabIndex = 15;
+            this.lbl_usernameError.Text = "username error";
+            // 
+            // lbl_passwordError
+            // 
+            this.lbl_passwordError.AutoSize = true;
+            this.lbl_passwordError.ForeColor = System.Drawing.Color.IndianRed;
+            this.lbl_passwordError.Location = new System.Drawing.Point(74, 171);
+            this.lbl_passwordError.Name = "lbl_passwordError";
+            this.lbl_passwordError.Size = new System.Drawing.Size(85, 15);
+            this.lbl_passwordError.TabIndex = 16;
+            this.lbl_passwordError.Text = "password error";
             // 
             // Splash
             // 
-            AutoScaleDimensions = new SizeF(13F, 32F);
-            AutoScaleMode = AutoScaleMode.Font;
-            BackColor = SystemColors.Desktop;
-            ClientSize = new Size(1032, 513);
-            Controls.Add(circularPictureBox1);
-            Controls.Add(label1);
-            Controls.Add(pictureBox1);
-            Controls.Add(btn_ExitProgram);
-            Controls.Add(btn_ContinueGame);
-            Controls.Add(btn_StartGame);
-            Controls.Add(lbl_currentPlayer);
-            Controls.Add(btn_Login);
-            Controls.Add(btn_Register);
-            Controls.Add(pictureBox2);
-            Cursor = Cursors.Hand;
-            Icon = (Icon)resources.GetObject("$this.Icon");
-            Margin = new Padding(4, 2, 4, 2);
-            MaximizeBox = false;
-            MinimizeBox = false;
-            Name = "Splash";
-            Text = "Blocks · Main Menu";
-            VisibleChanged += Splash_VisibilityChange;
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)circularPictureBox1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
-            ResumeLayout(false);
-            PerformLayout();
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.AliceBlue;
+            this.ClientSize = new System.Drawing.Size(634, 361);
+            this.ControlBox = false;
+            this.Controls.Add(this.lbl_passwordError);
+            this.Controls.Add(this.lbl_usernameError);
+            this.Controls.Add(this.btn_Guest);
+            this.Controls.Add(this.btn_Register);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.btn_ExitProgram);
+            this.Controls.Add(this.lbl_Title);
+            this.Controls.Add(this.btn_LoginUser);
+            this.Controls.Add(this.txt_password);
+            this.Controls.Add(this.txt_username);
+            this.Controls.Add(this.pic_TitleCard);
+            this.Controls.Add(this.pictureBox1);
+            this.Name = "Splash";
+            this.Text = "Blocks · Login";
+            ((System.ComponentModel.ISupportInitialize)(this.pic_TitleCard)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion
-
-        private Button btn_Register;
-        private Button btn_Login;
-        private Label lbl_currentPlayer;
-        private Button btn_StartGame;
-        private Button btn_ContinueGame;
+        private TextBox txt_username;
+        private TextBox txt_password;
+        private Button btn_LoginUser;
+        private Label lbl_Title;
+        private PictureBox pic_TitleCard;
         private Button btn_ExitProgram;
-        private CircularPictureBox pictureBox1;
         private Label label1;
-        private CircularPictureBox circularPictureBox1;
-        private PictureBox pictureBox2;
-        private OpenFileDialog openFileDialog1;
+        private Label label2;
+        private PictureBox pictureBox1;
+        private Button btn_Register;
+        private Button btn_Guest;
+        private Label lbl_usernameError;
+        private Label lbl_passwordError;
     }
 }

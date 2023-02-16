@@ -1,8 +1,14 @@
-using AS_Coursework.game;
-using AS_Coursework.@internal;
+ï»¿using AS_Coursework.@internal;
+using AS_Coursework.io;
 using AS_Coursework.models;
 using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
 using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace AS_Coursework
@@ -12,110 +18,62 @@ namespace AS_Coursework
         public Splash()
         {
             InitializeComponent();
-            DialogResult choice = MessageBox.Show("DEV MODE - SKIP TO GAMEPLAY?", "Blocks · Confirmation Dialouge", MessageBoxButtons.YesNo);
-            if (choice == DialogResult.Yes)
-            {
-                GameSession newGameSession = new GameSession();
-                SessionManager.CurrentPlayer = new Player()
-                {
-                    Username = "Guest",
-                    IsGuest = true,
-                };
-                SessionManager.CurrentPlayer.CurrentSession = newGameSession;
-                new GameWindow().Show();
-                this.Hide();
-            }
+            lbl_usernameError.Text = "";
+            lbl_passwordError.Text = "";
         }
 
-        private void btn_RegisterOnClick(object sender, EventArgs e)
+        private void loginUser_onClick(object sender, EventArgs e)
+        {
+            bool valid = false;
+            Player? loggedInPlayer = null;
+            for (int i = 0; i < DataManager.getPlayers().Count; i++)
+            {
+                if (DataManager.getPlayers()[i].Username == txt_username.Text && DataManager.getPlayers()[i].Password == DataManager.getHashString(txt_password.Text))
+                {
+                    valid = true;
+                    loggedInPlayer = DataManager.getPlayers()[i];
+                }
+                SessionManager.CurrentPlayer = loggedInPlayer;
+            }
+            if (valid && !loggedInPlayer.Equals(null))
+            {
+                MessageBox.Show("Welcome Back, " + loggedInPlayer.Username + "!\nYou are now logged in.", "Login Success", MessageBoxButtons.OK);
+                new MainMenu().Show();
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("You have entered an invalid username/password combination.", "Login Error");
+            }
+
+            txt_username.Text = "";
+            txt_password.Text = "";
+        }
+
+        private void btn_ExitProgram_Click(object sender, EventArgs e)
+        {
+            DataManager.FinishUp();
+            Environment.Exit(0);
+        }
+
+        private void btn_Register_Click(object sender, EventArgs e)
         {
             Form registerForm = new Registration(this);
             registerForm.Show();
             this.Hide();
         }
 
-        private void btn_LoginOnClick(object sender, EventArgs e)
+        private void btn_Guest_Click(object sender, EventArgs e)
         {
-            Form loginForm = new Login(this);
-            loginForm.Show();
-            this.Hide();
-        }
-
-        private void Splash_VisibilityChange(object sender, EventArgs e)
-        {
-            Player? CurrentPlayer = SessionManager.CurrentPlayer;
-            if (CurrentPlayer != null)
+            DialogResult playAsGuest = MessageBox.Show("Are you sure you want to play as a Guest?\nThe ability to save your game and publish your score will be disabled.", "Blocks Â· Confirmation Dialouge", MessageBoxButtons.YesNo);
+            if (playAsGuest == DialogResult.Yes)
             {
-                lbl_currentPlayer.Text = CurrentPlayer.Username;
-                if (CurrentPlayer.Avatar != null)
+                SessionManager.CurrentPlayer = new Player()
                 {
-                    pictureBox1.Image = CurrentPlayer.Avatar;
-                }
+                    Username = "Guest",
+                    IsGuest = true,
+                };
             }
-            else
-            {
-                lbl_currentPlayer.Text = "Guest";
-
-            }
-        }
-
-        private void btn_ExitProgram_Click(object sender, EventArgs e)
-        {
-            DialogResult quit = MessageBox.Show("Are you sure you want to quit?", "Blocks · Confirmation Dialouge", MessageBoxButtons.YesNo);
-            if (quit == DialogResult.Yes)
-            {
-                this.Close();
-            }
-        }
-
-        private void btn_StartGame_Click(object sender, EventArgs e)
-        {
-            GameSession newGameSession = new GameSession();
-            if (SessionManager.CurrentPlayer == null)
-            {
-                DialogResult playAsGuest = MessageBox.Show("You aren't logged in, would you like to play as a Guest?", "Blocks · Confirmation Dialouge", MessageBoxButtons.YesNo);
-                if (playAsGuest == DialogResult.Yes)
-                {
-                    SessionManager.CurrentPlayer = new Player()
-                    {
-                        Username = "Guest",
-                        IsGuest = true,
-                    };
-                }
-                else
-                {
-                    return;
-                }
-            }
-            SessionManager.CurrentPlayer.CurrentSession = newGameSession;
-            new GameWindow().Show();
-            this.Hide();
-        }
-
-        private void btn_ContinueGame_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("shut up nerd");
-        }
-
-        private void CurrentUser_DoubleClick(object sender, EventArgs e)
-        {
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                try
-                {
-                    System.Drawing.Image selected = System.Drawing.Image.FromFile(openFileDialog1.FileName);
-                    pictureBox1.Image = new Bitmap(selected);
-                }
-                catch
-                {
-                    // ignored
-                }
-            }
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

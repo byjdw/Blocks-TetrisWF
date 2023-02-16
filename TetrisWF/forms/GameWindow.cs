@@ -21,13 +21,13 @@ namespace AS_Coursework.game
             InitializeComponent();
             List<Image> block = new List<Image>
             {
-                Properties.Resources.Board_L,
-                Properties.Resources.Board_Line,
-                Properties.Resources.Board_Reverse_L,
-                Properties.Resources.Board_S,
-                Properties.Resources.Board_Square,
-                Properties.Resources.Board_T,
-                Properties.Resources.Board_Z,
+                Properties.Resources.L,
+                Properties.Resources.Line,
+                Properties.Resources.Reverse_L,
+                Properties.Resources.S,
+                Properties.Resources.Square,
+                Properties.Resources.T,
+                Properties.Resources.Z,
             };
             List<Image> blockfull = new List<Image>
             {

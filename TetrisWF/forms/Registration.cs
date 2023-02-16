@@ -19,6 +19,9 @@ namespace AS_Coursework
     public partial class Registration : Form
     {
         Form parentForm;
+        List<System.Drawing.Image> profilePictures;
+        int pfpIndex;
+
         public Registration(Form _parentForm)
         {
             parentForm = _parentForm;
@@ -28,6 +31,18 @@ namespace AS_Coursework
             lbl_usernameError.Text = "";
             lbl_passwordError.Text = "";
             lbl_passwordConfirmError.Text = "";
+            profilePictures = new List<System.Drawing.Image>()
+            {
+                Properties.Resources.Pfp_L,
+                Properties.Resources.Pfp_line,
+                Properties.Resources.Pfp_rL,
+                Properties.Resources.Pfp_S,
+                Properties.Resources.Pfp_Square,
+                Properties.Resources.Pfp_T,
+                Properties.Resources.Pfp_Z,
+            };
+            pfpIndex = new Random().Next(0, 6);
+            pic_playerAvatar.Image = profilePictures[pfpIndex];
         }
 
         private void Window_OnClose(object sender, FormClosingEventArgs e)
@@ -77,7 +92,7 @@ namespace AS_Coursework
                     Surname = txt_surname.Text,
                     Username = txt_username.Text,
                     Password = DataManager.getHashString(txt_password.Text),
-                    Avatar = circularPictureBox1.Image
+                    Avatar = pic_playerAvatar.Image
                 };
                 DataManager.writePlayer(newPlayer);
                 SessionManager.CurrentPlayer = newPlayer;
@@ -89,7 +104,7 @@ namespace AS_Coursework
                 txt_username.Text = "";
                 txt_password.Text = "";
                 txt_passwordConfirm.Text = "";
-                circularPictureBox1.Image = Resources.Guest;
+                pic_playerAvatar.Image = Resources.Guest;
                 parentForm.Show();
                 this.Close();
             }
@@ -155,7 +170,7 @@ namespace AS_Coursework
                 try
                 {
                     System.Drawing.Image selected = System.Drawing.Image.FromFile(openFileDialog1.FileName);
-                    circularPictureBox1.Image = new Bitmap(selected);
+                    pic_playerAvatar.Image = new Bitmap(selected);
                 }
                 catch
                 {
@@ -171,6 +186,24 @@ namespace AS_Coursework
             txt_username.Text = "acc_" + new Random().Next(0, 10000);
             txt_password.Text = "12345678";
             txt_passwordConfirm.Text = "12345678";
+        }
+
+        private void btn_CycleAvatarBack_Click(object sender, EventArgs e)
+        {
+            if (pfpIndex != 0)
+                pfpIndex -= 1;
+            else
+                pfpIndex = 6;
+            pic_playerAvatar.Image = profilePictures[pfpIndex];
+        }
+
+        private void btn_CycleAvatarForward_Click(object sender, EventArgs e)
+        {
+            if (pfpIndex != 6)
+                pfpIndex += 1;
+            else
+                pfpIndex = 0;
+            pic_playerAvatar.Image = profilePictures[pfpIndex];
         }
     }
 }

@@ -74,5 +74,10 @@ namespace AS_Coursework.io
 
             return sb.ToString();
         }
+
+        public static void FinishUp()
+        {
+
+        }
     }
 }
