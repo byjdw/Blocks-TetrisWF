@@ -62,9 +62,9 @@ namespace AS_Coursework.game
             int[,] blockPositions = CurrentBlock.positionOffsets;
             for (int i = 0; i < CurrentBlock.positionOffsets.Length; i++)
             {
-                    //Control control = tlp_GameBoard.GetControlFromPosition(
-                    //    blockPositions[i, 0], blockPositions[i, 1]);
-                    //(control as PictureBox).Image = CurrentBlock.blockTile;
+                //Control control = tlp_GameBoard.GetControlFromPosition(
+                //    blockPositions[i, 0], blockPositions[i, 1]);
+                //(control as PictureBox).Image = CurrentBlock.blockTile;
             }
         }
 

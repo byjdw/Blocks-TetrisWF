@@ -66,6 +66,7 @@ namespace AS_Coursework
             this.txt_forename.PlaceholderText = "Forename";
             this.txt_forename.Size = new System.Drawing.Size(140, 23);
             this.txt_forename.TabIndex = 5;
+            this.txt_forename.TextChanged += new System.EventHandler(this.Forename_ValueChanged);
             // 
             // txt_surname
             // 
@@ -74,6 +75,7 @@ namespace AS_Coursework
             this.txt_surname.PlaceholderText = "Surname";
             this.txt_surname.Size = new System.Drawing.Size(140, 23);
             this.txt_surname.TabIndex = 6;
+            this.txt_surname.TextChanged += new System.EventHandler(this.Surname_ValueChanged);
             // 
             // txt_username
             // 
@@ -83,6 +85,7 @@ namespace AS_Coursework
             this.txt_username.PlaceholderText = "Username";
             this.txt_username.Size = new System.Drawing.Size(140, 23);
             this.txt_username.TabIndex = 7;
+            this.txt_username.TextChanged += new System.EventHandler(this.Username_ValueChanged);
             // 
             // txt_password
             // 
@@ -92,6 +95,7 @@ namespace AS_Coursework
             this.txt_password.PlaceholderText = "Password";
             this.txt_password.Size = new System.Drawing.Size(140, 23);
             this.txt_password.TabIndex = 8;
+            this.txt_password.TextChanged += new System.EventHandler(this.Password_ValueChanged);
             // 
             // txt_passwordConfirm
             // 
@@ -101,6 +105,7 @@ namespace AS_Coursework
             this.txt_passwordConfirm.PlaceholderText = "Confirm Password";
             this.txt_passwordConfirm.Size = new System.Drawing.Size(140, 23);
             this.txt_passwordConfirm.TabIndex = 9;
+            this.txt_passwordConfirm.TextChanged += new System.EventHandler(this.PasswordConfirm_ValueChanged);
             // 
             // btn_registerPlayer
             // 
@@ -110,6 +115,7 @@ namespace AS_Coursework
             this.btn_registerPlayer.TabIndex = 10;
             this.btn_registerPlayer.Text = "Register";
             this.btn_registerPlayer.UseVisualStyleBackColor = true;
+            this.btn_registerPlayer.Click += new System.EventHandler(this.registerPlayer_onClick);
             // 
             // lbl_Title
             // 
@@ -197,6 +203,7 @@ namespace AS_Coursework
             this.button1.TabIndex = 20;
             this.button1.Text = "Quick Create";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // btn_CycleAvatarBack
             // 

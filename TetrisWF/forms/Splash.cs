@@ -18,8 +18,7 @@ namespace AS_Coursework
         public Splash()
         {
             InitializeComponent();
-            lbl_usernameError.Text = "";
-            lbl_passwordError.Text = "";
+
         }
 
         private void loginUser_onClick(object sender, EventArgs e)
@@ -33,11 +32,11 @@ namespace AS_Coursework
                     valid = true;
                     loggedInPlayer = DataManager.getPlayers()[i];
                 }
-                SessionManager.CurrentPlayer = loggedInPlayer;
             }
             if (valid && !loggedInPlayer.Equals(null))
             {
                 MessageBox.Show("Welcome Back, " + loggedInPlayer.Username + "!\nYou are now logged in.", "Login Success", MessageBoxButtons.OK);
+                SessionManager.CurrentPlayer = loggedInPlayer;
                 new MainMenu(this).Show();
                 this.Hide();
             }
@@ -76,6 +75,12 @@ namespace AS_Coursework
                 new MainMenu(this).Show();
                 this.Hide();
             }
+        }
+
+        private void Splash_VisibleChanged(object sender, EventArgs e)
+        {
+            txt_username.Text = "";
+            txt_password.Text = "";
         }
     }
 }

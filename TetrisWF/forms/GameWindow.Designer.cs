@@ -51,37 +51,39 @@ namespace AS_Coursework.game
             // lbl_nextUpQueue
             // 
             lbl_nextUpQueue.AutoSize = true;
-            lbl_nextUpQueue.Location = new Point(713, 379);
+            lbl_nextUpQueue.Location = new Point(384, 178);
+            lbl_nextUpQueue.Margin = new Padding(2, 0, 2, 0);
             lbl_nextUpQueue.Name = "lbl_nextUpQueue";
-            lbl_nextUpQueue.Size = new Size(64, 32);
+            lbl_nextUpQueue.Size = new Size(32, 15);
             lbl_nextUpQueue.TabIndex = 2;
             lbl_nextUpQueue.Text = "Next";
             // 
             // lbl_heldBlock
             // 
             lbl_heldBlock.AutoSize = true;
-            lbl_heldBlock.Location = new Point(712, 159);
+            lbl_heldBlock.Location = new Point(383, 75);
+            lbl_heldBlock.Margin = new Padding(2, 0, 2, 0);
             lbl_heldBlock.Name = "lbl_heldBlock";
-            lbl_heldBlock.Size = new Size(65, 32);
+            lbl_heldBlock.Size = new Size(33, 15);
             lbl_heldBlock.TabIndex = 4;
             lbl_heldBlock.Text = "Hold";
             // 
             // slbl_playingAs
             // 
             slbl_playingAs.AutoSize = true;
-            slbl_playingAs.Location = new Point(973, 12);
-            slbl_playingAs.Margin = new Padding(6, 0, 6, 0);
+            slbl_playingAs.Location = new Point(524, 6);
             slbl_playingAs.Name = "slbl_playingAs";
-            slbl_playingAs.Size = new Size(120, 32);
+            slbl_playingAs.Size = new Size(60, 15);
             slbl_playingAs.TabIndex = 11;
             slbl_playingAs.Text = "Playing as";
             // 
             // pic_userAvatar
             // 
             pic_userAvatar.Image = Properties.Resources.Guest;
-            pic_userAvatar.Location = new Point(872, 12);
+            pic_userAvatar.Location = new Point(470, 6);
+            pic_userAvatar.Margin = new Padding(2, 1, 2, 1);
             pic_userAvatar.Name = "pic_userAvatar";
-            pic_userAvatar.Size = new Size(92, 80);
+            pic_userAvatar.Size = new Size(50, 50);
             pic_userAvatar.SizeMode = PictureBoxSizeMode.StretchImage;
             pic_userAvatar.TabIndex = 10;
             pic_userAvatar.TabStop = false;
@@ -90,10 +92,9 @@ namespace AS_Coursework.game
             // 
             lbl_currentPlayer.AutoSize = true;
             lbl_currentPlayer.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            lbl_currentPlayer.Location = new Point(973, 44);
-            lbl_currentPlayer.Margin = new Padding(6, 0, 6, 0);
+            lbl_currentPlayer.Location = new Point(524, 21);
             lbl_currentPlayer.Name = "lbl_currentPlayer";
-            lbl_currentPlayer.Size = new Size(81, 32);
+            lbl_currentPlayer.Size = new Size(42, 15);
             lbl_currentPlayer.TabIndex = 9;
             lbl_currentPlayer.Text = "Guest";
             // 
@@ -112,70 +113,74 @@ namespace AS_Coursework.game
             tlp_GameBoard.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10F));
             tlp_GameBoard.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10F));
             tlp_GameBoard.GrowStyle = TableLayoutPanelGrowStyle.FixedSize;
-            tlp_GameBoard.Location = new Point(31, 44);
+            tlp_GameBoard.Location = new Point(17, 21);
             tlp_GameBoard.Margin = new Padding(0);
             tlp_GameBoard.Name = "tlp_GameBoard";
             tlp_GameBoard.RowCount = 15;
-            tlp_GameBoard.RowStyles.Add(new RowStyle(SizeType.Percent, 6.66666651F));
-            tlp_GameBoard.RowStyles.Add(new RowStyle(SizeType.Percent, 6.66666651F));
-            tlp_GameBoard.RowStyles.Add(new RowStyle(SizeType.Percent, 6.66666651F));
-            tlp_GameBoard.RowStyles.Add(new RowStyle(SizeType.Percent, 6.66666651F));
-            tlp_GameBoard.RowStyles.Add(new RowStyle(SizeType.Percent, 6.66666651F));
-            tlp_GameBoard.RowStyles.Add(new RowStyle(SizeType.Percent, 6.66666651F));
-            tlp_GameBoard.RowStyles.Add(new RowStyle(SizeType.Percent, 6.66666651F));
-            tlp_GameBoard.RowStyles.Add(new RowStyle(SizeType.Percent, 6.66666651F));
-            tlp_GameBoard.RowStyles.Add(new RowStyle(SizeType.Percent, 6.66666651F));
-            tlp_GameBoard.RowStyles.Add(new RowStyle(SizeType.Percent, 6.66666651F));
-            tlp_GameBoard.RowStyles.Add(new RowStyle(SizeType.Percent, 6.66666651F));
-            tlp_GameBoard.RowStyles.Add(new RowStyle(SizeType.Percent, 6.66666651F));
-            tlp_GameBoard.RowStyles.Add(new RowStyle(SizeType.Percent, 6.66666651F));
-            tlp_GameBoard.RowStyles.Add(new RowStyle(SizeType.Percent, 6.66666651F));
-            tlp_GameBoard.RowStyles.Add(new RowStyle(SizeType.Percent, 6.66666651F));
-            tlp_GameBoard.Size = new Size(663, 967);
+            tlp_GameBoard.RowStyles.Add(new RowStyle(SizeType.Percent, 6.666667F));
+            tlp_GameBoard.RowStyles.Add(new RowStyle(SizeType.Percent, 6.666667F));
+            tlp_GameBoard.RowStyles.Add(new RowStyle(SizeType.Percent, 6.666667F));
+            tlp_GameBoard.RowStyles.Add(new RowStyle(SizeType.Percent, 6.666667F));
+            tlp_GameBoard.RowStyles.Add(new RowStyle(SizeType.Percent, 6.666667F));
+            tlp_GameBoard.RowStyles.Add(new RowStyle(SizeType.Percent, 6.666667F));
+            tlp_GameBoard.RowStyles.Add(new RowStyle(SizeType.Percent, 6.666667F));
+            tlp_GameBoard.RowStyles.Add(new RowStyle(SizeType.Percent, 6.666667F));
+            tlp_GameBoard.RowStyles.Add(new RowStyle(SizeType.Percent, 6.666667F));
+            tlp_GameBoard.RowStyles.Add(new RowStyle(SizeType.Percent, 6.666667F));
+            tlp_GameBoard.RowStyles.Add(new RowStyle(SizeType.Percent, 6.666667F));
+            tlp_GameBoard.RowStyles.Add(new RowStyle(SizeType.Percent, 6.666667F));
+            tlp_GameBoard.RowStyles.Add(new RowStyle(SizeType.Percent, 6.666667F));
+            tlp_GameBoard.RowStyles.Add(new RowStyle(SizeType.Percent, 6.666667F));
+            tlp_GameBoard.RowStyles.Add(new RowStyle(SizeType.Percent, 6.666667F));
+            tlp_GameBoard.Size = new Size(351, 459);
             tlp_GameBoard.TabIndex = 12;
             // 
             // pic_hold
             // 
-            pic_hold.Location = new Point(713, 194);
+            pic_hold.Location = new Point(384, 91);
+            pic_hold.Margin = new Padding(2, 1, 2, 1);
             pic_hold.Name = "pic_hold";
-            pic_hold.Size = new Size(341, 169);
+            pic_hold.Size = new Size(184, 79);
             pic_hold.SizeMode = PictureBoxSizeMode.Zoom;
             pic_hold.TabIndex = 13;
             pic_hold.TabStop = false;
             // 
             // pic_nextUp1
             // 
-            pic_nextUp1.Location = new Point(713, 414);
+            pic_nextUp1.Location = new Point(384, 194);
+            pic_nextUp1.Margin = new Padding(2, 1, 2, 1);
             pic_nextUp1.Name = "pic_nextUp1";
-            pic_nextUp1.Size = new Size(341, 169);
+            pic_nextUp1.Size = new Size(184, 79);
             pic_nextUp1.SizeMode = PictureBoxSizeMode.Zoom;
             pic_nextUp1.TabIndex = 15;
             pic_nextUp1.TabStop = false;
             // 
             // pic_nextUp2
             // 
-            pic_nextUp2.Location = new Point(713, 589);
+            pic_nextUp2.Location = new Point(384, 276);
+            pic_nextUp2.Margin = new Padding(2, 1, 2, 1);
             pic_nextUp2.Name = "pic_nextUp2";
-            pic_nextUp2.Size = new Size(341, 169);
+            pic_nextUp2.Size = new Size(184, 79);
             pic_nextUp2.SizeMode = PictureBoxSizeMode.Zoom;
             pic_nextUp2.TabIndex = 16;
             pic_nextUp2.TabStop = false;
             // 
             // pic_nextUp3
             // 
-            pic_nextUp3.Location = new Point(713, 764);
+            pic_nextUp3.Location = new Point(384, 358);
+            pic_nextUp3.Margin = new Padding(2, 1, 2, 1);
             pic_nextUp3.Name = "pic_nextUp3";
-            pic_nextUp3.Size = new Size(341, 169);
+            pic_nextUp3.Size = new Size(184, 79);
             pic_nextUp3.SizeMode = PictureBoxSizeMode.Zoom;
             pic_nextUp3.TabIndex = 17;
             pic_nextUp3.TabStop = false;
             // 
             // GameWindow
             // 
-            AutoScaleDimensions = new SizeF(13F, 32F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LavenderBlush;
-            ClientSize = new Size(1112, 1078);
+            ClientSize = new Size(593, 480);
             ControlBox = false;
             Controls.Add(pic_nextUp3);
             Controls.Add(pic_nextUp2);
@@ -187,10 +192,9 @@ namespace AS_Coursework.game
             Controls.Add(lbl_currentPlayer);
             Controls.Add(lbl_heldBlock);
             Controls.Add(lbl_nextUpQueue);
+            Margin = new Padding(2, 1, 2, 1);
             Name = "GameWindow";
             Text = "Blocks · Game in Progress";
-            Load += GameWindow_Load;
-            VisibleChanged += GameWindow_VisibilityChanged;
             ((System.ComponentModel.ISupportInitialize)pic_userAvatar).EndInit();
             ((System.ComponentModel.ISupportInitialize)pic_hold).EndInit();
             ((System.ComponentModel.ISupportInitialize)pic_nextUp1).EndInit();

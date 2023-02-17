@@ -17,20 +17,6 @@ namespace AS_Coursework
             this.parentForm = parentForm;
         }
 
-        private void btn_RegisterOnClick(object sender, EventArgs e)
-        {
-            Form registerForm = new Registration(this);
-            registerForm.Show();
-            this.Hide();
-        }
-
-        private void btn_LoginOnClick(object sender, EventArgs e)
-        {
-            Form loginForm = new Splash();
-            loginForm.Show();
-            this.Hide();
-        }
-
         private void Splash_VisibilityChange(object sender, EventArgs e)
         {
             Player? CurrentPlayer = SessionManager.CurrentPlayer;
@@ -39,7 +25,7 @@ namespace AS_Coursework
                 lbl_currentPlayer.Text = CurrentPlayer.Username;
                 if (CurrentPlayer.Avatar != null)
                 {
-                    pictureBox1.Image = CurrentPlayer.Avatar;
+                    pic_PlayerAvatar.Image = CurrentPlayer.Avatar;
                 }
             }
             else
@@ -94,18 +80,13 @@ namespace AS_Coursework
                 try
                 {
                     System.Drawing.Image selected = System.Drawing.Image.FromFile(openFileDialog1.FileName);
-                    pictureBox1.Image = new Bitmap(selected);
+                    pic_PlayerAvatar.Image = new Bitmap(selected);
                 }
                 catch
                 {
                     // ignored
                 }
             }
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void btn_Exit_Click(object sender, EventArgs e)

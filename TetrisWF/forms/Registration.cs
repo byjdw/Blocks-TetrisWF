@@ -4,15 +4,8 @@ using AS_Coursework.models;
 using AS_Coursework.Properties;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Security;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace AS_Coursework
 {
@@ -56,22 +49,22 @@ namespace AS_Coursework
             for (int i = 0; i < DataManager.getPlayers().Count; i++)
                 if (DataManager.getPlayers()[i].Username == txt_username.Text)
                 {
-                    lbl_usernameError.Text = "This username already is in use.";
+                    lbl_usernameError.Text = "Already in use.";
                     valid = false;
                 }
             if (txt_username.Text.Length == 0)
             {
-                lbl_usernameError.Text = "This field cannot be empty.";
+                lbl_usernameError.Text = "Cannot be empty.";
                 valid = false;
             }
             if (txt_forename.Text.Length == 0)
             {
-                lbl_forenameError.Text = "This field cannot be empty.";
+                lbl_forenameError.Text = "Cannot be empty.";
                 valid = false;
             }
             if (txt_surname.Text.Length == 0)
             {
-                lbl_surnameError.Text = "This field cannot be empty.";
+                lbl_surnameError.Text = "Cannot be empty.";
                 valid = false;
             }
             if (txt_password.Text.Length < 8)
@@ -95,9 +88,8 @@ namespace AS_Coursework
                     Avatar = pic_playerAvatar.Image
                 };
                 DataManager.writePlayer(newPlayer);
-                SessionManager.CurrentPlayer = newPlayer;
                 MessageBox.Show("Welcome, " + newPlayer.Username + "!" +
-                    "\nYou have been automatically logged in." +
+                    "\nYou may now login." +
                     "\nHave fun!", "Blocks · Account Registered");
                 txt_forename.Text = "";
                 txt_surname.Text = "";
@@ -117,7 +109,7 @@ namespace AS_Coursework
         private void Forename_ValueChanged(object sender, EventArgs e)
         {
             if (txt_forename.Text.Length == 0)
-                lbl_forenameError.Text = "This field cannot be empty.";
+                lbl_forenameError.Text = "Cannot be empty.";
             else
                 lbl_forenameError.Text = "";
         }
@@ -125,7 +117,7 @@ namespace AS_Coursework
         private void Surname_ValueChanged(object sender, EventArgs e)
         {
             if (txt_surname.Text.Length == 0)
-                lbl_surnameError.Text = "This field cannot be empty.";
+                lbl_surnameError.Text = "Cannot be empty.";
             else
                 lbl_surnameError.Text = "";
         }
@@ -137,13 +129,15 @@ namespace AS_Coursework
                 if (DataManager.getPlayers()[i].Username == txt_username.Text)
                     alreadyExists = true;
             if (alreadyExists)
-                lbl_usernameError.Text = "This username already is in use.";
-            else
-                lbl_usernameError.Text = "";
-            if (txt_username.Text.Length == 0)
-                lbl_usernameError.Text = "This field cannot be empty.";
-            else
-                lbl_usernameError.Text = "";
+            {
+                lbl_usernameError.Text = "Already in use.";
+                return;
+            } else if (txt_username.Text.Length == 0)
+            {
+                lbl_usernameError.Text = "Cannot be empty.";
+                return;
+            }
+            lbl_usernameError.Text = "";
         }
 
         private void Password_ValueChanged(object sender, EventArgs e)
