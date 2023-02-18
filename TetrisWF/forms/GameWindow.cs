@@ -2,13 +2,7 @@
 using AS_Coursework.models;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace AS_Coursework.game
@@ -21,23 +15,23 @@ namespace AS_Coursework.game
             InitializeComponent();
             List<Image> block = new List<Image>
             {
-                Properties.Resources.L,
-                Properties.Resources.Line,
-                Properties.Resources.Reverse_L,
-                Properties.Resources.S,
-                Properties.Resources.Square,
-                Properties.Resources.T,
-                Properties.Resources.Z,
+                Properties.Resources.Board_L,
+                Properties.Resources.Board_Line,
+                Properties.Resources.Board_Reverse_L,
+                Properties.Resources.Board_S,
+                Properties.Resources.Board_Square,
+                Properties.Resources.Board_T,
+                Properties.Resources.Board_Z,
             };
             List<Image> blockfull = new List<Image>
             {
-                Properties.Resources.Avatar_L,
-                Properties.Resources.Avatar_Line,
-                Properties.Resources.Avatar_Reverse_L,
-                Properties.Resources.Avatar_S,
-                Properties.Resources.Avatar_Square,
-                Properties.Resources.Avatar_T,
-                Properties.Resources.Avatar_Z,
+                Properties.Resources.Full_L,
+                Properties.Resources.Full_Line,
+                Properties.Resources.Full_Reverse_L,
+                Properties.Resources.Full_S,
+                Properties.Resources.Full_Square,
+                Properties.Resources.Full_T,
+                Properties.Resources.Full_Z,
             };
             for (int c = 0; c < (tlp_GameBoard.ColumnCount * tlp_GameBoard.RowCount); c++)
             {
@@ -55,6 +49,7 @@ namespace AS_Coursework.game
             pic_nextUp1.Image = blockfull[new Random().Next(0, 6)];
             pic_nextUp2.Image = blockfull[new Random().Next(0, 6)];
             pic_nextUp3.Image = blockfull[new Random().Next(0, 6)];
+            pic_nextUp4.Image = blockfull[new Random().Next(0, 6)];
             this.gameSession = new GameSession();
             lbl_currentPlayer.Text = SessionManager.CurrentPlayer!.Username;
             pic_userAvatar.Image = SessionManager.CurrentPlayer!.Avatar;

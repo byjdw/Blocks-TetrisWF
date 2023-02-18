@@ -2,13 +2,7 @@
 using AS_Coursework.io;
 using AS_Coursework.models;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace AS_Coursework
@@ -70,6 +64,7 @@ namespace AS_Coursework
                 SessionManager.CurrentPlayer = new Player()
                 {
                     Username = "Guest",
+                    Avatar = new Bitmap(Properties.Resources.Guest),
                     IsGuest = true,
                 };
                 new MainMenu(this).Show();

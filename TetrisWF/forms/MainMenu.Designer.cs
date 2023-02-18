@@ -32,170 +32,192 @@ namespace AS_Coursework
         /// </summary>
         private void InitializeComponent()
         {
-            lbl_currentPlayer = new Label();
-            btn_StartGame = new Button();
-            btn_ContinueGame = new Button();
-            btn_ExitProgram = new Button();
-            pic_PlayerAvatar = new CircularPictureBox();
-            label1 = new Label();
-            pictureBox2 = new PictureBox();
-            openFileDialog1 = new OpenFileDialog();
-            pic_SideBar = new PictureBox();
-            btn_Exit = new Button();
-            btn_ChangeUser = new Button();
-            ((System.ComponentModel.ISupportInitialize)pic_PlayerAvatar).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pic_SideBar).BeginInit();
-            SuspendLayout();
+            this.lbl_currentPlayer = new System.Windows.Forms.Label();
+            this.btn_StartGame = new System.Windows.Forms.Button();
+            this.btn_ContinueGame = new System.Windows.Forms.Button();
+            this.btn_ExitProgram = new System.Windows.Forms.Button();
+            this.pic_PlayerAvatar = new AS_Coursework.controls.CircularPictureBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.pic_SideBar = new System.Windows.Forms.PictureBox();
+            this.btn_Exit = new System.Windows.Forms.Button();
+            this.btn_ChangeUser = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_PlayerAvatar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_SideBar)).BeginInit();
+            this.SuspendLayout();
             // 
             // lbl_currentPlayer
             // 
-            lbl_currentPlayer.AutoSize = true;
-            lbl_currentPlayer.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            lbl_currentPlayer.ForeColor = SystemColors.ControlText;
-            lbl_currentPlayer.Location = new Point(76, 306);
-            lbl_currentPlayer.Name = "lbl_currentPlayer";
-            lbl_currentPlayer.Size = new Size(42, 15);
-            lbl_currentPlayer.TabIndex = 3;
-            lbl_currentPlayer.Text = "Guest";
+            this.lbl_currentPlayer.AutoSize = true;
+            this.lbl_currentPlayer.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lbl_currentPlayer.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lbl_currentPlayer.Location = new System.Drawing.Point(76, 306);
+            this.lbl_currentPlayer.Name = "lbl_currentPlayer";
+            this.lbl_currentPlayer.Size = new System.Drawing.Size(42, 15);
+            this.lbl_currentPlayer.TabIndex = 3;
+            this.lbl_currentPlayer.Text = "Guest";
             // 
             // btn_StartGame
             // 
-            btn_StartGame.BackColor = Color.Lime;
-            btn_StartGame.BackgroundImageLayout = ImageLayout.Center;
-            btn_StartGame.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btn_StartGame.ForeColor = SystemColors.Window;
-            btn_StartGame.Location = new Point(11, 78);
-            btn_StartGame.Name = "btn_StartGame";
-            btn_StartGame.Size = new Size(110, 38);
-            btn_StartGame.TabIndex = 4;
-            btn_StartGame.Text = "START";
-            btn_StartGame.UseVisualStyleBackColor = false;
-            btn_StartGame.Click += btn_StartGame_Click;
+            this.btn_StartGame.BackColor = System.Drawing.Color.Lime;
+            this.btn_StartGame.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btn_StartGame.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_StartGame.ForeColor = System.Drawing.Color.Snow;
+            this.btn_StartGame.Location = new System.Drawing.Point(11, 78);
+            this.btn_StartGame.Name = "btn_StartGame";
+            this.btn_StartGame.Size = new System.Drawing.Size(70, 135);
+            this.btn_StartGame.TabIndex = 4;
+            this.btn_StartGame.Text = "START";
+            this.btn_StartGame.UseVisualStyleBackColor = false;
+            this.btn_StartGame.Click += new System.EventHandler(this.btn_StartGame_Click);
             // 
             // btn_ContinueGame
             // 
-            btn_ContinueGame.BackColor = Color.BlueViolet;
-            btn_ContinueGame.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btn_ContinueGame.ForeColor = SystemColors.Window;
-            btn_ContinueGame.Location = new Point(11, 122);
-            btn_ContinueGame.Name = "btn_ContinueGame";
-            btn_ContinueGame.Size = new Size(110, 38);
-            btn_ContinueGame.TabIndex = 5;
-            btn_ContinueGame.Text = "CONTINUE";
-            btn_ContinueGame.UseVisualStyleBackColor = false;
+            this.btn_ContinueGame.BackColor = System.Drawing.Color.Gold;
+            this.btn_ContinueGame.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_ContinueGame.ForeColor = System.Drawing.Color.Snow;
+            this.btn_ContinueGame.Location = new System.Drawing.Point(87, 78);
+            this.btn_ContinueGame.Name = "btn_ContinueGame";
+            this.btn_ContinueGame.Size = new System.Drawing.Size(220, 90);
+            this.btn_ContinueGame.TabIndex = 5;
+            this.btn_ContinueGame.Text = "CONTINUE";
+            this.btn_ContinueGame.UseVisualStyleBackColor = false;
+            this.btn_ContinueGame.Click += new System.EventHandler(this.btn_ContinueGame_Click);
             // 
             // btn_ExitProgram
             // 
-            btn_ExitProgram.BackColor = Color.Red;
-            btn_ExitProgram.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btn_ExitProgram.ForeColor = SystemColors.Window;
-            btn_ExitProgram.Location = new Point(10, 166);
-            btn_ExitProgram.Name = "btn_ExitProgram";
-            btn_ExitProgram.Size = new Size(110, 39);
-            btn_ExitProgram.TabIndex = 6;
-            btn_ExitProgram.Text = "EXIT";
-            btn_ExitProgram.UseVisualStyleBackColor = false;
+            this.btn_ExitProgram.BackColor = System.Drawing.Color.Red;
+            this.btn_ExitProgram.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_ExitProgram.ForeColor = System.Drawing.Color.Snow;
+            this.btn_ExitProgram.Location = new System.Drawing.Point(12, 219);
+            this.btn_ExitProgram.Name = "btn_ExitProgram";
+            this.btn_ExitProgram.Size = new System.Drawing.Size(295, 39);
+            this.btn_ExitProgram.TabIndex = 6;
+            this.btn_ExitProgram.Text = "EXIT";
+            this.btn_ExitProgram.UseVisualStyleBackColor = false;
+            this.btn_ExitProgram.Click += new System.EventHandler(this.btn_Exit_Click);
             // 
             // pic_PlayerAvatar
             // 
-            pic_PlayerAvatar.Image = Properties.Resources.Guest;
-            pic_PlayerAvatar.Location = new Point(11, 291);
-            pic_PlayerAvatar.Margin = new Padding(2, 1, 2, 1);
-            pic_PlayerAvatar.Name = "pic_PlayerAvatar";
-            pic_PlayerAvatar.Size = new Size(60, 60);
-            pic_PlayerAvatar.SizeMode = PictureBoxSizeMode.StretchImage;
-            pic_PlayerAvatar.TabIndex = 7;
-            pic_PlayerAvatar.TabStop = false;
+            this.pic_PlayerAvatar.Image = global::AS_Coursework.Properties.Resources.Guest;
+            this.pic_PlayerAvatar.Location = new System.Drawing.Point(11, 291);
+            this.pic_PlayerAvatar.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.pic_PlayerAvatar.Name = "pic_PlayerAvatar";
+            this.pic_PlayerAvatar.Size = new System.Drawing.Size(60, 60);
+            this.pic_PlayerAvatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pic_PlayerAvatar.TabIndex = 7;
+            this.pic_PlayerAvatar.TabStop = false;
             // 
             // label1
             // 
-            label1.AutoSize = true;
-            label1.ForeColor = SystemColors.ControlText;
-            label1.Location = new Point(76, 291);
-            label1.Name = "label1";
-            label1.Size = new Size(74, 15);
-            label1.TabIndex = 8;
-            label1.Text = "Logged in as";
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label1.Location = new System.Drawing.Point(76, 291);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(74, 15);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "Logged in as";
             // 
             // pictureBox2
             // 
-            pictureBox2.BackColor = Color.Transparent;
-            pictureBox2.Image = Properties.Resources.Blocks;
-            pictureBox2.Location = new Point(11, 9);
-            pictureBox2.Margin = new Padding(0);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(238, 76);
-            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox2.TabIndex = 10;
-            pictureBox2.TabStop = false;
+            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox2.Image = global::AS_Coursework.Properties.Resources.Blocks;
+            this.pictureBox2.Location = new System.Drawing.Point(11, 9);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(0);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(238, 76);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 10;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.DoubleClick += new System.EventHandler(this.pictureBox2_DoubleClick);
             // 
             // openFileDialog1
             // 
-            openFileDialog1.FileName = "openFileDialog1";
+            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // pic_SideBar
             // 
-            pic_SideBar.BackColor = Color.BlueViolet;
-            pic_SideBar.Location = new Point(325, 0);
-            pic_SideBar.Name = "pic_SideBar";
-            pic_SideBar.Size = new Size(310, 365);
-            pic_SideBar.TabIndex = 24;
-            pic_SideBar.TabStop = false;
+            this.pic_SideBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(23)))), ((int)(((byte)(23)))));
+            this.pic_SideBar.Image = global::AS_Coursework.Properties.Resources.sidebar_main;
+            this.pic_SideBar.Location = new System.Drawing.Point(325, 0);
+            this.pic_SideBar.Name = "pic_SideBar";
+            this.pic_SideBar.Size = new System.Drawing.Size(310, 365);
+            this.pic_SideBar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pic_SideBar.TabIndex = 24;
+            this.pic_SideBar.TabStop = false;
             // 
             // btn_Exit
             // 
-            btn_Exit.BackColor = Color.IndianRed;
-            btn_Exit.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btn_Exit.ForeColor = SystemColors.Window;
-            btn_Exit.Location = new Point(595, 9);
-            btn_Exit.Margin = new Padding(0);
-            btn_Exit.Name = "btn_Exit";
-            btn_Exit.Size = new Size(30, 30);
-            btn_Exit.TabIndex = 25;
-            btn_Exit.Text = "X";
-            btn_Exit.UseVisualStyleBackColor = false;
-            btn_Exit.Click += btn_Exit_Click;
+            this.btn_Exit.BackColor = System.Drawing.Color.IndianRed;
+            this.btn_Exit.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_Exit.ForeColor = System.Drawing.SystemColors.Window;
+            this.btn_Exit.Location = new System.Drawing.Point(595, 9);
+            this.btn_Exit.Margin = new System.Windows.Forms.Padding(0);
+            this.btn_Exit.Name = "btn_Exit";
+            this.btn_Exit.Size = new System.Drawing.Size(30, 30);
+            this.btn_Exit.TabIndex = 25;
+            this.btn_Exit.Text = "X";
+            this.btn_Exit.UseVisualStyleBackColor = false;
+            this.btn_Exit.Click += new System.EventHandler(this.btn_Exit_Click);
             // 
             // btn_ChangeUser
             // 
-            btn_ChangeUser.Location = new Point(76, 324);
-            btn_ChangeUser.Name = "btn_ChangeUser";
-            btn_ChangeUser.Size = new Size(86, 23);
-            btn_ChangeUser.TabIndex = 26;
-            btn_ChangeUser.Text = "Change User";
-            btn_ChangeUser.UseVisualStyleBackColor = true;
-            btn_ChangeUser.Click += btn_ChangeUser_Click;
+            this.btn_ChangeUser.BackColor = System.Drawing.SystemColors.Control;
+            this.btn_ChangeUser.Location = new System.Drawing.Point(76, 324);
+            this.btn_ChangeUser.Name = "btn_ChangeUser";
+            this.btn_ChangeUser.Size = new System.Drawing.Size(90, 24);
+            this.btn_ChangeUser.TabIndex = 26;
+            this.btn_ChangeUser.Text = "Change User";
+            this.btn_ChangeUser.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btn_ChangeUser.UseVisualStyleBackColor = false;
+            this.btn_ChangeUser.Click += new System.EventHandler(this.btn_ChangeUser_Click);
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.DodgerBlue;
+            this.button1.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.button1.ForeColor = System.Drawing.Color.Snow;
+            this.button1.Location = new System.Drawing.Point(87, 174);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(220, 39);
+            this.button1.TabIndex = 27;
+            this.button1.Text = "LEADERBOARD";
+            this.button1.UseVisualStyleBackColor = false;
             // 
             // MainMenu
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.AliceBlue;
-            ClientSize = new Size(634, 361);
-            ControlBox = false;
-            Controls.Add(btn_ChangeUser);
-            Controls.Add(btn_Exit);
-            Controls.Add(pic_SideBar);
-            Controls.Add(label1);
-            Controls.Add(pic_PlayerAvatar);
-            Controls.Add(btn_ExitProgram);
-            Controls.Add(btn_ContinueGame);
-            Controls.Add(btn_StartGame);
-            Controls.Add(lbl_currentPlayer);
-            Controls.Add(pictureBox2);
-            Cursor = Cursors.Hand;
-            Margin = new Padding(2, 1, 2, 1);
-            MaximizeBox = false;
-            MinimizeBox = false;
-            Name = "MainMenu";
-            Text = "Blocks · Main Menu";
-            VisibleChanged += Splash_VisibilityChange;
-            ((System.ComponentModel.ISupportInitialize)pic_PlayerAvatar).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pic_SideBar).EndInit();
-            ResumeLayout(false);
-            PerformLayout();
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.AliceBlue;
+            this.ClientSize = new System.Drawing.Size(634, 361);
+            this.ControlBox = false;
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btn_ChangeUser);
+            this.Controls.Add(this.btn_Exit);
+            this.Controls.Add(this.pic_SideBar);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.pic_PlayerAvatar);
+            this.Controls.Add(this.btn_ExitProgram);
+            this.Controls.Add(this.btn_ContinueGame);
+            this.Controls.Add(this.btn_StartGame);
+            this.Controls.Add(this.lbl_currentPlayer);
+            this.Controls.Add(this.pictureBox2);
+            this.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Name = "MainMenu";
+            this.Text = "Blocks · Main Menu";
+            this.VisibleChanged += new System.EventHandler(this.Splash_VisibilityChange);
+            ((System.ComponentModel.ISupportInitialize)(this.pic_PlayerAvatar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_SideBar)).EndInit();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion
@@ -210,5 +232,6 @@ namespace AS_Coursework
         private PictureBox pic_SideBar;
         private Button btn_Exit;
         private Button btn_ChangeUser;
+        private Button button1;
     }
 }

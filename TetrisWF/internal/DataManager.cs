@@ -1,12 +1,9 @@
 ﻿using AS_Coursework.models;
-using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace AS_Coursework.io
@@ -25,7 +22,8 @@ namespace AS_Coursework.io
                 fileStream.Close();
                 fileStream.Dispose();
                 players.Add(player);
-            } catch (IOException e)
+            }
+            catch (IOException e)
             {
                 MessageBox.Show("" + e.Message);
             }
@@ -36,18 +34,20 @@ namespace AS_Coursework.io
             Stream fileStream;
             try
             {
-                fileStream = File.OpenRead("PlayerDetails.bin"); 
+                fileStream = File.OpenRead("PlayerDetails.bin");
                 try
                 {
                     while (fileStream.Position < fileStream.Length)
                     {
-                        players.Add((Player) new BinaryFormatter().Deserialize(fileStream));
+                        players.Add((Player)new BinaryFormatter().Deserialize(fileStream));
                     }
-                } catch (IOException e)
-                {
-                       MessageBox.Show("" + e.Message);
                 }
-            } catch(IOException e)
+                catch (IOException e)
+                {
+                    MessageBox.Show("" + e.Message);
+                }
+            }
+            catch (IOException e)
             {
                 if (!e.Message.ToLower().Contains("find"))
                     MessageBox.Show("" + e.Message);

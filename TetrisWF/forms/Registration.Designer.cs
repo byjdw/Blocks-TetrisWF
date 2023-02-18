@@ -188,6 +188,7 @@ namespace AS_Coursework
             this.pic_playerAvatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pic_playerAvatar.TabIndex = 18;
             this.pic_playerAvatar.TabStop = false;
+            this.pic_playerAvatar.DoubleClick += new System.EventHandler(this.pic_playerAvatar_DoubleClick);
             // 
             // openFileDialog1
             // 
@@ -229,10 +230,12 @@ namespace AS_Coursework
             // 
             // pic_SideBar
             // 
-            this.pic_SideBar.BackColor = System.Drawing.Color.BlueViolet;
+            this.pic_SideBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(23)))), ((int)(((byte)(23)))));
+            this.pic_SideBar.Image = global::AS_Coursework.Properties.Resources.sidebar_reg;
             this.pic_SideBar.Location = new System.Drawing.Point(325, 0);
             this.pic_SideBar.Name = "pic_SideBar";
             this.pic_SideBar.Size = new System.Drawing.Size(310, 365);
+            this.pic_SideBar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pic_SideBar.TabIndex = 23;
             this.pic_SideBar.TabStop = false;
             // 

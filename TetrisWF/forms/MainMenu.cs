@@ -47,22 +47,6 @@ namespace AS_Coursework
         private void btn_StartGame_Click(object sender, EventArgs e)
         {
             GameSession newGameSession = new GameSession();
-            if (SessionManager.CurrentPlayer == null)
-            {
-                DialogResult playAsGuest = MessageBox.Show("You aren't logged in, would you like to play as a Guest?", "Blocks · Confirmation Dialouge", MessageBoxButtons.YesNo);
-                if (playAsGuest == DialogResult.Yes)
-                {
-                    SessionManager.CurrentPlayer = new Player()
-                    {
-                        Username = "Guest",
-                        IsGuest = true,
-                    };
-                }
-                else
-                {
-                    return;
-                }
-            }
             SessionManager.CurrentPlayer.CurrentSession = newGameSession;
             new GameWindow().Show();
             this.Hide();
@@ -99,6 +83,11 @@ namespace AS_Coursework
         {
             parentForm.Show();
             this.Close();
+        }
+
+        private void pictureBox2_DoubleClick(object sender, EventArgs e)
+        {
+            MessageBox.Show("you found secret :)");
         }
     }
 }

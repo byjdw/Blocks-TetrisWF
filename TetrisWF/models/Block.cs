@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AS_Coursework.models
 {
@@ -24,7 +20,7 @@ namespace AS_Coursework.models
             this.type = type;
             this.rotatable = rotatable;
             blockColor = Color.Yellow;
-            blockTile = Properties.Resources.Square;
+            blockTile = Properties.Resources.Board_Square;
             positionOffsets = new int[,] { { x, y }, { x, y + 1 }, { x + 1, y }, { x + 1, y + 1 } };
         }
     }

@@ -1,5 +1,4 @@
-﻿using AS_Coursework.@internal;
-using AS_Coursework.io;
+﻿using AS_Coursework.io;
 using AS_Coursework.models;
 using AS_Coursework.Properties;
 using System;
@@ -26,13 +25,14 @@ namespace AS_Coursework
             lbl_passwordConfirmError.Text = "";
             profilePictures = new List<System.Drawing.Image>()
             {
-                Properties.Resources.Pfp_L,
-                Properties.Resources.Pfp_line,
-                Properties.Resources.Pfp_rL,
-                Properties.Resources.Pfp_S,
-                Properties.Resources.Pfp_Square,
-                Properties.Resources.Pfp_T,
-                Properties.Resources.Pfp_Z,
+                Properties.Resources.Avatar_L,
+                Properties.Resources.Avatar_Line,
+                Properties.Resources.Avatar_Reverse_L,
+                Properties.Resources.Avatar_S,
+                Properties.Resources.Avatar_Square,
+                Properties.Resources.Avatar_T,
+                Properties.Resources.Avatar_Z,
+                Properties.Resources.Guest,
             };
             pfpIndex = new Random().Next(0, 6);
             pic_playerAvatar.Image = profilePictures[pfpIndex];
@@ -132,7 +132,8 @@ namespace AS_Coursework
             {
                 lbl_usernameError.Text = "Already in use.";
                 return;
-            } else if (txt_username.Text.Length == 0)
+            }
+            else if (txt_username.Text.Length == 0)
             {
                 lbl_usernameError.Text = "Cannot be empty.";
                 return;
@@ -184,31 +185,40 @@ namespace AS_Coursework
 
         private void btn_CycleAvatarBack_Click(object sender, EventArgs e)
         {
-            if (pfpIndex != 0)
-                pfpIndex -= 1;
-            else
-                pfpIndex = 6;
-            pic_playerAvatar.Image = profilePictures[pfpIndex];
+            if (pfpIndex != 0) pfpIndex -= 1;
+            else pfpIndex = 7;
+            if (pfpIndex <= 7) pic_playerAvatar.Image = profilePictures[pfpIndex];
         }
 
         private void btn_CycleAvatarForward_Click(object sender, EventArgs e)
         {
-            if (pfpIndex != 6)
-                pfpIndex += 1;
-            else
-                pfpIndex = 0;
-            pic_playerAvatar.Image = profilePictures[pfpIndex];
-        }
-
-        private void pic_playerAvatar_Click(object sender, EventArgs e)
-        {
-
+            if (pfpIndex != 7) pfpIndex += 1;
+            else pfpIndex = 0;
+            if (pfpIndex <= 7) pic_playerAvatar.Image = profilePictures[pfpIndex];
         }
 
         private void btn_Exit_Click(object sender, EventArgs e)
         {
             DataManager.FinishUp();
             Environment.Exit(0);
+        }
+
+        private void pic_playerAvatar_DoubleClick(object sender, EventArgs e)
+        {
+
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    System.Drawing.Image selected = System.Drawing.Image.FromFile(openFileDialog1.FileName);
+                    pic_playerAvatar.Image = new Bitmap(selected);
+                }
+                catch
+                {
+                    // ignored
+                }
+
+            }
         }
     }
 }
