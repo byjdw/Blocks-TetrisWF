@@ -333,6 +333,8 @@ namespace AS_Coursework
             this.Controls.Add(this.txt_username);
             this.Controls.Add(this.txt_surname);
             this.Controls.Add(this.txt_forename);
+            this.MaximumSize = new System.Drawing.Size(650, 400);
+            this.MinimumSize = new System.Drawing.Size(650, 400);
             this.Name = "Registration";
             this.Text = "Blocks · Registration";
             ((System.ComponentModel.ISupportInitialize)(this.pic_playerAvatar)).EndInit();

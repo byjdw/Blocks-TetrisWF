@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 
 namespace AS_Coursework.models
@@ -6,22 +7,38 @@ namespace AS_Coursework.models
     [Serializable]
     internal class Block
     {
-        int id;
-        int type;
-        public int rotation;
-        public bool rotatable;
-        public int[,] positionOffsets;
+        private string type;
+        public List<int[]> positions;
         public Image blockTile;
-        public Color blockColor;
 
-        public Block(int id, int type, bool rotatable, int x, int y)
+        public Block(string type, int rotation, int x, int y)
         {
-            this.id = id;
             this.type = type;
-            this.rotatable = rotatable;
-            blockColor = Color.Yellow;
-            blockTile = Properties.Resources.Board_Square;
-            positionOffsets = new int[,] { { x, y }, { x, y + 1 }, { x + 1, y }, { x + 1, y + 1 } };
+            switch (type) {
+                case "line":
+                    blockTile = Properties.Resources.Board_Line;
+                    positions = new List<int[]>()
+                        {
+                            new int[] {x, y},
+                            new int[] {x + 1, y},
+                            new int[] {x + 2, y},
+                            new int[] {x + 3, y}
+                        };
+                    break;
+                case "square":
+                    blockTile = Properties.Resources.Board_Square;
+                    positions = new List<int[]>()
+                        {
+                            new int[] {x, y},
+                            new int[] {x, y + 1},
+                            new int[] {x + 1, y},
+                            new int[] {x + 1, y + 1}
+                        };
+                    break;
+                default:
+                    throw new Exception("Invalid block type!");
+                    break;
+            }
         }
     }
 }

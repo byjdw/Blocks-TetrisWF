@@ -11,6 +11,9 @@
     <Compile Update="forms\GameWindow.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="forms\Scoreboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="forms\Splash.cs">
       <SubType>Form</SubType>
     </Compile>

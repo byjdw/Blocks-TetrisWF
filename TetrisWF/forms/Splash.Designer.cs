@@ -178,6 +178,8 @@ namespace AS_Coursework
             this.Controls.Add(this.txt_username);
             this.Controls.Add(this.pic_TitleCard);
             this.Controls.Add(this.pic_SideBar);
+            this.MaximumSize = new System.Drawing.Size(650, 400);
+            this.MinimumSize = new System.Drawing.Size(650, 400);
             this.Name = "Splash";
             this.Text = "Blocks · Login";
             this.VisibleChanged += new System.EventHandler(this.Splash_VisibleChanged);

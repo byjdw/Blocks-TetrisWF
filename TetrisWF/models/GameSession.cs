@@ -15,7 +15,6 @@ namespace AS_Coursework.models
         public GameSession()
         {
             queue = new List<Block>();
-            queue.Add(new Block(0, 1, false, 0, 0));
         }
 
         public void Tick()

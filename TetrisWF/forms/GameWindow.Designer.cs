@@ -31,6 +31,7 @@ namespace AS_Coursework.game
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lbl_nextUpQueue = new System.Windows.Forms.Label();
             this.lbl_heldBlock = new System.Windows.Forms.Label();
             this.slbl_playingAs = new System.Windows.Forms.Label();
@@ -43,6 +44,9 @@ namespace AS_Coursework.game
             this.pic_nextUp3 = new System.Windows.Forms.PictureBox();
             this.lbl_GameScore = new System.Windows.Forms.Label();
             this.pic_nextUp4 = new System.Windows.Forms.PictureBox();
+            this.lbl_dbgVersionInfo = new System.Windows.Forms.Label();
+            this.lbl_dbgPlayerInfo = new System.Windows.Forms.Label();
+            this.GameTimer = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pic_userAvatar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_hold)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_nextUp1)).BeginInit();
@@ -140,7 +144,7 @@ namespace AS_Coursework.game
             this.tlp_GameBoard.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.882353F));
             this.tlp_GameBoard.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.882353F));
             this.tlp_GameBoard.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.882353F));
-            this.tlp_GameBoard.Size = new System.Drawing.Size(414, 681);
+            this.tlp_GameBoard.Size = new System.Drawing.Size(414, 539);
             this.tlp_GameBoard.TabIndex = 12;
             // 
             // pic_hold
@@ -203,6 +207,29 @@ namespace AS_Coursework.game
             this.pic_nextUp4.TabIndex = 19;
             this.pic_nextUp4.TabStop = false;
             // 
+            // lbl_dbgVersionInfo
+            // 
+            this.lbl_dbgVersionInfo.AutoSize = true;
+            this.lbl_dbgVersionInfo.Location = new System.Drawing.Point(12, 135);
+            this.lbl_dbgVersionInfo.Name = "lbl_dbgVersionInfo";
+            this.lbl_dbgVersionInfo.Size = new System.Drawing.Size(113, 15);
+            this.lbl_dbgVersionInfo.TabIndex = 20;
+            this.lbl_dbgVersionInfo.Text = "tetriswf - version 1.0";
+            // 
+            // lbl_dbgPlayerInfo
+            // 
+            this.lbl_dbgPlayerInfo.AutoSize = true;
+            this.lbl_dbgPlayerInfo.Location = new System.Drawing.Point(12, 150);
+            this.lbl_dbgPlayerInfo.Name = "lbl_dbgPlayerInfo";
+            this.lbl_dbgPlayerInfo.Size = new System.Drawing.Size(63, 15);
+            this.lbl_dbgPlayerInfo.TabIndex = 21;
+            this.lbl_dbgPlayerInfo.Text = "player info";
+            // 
+            // GameTimer
+            // 
+            this.GameTimer.Interval = 1000;
+            this.GameTimer.Tick += new System.EventHandler(this.GameTimer_Tick);
+            // 
             // GameWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -211,6 +238,7 @@ namespace AS_Coursework.game
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(809, 761);
             this.ControlBox = false;
+            this.Controls.Add(this.lbl_dbgVersionInfo);
             this.Controls.Add(this.pic_nextUp4);
             this.Controls.Add(this.lbl_GameScore);
             this.Controls.Add(this.pic_nextUp3);
@@ -223,9 +251,14 @@ namespace AS_Coursework.game
             this.Controls.Add(this.lbl_currentPlayer);
             this.Controls.Add(this.lbl_heldBlock);
             this.Controls.Add(this.lbl_nextUpQueue);
+            this.Controls.Add(this.lbl_dbgPlayerInfo);
             this.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.MaximumSize = new System.Drawing.Size(825, 800);
+            this.MinimumSize = new System.Drawing.Size(825, 800);
             this.Name = "GameWindow";
             this.Text = "Blocks · Game in Progress";
+            this.VisibleChanged += new System.EventHandler(this.GameWindow_VisibilityChanged);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.GameWindow_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.pic_userAvatar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_hold)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_nextUp1)).EndInit();
@@ -255,5 +288,8 @@ namespace AS_Coursework.game
         private PictureBox pic_nextUp3;
         private Label lbl_GameScore;
         private PictureBox pic_nextUp4;
+        private Label lbl_dbgVersionInfo;
+        private Label lbl_dbgPlayerInfo;
+        private Timer GameTimer;
     }
 }
