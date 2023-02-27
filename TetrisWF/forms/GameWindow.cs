@@ -11,9 +11,9 @@ namespace AS_Coursework.game
 {
     public partial class GameWindow : Form
     {
-        GameSession gameSession;
         int boardWidth;
         int boardHeight;
+        GameSession gameSession;
         List<Image> tiles = new List<Image>
             {
                 Properties.Resources.Board_L,
@@ -89,18 +89,18 @@ namespace AS_Coursework.game
             if (y == boardHeight) return;
             if (y != 0)
             {
-                Block OldBlock = new Block("line", 0, x, y-1);
-                foreach (var position in OldBlock.positions)
+                Block OldBlock = new Block(BlockType.Line, 0, x, y-1);
+                foreach (var position in OldBlock)
                 {
-                    Control control = tlp_GameBoard.GetControlFromPosition(position[0], position[1]);
-                    ((PictureBox)control).Image = Properties.Resources.Board_S;
+                    Image tile = GetTileFromCoordinates(position[0], position[1]);
+                    tile = OldBlock.blockTile;
                 }
             }
             Block CurrentBlock = new Block("line", 0, x, y);
-            foreach (var position in CurrentBlock.positions)
+            foreach (int[] position in CurrentBlock.positions)
             {
-                Control control = tlp_GameBoard.GetControlFromPosition(position[0], position[1]);
-                ((PictureBox)control).Image = CurrentBlock.blockTile;
+                Image tile = GetTileFromCoordinates(position[0], position[1]);
+                tile = CurrentBlock.blockTile;
             }
             y++;
         }
@@ -116,6 +116,12 @@ namespace AS_Coursework.game
                     x++;
                     break;
             }
+        }
+
+        private Image GetTileFromCoordinates(int x, int y)
+        {
+            Control control = tlp_GameBoard.GetControlFromPosition(x, y);
+            return ((PictureBox) control).Image;
         }
     }
 }
