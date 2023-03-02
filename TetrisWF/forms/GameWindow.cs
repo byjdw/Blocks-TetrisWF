@@ -1,4 +1,5 @@
-﻿using AS_Coursework.@internal;
+﻿using AS_Coursework.enums;
+using AS_Coursework.@internal;
 using AS_Coursework.models;
 using System;
 using System.Collections.Generic;
@@ -35,8 +36,7 @@ namespace AS_Coursework.game
                 Properties.Resources.Full_Z,
             };
 
-        int y;
-        int x;
+        Block currentBlock;
 
         public GameWindow()
         {
@@ -47,13 +47,14 @@ namespace AS_Coursework.game
             for (int c = 0; c < (tlp_GameBoard.ColumnCount * tlp_GameBoard.RowCount); c++)
             {
                 PictureBox pictureBox = new PictureBox();
-                pictureBox.Image = Properties.Resources.Board_S;
+                pictureBox.Image = Properties.Resources.Empty;
                 pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
                 pictureBox.Dock = DockStyle.Fill;
                 pictureBox.Margin = new Padding(0);
                 tlp_GameBoard.Controls.Add(pictureBox);
             }
             this.gameSession = new GameSession();
+            currentBlock = new Block(BlockType.LINE, boardWidth, boardHeight);
             lbl_currentPlayer.Text = SessionManager.CurrentPlayer!.Username;
             pic_userAvatar.Image = SessionManager.CurrentPlayer!.Avatar;
         }
@@ -86,23 +87,11 @@ namespace AS_Coursework.game
 
         private void GameTimer_Tick(object sender, EventArgs e)
         {
-            if (y == boardHeight) return;
-            if (y != 0)
+            currentBlock.AdjustY(this, 1);
+            if (currentBlock.Idle)
             {
-                Block OldBlock = new Block(BlockType.Line, 0, x, y-1);
-                foreach (var position in OldBlock)
-                {
-                    Image tile = GetTileFromCoordinates(position[0], position[1]);
-                    tile = OldBlock.blockTile;
-                }
+                currentBlock = GameSession.
             }
-            Block CurrentBlock = new Block("line", 0, x, y);
-            foreach (int[] position in CurrentBlock.positions)
-            {
-                Image tile = GetTileFromCoordinates(position[0], position[1]);
-                tile = CurrentBlock.blockTile;
-            }
-            y++;
         }
 
         private void GameWindow_KeyDown(object sender, KeyEventArgs e)
@@ -110,18 +99,43 @@ namespace AS_Coursework.game
             switch (e.KeyCode)
             {
                 case Keys.Left:
-                    x--;
+                    currentBlock.AdjustX(this, -1);
                     break;
                 case Keys.Right:
-                    x++;
+                    currentBlock.AdjustX(this, 1);
+                    break;
+                case Keys.Down:
+                    GameTimer.Interval = 100;
+                    break;
+                case Keys.Up:
+                    break;
+                case Keys.Space:
                     break;
             }
         }
 
-        private Image GetTileFromCoordinates(int x, int y)
+        private void GameWindow_KeyUp(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Down:
+                    GameTimer.Interval = 1000;
+                    break;
+            }
+        }
+
+
+        public PictureBox GetTileFromCoordinates(int x, int y)
         {
             Control control = tlp_GameBoard.GetControlFromPosition(x, y);
-            return ((PictureBox) control).Image;
+            return ((PictureBox)control);
         }
+
+        public void UpdateDebugInfo(string m)
+        {
+            label1.Text = m;
+        }
+
+
     }
 }
