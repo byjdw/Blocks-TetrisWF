@@ -4,9 +4,8 @@ using AS_Coursework.models;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Security.Cryptography.X509Certificates;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+
 
 namespace AS_Coursework.game
 {
@@ -14,17 +13,8 @@ namespace AS_Coursework.game
     {
         int boardWidth;
         int boardHeight;
+        int gameInterval;
         GameSession gameSession;
-        List<Image> tiles = new List<Image>
-            {
-                Properties.Resources.Board_L,
-                Properties.Resources.Board_Line,
-                Properties.Resources.Board_Reverse_L,
-                Properties.Resources.Board_S,
-                Properties.Resources.Board_Square,
-                Properties.Resources.Board_T,
-                Properties.Resources.Board_Z,
-            };
         List<Image> preview = new List<Image>
             {
                 Properties.Resources.Full_L,
@@ -36,7 +26,7 @@ namespace AS_Coursework.game
                 Properties.Resources.Full_Z,
             };
 
-        Block currentBlock;
+        Block? currentBlock;
 
         public GameWindow()
         {
@@ -51,12 +41,13 @@ namespace AS_Coursework.game
                 pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
                 pictureBox.Dock = DockStyle.Fill;
                 pictureBox.Margin = new Padding(0);
+                pictureBox.Tag = "Empty";
                 tlp_GameBoard.Controls.Add(pictureBox);
             }
             this.gameSession = new GameSession();
-            currentBlock = new Block(BlockType.LINE, boardWidth, boardHeight);
             lbl_currentPlayer.Text = SessionManager.CurrentPlayer!.Username;
             pic_userAvatar.Image = SessionManager.CurrentPlayer!.Avatar;
+            gameInterval = GameTimer.Interval;
         }
 
         private void startCutscene()
@@ -72,6 +63,7 @@ namespace AS_Coursework.game
         private void GameWindow_VisibilityChanged(object sender, EventArgs e)
         {
             if (!this.Visible) return;
+            currentBlock = new Block(BlockType.LINE, boardWidth, boardHeight);
             pic_hold.Image = preview[new Random().Next(0, 6)];
             pic_nextUp1.Image = preview[new Random().Next(0, 6)];
             pic_nextUp2.Image = preview[new Random().Next(0, 6)];
@@ -87,39 +79,56 @@ namespace AS_Coursework.game
 
         private void GameTimer_Tick(object sender, EventArgs e)
         {
-            currentBlock.AdjustY(this, 1);
-            if (currentBlock.Idle)
+            if (currentBlock != null)
             {
-                currentBlock = GameSession.
+                currentBlock.Descend(this);
+                if (currentBlock.Idle)
+                {
+                    label1.Text = "Block Idle";
+                    GameTimer.Interval = gameInterval;
+                    currentBlock = null;
+                }
             }
+            else
+            {
+                currentBlock = new Block(BlockType.LINE, boardWidth, boardHeight);
+            }
+
         }
 
         private void GameWindow_KeyDown(object sender, KeyEventArgs e)
         {
+            if (currentBlock == null) return;
             switch (e.KeyCode)
             {
                 case Keys.Left:
+                    Console.WriteLine("Left Key -> x-1");
                     currentBlock.AdjustX(this, -1);
                     break;
                 case Keys.Right:
+                    Console.WriteLine("Right Key -> x+1");
                     currentBlock.AdjustX(this, 1);
                     break;
                 case Keys.Down:
-                    GameTimer.Interval = 100;
+                    if (currentBlock == null) return;
+                    GameTimer.Interval = 75;
                     break;
                 case Keys.Up:
+                    currentBlock.FastFall(this);
                     break;
                 case Keys.Space:
+                    currentBlock.Rotate(this);
                     break;
             }
         }
 
         private void GameWindow_KeyUp(object sender, KeyEventArgs e)
         {
+            if (currentBlock == null) return;
             switch (e.KeyCode)
             {
                 case Keys.Down:
-                    GameTimer.Interval = 1000;
+                    GameTimer.Interval = gameInterval;
                     break;
             }
         }
@@ -139,3 +148,4 @@ namespace AS_Coursework.game
 
     }
 }
+

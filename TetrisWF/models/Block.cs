@@ -3,7 +3,6 @@ using AS_Coursework.game;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 
 namespace AS_Coursework.models
@@ -12,7 +11,7 @@ namespace AS_Coursework.models
     internal class Block
     {
         private int x = 0;
-        private int y = -1;
+        private int y = 0;
         private int maxX;
         private int maxY;
         private BlockType type;
@@ -30,36 +29,56 @@ namespace AS_Coursework.models
 
         public void AdjustX(GameWindow gameWindow, int adjX)
         {
+            Console.WriteLine($"X: {x} => {x + adjX}");
             RenderNext(gameWindow, x + adjX, y);
         }
 
-        public void AdjustY(GameWindow gameWindow, int adjY)
+        public void Descend(GameWindow gameWindow)
         {
-            RenderNext(gameWindow, x, y + adjY);
+            RenderNext(gameWindow, x, y + 1);
+        }
+
+        public void FastFall(GameWindow gameWindow)
+        {
+            RenderNext(gameWindow, x, y + ((maxY - 1) - y));
+        }
+
+        public void Rotate(GameWindow gameWindow)
+        {
+
         }
 
         private void RenderNext(GameWindow gameWindow, int x, int y)
         {
             if (Idle) return;
-            gameWindow.UpdateDebugInfo($"old: {this.x}, {this.y}\nnew {x}, {y}\nmax {maxX}, {maxY}");
-            foreach (int[] pos in GenerateCoordinates(x, y))
+            bool blockObstructedX = false;
+            bool blockObstructedY = false;
+            List<int[]> newBlock = GenerateCoordinates(x, y);
+            List<int[]> oldBlock = GenerateCoordinates(this.x, this.y);
+            bool[] validation = ValidatesTiles(gameWindow, newBlock);
+            // if (!validation[0]) return;
+            for (int i = 0; i < newBlock.Count; i++)
             {
-                // if (pos[0] < 0 || pos[0] > (maxX - 1)) return;
-                PictureBox tile = gameWindow.GetTileFromCoordinates(pos[0], pos[1]);
-                tile.Image = blockTile;
-            }
-            if (y > 0)
-            {
-                foreach (int[] pos in GenerateCoordinates(this.x, this.y))
+                PictureBox newTile = gameWindow.GetTileFromCoordinates(newBlock[i][0], newBlock[i][1]);
+                newTile.Image = blockTile;
+                newTile.Tag = "Occupied";
+                Console.WriteLine($"Changed tile @ [{newBlock[i][0]},{newBlock[i][1]}].");
+                if (y > 0)
                 {
-                    PictureBox tile = gameWindow.GetTileFromCoordinates(pos[0], pos[1]);
-                    tile.Image = Properties.Resources.Empty;
+                    PictureBox oldTile = gameWindow.GetTileFromCoordinates(oldBlock[i][0], oldBlock[i][1]);
+                    oldTile.Image = Properties.Resources.Empty;
+                    oldTile.Tag = "Empty";
+                    Console.WriteLine($"Changed tile @ [{oldBlock[i][0]},{oldBlock[i][1]}].");
                 }
+
             }
 
-            this.x = x;
-            this.y = y;
-            if (this.y == maxY - 1) Idle =true;
+            if (this.y == maxY - 1) Idle = true;
+            else
+            {
+                this.x = x;
+                this.y = y;
+            }
 
         }
 
@@ -121,6 +140,41 @@ namespace AS_Coursework.models
             return generatedCoordinates;
         }
 
+        private bool[] ValidatesTiles(GameWindow gameWindow, List<int[]> coordinates)
+        {
+            bool validX = true;
+            bool validY = true;
+            foreach (int[] pos in coordinates)
+            {
+                int x = pos[0];
+                int y = pos[1];
+                try
+                {
+                    PictureBox tile = gameWindow.GetTileFromCoordinates(x, y);
+                    if (!tile.Tag.Equals("Empty"))
+                    {
+                        Console.WriteLine($"Tile @ [{x},{y}] is NOT Valid.");
+                        if (x != this.x)
+                        {
+                            validX = false;
+                        } else
+                        {
+                            validY = false;
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Tile @ [{x},{y}] is Valid.");
+                    }
+                } catch
+                {
+                    Console.WriteLine($"Tile @ [{x},{y}] out of bounds!");
+                    validX = false;
+                }
+
+            }
+            return new bool[] { validX, validY };
+        }
 
     }
 }

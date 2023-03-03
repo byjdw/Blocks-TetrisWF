@@ -62,7 +62,7 @@ namespace AS_Coursework
             // txt_forename
             // 
             txt_forename.Location = new Point(26, 137);
-            txt_forename.Margin = new Padding(6, 6, 6, 6);
+            txt_forename.Margin = new Padding(6);
             txt_forename.Name = "txt_forename";
             txt_forename.PlaceholderText = "Forename";
             txt_forename.Size = new Size(257, 39);
@@ -72,7 +72,7 @@ namespace AS_Coursework
             // txt_surname
             // 
             txt_surname.Location = new Point(26, 230);
-            txt_surname.Margin = new Padding(6, 6, 6, 6);
+            txt_surname.Margin = new Padding(6);
             txt_surname.Name = "txt_surname";
             txt_surname.PlaceholderText = "Surname";
             txt_surname.Size = new Size(257, 39);
@@ -82,7 +82,7 @@ namespace AS_Coursework
             // txt_username
             // 
             txt_username.Location = new Point(26, 329);
-            txt_username.Margin = new Padding(6, 6, 6, 6);
+            txt_username.Margin = new Padding(6);
             txt_username.MaxLength = 16;
             txt_username.Name = "txt_username";
             txt_username.PlaceholderText = "Username";
@@ -93,7 +93,7 @@ namespace AS_Coursework
             // txt_password
             // 
             txt_password.Location = new Point(26, 422);
-            txt_password.Margin = new Padding(6, 6, 6, 6);
+            txt_password.Margin = new Padding(6);
             txt_password.Name = "txt_password";
             txt_password.PasswordChar = '*';
             txt_password.PlaceholderText = "Password";
@@ -104,7 +104,7 @@ namespace AS_Coursework
             // txt_passwordConfirm
             // 
             txt_passwordConfirm.Location = new Point(26, 516);
-            txt_passwordConfirm.Margin = new Padding(6, 6, 6, 6);
+            txt_passwordConfirm.Margin = new Padding(6);
             txt_passwordConfirm.Name = "txt_passwordConfirm";
             txt_passwordConfirm.PasswordChar = '*';
             txt_passwordConfirm.PlaceholderText = "Confirm Password";
@@ -114,8 +114,8 @@ namespace AS_Coursework
             // 
             // btn_registerPlayer
             // 
-            btn_registerPlayer.Location = new Point(22, 695);
-            btn_registerPlayer.Margin = new Padding(6, 6, 6, 6);
+            btn_registerPlayer.Location = new Point(22, 638);
+            btn_registerPlayer.Margin = new Padding(6);
             btn_registerPlayer.Name = "btn_registerPlayer";
             btn_registerPlayer.Size = new Size(139, 49);
             btn_registerPlayer.TabIndex = 10;
@@ -209,7 +209,7 @@ namespace AS_Coursework
             // 
             // button1
             // 
-            button1.Location = new Point(171, 695);
+            button1.Location = new Point(171, 638);
             button1.Margin = new Padding(4, 2, 4, 2);
             button1.Name = "button1";
             button1.Size = new Size(260, 47);
@@ -245,7 +245,7 @@ namespace AS_Coursework
             pic_SideBar.BackColor = Color.FromArgb(23, 23, 23);
             pic_SideBar.Image = Properties.Resources.sidebar_reg;
             pic_SideBar.Location = new Point(604, 0);
-            pic_SideBar.Margin = new Padding(6, 6, 6, 6);
+            pic_SideBar.Margin = new Padding(6);
             pic_SideBar.Name = "pic_SideBar";
             pic_SideBar.Size = new Size(563, 767);
             pic_SideBar.SizeMode = PictureBoxSizeMode.Zoom;
@@ -351,7 +351,7 @@ namespace AS_Coursework
             Controls.Add(txt_username);
             Controls.Add(txt_surname);
             Controls.Add(txt_forename);
-            Margin = new Padding(6, 6, 6, 6);
+            Margin = new Padding(6);
             MaximumSize = new Size(1185, 773);
             MinimumSize = new Size(1185, 773);
             Name = "Registration";

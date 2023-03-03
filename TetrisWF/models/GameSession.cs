@@ -18,7 +18,7 @@ namespace AS_Coursework.models
         {
             score = 0;
             speed = 1;
-           
+
             queue = new List<Block>();
             tiles = new List<Image>();
         }
