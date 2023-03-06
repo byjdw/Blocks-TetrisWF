@@ -63,7 +63,6 @@ namespace AS_Coursework.game
         private void GameWindow_VisibilityChanged(object sender, EventArgs e)
         {
             if (!this.Visible) return;
-            currentBlock = new Block(BlockType.LINE, boardWidth, boardHeight);
             pic_hold.Image = preview[new Random().Next(0, 6)];
             pic_nextUp1.Image = preview[new Random().Next(0, 6)];
             pic_nextUp2.Image = preview[new Random().Next(0, 6)];
@@ -82,6 +81,7 @@ namespace AS_Coursework.game
             if (currentBlock != null)
             {
                 currentBlock.Descend(this);
+                currentBlock.ToString();
                 if (currentBlock.Idle)
                 {
                     label1.Text = "Block Idle";
@@ -91,9 +91,9 @@ namespace AS_Coursework.game
             }
             else
             {
+                // currentBlock = new Block((BlockType)(Random.Shared.Next(Enum.GetValues(typeof(BlockType)).Length)), boardWidth, boardHeight);
                 currentBlock = new Block(BlockType.LINE, boardWidth, boardHeight);
             }
-
         }
 
         private void GameWindow_KeyDown(object sender, KeyEventArgs e)
@@ -110,11 +110,10 @@ namespace AS_Coursework.game
                     currentBlock.AdjustX(this, 1);
                     break;
                 case Keys.Down:
-                    if (currentBlock == null) return;
                     GameTimer.Interval = 75;
                     break;
                 case Keys.Up:
-                    currentBlock.FastFall(this);
+                    GameTimer.Interval = 1;
                     break;
                 case Keys.Space:
                     currentBlock.Rotate(this);
