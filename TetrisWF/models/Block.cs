@@ -49,9 +49,10 @@ namespace AS_Coursework.models
 
         private void RenderNext(GameWindow gameWindow, int x, int y)
         {
-            if (Idle) return;
             List<int[]> newBlock = GenerateCoordinates(x, y);
             bool[] validation = ValidatesTiles(gameWindow, newBlock);
+            if (this.y == maxY - 1 || !validation[1]) Idle = true;
+            if (Idle) return;
             if (!validation[0]) return;
             if (y > 0)
             {
@@ -74,7 +75,6 @@ namespace AS_Coursework.models
 
             this.x = x;
             this.y = y;
-            if (this.y == maxY - 1) Idle = true;
         }
 
         private List<int[]> GenerateCoordinates(int x, int y)
@@ -162,8 +162,6 @@ namespace AS_Coursework.models
                     PictureBox tile = gameWindow.GetTileFromCoordinates(x, y);
                     if (tile != null)
                     {
-
-
                         if (
                             !tile.Tag.Equals("Empty") &&
                             !(tile.Tag.Equals(id.ToString()))
@@ -173,6 +171,9 @@ namespace AS_Coursework.models
                             if (x != this.x)
                             {
                                 validX = false;
+                            } else
+                            {
+                                validY = false;
                             }
                         }
                         else
