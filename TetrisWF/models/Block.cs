@@ -4,6 +4,8 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
+using System.Drawing.Drawing2D;
+using System.Numerics;
 using System.Windows.Forms;
 
 namespace AS_Coursework.models
@@ -11,23 +13,63 @@ namespace AS_Coursework.models
     [Serializable]
     internal class Block
     {
+        // Block Configuration
+        private BlockType type;
+        public Image tile;
         private int id;
-        private int x = 0;
-        private int y = 0;
+        bool idle;
+
+        // Position Tracking
+        private int x;
+        private int y;
+        private int r;
         private int maxX;
         private int maxY;
-        private BlockType type;
-        public Image blockTile;
-        bool idle;
+        private int maxR;
+
+
 
         public bool Idle { get => idle; set => idle = value; }
 
-        public Block(BlockType type, int maxX, int maxY)
+        public Block(int id, BlockType type, int maxX, int maxY)
         {
+            this.id = id;
             this.type = type;
             this.maxX = maxX;
             this.maxY = maxY;
-            this.id = new Random().Next(0, 1000000); 
+            this.x = 3;
+            this.y = 1;
+            this.r = 0;
+            this.maxR = 3;
+            switch (type)
+            {
+                case BlockType.LINE:
+                    tile = Properties.Resources.Board_Line;
+                    this.y = -1;
+                    this.maxR = 0;
+                    break;
+                case BlockType.SQUARE:
+                    tile = Properties.Resources.Board_Square;
+                    this.maxR = 1;
+                    break;
+                case BlockType.Z:
+                    tile = Properties.Resources.Board_Z;
+                    this.maxR = 1;
+                    break;
+                case BlockType.S:
+                    tile = Properties.Resources.Board_S;
+                    this.maxR = 1;
+                    break;
+                case BlockType.L:
+                    tile = Properties.Resources.Board_L;
+                    break;
+                case BlockType.REVERSE_L:
+                    tile = Properties.Resources.Board_Reverse_L;
+                    break;
+                case BlockType.T:
+                    tile = Properties.Resources.Board_T;
+                    break;
+            }
         }
 
         public void AdjustX(GameWindow gameWindow, int adjX)
@@ -44,7 +86,6 @@ namespace AS_Coursework.models
 
         public void Rotate(GameWindow gameWindow)
         {
-
         }
 
         private void RenderNext(GameWindow gameWindow, int x, int y)
@@ -68,7 +109,7 @@ namespace AS_Coursework.models
             foreach (int[] pos in newBlock)
             {
                 PictureBox newTile = gameWindow.GetTileFromCoordinates(pos[0], pos[1]);
-                newTile.Image = blockTile;
+                newTile.Image = tile;
                 newTile.Tag = id.ToString();
                 Console.WriteLine($"Changed tile @ [{pos[0]}, {pos[1]}].");
             }
@@ -87,63 +128,42 @@ namespace AS_Coursework.models
                     generatedCoordinates.Add(new int[] { x + 1, y });
                     generatedCoordinates.Add(new int[] { x + 2, y });
                     generatedCoordinates.Add(new int[] { x + 3, y });
-                    blockTile = Properties.Resources.Board_Line;
-                    x = 2;
-                    y = -1;
                     break;
                 case BlockType.SQUARE:
                     generatedCoordinates.Add(new int[] { x, y });
                     generatedCoordinates.Add(new int[] { x, y - 1 });
                     generatedCoordinates.Add(new int[] { x + 1, y });
                     generatedCoordinates.Add(new int[] { x + 1, y - 1 });
-                    blockTile = Properties.Resources.Board_Square;
-                    x = 4;
-                    y = 0;
                     break;
                 case BlockType.Z:
                     generatedCoordinates.Add(new int[] { x, y - 1 });
                     generatedCoordinates.Add(new int[] { x + 1, y - 1 });
                     generatedCoordinates.Add(new int[] { x + 1, y });
                     generatedCoordinates.Add(new int[] { x + 2, y });
-                    blockTile = Properties.Resources.Board_Z;
-                    x = 2;
-                    y = 0;
                     break;
                 case BlockType.S:
                     generatedCoordinates.Add(new int[] { x, y });
                     generatedCoordinates.Add(new int[] { x + 1, y });
                     generatedCoordinates.Add(new int[] { x + 1, y - 1 });
                     generatedCoordinates.Add(new int[] { x + 2, y - 1 });
-                    blockTile = Properties.Resources.Board_S;
-                    x = 2;
-                    y = 0;
                     break;
                 case BlockType.L:
                     generatedCoordinates.Add(new int[] { x, y });
                     generatedCoordinates.Add(new int[] { x, y - 1 });
                     generatedCoordinates.Add(new int[] { x + 1, y });
                     generatedCoordinates.Add(new int[] { x + 2, y });
-                    blockTile = Properties.Resources.Board_L;
-                    x = 2;
-                    y = 0;
                     break;
                 case BlockType.REVERSE_L:
                     generatedCoordinates.Add(new int[] { x, y });
                     generatedCoordinates.Add(new int[] { x + 1, y });
                     generatedCoordinates.Add(new int[] { x + 2, y });
                     generatedCoordinates.Add(new int[] { x + 2, y - 1 });
-                    blockTile = Properties.Resources.Board_Reverse_L;
-                    x = 2;
-                    y = 0;
                     break;
                 case BlockType.T:
                     generatedCoordinates.Add(new int[] { x, y });
                     generatedCoordinates.Add(new int[] { x + 1, y });
                     generatedCoordinates.Add(new int[] { x + 2, y });
                     generatedCoordinates.Add(new int[] { x + 1, y - 1 });
-                    blockTile = Properties.Resources.Board_T;
-                    x = 3;
-                    y = 0;
                     break;
             }
             return generatedCoordinates;
@@ -168,7 +188,7 @@ namespace AS_Coursework.models
                         )
                         {
                             Console.WriteLine($"Tile @ [{x},{y}] is NOT Valid.");
-                            if (x != this.x)
+                            if (coordinates[0][0] != this.x)
                             {
                                 validX = false;
                             } else

@@ -9,18 +9,17 @@ namespace AS_Coursework.models
     internal class GameSession
     {
         private int score;
-        private double speed;
+        private double tick;
         public Block current;
         public List<Block> queue;
-        private List<Image> tiles;
+        private List<Block> blocks;
 
         public GameSession()
         {
+            tick = 1000;
             score = 0;
-            speed = 1;
-
             queue = new List<Block>();
-            tiles = new List<Image>();
+            blocks = new List<Block>();
         }
 
         public void Tick(int x, int y, TableLayoutPanel gameBoard)

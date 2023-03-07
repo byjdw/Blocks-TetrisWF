@@ -4,10 +4,10 @@
     {
         SQUARE,
         LINE,
-        T,
-        Z,
-        S,
-        L,
+         T,
+         Z,
+         S,
+         L,
         REVERSE_L,
     }
 }

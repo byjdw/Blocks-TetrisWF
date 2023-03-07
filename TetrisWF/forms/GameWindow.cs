@@ -91,8 +91,8 @@ namespace AS_Coursework.game
             }
             else
             {
-                // currentBlock = new Block((BlockType)(Random.Shared.Next(Enum.GetValues(typeof(BlockType)).Length)), boardWidth, boardHeight);
-                currentBlock = new Block(BlockType.LINE, boardWidth, boardHeight);
+                currentBlock = new Block(Random.Shared.Next(0,1000000), (BlockType)(Random.Shared.Next(Enum.GetValues(typeof(BlockType)).Length)), boardWidth, boardHeight);
+                // currentBlock = new Block(BlockType.LINE, boardWidth, boardHeight);
             }
         }
 

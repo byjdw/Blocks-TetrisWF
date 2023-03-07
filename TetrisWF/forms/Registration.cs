@@ -199,8 +199,9 @@ namespace AS_Coursework
 
         private void btn_Exit_Click(object sender, EventArgs e)
         {
-            DataManager.FinishUp();
-            Environment.Exit(0);
+            parentForm.Show();
+            this.Close();
+
         }
 
         private void pic_playerAvatar_DoubleClick(object sender, EventArgs e)
@@ -212,12 +213,7 @@ namespace AS_Coursework
                 {
                     System.Drawing.Image selected = System.Drawing.Image.FromFile(openFileDialog1.FileName);
                     pic_playerAvatar.Image = new Bitmap(selected);
-                }
-                catch
-                {
-                    // ignored
-                }
-
+                } catch {}
             }
         }
     }
