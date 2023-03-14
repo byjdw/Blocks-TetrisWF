@@ -1,21 +1,8 @@
 ﻿using AS_Coursework.models;
 
-namespace AS_Coursework.@internal
-{
-    internal static class SessionManager
-    {
-        private static Player? currentPlayer;
+namespace AS_Coursework.@internal;
 
-        public static Player? CurrentPlayer
-        {
-            set
-            {
-                currentPlayer = value;
-            }
-            get
-            {
-                return currentPlayer;
-            }
-        }
-    }
+internal static class SessionManager
+{
+    public static Player? CurrentPlayer { set; get; }
 }

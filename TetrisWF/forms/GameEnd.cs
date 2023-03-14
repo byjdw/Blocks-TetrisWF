@@ -1,12 +1,16 @@
-﻿using System.Windows.Forms;
+﻿using AS_Coursework.models;
+using System.Windows.Forms;
 
-namespace AS_Coursework.game
+namespace AS_Coursework.game;
+
+public partial class GameEnd : Form
 {
-    public partial class GameEnd : Form
+    GameSession session;
+
+    public GameEnd(GameSession session)
     {
-        public GameEnd()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
+        this.session = session;
+        lbl_score.Text = session.Score.ToString() + "!";
     }
 }

@@ -4,80 +4,75 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Security.Cryptography;
 using System.Text;
+using System.Text.Json;
 using System.Windows.Forms;
 
-namespace AS_Coursework.io
-{
-    internal static class DataManager
-    {
-        private static List<Player> players = new List<Player>();
+namespace AS_Coursework.io;
 
-        public static void writePlayer(Player player)
+internal static class DataManager
+{
+    private static List<Player> players = new List<Player>();
+
+    public static void AddPlayer(Player player)
+    {
+        players.Add(player);
+        SavePlayers();
+    }
+
+    public static void SavePlayers()
+    {
+        Stream fileStream;
+        try
         {
-            Stream fileStream;
+            File.WriteAllText("PlayerDetails.json", JsonSerializer.Serialize(players));
+        }
+        catch (IOException e)
+        {
+            MessageBox.Show("" + e.Message);
+        }
+    }
+
+    public static void ReadPlayers()
+    {
+        try
+        {
             try
             {
-                fileStream = File.Open("PlayerDetails.bin", FileMode.Append);
-                new BinaryFormatter().Serialize(fileStream, player);
-                fileStream.Close();
-                fileStream.Dispose();
-                players.Add(player);
+                players = JsonSerializer.Deserialize<List<Player>>(File.ReadAllText("PlayerDetails.json"));
             }
             catch (IOException e)
             {
                 MessageBox.Show("" + e.Message);
             }
         }
-
-        public static void readPlayers()
+        catch (IOException e)
         {
-            Stream fileStream;
-            try
-            {
-                fileStream = File.OpenRead("PlayerDetails.bin");
-                try
-                {
-                    while (fileStream.Position < fileStream.Length)
-                    {
-                        players.Add((Player)new BinaryFormatter().Deserialize(fileStream));
-                    }
-                }
-                catch (IOException e)
-                {
-                    MessageBox.Show("" + e.Message);
-                }
-            }
-            catch (IOException e)
-            {
-                if (!e.Message.ToLower().Contains("find"))
-                    MessageBox.Show("" + e.Message);
-            }
-
+            if (!e.Message.ToLower().Contains("find"))
+                MessageBox.Show("" + e.Message);
         }
+    }
 
-        public static List<Player> getPlayers()
-        {
-            return players;
-        }
+    public static List<Player> getPlayers()
+    {
+        return players;
+    }
 
-        public static byte[] createHash(string inputString)
-        {
-            HashAlgorithm algorithm = SHA256.Create();
-            return algorithm.ComputeHash(Encoding.UTF8.GetBytes(inputString));
-        }
+    public static byte[] createHash(string inputString)
+    {
+        HashAlgorithm algorithm = SHA256.Create();
+        return algorithm.ComputeHash(Encoding.UTF8.GetBytes(inputString));
+    }
 
-        public static string getHashString(string inputString)
-        {
-            StringBuilder sb = new StringBuilder();
-            foreach (byte b in createHash(inputString))
-                sb.Append(b.ToString("X2"));
+    public static string getHashString(string inputString)
+    {
+        StringBuilder sb = new StringBuilder();
+        foreach (byte b in createHash(inputString))
+            sb.Append(b.ToString("X2"));
 
-            return sb.ToString();
-        }
+        return sb.ToString();
+    }
 
-        public static void FinishUp()
-        {
-
-        }
+    public static void FinishUp()
+    {
     }
 }

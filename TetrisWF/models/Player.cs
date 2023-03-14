@@ -1,121 +1,44 @@
 ﻿using System;
 using System.Drawing;
 
-namespace AS_Coursework.models
+namespace AS_Coursework.models;
+
+[Serializable]
+public class Player
 {
-    [Serializable]
-    internal class Player
+    public Player()
     {
-        private string username, password, forename, surname;
-        bool isGuest;
-        private Image? avatar;
-        private GameSession? currentSession;
+    }
 
-        public string Username
-        {
-            set
-            {
-                username = value;
-            }
-            get
-            {
-                return username;
-            }
-        }
+    public Player(string username, string password, string forename, string surname, int avatar)
+    {
+        Username = username;
+        Password = password;
+        Forename = forename;
+        Surname = surname;
+        Avatar = avatar;
+        IsGuest = false;
+    }
 
-        public string Password
-        {
-            set
-            {
-                password = value;
-            }
-            get
-            {
-                return password;
-            }
-        }
+    public string Username { set; get; }
 
-        public string Forename
-        {
-            set
-            {
-                forename = value;
-            }
-            get
-            {
-                return forename;
-            }
-        }
+    public string Password { set; get; }
 
-        public string Surname
-        {
-            set
-            {
-                surname = value;
-            }
-            get
-            {
-                return surname;
-            }
-        }
+    public string Forename { set; get; }
 
-        public bool IsGuest
-        {
-            set
-            {
-                isGuest = value;
-            }
-            get
-            {
-                return isGuest;
-            }
-        }
+    public string Surname { set; get; }
 
-        public Image Avatar
-        {
-            set
-            {
-                avatar = value;
-            }
-            get
-            {
-                return avatar;
-            }
-        }
+    public bool IsGuest { set; get; }
 
-        public GameSession CurrentSession
-        {
-            set
-            {
-                currentSession = value;
-            }
-            get
-            {
-                return currentSession;
-            }
-        }
+    public int Avatar { set; get; }
 
-        public Player()
-        {
+    public GameSession CurrentSession { set; get; }
 
-        }
-
-        public Player(string username, string password, string forename, string surname, Image avatar)
-        {
-            Username = username;
-            Password = password;
-            Forename = forename;
-            Surname = surname;
-            Avatar = avatar;
-            isGuest = false;
-        }
-
-        public override string ToString()
-        {
-            return $"Forename: {forename}\n" +
-                $"Surname: {surname}\n" +
-                $"Username: {username}\n" +
-                $"Password: {Password}";
-        }
+    public override string ToString()
+    {
+        return $"Forename: {Forename}\n" +
+               $"Surname: {Surname}\n" +
+               $"Username: {Username}\n" +
+               $"Password: {Password}";
     }
 }

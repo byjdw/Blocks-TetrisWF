@@ -1,12 +1,11 @@
 ﻿using System.Windows.Forms;
 
-namespace AS_Coursework.forms
+namespace AS_Coursework.forms;
+
+public partial class Scoreboard : Form
 {
-    public partial class Scoreboard : Form
+    public Scoreboard()
     {
-        public Scoreboard()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }

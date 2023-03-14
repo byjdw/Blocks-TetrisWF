@@ -47,7 +47,6 @@ namespace AS_Coursework.game
             this.lbl_dbgVersionInfo = new System.Windows.Forms.Label();
             this.lbl_dbgPlayerInfo = new System.Windows.Forms.Label();
             this.GameTimer = new System.Windows.Forms.Timer(this.components);
-            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pic_userAvatar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_hold)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_nextUp1)).BeginInit();
@@ -59,27 +58,35 @@ namespace AS_Coursework.game
             // lbl_nextUpQueue
             // 
             this.lbl_nextUpQueue.AutoSize = true;
+            this.lbl_nextUpQueue.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_nextUpQueue.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lbl_nextUpQueue.ForeColor = System.Drawing.Color.Snow;
             this.lbl_nextUpQueue.Location = new System.Drawing.Point(613, 37);
             this.lbl_nextUpQueue.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_nextUpQueue.Name = "lbl_nextUpQueue";
-            this.lbl_nextUpQueue.Size = new System.Drawing.Size(32, 15);
+            this.lbl_nextUpQueue.Size = new System.Drawing.Size(40, 15);
             this.lbl_nextUpQueue.TabIndex = 2;
-            this.lbl_nextUpQueue.Text = "Next";
+            this.lbl_nextUpQueue.Text = "NEXT";
             // 
             // lbl_heldBlock
             // 
             this.lbl_heldBlock.AutoSize = true;
-            this.lbl_heldBlock.Location = new System.Drawing.Point(162, 37);
+            this.lbl_heldBlock.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_heldBlock.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lbl_heldBlock.ForeColor = System.Drawing.Color.Snow;
+            this.lbl_heldBlock.Location = new System.Drawing.Point(155, 37);
             this.lbl_heldBlock.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_heldBlock.Name = "lbl_heldBlock";
-            this.lbl_heldBlock.Size = new System.Drawing.Size(33, 15);
+            this.lbl_heldBlock.Size = new System.Drawing.Size(41, 15);
             this.lbl_heldBlock.TabIndex = 4;
-            this.lbl_heldBlock.Text = "Hold";
+            this.lbl_heldBlock.Text = "HOLD";
             // 
             // slbl_playingAs
             // 
             this.slbl_playingAs.AutoSize = true;
-            this.slbl_playingAs.Location = new System.Drawing.Point(65, 472);
+            this.slbl_playingAs.BackColor = System.Drawing.Color.Transparent;
+            this.slbl_playingAs.ForeColor = System.Drawing.Color.Snow;
+            this.slbl_playingAs.Location = new System.Drawing.Point(65, 684);
             this.slbl_playingAs.Name = "slbl_playingAs";
             this.slbl_playingAs.Size = new System.Drawing.Size(60, 15);
             this.slbl_playingAs.TabIndex = 11;
@@ -87,8 +94,8 @@ namespace AS_Coursework.game
             // 
             // pic_userAvatar
             // 
-            this.pic_userAvatar.Image = global::AS_Coursework.Properties.Resources.Guest;
-            this.pic_userAvatar.Location = new System.Drawing.Point(11, 472);
+            this.pic_userAvatar.BackColor = System.Drawing.Color.Transparent;
+            this.pic_userAvatar.Location = new System.Drawing.Point(11, 684);
             this.pic_userAvatar.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.pic_userAvatar.Name = "pic_userAvatar";
             this.pic_userAvatar.Size = new System.Drawing.Size(50, 50);
@@ -99,8 +106,10 @@ namespace AS_Coursework.game
             // lbl_currentPlayer
             // 
             this.lbl_currentPlayer.AutoSize = true;
+            this.lbl_currentPlayer.BackColor = System.Drawing.Color.Transparent;
             this.lbl_currentPlayer.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lbl_currentPlayer.Location = new System.Drawing.Point(65, 487);
+            this.lbl_currentPlayer.ForeColor = System.Drawing.Color.Snow;
+            this.lbl_currentPlayer.Location = new System.Drawing.Point(65, 699);
             this.lbl_currentPlayer.Name = "lbl_currentPlayer";
             this.lbl_currentPlayer.Size = new System.Drawing.Size(42, 15);
             this.lbl_currentPlayer.TabIndex = 9;
@@ -151,6 +160,7 @@ namespace AS_Coursework.game
             // 
             // pic_hold
             // 
+            this.pic_hold.BackColor = System.Drawing.Color.Transparent;
             this.pic_hold.Location = new System.Drawing.Point(11, 53);
             this.pic_hold.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.pic_hold.Name = "pic_hold";
@@ -161,6 +171,7 @@ namespace AS_Coursework.game
             // 
             // pic_nextUp1
             // 
+            this.pic_nextUp1.BackColor = System.Drawing.Color.Transparent;
             this.pic_nextUp1.Location = new System.Drawing.Point(613, 53);
             this.pic_nextUp1.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.pic_nextUp1.Name = "pic_nextUp1";
@@ -171,7 +182,8 @@ namespace AS_Coursework.game
             // 
             // pic_nextUp2
             // 
-            this.pic_nextUp2.Location = new System.Drawing.Point(613, 135);
+            this.pic_nextUp2.BackColor = System.Drawing.Color.Transparent;
+            this.pic_nextUp2.Location = new System.Drawing.Point(613, 132);
             this.pic_nextUp2.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.pic_nextUp2.Name = "pic_nextUp2";
             this.pic_nextUp2.Size = new System.Drawing.Size(184, 79);
@@ -181,7 +193,8 @@ namespace AS_Coursework.game
             // 
             // pic_nextUp3
             // 
-            this.pic_nextUp3.Location = new System.Drawing.Point(613, 217);
+            this.pic_nextUp3.BackColor = System.Drawing.Color.Transparent;
+            this.pic_nextUp3.Location = new System.Drawing.Point(613, 211);
             this.pic_nextUp3.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.pic_nextUp3.Name = "pic_nextUp3";
             this.pic_nextUp3.Size = new System.Drawing.Size(184, 79);
@@ -192,16 +205,20 @@ namespace AS_Coursework.game
             // lbl_GameScore
             // 
             this.lbl_GameScore.AutoSize = true;
-            this.lbl_GameScore.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lbl_GameScore.Location = new System.Drawing.Point(61, 413);
+            this.lbl_GameScore.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_GameScore.Font = new System.Drawing.Font("Segoe UI Black", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lbl_GameScore.ForeColor = System.Drawing.Color.Snow;
+            this.lbl_GameScore.Location = new System.Drawing.Point(391, 707);
             this.lbl_GameScore.Name = "lbl_GameScore";
-            this.lbl_GameScore.Size = new System.Drawing.Size(46, 15);
+            this.lbl_GameScore.Size = new System.Drawing.Size(24, 28);
             this.lbl_GameScore.TabIndex = 18;
-            this.lbl_GameScore.Text = "SCORE";
+            this.lbl_GameScore.Text = "0";
+            this.lbl_GameScore.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // pic_nextUp4
             // 
-            this.pic_nextUp4.Location = new System.Drawing.Point(613, 298);
+            this.pic_nextUp4.BackColor = System.Drawing.Color.Transparent;
+            this.pic_nextUp4.Location = new System.Drawing.Point(613, 291);
             this.pic_nextUp4.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.pic_nextUp4.Name = "pic_nextUp4";
             this.pic_nextUp4.Size = new System.Drawing.Size(184, 79);
@@ -212,7 +229,7 @@ namespace AS_Coursework.game
             // lbl_dbgVersionInfo
             // 
             this.lbl_dbgVersionInfo.AutoSize = true;
-            this.lbl_dbgVersionInfo.Location = new System.Drawing.Point(12, 135);
+            this.lbl_dbgVersionInfo.Location = new System.Drawing.Point(11, 276);
             this.lbl_dbgVersionInfo.Name = "lbl_dbgVersionInfo";
             this.lbl_dbgVersionInfo.Size = new System.Drawing.Size(113, 15);
             this.lbl_dbgVersionInfo.TabIndex = 20;
@@ -221,7 +238,7 @@ namespace AS_Coursework.game
             // lbl_dbgPlayerInfo
             // 
             this.lbl_dbgPlayerInfo.AutoSize = true;
-            this.lbl_dbgPlayerInfo.Location = new System.Drawing.Point(12, 150);
+            this.lbl_dbgPlayerInfo.Location = new System.Drawing.Point(11, 291);
             this.lbl_dbgPlayerInfo.Name = "lbl_dbgPlayerInfo";
             this.lbl_dbgPlayerInfo.Size = new System.Drawing.Size(63, 15);
             this.lbl_dbgPlayerInfo.TabIndex = 21;
@@ -232,24 +249,14 @@ namespace AS_Coursework.game
             this.GameTimer.Interval = 1000;
             this.GameTimer.Tick += new System.EventHandler(this.GameTimer_Tick);
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(11, 564);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(38, 15);
-            this.label1.TabIndex = 22;
-            this.label1.Text = "label1";
-            // 
             // GameWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.LavenderBlush;
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.BackColor = System.Drawing.Color.Black;
+            this.BackgroundImage = global::AS_Coursework.Properties.Resources.game_background;
             this.ClientSize = new System.Drawing.Size(804, 744);
             this.ControlBox = false;
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.lbl_dbgVersionInfo);
             this.Controls.Add(this.pic_nextUp4);
             this.Controls.Add(this.lbl_GameScore);
@@ -304,6 +311,5 @@ namespace AS_Coursework.game
         private Label lbl_dbgVersionInfo;
         private Label lbl_dbgPlayerInfo;
         private Timer GameTimer;
-        private Label label1;
     }
 }

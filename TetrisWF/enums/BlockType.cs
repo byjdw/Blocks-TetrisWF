@@ -1,13 +1,12 @@
-﻿namespace AS_Coursework.enums
+﻿namespace AS_Coursework.enums;
+
+public enum BlockType
 {
-    public enum BlockType
-    {
-        SQUARE,
-        LINE,
-         T,
-         Z,
-         S,
-         L,
-        REVERSE_L,
-    }
+    SQUARE,
+    LINE,
+    T,
+    Z,
+    S,
+    L,
+    REVERSE_L
 }
