@@ -1,7 +1,6 @@
 ﻿using AS_Coursework.models;
 using System.Collections.Generic;
 using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
@@ -17,6 +16,15 @@ internal static class DataManager
     {
         players.Add(player);
         SavePlayers();
+    }
+
+    public static void OverwritePlayer(Player player)
+    {
+        for (int i = 0; i < DataManager.getPlayers().Count; i++)
+            if (DataManager.getPlayers()[i].Username == player.Username)
+            {
+                players[i] = player;
+            }
     }
 
     public static void SavePlayers()

@@ -47,6 +47,12 @@ namespace AS_Coursework.game
             this.lbl_dbgVersionInfo = new System.Windows.Forms.Label();
             this.lbl_dbgPlayerInfo = new System.Windows.Forms.Label();
             this.GameTimer = new System.Windows.Forms.Timer(this.components);
+            this.ExitTimer = new System.Windows.Forms.Timer(this.components);
+            this.lbl_exitText1 = new System.Windows.Forms.Label();
+            this.tlp_pauseIndicator = new System.Windows.Forms.TableLayoutPanel();
+            this.lbl_exitText2 = new System.Windows.Forms.Label();
+            this.lbl_exitText3 = new System.Windows.Forms.Label();
+            this.lbl_exitText4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pic_userAvatar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_hold)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_nextUp1)).BeginInit();
@@ -249,6 +255,111 @@ namespace AS_Coursework.game
             this.GameTimer.Interval = 1000;
             this.GameTimer.Tick += new System.EventHandler(this.GameTimer_Tick);
             // 
+            // ExitTimer
+            // 
+            this.ExitTimer.Interval = 150;
+            this.ExitTimer.Tick += new System.EventHandler(this.ExitTimer_Tick);
+            // 
+            // lbl_exitText1
+            // 
+            this.lbl_exitText1.AutoSize = true;
+            this.lbl_exitText1.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_exitText1.Font = new System.Drawing.Font("Segoe UI Black", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lbl_exitText1.ForeColor = System.Drawing.Color.DarkMagenta;
+            this.lbl_exitText1.Location = new System.Drawing.Point(13, 133);
+            this.lbl_exitText1.Name = "lbl_exitText1";
+            this.lbl_exitText1.Size = new System.Drawing.Size(61, 260);
+            this.lbl_exitText1.TabIndex = 22;
+            this.lbl_exitText1.Text = "K\r\nE\r\nE\r\nP";
+            this.lbl_exitText1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbl_exitText1.Visible = false;
+            // 
+            // tlp_pauseIndicator
+            // 
+            this.tlp_pauseIndicator.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tlp_pauseIndicator.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.tlp_pauseIndicator.BackColor = System.Drawing.Color.Transparent;
+            this.tlp_pauseIndicator.ColumnCount = 10;
+            this.tlp_pauseIndicator.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tlp_pauseIndicator.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tlp_pauseIndicator.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tlp_pauseIndicator.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tlp_pauseIndicator.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tlp_pauseIndicator.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tlp_pauseIndicator.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tlp_pauseIndicator.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tlp_pauseIndicator.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tlp_pauseIndicator.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tlp_pauseIndicator.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.tlp_pauseIndicator.Location = new System.Drawing.Point(197, 36);
+            this.tlp_pauseIndicator.Margin = new System.Windows.Forms.Padding(0);
+            this.tlp_pauseIndicator.Name = "tlp_pauseIndicator";
+            this.tlp_pauseIndicator.RowCount = 17;
+            this.tlp_pauseIndicator.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.882353F));
+            this.tlp_pauseIndicator.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.882353F));
+            this.tlp_pauseIndicator.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.882353F));
+            this.tlp_pauseIndicator.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.882353F));
+            this.tlp_pauseIndicator.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.882353F));
+            this.tlp_pauseIndicator.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.882353F));
+            this.tlp_pauseIndicator.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.882353F));
+            this.tlp_pauseIndicator.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.882353F));
+            this.tlp_pauseIndicator.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.882353F));
+            this.tlp_pauseIndicator.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.882353F));
+            this.tlp_pauseIndicator.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.882353F));
+            this.tlp_pauseIndicator.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.882353F));
+            this.tlp_pauseIndicator.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.882353F));
+            this.tlp_pauseIndicator.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.882353F));
+            this.tlp_pauseIndicator.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.882353F));
+            this.tlp_pauseIndicator.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.882353F));
+            this.tlp_pauseIndicator.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.882353F));
+            this.tlp_pauseIndicator.Size = new System.Drawing.Size(414, 665);
+            this.tlp_pauseIndicator.TabIndex = 23;
+            this.tlp_pauseIndicator.Visible = false;
+            // 
+            // lbl_exitText2
+            // 
+            this.lbl_exitText2.AutoSize = true;
+            this.lbl_exitText2.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_exitText2.Font = new System.Drawing.Font("Segoe UI Black", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lbl_exitText2.ForeColor = System.Drawing.Color.DarkMagenta;
+            this.lbl_exitText2.Location = new System.Drawing.Point(80, 133);
+            this.lbl_exitText2.Name = "lbl_exitText2";
+            this.lbl_exitText2.Size = new System.Drawing.Size(67, 455);
+            this.lbl_exitText2.TabIndex = 24;
+            this.lbl_exitText2.Text = "H\r\nO\r\nL\r\nD\r\nI\r\nN\r\nG";
+            this.lbl_exitText2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbl_exitText2.Visible = false;
+            // 
+            // lbl_exitText3
+            // 
+            this.lbl_exitText3.AutoSize = true;
+            this.lbl_exitText3.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_exitText3.Font = new System.Drawing.Font("Segoe UI Black", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lbl_exitText3.ForeColor = System.Drawing.Color.DarkMagenta;
+            this.lbl_exitText3.Location = new System.Drawing.Point(664, 371);
+            this.lbl_exitText3.Name = "lbl_exitText3";
+            this.lbl_exitText3.Size = new System.Drawing.Size(65, 130);
+            this.lbl_exitText3.TabIndex = 25;
+            this.lbl_exitText3.Text = "T\r\nO";
+            this.lbl_exitText3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbl_exitText3.Visible = false;
+            // 
+            // lbl_exitText4
+            // 
+            this.lbl_exitText4.AutoSize = true;
+            this.lbl_exitText4.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_exitText4.Font = new System.Drawing.Font("Segoe UI Black", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lbl_exitText4.ForeColor = System.Drawing.Color.DarkMagenta;
+            this.lbl_exitText4.Location = new System.Drawing.Point(735, 371);
+            this.lbl_exitText4.Name = "lbl_exitText4";
+            this.lbl_exitText4.Size = new System.Drawing.Size(62, 260);
+            this.lbl_exitText4.TabIndex = 26;
+            this.lbl_exitText4.Text = "E\r\nX\r\nI\r\nT";
+            this.lbl_exitText4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbl_exitText4.Visible = false;
+            // 
             // GameWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -257,6 +368,11 @@ namespace AS_Coursework.game
             this.BackgroundImage = global::AS_Coursework.Properties.Resources.game_background;
             this.ClientSize = new System.Drawing.Size(804, 744);
             this.ControlBox = false;
+            this.Controls.Add(this.lbl_exitText4);
+            this.Controls.Add(this.lbl_exitText3);
+            this.Controls.Add(this.lbl_exitText2);
+            this.Controls.Add(this.lbl_exitText1);
+            this.Controls.Add(this.tlp_pauseIndicator);
             this.Controls.Add(this.lbl_dbgVersionInfo);
             this.Controls.Add(this.pic_nextUp4);
             this.Controls.Add(this.lbl_GameScore);
@@ -276,6 +392,7 @@ namespace AS_Coursework.game
             this.MinimumSize = new System.Drawing.Size(820, 504);
             this.Name = "GameWindow";
             this.Text = "Blocks · Game in Progress";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.GameWindow_FormClosing);
             this.VisibleChanged += new System.EventHandler(this.GameWindow_VisibilityChanged);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.GameWindow_KeyDown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.GameWindow_KeyUp);
@@ -311,5 +428,11 @@ namespace AS_Coursework.game
         private Label lbl_dbgVersionInfo;
         private Label lbl_dbgPlayerInfo;
         private Timer GameTimer;
+        private Timer ExitTimer;
+        private Label lbl_exitText1;
+        private TableLayoutPanel tlp_pauseIndicator;
+        private Label lbl_exitText2;
+        private Label lbl_exitText3;
+        private Label lbl_exitText4;
     }
 }

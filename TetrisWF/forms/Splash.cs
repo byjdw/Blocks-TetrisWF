@@ -1,9 +1,7 @@
 ﻿using AS_Coursework.@internal;
 using AS_Coursework.io;
 using AS_Coursework.models;
-using AS_Coursework.Properties;
 using System;
-using System.Drawing;
 using System.Windows.Forms;
 
 namespace AS_Coursework;

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Drawing;
 
 namespace AS_Coursework.models;
 
@@ -18,6 +17,12 @@ public class Player
         Surname = surname;
         Avatar = avatar;
         IsGuest = false;
+        HighScore = 0;
+        AllScore = 0;
+        BlocksPlaced = 0;
+        Games = 0;
+        PersonalRecords = 0;
+        Ticks = 0;
     }
 
     public string Username { set; get; }
@@ -32,7 +37,19 @@ public class Player
 
     public int Avatar { set; get; }
 
-    public GameSession CurrentSession { set; get; }
+    public int HighScore { set; get; }
+
+    public int AllScore { set; get; }
+
+    public int BlocksPlaced { set; get; }
+
+    public int Games { set; get; }
+
+    public int PersonalRecords { set; get; }
+
+    public int Ticks { set; get; }
+
+    public GameState PreviousGameState { set; get; }
 
     public override string ToString()
     {

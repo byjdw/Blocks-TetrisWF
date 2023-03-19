@@ -4,7 +4,6 @@ using AS_Coursework.Properties;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Threading;
 using System.Windows.Forms;
 
 namespace AS_Coursework.models;
@@ -77,6 +76,7 @@ public class Block
                 tile = Resources.Board_T; // Set block tile for rendering;
                 break;
         }
+        tile.Tag = type;
     }
 
     public void AdjustX(GameWindow instance, int adjX)
@@ -105,7 +105,8 @@ public class Block
         bool[] validation = ValidatesTiles(instance, newBlock);
         bool h = validation[0]; // Valid horizontal move.
         bool v = validation[1]; // Valid vertical move.
-        if (!v) {
+        if (!v)
+        {
             if (moves == 0) instance.GameOver();
             else idle = true;
         }
@@ -174,7 +175,7 @@ public class Block
             List<Position> oldBlock = GeneratePositions(position.x, position.y, this.r);
             foreach (Position pos in oldBlock)
             {
-                PictureBox oldTile = instance.GetTileFromCoordinates((int) Math.Round(pos.x), (int)Math.Round(pos.y));
+                PictureBox oldTile = instance.GetTileFromCoordinates((int)Math.Round(pos.x), (int)Math.Round(pos.y));
                 if (oldTile != null)
                 {
                     oldTile.Image = Resources.Empty;
@@ -344,6 +345,6 @@ public class Block
 
     public override string ToString()
     {
-        return $"BLOCK: Type {type.ToString()}, Id {id}, Moves {moves}, Idle {idle}, X: {position.x}, Y: {position.y}";
+        return $"BLOCK: Type {type.ToString()}, Id {id}, Moves {moves}, Idle {idle}, X: {position.x}, Y: {position.y}, Dist to MaxY: {maxY - 1 - position.y}";
     }
 }

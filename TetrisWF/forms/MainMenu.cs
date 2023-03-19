@@ -1,7 +1,6 @@
 ﻿using AS_Coursework.game;
 using AS_Coursework.@internal;
 using AS_Coursework.io;
-using AS_Coursework.models;
 using AS_Coursework.Properties;
 using System;
 using System.Collections.Generic;
@@ -26,7 +25,7 @@ public partial class MainMenu : Form
             Resources.Guest
 };
 
-public MainMenu(Form parentForm)
+    public MainMenu(Form parentForm)
     {
         InitializeComponent();
         this.parentForm = parentForm;
@@ -55,15 +54,17 @@ public MainMenu(Form parentForm)
 
     private void btn_StartGame_Click(object sender, EventArgs e)
     {
-        // var newGameSession = new GameSession();
-        // SessionManager.CurrentPlayer.CurrentSession = newGameSession;
         new GameWindow().Show();
-        this.Hide();
+        this.Close();
     }
 
     private void btn_ContinueGame_Click(object sender, EventArgs e)
     {
-        MessageBox.Show("shut up nerd");
+        if (SessionManager.CurrentPlayer.PreviousGameState != null)
+        {
+            new GameWindow(SessionManager.CurrentPlayer.PreviousGameState).Show();
+            this.Close();
+        }
     }
 
     private void CurrentUser_DoubleClick(object sender, EventArgs e)
