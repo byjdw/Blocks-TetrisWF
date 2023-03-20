@@ -28,14 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             lbl_score = new System.Windows.Forms.Label();
-            btn_ExitProgram = new System.Windows.Forms.Button();
             pic_SideBar = new System.Windows.Forms.PictureBox();
             lbl_Title = new System.Windows.Forms.Label();
             pictureBox1 = new System.Windows.Forms.PictureBox();
             lbl_PlayerScored = new System.Windows.Forms.Label();
             lbl_HighScore = new System.Windows.Forms.Label();
             lbl_GameStatus = new System.Windows.Forms.Label();
+            ReturnToMenuTimer = new System.Windows.Forms.Timer(components);
+            lbl_ReturnText = new System.Windows.Forms.Label();
+            lbl_SecondsRemaining = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)pic_SideBar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -49,19 +52,6 @@
             lbl_score.Size = new System.Drawing.Size(120, 36);
             lbl_score.TabIndex = 0;
             lbl_score.Text = "[SCORE]";
-            // 
-            // btn_ExitProgram
-            // 
-            btn_ExitProgram.BackColor = System.Drawing.Color.IndianRed;
-            btn_ExitProgram.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            btn_ExitProgram.ForeColor = System.Drawing.SystemColors.Window;
-            btn_ExitProgram.Location = new System.Drawing.Point(593, 9);
-            btn_ExitProgram.Margin = new System.Windows.Forms.Padding(0);
-            btn_ExitProgram.Name = "btn_ExitProgram";
-            btn_ExitProgram.Size = new System.Drawing.Size(27, 23);
-            btn_ExitProgram.TabIndex = 12;
-            btn_ExitProgram.Text = "X";
-            btn_ExitProgram.UseVisualStyleBackColor = false;
             // 
             // pic_SideBar
             // 
@@ -127,18 +117,46 @@
             lbl_GameStatus.TabIndex = 18;
             lbl_GameStatus.Text = "WD/BLNT!";
             // 
+            // ReturnToMenuTimer
+            // 
+            ReturnToMenuTimer.Interval = 1000;
+            ReturnToMenuTimer.Tick += ReturnToMenuTimer_Tick;
+            // 
+            // lbl_ReturnText
+            // 
+            lbl_ReturnText.AutoSize = true;
+            lbl_ReturnText.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            lbl_ReturnText.ForeColor = System.Drawing.SystemColors.ControlDark;
+            lbl_ReturnText.Location = new System.Drawing.Point(10, 317);
+            lbl_ReturnText.Name = "lbl_ReturnText";
+            lbl_ReturnText.Size = new System.Drawing.Size(169, 15);
+            lbl_ReturnText.TabIndex = 19;
+            lbl_ReturnText.Text = "Returning to main menu in";
+            // 
+            // lbl_SecondsRemaining
+            // 
+            lbl_SecondsRemaining.AutoSize = true;
+            lbl_SecondsRemaining.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            lbl_SecondsRemaining.ForeColor = System.Drawing.Color.Crimson;
+            lbl_SecondsRemaining.Location = new System.Drawing.Point(176, 317);
+            lbl_SecondsRemaining.Name = "lbl_SecondsRemaining";
+            lbl_SecondsRemaining.Size = new System.Drawing.Size(87, 15);
+            lbl_SecondsRemaining.TabIndex = 20;
+            lbl_SecondsRemaining.Text = "[s] seconds...";
+            // 
             // GameEnd
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(629, 341);
             ControlBox = false;
+            Controls.Add(lbl_SecondsRemaining);
+            Controls.Add(lbl_ReturnText);
             Controls.Add(lbl_GameStatus);
             Controls.Add(lbl_HighScore);
             Controls.Add(lbl_PlayerScored);
             Controls.Add(lbl_Title);
             Controls.Add(pictureBox1);
-            Controls.Add(btn_ExitProgram);
             Controls.Add(pic_SideBar);
             Controls.Add(lbl_score);
             Name = "GameEnd";
@@ -152,12 +170,14 @@
         #endregion
 
         private System.Windows.Forms.Label lbl_score;
-        private System.Windows.Forms.Button btn_ExitProgram;
         private System.Windows.Forms.PictureBox pic_SideBar;
         private System.Windows.Forms.Label lbl_Title;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label lbl_PlayerScored;
         private System.Windows.Forms.Label lbl_HighScore;
         private System.Windows.Forms.Label lbl_GameStatus;
+        private System.Windows.Forms.Timer ReturnToMenuTimer;
+        private System.Windows.Forms.Label lbl_ReturnText;
+        private System.Windows.Forms.Label lbl_SecondsRemaining;
     }
 }

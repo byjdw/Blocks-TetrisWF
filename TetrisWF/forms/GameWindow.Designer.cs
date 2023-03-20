@@ -31,380 +31,376 @@ namespace AS_Coursework.game
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.lbl_nextUpQueue = new System.Windows.Forms.Label();
-            this.lbl_heldBlock = new System.Windows.Forms.Label();
-            this.slbl_playingAs = new System.Windows.Forms.Label();
-            this.pic_userAvatar = new AS_Coursework.controls.CircularPictureBox();
-            this.lbl_currentPlayer = new System.Windows.Forms.Label();
-            this.tlp_GameBoard = new System.Windows.Forms.TableLayoutPanel();
-            this.pic_hold = new System.Windows.Forms.PictureBox();
-            this.pic_nextUp1 = new System.Windows.Forms.PictureBox();
-            this.pic_nextUp2 = new System.Windows.Forms.PictureBox();
-            this.pic_nextUp3 = new System.Windows.Forms.PictureBox();
-            this.lbl_GameScore = new System.Windows.Forms.Label();
-            this.pic_nextUp4 = new System.Windows.Forms.PictureBox();
-            this.lbl_dbgVersionInfo = new System.Windows.Forms.Label();
-            this.lbl_dbgPlayerInfo = new System.Windows.Forms.Label();
-            this.GameTimer = new System.Windows.Forms.Timer(this.components);
-            this.ExitTimer = new System.Windows.Forms.Timer(this.components);
-            this.lbl_exitText1 = new System.Windows.Forms.Label();
-            this.tlp_pauseIndicator = new System.Windows.Forms.TableLayoutPanel();
-            this.lbl_exitText2 = new System.Windows.Forms.Label();
-            this.lbl_exitText3 = new System.Windows.Forms.Label();
-            this.lbl_exitText4 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.pic_userAvatar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pic_hold)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pic_nextUp1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pic_nextUp2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pic_nextUp3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pic_nextUp4)).BeginInit();
-            this.SuspendLayout();
+            components = new System.ComponentModel.Container();
+            lbl_nextUpQueue = new Label();
+            lbl_heldBlock = new Label();
+            slbl_playingAs = new Label();
+            pic_userAvatar = new controls.CircularPictureBox();
+            lbl_currentPlayer = new Label();
+            tlp_GameBoard = new TableLayoutPanel();
+            pic_hold = new PictureBox();
+            pic_nextUp1 = new PictureBox();
+            pic_nextUp2 = new PictureBox();
+            pic_nextUp3 = new PictureBox();
+            lbl_GameScore = new Label();
+            pic_nextUp4 = new PictureBox();
+            lbl_dbgVersionInfo = new Label();
+            lbl_dbgPlayerInfo = new Label();
+            GameTimer = new Timer(components);
+            ExitTimer = new Timer(components);
+            lbl_exitText1 = new Label();
+            tlp_pauseIndicator = new TableLayoutPanel();
+            lbl_exitText2 = new Label();
+            lbl_exitText3 = new Label();
+            lbl_exitText4 = new Label();
+            ((System.ComponentModel.ISupportInitialize)pic_userAvatar).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pic_hold).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pic_nextUp1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pic_nextUp2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pic_nextUp3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pic_nextUp4).BeginInit();
+            SuspendLayout();
             // 
             // lbl_nextUpQueue
             // 
-            this.lbl_nextUpQueue.AutoSize = true;
-            this.lbl_nextUpQueue.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_nextUpQueue.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lbl_nextUpQueue.ForeColor = System.Drawing.Color.Snow;
-            this.lbl_nextUpQueue.Location = new System.Drawing.Point(613, 37);
-            this.lbl_nextUpQueue.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lbl_nextUpQueue.Name = "lbl_nextUpQueue";
-            this.lbl_nextUpQueue.Size = new System.Drawing.Size(40, 15);
-            this.lbl_nextUpQueue.TabIndex = 2;
-            this.lbl_nextUpQueue.Text = "NEXT";
+            lbl_nextUpQueue.AutoSize = true;
+            lbl_nextUpQueue.BackColor = Color.Transparent;
+            lbl_nextUpQueue.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            lbl_nextUpQueue.ForeColor = Color.Snow;
+            lbl_nextUpQueue.Location = new Point(613, 37);
+            lbl_nextUpQueue.Margin = new Padding(2, 0, 2, 0);
+            lbl_nextUpQueue.Name = "lbl_nextUpQueue";
+            lbl_nextUpQueue.Size = new Size(40, 15);
+            lbl_nextUpQueue.TabIndex = 2;
+            lbl_nextUpQueue.Text = "NEXT";
             // 
             // lbl_heldBlock
             // 
-            this.lbl_heldBlock.AutoSize = true;
-            this.lbl_heldBlock.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_heldBlock.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lbl_heldBlock.ForeColor = System.Drawing.Color.Snow;
-            this.lbl_heldBlock.Location = new System.Drawing.Point(155, 37);
-            this.lbl_heldBlock.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lbl_heldBlock.Name = "lbl_heldBlock";
-            this.lbl_heldBlock.Size = new System.Drawing.Size(41, 15);
-            this.lbl_heldBlock.TabIndex = 4;
-            this.lbl_heldBlock.Text = "HOLD";
+            lbl_heldBlock.AutoSize = true;
+            lbl_heldBlock.BackColor = Color.Transparent;
+            lbl_heldBlock.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            lbl_heldBlock.ForeColor = Color.Snow;
+            lbl_heldBlock.Location = new Point(155, 37);
+            lbl_heldBlock.Margin = new Padding(2, 0, 2, 0);
+            lbl_heldBlock.Name = "lbl_heldBlock";
+            lbl_heldBlock.Size = new Size(41, 15);
+            lbl_heldBlock.TabIndex = 4;
+            lbl_heldBlock.Text = "HOLD";
             // 
             // slbl_playingAs
             // 
-            this.slbl_playingAs.AutoSize = true;
-            this.slbl_playingAs.BackColor = System.Drawing.Color.Transparent;
-            this.slbl_playingAs.ForeColor = System.Drawing.Color.Snow;
-            this.slbl_playingAs.Location = new System.Drawing.Point(65, 684);
-            this.slbl_playingAs.Name = "slbl_playingAs";
-            this.slbl_playingAs.Size = new System.Drawing.Size(60, 15);
-            this.slbl_playingAs.TabIndex = 11;
-            this.slbl_playingAs.Text = "Playing as";
+            slbl_playingAs.AutoSize = true;
+            slbl_playingAs.BackColor = Color.Transparent;
+            slbl_playingAs.ForeColor = Color.Snow;
+            slbl_playingAs.Location = new Point(79, 671);
+            slbl_playingAs.Name = "slbl_playingAs";
+            slbl_playingAs.Size = new Size(60, 15);
+            slbl_playingAs.TabIndex = 11;
+            slbl_playingAs.Text = "Playing as";
             // 
             // pic_userAvatar
             // 
-            this.pic_userAvatar.BackColor = System.Drawing.Color.Transparent;
-            this.pic_userAvatar.Location = new System.Drawing.Point(11, 684);
-            this.pic_userAvatar.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.pic_userAvatar.Name = "pic_userAvatar";
-            this.pic_userAvatar.Size = new System.Drawing.Size(50, 50);
-            this.pic_userAvatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pic_userAvatar.TabIndex = 10;
-            this.pic_userAvatar.TabStop = false;
+            pic_userAvatar.BackColor = Color.Transparent;
+            pic_userAvatar.BorderStyle = BorderStyle.FixedSingle;
+            pic_userAvatar.Location = new Point(9, 670);
+            pic_userAvatar.Margin = new Padding(2, 1, 2, 1);
+            pic_userAvatar.Name = "pic_userAvatar";
+            pic_userAvatar.Size = new Size(65, 65);
+            pic_userAvatar.SizeMode = PictureBoxSizeMode.Zoom;
+            pic_userAvatar.TabIndex = 10;
+            pic_userAvatar.TabStop = false;
             // 
             // lbl_currentPlayer
             // 
-            this.lbl_currentPlayer.AutoSize = true;
-            this.lbl_currentPlayer.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_currentPlayer.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lbl_currentPlayer.ForeColor = System.Drawing.Color.Snow;
-            this.lbl_currentPlayer.Location = new System.Drawing.Point(65, 699);
-            this.lbl_currentPlayer.Name = "lbl_currentPlayer";
-            this.lbl_currentPlayer.Size = new System.Drawing.Size(42, 15);
-            this.lbl_currentPlayer.TabIndex = 9;
-            this.lbl_currentPlayer.Text = "Guest";
+            lbl_currentPlayer.AutoSize = true;
+            lbl_currentPlayer.BackColor = Color.Transparent;
+            lbl_currentPlayer.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            lbl_currentPlayer.ForeColor = Color.Snow;
+            lbl_currentPlayer.Location = new Point(79, 686);
+            lbl_currentPlayer.Name = "lbl_currentPlayer";
+            lbl_currentPlayer.Size = new Size(42, 15);
+            lbl_currentPlayer.TabIndex = 9;
+            lbl_currentPlayer.Text = "Guest";
             // 
             // tlp_GameBoard
             // 
-            this.tlp_GameBoard.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tlp_GameBoard.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.tlp_GameBoard.BackColor = System.Drawing.Color.Transparent;
-            this.tlp_GameBoard.ColumnCount = 10;
-            this.tlp_GameBoard.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tlp_GameBoard.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tlp_GameBoard.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tlp_GameBoard.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tlp_GameBoard.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tlp_GameBoard.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tlp_GameBoard.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tlp_GameBoard.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tlp_GameBoard.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tlp_GameBoard.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tlp_GameBoard.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
-            this.tlp_GameBoard.Location = new System.Drawing.Point(197, 36);
-            this.tlp_GameBoard.Margin = new System.Windows.Forms.Padding(0);
-            this.tlp_GameBoard.Name = "tlp_GameBoard";
-            this.tlp_GameBoard.RowCount = 17;
-            this.tlp_GameBoard.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.882353F));
-            this.tlp_GameBoard.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.882353F));
-            this.tlp_GameBoard.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.882353F));
-            this.tlp_GameBoard.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.882353F));
-            this.tlp_GameBoard.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.882353F));
-            this.tlp_GameBoard.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.882353F));
-            this.tlp_GameBoard.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.882353F));
-            this.tlp_GameBoard.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.882353F));
-            this.tlp_GameBoard.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.882353F));
-            this.tlp_GameBoard.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.882353F));
-            this.tlp_GameBoard.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.882353F));
-            this.tlp_GameBoard.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.882353F));
-            this.tlp_GameBoard.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.882353F));
-            this.tlp_GameBoard.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.882353F));
-            this.tlp_GameBoard.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.882353F));
-            this.tlp_GameBoard.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.882353F));
-            this.tlp_GameBoard.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.882353F));
-            this.tlp_GameBoard.Size = new System.Drawing.Size(414, 665);
-            this.tlp_GameBoard.TabIndex = 12;
+            tlp_GameBoard.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            tlp_GameBoard.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            tlp_GameBoard.BackColor = Color.Transparent;
+            tlp_GameBoard.ColumnCount = 10;
+            tlp_GameBoard.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10F));
+            tlp_GameBoard.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10F));
+            tlp_GameBoard.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10F));
+            tlp_GameBoard.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10F));
+            tlp_GameBoard.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10F));
+            tlp_GameBoard.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10F));
+            tlp_GameBoard.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10F));
+            tlp_GameBoard.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10F));
+            tlp_GameBoard.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10F));
+            tlp_GameBoard.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10F));
+            tlp_GameBoard.GrowStyle = TableLayoutPanelGrowStyle.FixedSize;
+            tlp_GameBoard.Location = new Point(197, 36);
+            tlp_GameBoard.Margin = new Padding(0);
+            tlp_GameBoard.Name = "tlp_GameBoard";
+            tlp_GameBoard.RowCount = 17;
+            tlp_GameBoard.RowStyles.Add(new RowStyle(SizeType.Percent, 5.882353F));
+            tlp_GameBoard.RowStyles.Add(new RowStyle(SizeType.Percent, 5.882353F));
+            tlp_GameBoard.RowStyles.Add(new RowStyle(SizeType.Percent, 5.882353F));
+            tlp_GameBoard.RowStyles.Add(new RowStyle(SizeType.Percent, 5.882353F));
+            tlp_GameBoard.RowStyles.Add(new RowStyle(SizeType.Percent, 5.882353F));
+            tlp_GameBoard.RowStyles.Add(new RowStyle(SizeType.Percent, 5.882353F));
+            tlp_GameBoard.RowStyles.Add(new RowStyle(SizeType.Percent, 5.882353F));
+            tlp_GameBoard.RowStyles.Add(new RowStyle(SizeType.Percent, 5.882353F));
+            tlp_GameBoard.RowStyles.Add(new RowStyle(SizeType.Percent, 5.882353F));
+            tlp_GameBoard.RowStyles.Add(new RowStyle(SizeType.Percent, 5.882353F));
+            tlp_GameBoard.RowStyles.Add(new RowStyle(SizeType.Percent, 5.882353F));
+            tlp_GameBoard.RowStyles.Add(new RowStyle(SizeType.Percent, 5.882353F));
+            tlp_GameBoard.RowStyles.Add(new RowStyle(SizeType.Percent, 5.882353F));
+            tlp_GameBoard.RowStyles.Add(new RowStyle(SizeType.Percent, 5.882353F));
+            tlp_GameBoard.RowStyles.Add(new RowStyle(SizeType.Percent, 5.882353F));
+            tlp_GameBoard.RowStyles.Add(new RowStyle(SizeType.Percent, 5.882353F));
+            tlp_GameBoard.RowStyles.Add(new RowStyle(SizeType.Percent, 5.882353F));
+            tlp_GameBoard.Size = new Size(414, 665);
+            tlp_GameBoard.TabIndex = 12;
             // 
             // pic_hold
             // 
-            this.pic_hold.BackColor = System.Drawing.Color.Transparent;
-            this.pic_hold.Location = new System.Drawing.Point(11, 53);
-            this.pic_hold.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.pic_hold.Name = "pic_hold";
-            this.pic_hold.Size = new System.Drawing.Size(184, 79);
-            this.pic_hold.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pic_hold.TabIndex = 13;
-            this.pic_hold.TabStop = false;
+            pic_hold.BackColor = Color.Transparent;
+            pic_hold.Location = new Point(11, 53);
+            pic_hold.Margin = new Padding(2, 1, 2, 1);
+            pic_hold.Name = "pic_hold";
+            pic_hold.Size = new Size(184, 79);
+            pic_hold.SizeMode = PictureBoxSizeMode.Zoom;
+            pic_hold.TabIndex = 13;
+            pic_hold.TabStop = false;
             // 
             // pic_nextUp1
             // 
-            this.pic_nextUp1.BackColor = System.Drawing.Color.Transparent;
-            this.pic_nextUp1.Location = new System.Drawing.Point(613, 53);
-            this.pic_nextUp1.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.pic_nextUp1.Name = "pic_nextUp1";
-            this.pic_nextUp1.Size = new System.Drawing.Size(184, 79);
-            this.pic_nextUp1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pic_nextUp1.TabIndex = 15;
-            this.pic_nextUp1.TabStop = false;
+            pic_nextUp1.BackColor = Color.Transparent;
+            pic_nextUp1.Location = new Point(613, 53);
+            pic_nextUp1.Margin = new Padding(2, 1, 2, 1);
+            pic_nextUp1.Name = "pic_nextUp1";
+            pic_nextUp1.Size = new Size(184, 79);
+            pic_nextUp1.SizeMode = PictureBoxSizeMode.Zoom;
+            pic_nextUp1.TabIndex = 15;
+            pic_nextUp1.TabStop = false;
             // 
             // pic_nextUp2
             // 
-            this.pic_nextUp2.BackColor = System.Drawing.Color.Transparent;
-            this.pic_nextUp2.Location = new System.Drawing.Point(613, 132);
-            this.pic_nextUp2.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.pic_nextUp2.Name = "pic_nextUp2";
-            this.pic_nextUp2.Size = new System.Drawing.Size(184, 79);
-            this.pic_nextUp2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pic_nextUp2.TabIndex = 16;
-            this.pic_nextUp2.TabStop = false;
+            pic_nextUp2.BackColor = Color.Transparent;
+            pic_nextUp2.Location = new Point(613, 132);
+            pic_nextUp2.Margin = new Padding(2, 1, 2, 1);
+            pic_nextUp2.Name = "pic_nextUp2";
+            pic_nextUp2.Size = new Size(184, 79);
+            pic_nextUp2.SizeMode = PictureBoxSizeMode.Zoom;
+            pic_nextUp2.TabIndex = 16;
+            pic_nextUp2.TabStop = false;
             // 
             // pic_nextUp3
             // 
-            this.pic_nextUp3.BackColor = System.Drawing.Color.Transparent;
-            this.pic_nextUp3.Location = new System.Drawing.Point(613, 211);
-            this.pic_nextUp3.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.pic_nextUp3.Name = "pic_nextUp3";
-            this.pic_nextUp3.Size = new System.Drawing.Size(184, 79);
-            this.pic_nextUp3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pic_nextUp3.TabIndex = 17;
-            this.pic_nextUp3.TabStop = false;
+            pic_nextUp3.BackColor = Color.Transparent;
+            pic_nextUp3.Location = new Point(613, 211);
+            pic_nextUp3.Margin = new Padding(2, 1, 2, 1);
+            pic_nextUp3.Name = "pic_nextUp3";
+            pic_nextUp3.Size = new Size(184, 79);
+            pic_nextUp3.SizeMode = PictureBoxSizeMode.Zoom;
+            pic_nextUp3.TabIndex = 17;
+            pic_nextUp3.TabStop = false;
             // 
             // lbl_GameScore
             // 
-            this.lbl_GameScore.AutoSize = true;
-            this.lbl_GameScore.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_GameScore.Font = new System.Drawing.Font("Segoe UI Black", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lbl_GameScore.ForeColor = System.Drawing.Color.Snow;
-            this.lbl_GameScore.Location = new System.Drawing.Point(391, 707);
-            this.lbl_GameScore.Name = "lbl_GameScore";
-            this.lbl_GameScore.Size = new System.Drawing.Size(24, 28);
-            this.lbl_GameScore.TabIndex = 18;
-            this.lbl_GameScore.Text = "0";
-            this.lbl_GameScore.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            lbl_GameScore.AutoSize = true;
+            lbl_GameScore.BackColor = Color.Transparent;
+            lbl_GameScore.Font = new Font("Segoe UI Black", 15F, FontStyle.Bold, GraphicsUnit.Point);
+            lbl_GameScore.ForeColor = Color.Snow;
+            lbl_GameScore.Location = new Point(391, 707);
+            lbl_GameScore.Name = "lbl_GameScore";
+            lbl_GameScore.Size = new Size(24, 28);
+            lbl_GameScore.TabIndex = 18;
+            lbl_GameScore.Text = "0";
+            lbl_GameScore.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // pic_nextUp4
             // 
-            this.pic_nextUp4.BackColor = System.Drawing.Color.Transparent;
-            this.pic_nextUp4.Location = new System.Drawing.Point(613, 291);
-            this.pic_nextUp4.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.pic_nextUp4.Name = "pic_nextUp4";
-            this.pic_nextUp4.Size = new System.Drawing.Size(184, 79);
-            this.pic_nextUp4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pic_nextUp4.TabIndex = 19;
-            this.pic_nextUp4.TabStop = false;
+            pic_nextUp4.BackColor = Color.Transparent;
+            pic_nextUp4.Location = new Point(613, 291);
+            pic_nextUp4.Margin = new Padding(2, 1, 2, 1);
+            pic_nextUp4.Name = "pic_nextUp4";
+            pic_nextUp4.Size = new Size(184, 79);
+            pic_nextUp4.SizeMode = PictureBoxSizeMode.Zoom;
+            pic_nextUp4.TabIndex = 19;
+            pic_nextUp4.TabStop = false;
             // 
             // lbl_dbgVersionInfo
             // 
-            this.lbl_dbgVersionInfo.AutoSize = true;
-            this.lbl_dbgVersionInfo.Location = new System.Drawing.Point(11, 276);
-            this.lbl_dbgVersionInfo.Name = "lbl_dbgVersionInfo";
-            this.lbl_dbgVersionInfo.Size = new System.Drawing.Size(113, 15);
-            this.lbl_dbgVersionInfo.TabIndex = 20;
-            this.lbl_dbgVersionInfo.Text = "tetriswf - version 1.0";
+            lbl_dbgVersionInfo.AutoSize = true;
+            lbl_dbgVersionInfo.Location = new Point(11, 276);
+            lbl_dbgVersionInfo.Name = "lbl_dbgVersionInfo";
+            lbl_dbgVersionInfo.Size = new Size(113, 15);
+            lbl_dbgVersionInfo.TabIndex = 20;
+            lbl_dbgVersionInfo.Text = "tetriswf - version 1.0";
             // 
             // lbl_dbgPlayerInfo
             // 
-            this.lbl_dbgPlayerInfo.AutoSize = true;
-            this.lbl_dbgPlayerInfo.Location = new System.Drawing.Point(11, 291);
-            this.lbl_dbgPlayerInfo.Name = "lbl_dbgPlayerInfo";
-            this.lbl_dbgPlayerInfo.Size = new System.Drawing.Size(63, 15);
-            this.lbl_dbgPlayerInfo.TabIndex = 21;
-            this.lbl_dbgPlayerInfo.Text = "player info";
+            lbl_dbgPlayerInfo.AutoSize = true;
+            lbl_dbgPlayerInfo.Location = new Point(11, 291);
+            lbl_dbgPlayerInfo.Name = "lbl_dbgPlayerInfo";
+            lbl_dbgPlayerInfo.Size = new Size(63, 15);
+            lbl_dbgPlayerInfo.TabIndex = 21;
+            lbl_dbgPlayerInfo.Text = "player info";
             // 
             // GameTimer
             // 
-            this.GameTimer.Interval = 1000;
-            this.GameTimer.Tick += new System.EventHandler(this.GameTimer_Tick);
+            GameTimer.Interval = 1000;
+            GameTimer.Tick += GameTimer_Tick;
             // 
             // ExitTimer
             // 
-            this.ExitTimer.Interval = 150;
-            this.ExitTimer.Tick += new System.EventHandler(this.ExitTimer_Tick);
+            ExitTimer.Interval = 150;
+            ExitTimer.Tick += ExitTimer_Tick;
             // 
             // lbl_exitText1
             // 
-            this.lbl_exitText1.AutoSize = true;
-            this.lbl_exitText1.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_exitText1.Font = new System.Drawing.Font("Segoe UI Black", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lbl_exitText1.ForeColor = System.Drawing.Color.DarkMagenta;
-            this.lbl_exitText1.Location = new System.Drawing.Point(13, 133);
-            this.lbl_exitText1.Name = "lbl_exitText1";
-            this.lbl_exitText1.Size = new System.Drawing.Size(61, 260);
-            this.lbl_exitText1.TabIndex = 22;
-            this.lbl_exitText1.Text = "K\r\nE\r\nE\r\nP";
-            this.lbl_exitText1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lbl_exitText1.Visible = false;
+            lbl_exitText1.AutoSize = true;
+            lbl_exitText1.BackColor = Color.Transparent;
+            lbl_exitText1.Font = new Font("Segoe UI Black", 36F, FontStyle.Bold, GraphicsUnit.Point);
+            lbl_exitText1.ForeColor = Color.DarkMagenta;
+            lbl_exitText1.Location = new Point(13, 133);
+            lbl_exitText1.Name = "lbl_exitText1";
+            lbl_exitText1.Size = new Size(61, 260);
+            lbl_exitText1.TabIndex = 22;
+            lbl_exitText1.Text = "K\r\nE\r\nE\r\nP";
+            lbl_exitText1.TextAlign = ContentAlignment.MiddleCenter;
+            lbl_exitText1.Visible = false;
             // 
             // tlp_pauseIndicator
             // 
-            this.tlp_pauseIndicator.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tlp_pauseIndicator.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.tlp_pauseIndicator.BackColor = System.Drawing.Color.Transparent;
-            this.tlp_pauseIndicator.ColumnCount = 10;
-            this.tlp_pauseIndicator.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tlp_pauseIndicator.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tlp_pauseIndicator.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tlp_pauseIndicator.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tlp_pauseIndicator.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tlp_pauseIndicator.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tlp_pauseIndicator.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tlp_pauseIndicator.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tlp_pauseIndicator.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tlp_pauseIndicator.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tlp_pauseIndicator.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
-            this.tlp_pauseIndicator.Location = new System.Drawing.Point(197, 36);
-            this.tlp_pauseIndicator.Margin = new System.Windows.Forms.Padding(0);
-            this.tlp_pauseIndicator.Name = "tlp_pauseIndicator";
-            this.tlp_pauseIndicator.RowCount = 17;
-            this.tlp_pauseIndicator.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.882353F));
-            this.tlp_pauseIndicator.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.882353F));
-            this.tlp_pauseIndicator.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.882353F));
-            this.tlp_pauseIndicator.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.882353F));
-            this.tlp_pauseIndicator.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.882353F));
-            this.tlp_pauseIndicator.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.882353F));
-            this.tlp_pauseIndicator.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.882353F));
-            this.tlp_pauseIndicator.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.882353F));
-            this.tlp_pauseIndicator.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.882353F));
-            this.tlp_pauseIndicator.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.882353F));
-            this.tlp_pauseIndicator.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.882353F));
-            this.tlp_pauseIndicator.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.882353F));
-            this.tlp_pauseIndicator.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.882353F));
-            this.tlp_pauseIndicator.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.882353F));
-            this.tlp_pauseIndicator.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.882353F));
-            this.tlp_pauseIndicator.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.882353F));
-            this.tlp_pauseIndicator.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.882353F));
-            this.tlp_pauseIndicator.Size = new System.Drawing.Size(414, 665);
-            this.tlp_pauseIndicator.TabIndex = 23;
-            this.tlp_pauseIndicator.Visible = false;
+            tlp_pauseIndicator.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            tlp_pauseIndicator.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            tlp_pauseIndicator.BackColor = Color.Transparent;
+            tlp_pauseIndicator.ColumnCount = 10;
+            tlp_pauseIndicator.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10F));
+            tlp_pauseIndicator.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10F));
+            tlp_pauseIndicator.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10F));
+            tlp_pauseIndicator.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10F));
+            tlp_pauseIndicator.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10F));
+            tlp_pauseIndicator.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10F));
+            tlp_pauseIndicator.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10F));
+            tlp_pauseIndicator.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10F));
+            tlp_pauseIndicator.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10F));
+            tlp_pauseIndicator.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10F));
+            tlp_pauseIndicator.GrowStyle = TableLayoutPanelGrowStyle.FixedSize;
+            tlp_pauseIndicator.Location = new Point(197, 36);
+            tlp_pauseIndicator.Margin = new Padding(0);
+            tlp_pauseIndicator.Name = "tlp_pauseIndicator";
+            tlp_pauseIndicator.RowCount = 17;
+            tlp_pauseIndicator.RowStyles.Add(new RowStyle(SizeType.Percent, 5.882353F));
+            tlp_pauseIndicator.RowStyles.Add(new RowStyle(SizeType.Percent, 5.882353F));
+            tlp_pauseIndicator.RowStyles.Add(new RowStyle(SizeType.Percent, 5.882353F));
+            tlp_pauseIndicator.RowStyles.Add(new RowStyle(SizeType.Percent, 5.882353F));
+            tlp_pauseIndicator.RowStyles.Add(new RowStyle(SizeType.Percent, 5.882353F));
+            tlp_pauseIndicator.RowStyles.Add(new RowStyle(SizeType.Percent, 5.882353F));
+            tlp_pauseIndicator.RowStyles.Add(new RowStyle(SizeType.Percent, 5.882353F));
+            tlp_pauseIndicator.RowStyles.Add(new RowStyle(SizeType.Percent, 5.882353F));
+            tlp_pauseIndicator.RowStyles.Add(new RowStyle(SizeType.Percent, 5.882353F));
+            tlp_pauseIndicator.RowStyles.Add(new RowStyle(SizeType.Percent, 5.882353F));
+            tlp_pauseIndicator.RowStyles.Add(new RowStyle(SizeType.Percent, 5.882353F));
+            tlp_pauseIndicator.RowStyles.Add(new RowStyle(SizeType.Percent, 5.882353F));
+            tlp_pauseIndicator.RowStyles.Add(new RowStyle(SizeType.Percent, 5.882353F));
+            tlp_pauseIndicator.RowStyles.Add(new RowStyle(SizeType.Percent, 5.882353F));
+            tlp_pauseIndicator.RowStyles.Add(new RowStyle(SizeType.Percent, 5.882353F));
+            tlp_pauseIndicator.RowStyles.Add(new RowStyle(SizeType.Percent, 5.882353F));
+            tlp_pauseIndicator.RowStyles.Add(new RowStyle(SizeType.Percent, 5.882353F));
+            tlp_pauseIndicator.Size = new Size(414, 665);
+            tlp_pauseIndicator.TabIndex = 23;
+            tlp_pauseIndicator.Visible = false;
             // 
             // lbl_exitText2
             // 
-            this.lbl_exitText2.AutoSize = true;
-            this.lbl_exitText2.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_exitText2.Font = new System.Drawing.Font("Segoe UI Black", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lbl_exitText2.ForeColor = System.Drawing.Color.DarkMagenta;
-            this.lbl_exitText2.Location = new System.Drawing.Point(80, 133);
-            this.lbl_exitText2.Name = "lbl_exitText2";
-            this.lbl_exitText2.Size = new System.Drawing.Size(67, 455);
-            this.lbl_exitText2.TabIndex = 24;
-            this.lbl_exitText2.Text = "H\r\nO\r\nL\r\nD\r\nI\r\nN\r\nG";
-            this.lbl_exitText2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lbl_exitText2.Visible = false;
+            lbl_exitText2.AutoSize = true;
+            lbl_exitText2.BackColor = Color.Transparent;
+            lbl_exitText2.Font = new Font("Segoe UI Black", 36F, FontStyle.Bold, GraphicsUnit.Point);
+            lbl_exitText2.ForeColor = Color.DarkMagenta;
+            lbl_exitText2.Location = new Point(80, 133);
+            lbl_exitText2.Name = "lbl_exitText2";
+            lbl_exitText2.Size = new Size(67, 455);
+            lbl_exitText2.TabIndex = 24;
+            lbl_exitText2.Text = "H\r\nO\r\nL\r\nD\r\nI\r\nN\r\nG";
+            lbl_exitText2.TextAlign = ContentAlignment.MiddleCenter;
+            lbl_exitText2.Visible = false;
             // 
             // lbl_exitText3
             // 
-            this.lbl_exitText3.AutoSize = true;
-            this.lbl_exitText3.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_exitText3.Font = new System.Drawing.Font("Segoe UI Black", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lbl_exitText3.ForeColor = System.Drawing.Color.DarkMagenta;
-            this.lbl_exitText3.Location = new System.Drawing.Point(664, 371);
-            this.lbl_exitText3.Name = "lbl_exitText3";
-            this.lbl_exitText3.Size = new System.Drawing.Size(65, 130);
-            this.lbl_exitText3.TabIndex = 25;
-            this.lbl_exitText3.Text = "T\r\nO";
-            this.lbl_exitText3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lbl_exitText3.Visible = false;
+            lbl_exitText3.AutoSize = true;
+            lbl_exitText3.BackColor = Color.Transparent;
+            lbl_exitText3.Font = new Font("Segoe UI Black", 36F, FontStyle.Bold, GraphicsUnit.Point);
+            lbl_exitText3.ForeColor = Color.DarkMagenta;
+            lbl_exitText3.Location = new Point(664, 371);
+            lbl_exitText3.Name = "lbl_exitText3";
+            lbl_exitText3.Size = new Size(65, 130);
+            lbl_exitText3.TabIndex = 25;
+            lbl_exitText3.Text = "T\r\nO";
+            lbl_exitText3.TextAlign = ContentAlignment.MiddleCenter;
+            lbl_exitText3.Visible = false;
             // 
             // lbl_exitText4
             // 
-            this.lbl_exitText4.AutoSize = true;
-            this.lbl_exitText4.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_exitText4.Font = new System.Drawing.Font("Segoe UI Black", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lbl_exitText4.ForeColor = System.Drawing.Color.DarkMagenta;
-            this.lbl_exitText4.Location = new System.Drawing.Point(735, 371);
-            this.lbl_exitText4.Name = "lbl_exitText4";
-            this.lbl_exitText4.Size = new System.Drawing.Size(62, 260);
-            this.lbl_exitText4.TabIndex = 26;
-            this.lbl_exitText4.Text = "E\r\nX\r\nI\r\nT";
-            this.lbl_exitText4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lbl_exitText4.Visible = false;
+            lbl_exitText4.AutoSize = true;
+            lbl_exitText4.BackColor = Color.Transparent;
+            lbl_exitText4.Font = new Font("Segoe UI Black", 36F, FontStyle.Bold, GraphicsUnit.Point);
+            lbl_exitText4.ForeColor = Color.DarkMagenta;
+            lbl_exitText4.Location = new Point(735, 371);
+            lbl_exitText4.Name = "lbl_exitText4";
+            lbl_exitText4.Size = new Size(62, 260);
+            lbl_exitText4.TabIndex = 26;
+            lbl_exitText4.Text = "E\r\nX\r\nI\r\nT";
+            lbl_exitText4.TextAlign = ContentAlignment.MiddleCenter;
+            lbl_exitText4.Visible = false;
             // 
             // GameWindow
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Black;
-            this.BackgroundImage = global::AS_Coursework.Properties.Resources.game_background;
-            this.ClientSize = new System.Drawing.Size(804, 744);
-            this.ControlBox = false;
-            this.Controls.Add(this.lbl_exitText4);
-            this.Controls.Add(this.lbl_exitText3);
-            this.Controls.Add(this.lbl_exitText2);
-            this.Controls.Add(this.lbl_exitText1);
-            this.Controls.Add(this.tlp_pauseIndicator);
-            this.Controls.Add(this.lbl_dbgVersionInfo);
-            this.Controls.Add(this.pic_nextUp4);
-            this.Controls.Add(this.lbl_GameScore);
-            this.Controls.Add(this.pic_nextUp3);
-            this.Controls.Add(this.pic_nextUp2);
-            this.Controls.Add(this.pic_nextUp1);
-            this.Controls.Add(this.pic_hold);
-            this.Controls.Add(this.tlp_GameBoard);
-            this.Controls.Add(this.slbl_playingAs);
-            this.Controls.Add(this.pic_userAvatar);
-            this.Controls.Add(this.lbl_currentPlayer);
-            this.Controls.Add(this.lbl_heldBlock);
-            this.Controls.Add(this.lbl_nextUpQueue);
-            this.Controls.Add(this.lbl_dbgPlayerInfo);
-            this.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.MaximumSize = new System.Drawing.Size(820, 783);
-            this.MinimumSize = new System.Drawing.Size(820, 504);
-            this.Name = "GameWindow";
-            this.Text = "Blocks · Game in Progress";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.GameWindow_FormClosing);
-            this.VisibleChanged += new System.EventHandler(this.GameWindow_VisibilityChanged);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.GameWindow_KeyDown);
-            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.GameWindow_KeyUp);
-            ((System.ComponentModel.ISupportInitialize)(this.pic_userAvatar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pic_hold)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pic_nextUp1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pic_nextUp2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pic_nextUp3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pic_nextUp4)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.Black;
+            BackgroundImage = Properties.Resources.game_background;
+            ClientSize = new Size(804, 744);
+            ControlBox = false;
+            Controls.Add(lbl_exitText4);
+            Controls.Add(lbl_exitText3);
+            Controls.Add(lbl_exitText2);
+            Controls.Add(lbl_exitText1);
+            Controls.Add(tlp_pauseIndicator);
+            Controls.Add(lbl_dbgVersionInfo);
+            Controls.Add(pic_nextUp4);
+            Controls.Add(lbl_GameScore);
+            Controls.Add(pic_nextUp3);
+            Controls.Add(pic_nextUp2);
+            Controls.Add(pic_nextUp1);
+            Controls.Add(pic_hold);
+            Controls.Add(tlp_GameBoard);
+            Controls.Add(slbl_playingAs);
+            Controls.Add(pic_userAvatar);
+            Controls.Add(lbl_currentPlayer);
+            Controls.Add(lbl_heldBlock);
+            Controls.Add(lbl_nextUpQueue);
+            Controls.Add(lbl_dbgPlayerInfo);
+            Margin = new Padding(2, 1, 2, 1);
+            MaximumSize = new Size(820, 783);
+            MinimumSize = new Size(820, 504);
+            Name = "GameWindow";
+            Text = "Blocks · Game in Progress";
+            FormClosing += GameWindow_FormClosing;
+            VisibleChanged += GameWindow_VisibilityChanged;
+            KeyDown += GameWindow_KeyDown;
+            KeyUp += GameWindow_KeyUp;
+            ((System.ComponentModel.ISupportInitialize)pic_userAvatar).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pic_hold).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pic_nextUp1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pic_nextUp2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pic_nextUp3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pic_nextUp4).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion

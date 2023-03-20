@@ -1,12 +1,13 @@
-﻿using System;
+﻿using AS_Coursework.enums;
+using AS_Coursework.@internal;
+using AS_Coursework.io;
+using AS_Coursework.models;
+using AS_Coursework.Properties;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Media;
 using System.Windows.Forms;
-using AS_Coursework.enums;
-using AS_Coursework.@internal;
-using AS_Coursework.models;
-using AS_Coursework.Properties;
 
 namespace AS_Coursework.game;
 
@@ -14,42 +15,10 @@ public partial class GameWindow : Form
 {
     private readonly int gameInterval;
 
-    private readonly List<Image> preview = new()
-    {
-        Resources.Preview_Square,
-        Resources.Preview_Line,
-        Resources.Preview_T,
-        Resources.Preview_Z,
-        Resources.Preview_S,
-        Resources.Preview_L,
-        Resources.Preview_Reverse_L
-    };
-
-    private readonly List<Image> profilePictures = new()
-    {
-        Resources.Avatar_L,
-        Resources.Avatar_Line,
-        Resources.Avatar_Reverse_L,
-        Resources.Avatar_S,
-        Resources.Avatar_Square,
-        Resources.Avatar_T,
-        Resources.Avatar_Z,
-        Resources.Guest
-    };
-
     private readonly GameSession session;
     private readonly SoundPlayer soundPlayer;
 
-    private readonly List<Image> tileArray = new()
-    {
-        Resources.Board_Square,
-        Resources.Board_Line,
-        Resources.Board_T,
-        Resources.Board_Z,
-        Resources.Board_S,
-        Resources.Board_L,
-        Resources.Board_Reverse_L
-    };
+
 
     private Block? currentBlock;
     private int exitTicks;
@@ -78,11 +47,10 @@ public partial class GameWindow : Form
             pictureBox.Margin = new Padding(0);
             tlp_pauseIndicator.Controls.Add(pictureBox);
         }
-
         session = new GameSession(this);
         soundPlayer = new SoundPlayer();
         lbl_currentPlayer.Text = SessionManager.CurrentPlayer!.Username;
-        pic_userAvatar.Image = profilePictures[SessionManager.CurrentPlayer!.Avatar];
+        pic_userAvatar.Image = DataManager.Avatars[SessionManager.CurrentPlayer!.Avatar];
         gameInterval = GameTimer.Interval;
     }
 
@@ -110,11 +78,10 @@ public partial class GameWindow : Form
             pictureBox.Margin = new Padding(0);
             tlp_pauseIndicator.Controls.Add(pictureBox);
         }
-
         session = new GameSession(this, gameState);
         soundPlayer = new SoundPlayer();
         lbl_currentPlayer.Text = SessionManager.CurrentPlayer!.Username;
-        pic_userAvatar.Image = profilePictures[SessionManager.CurrentPlayer!.Avatar];
+        pic_userAvatar.Image = DataManager.Avatars[SessionManager.CurrentPlayer!.Avatar];
         gameInterval = GameTimer.Interval;
         ForceRender(TilesFromString(gameState.Tiles), gameState.Tags);
     }
@@ -139,7 +106,7 @@ public partial class GameWindow : Form
             foreach (PictureBox tile in tlp_GameBoard.Controls)
             {
                 var image = tile.Image;
-                if (Convert.ToString(tile.Tag).Equals("Empty")) image.Tag = "Empty";
+                if (Convert.ToString(tile.Tag)!.Equals("Empty")) image.Tag = "Empty";
                 tiles.Add(image);
             }
 
@@ -242,7 +209,7 @@ public partial class GameWindow : Form
                 lbl_exitText3.Visible = false;
                 lbl_exitText4.Visible = false;
                 for (var i = 0; i < boardWidth * boardHeight; i++)
-                    (tlp_pauseIndicator.Controls[i] as PictureBox).Image = Resources.Empty;
+                    (tlp_pauseIndicator.Controls[i] as PictureBox)!.Image = Resources.Empty;
                 exitTicks = 0;
                 break;
         }
@@ -298,7 +265,7 @@ public partial class GameWindow : Form
         var tiles = new List<string>();
         foreach (var tile in tilesimg)
             if (tile.Tag != "Empty")
-                tiles.Add(tile.Tag.ToString());
+                tiles.Add(tile.Tag!.ToString()!);
             else
                 tiles.Add("Empty");
 
@@ -311,7 +278,7 @@ public partial class GameWindow : Form
         foreach (var tile in tilesstr)
             if (tile != "Empty")
             {
-                var newTile = tileArray[(int)Enum.Parse(typeof(BlockType), tile)];
+                var newTile = DataManager.Tiles[(int)Enum.Parse(typeof(BlockType), tile)];
                 newTile.Tag = tile;
                 tiles.Add(newTile);
             }
@@ -358,10 +325,10 @@ public partial class GameWindow : Form
         Halt = true;
         currentBlock = null;
         for (var i = 0; i < boardHeight; i++)
-        for (var j = 0; j < boardWidth; j++)
-            GetTileFromCoordinates(j, i).Image = Resources.Board_Z;
+            for (var j = 0; j < boardWidth; j++)
+                GetTileFromCoordinates(j, i).Image = Resources.Board_Z;
+        new GameEnd(session, SessionManager.CurrentPlayer.HighScore).Show();
         session.GameOver();
-        new GameEnd(session).Show();
         soundPlayer.Stop();
         Close();
     }
@@ -372,14 +339,14 @@ public partial class GameWindow : Form
         {
             var hudImg = pic_hold;
             var index = (int)session.HeldBlock.Type;
-            var previewImg = preview[index];
+            var previewImg = DataManager.Previews[index];
             hudImg.Image = previewImg;
         }
 
-        pic_nextUp1.Image = preview[(int)session.BlockQueue[0].Type];
-        pic_nextUp2.Image = preview[(int)session.BlockQueue[1].Type];
-        pic_nextUp3.Image = preview[(int)session.BlockQueue[2].Type];
-        pic_nextUp4.Image = preview[(int)session.BlockQueue[3].Type];
+        pic_nextUp1.Image = DataManager.Previews[(int)session.BlockQueue[0].Type];
+        pic_nextUp2.Image = DataManager.Previews[(int)session.BlockQueue[1].Type];
+        pic_nextUp3.Image = DataManager.Previews[(int)session.BlockQueue[2].Type];
+        pic_nextUp4.Image = DataManager.Previews[(int)session.BlockQueue[3].Type];
         lbl_GameScore.Text = session.Score.ToString();
     }
 
@@ -409,7 +376,8 @@ public partial class GameWindow : Form
         }
         else
         {
-            session.Save(TilesToString(Tiles), Tags);
+            ExitTimer.Stop();
+            session.Save(this, TilesToString(Tiles), Tags);
         }
     }
 }

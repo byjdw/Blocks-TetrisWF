@@ -1,46 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Windows.Forms;
+﻿using AS_Coursework.@internal;
 using AS_Coursework.io;
 using AS_Coursework.models;
 using AS_Coursework.Properties;
+using System;
+using System.Windows.Forms;
 
 namespace AS_Coursework;
 
 public partial class Registration : Form
 {
-    private readonly Form parentForm;
-    private readonly List<Image> profilePictures;
     private int pfpIndex;
 
-    public Registration(Form _parentForm)
+    public Registration()
     {
-        parentForm = _parentForm;
         InitializeComponent();
         lbl_forenameError.Text = "";
         lbl_surnameError.Text = "";
         lbl_usernameError.Text = "";
         lbl_passwordError.Text = "";
         lbl_passwordConfirmError.Text = "";
-        profilePictures = new List<Image>
-        {
-            Resources.Avatar_L,
-            Resources.Avatar_Line,
-            Resources.Avatar_Reverse_L,
-            Resources.Avatar_S,
-            Resources.Avatar_Square,
-            Resources.Avatar_T,
-            Resources.Avatar_Z,
-            Resources.Guest
-        };
         pfpIndex = Random.Shared.Next(0, 6);
-        pic_playerAvatar.Image = profilePictures[pfpIndex];
+        pic_playerAvatar.Image = DataManager.Avatars[pfpIndex];
     }
 
     private void Window_OnClose(object sender, FormClosingEventArgs e)
     {
-        parentForm.Show();
+        SessionManager.SplashForm!.Show();
     }
 
     private void registerPlayer_onClick(object sender, EventArgs e)
@@ -103,7 +88,7 @@ public partial class Registration : Form
             txt_password.Text = "";
             txt_passwordConfirm.Text = "";
             pic_playerAvatar.Image = Resources.Guest;
-            parentForm.Show();
+            SessionManager.SplashForm!.Show();
             Close();
         }
         else
@@ -179,20 +164,20 @@ public partial class Registration : Form
     private void btn_CycleAvatarBack_Click(object sender, EventArgs e)
     {
         if (pfpIndex != 0) pfpIndex -= 1;
-        else pfpIndex = 7;
-        if (pfpIndex <= 7) pic_playerAvatar.Image = profilePictures[pfpIndex];
+        else pfpIndex = 6;
+        if (pfpIndex <= 6) pic_playerAvatar.Image = DataManager.Avatars[pfpIndex];
     }
 
     private void btn_CycleAvatarForward_Click(object sender, EventArgs e)
     {
-        if (pfpIndex != 7) pfpIndex += 1;
+        if (pfpIndex != 6) pfpIndex += 1;
         else pfpIndex = 0;
-        if (pfpIndex <= 7) pic_playerAvatar.Image = profilePictures[pfpIndex];
+        if (pfpIndex <= 6) pic_playerAvatar.Image = DataManager.Avatars[pfpIndex];
     }
 
     private void btn_Exit_Click(object sender, EventArgs e)
     {
-        parentForm.Show();
+        SessionManager.SplashForm!.Show();
         Close();
     }
 }

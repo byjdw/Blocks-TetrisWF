@@ -5,10 +5,10 @@ namespace AS_Coursework.models;
 [Serializable]
 public class Player
 {
-    public Player()
-    {
-    }
+    /* A default constructor. It is used to create an instance of the class. */
+    public Player() { }
 
+    /* This is a paramaterised constructor. It is used to create an instance of the class. */
     public Player(string username, string password, string forename, string surname, int avatar)
     {
         Username = username;
@@ -51,6 +51,12 @@ public class Player
 
     public GameState PreviousGameState { set; get; }
 
+    /// <summary>
+    /// The ToString() function is a method that is used to return a string representation of the object
+    /// </summary>
+    /// <returns>
+    /// The ToString() method is being overridden to return the values of the properties.
+    /// </returns>
     public override string ToString()
     {
         return $"Forename: {Forename}\n" +

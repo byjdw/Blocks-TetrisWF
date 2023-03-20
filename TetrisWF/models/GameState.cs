@@ -9,14 +9,15 @@ public class GameState
     // Block Storage
     private Block? current; // Current Block
     private Block? held; // Held Block
-    private double multiplier;
-    private int n;
-
     private List<Block> queue; // Future Blocks
+    private int n; // Block Count
 
     // Session Information
-    private int score;
-    private int t;
+    private int t; // Total Game Ticks
+    private int score; // Total Game Score
+    private double multiplier; // Speed Multiplier
+
+    // Board Information
     private List<string> tags; // Cached Tags
     private List<string> tiles; // Cached Tiles
 

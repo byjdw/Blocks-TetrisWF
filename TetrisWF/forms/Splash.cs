@@ -1,8 +1,8 @@
-﻿using System;
-using System.Windows.Forms;
-using AS_Coursework.@internal;
+﻿using AS_Coursework.@internal;
 using AS_Coursework.io;
 using AS_Coursework.models;
+using System;
+using System.Windows.Forms;
 
 namespace AS_Coursework;
 
@@ -11,6 +11,7 @@ public partial class Splash : Form
     public Splash()
     {
         InitializeComponent();
+        SessionManager.SplashForm = this;
     }
 
     private void loginUser_onClick(object sender, EventArgs e)
@@ -30,7 +31,7 @@ public partial class Splash : Form
             MessageBox.Show("Welcome Back, " + loggedInPlayer.Username + "!\nYou are now logged in.", "Login Success",
                 MessageBoxButtons.OK);
             SessionManager.CurrentPlayer = loggedInPlayer;
-            new MainMenu(this).Show();
+            new MainMenu().Show();
             Hide();
         }
         else
@@ -50,7 +51,7 @@ public partial class Splash : Form
 
     private void btn_Register_Click(object sender, EventArgs e)
     {
-        Form registerForm = new Registration(this);
+        Form registerForm = new Registration();
         registerForm.Show();
         Hide();
     }
@@ -69,7 +70,7 @@ public partial class Splash : Form
                 Avatar = 7,
                 IsGuest = true
             };
-            new MainMenu(this).Show();
+            new MainMenu().Show();
             Hide();
         }
     }

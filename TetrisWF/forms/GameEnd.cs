@@ -1,20 +1,21 @@
-﻿using System.Windows.Forms;
-using AS_Coursework.@internal;
+﻿using AS_Coursework.@internal;
 using AS_Coursework.models;
+using System.Windows.Forms;
 
 namespace AS_Coursework.game;
 
 public partial class GameEnd : Form
 {
     private GameSession session;
+    private int exitTimer;
 
-    public GameEnd(GameSession session)
+    public GameEnd(GameSession session, int hs)
     {
         InitializeComponent();
         this.session = session;
         lbl_score.Text = session.Score.ToString();
         var hstxt = lbl_HighScore.Text;
-        if (session.Score > SessionManager.CurrentPlayer.HighScore)
+        if (session.Score > hs)
         {
             lbl_GameStatus.Text = "Well Done!";
             hstxt = hstxt.Replace("{0}", "greater");
@@ -25,7 +26,22 @@ public partial class GameEnd : Form
             hstxt = hstxt.Replace("{0}", "less");
         }
 
-        hstxt = hstxt.Replace("{1}", SessionManager.CurrentPlayer.HighScore.ToString());
+        hstxt = hstxt.Replace("{1}", hs.ToString());
+        if (SessionManager.CurrentPlayer.IsGuest) hstxt = "";
         lbl_HighScore.Text = hstxt;
+        ReturnToMenuTimer.Start();
+        lbl_SecondsRemaining.Text = 15 + " seconds...";
+    }
+
+    private void ReturnToMenuTimer_Tick(object sender, System.EventArgs e)
+    {
+        exitTimer++;
+        if (exitTimer == 16)
+        {
+            this.Close();
+            SessionManager.MainMenuForm.Show();
+        }
+
+        lbl_SecondsRemaining.Text = (15 - exitTimer).ToString() + " seconds...";
     }
 }
