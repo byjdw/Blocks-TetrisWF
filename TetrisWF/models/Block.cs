@@ -288,54 +288,6 @@ public class Block
             }
         }
 
-
-
-
-        //foreach (Position tilePosition in positions)
-        //{
-        //    int x = (int)Math.Round(tilePosition.x);
-        //    int y = (int)Math.Round(tilePosition.y);
-        //    try
-        //    {
-        //        PictureBox tile = instance.GetTileFromCoordinates(x, y);
-        //        if (tile != null)
-        //        {
-        //            if (
-        //                !tile.Tag.Equals("Empty") &&
-        //                !tile.Tag.Equals(id.ToString())
-        //            )
-        //            {
-        //                Console.WriteLine($"Tile @ [{x},{y}] is NOT Valid.");
-        //                if (positions[0].x != position.x)
-        //                    horizontal = false;
-        //                else
-        //                    vertical = false;
-        //            }
-        //            else
-        //            {
-        //                Console.WriteLine($"Tile @ [{x},{y}] is Valid.");
-        //            }
-        //        }
-        //        else
-        //        {
-        //            if (y == maxY)
-        //            {
-        //                Console.WriteLine($"Tile @ [{x},{y}] is NOT Valid.");
-        //                vertical = false;
-        //            }
-        //            else
-        //            {
-        //                Console.WriteLine($"Tile @ [{x},{y}] is NOT Valid.");
-        //                horizontal = false;
-        //            }
-        //        }
-        //    }
-        //    catch
-        //    {
-        //        Console.WriteLine($"Tile @ [{x},{y}] out of bounds!");
-        //        horizontal = false;
-        //    }
-        //}
         Console.WriteLine(horizontal + " " + vertical);
         return new[]
         {

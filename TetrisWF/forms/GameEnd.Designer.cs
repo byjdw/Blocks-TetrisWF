@@ -28,102 +28,125 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lbl_score = new System.Windows.Forms.Label();
-            this.btn_ExitProgram = new System.Windows.Forms.Button();
-            this.pic_SideBar = new System.Windows.Forms.PictureBox();
-            this.lbl_Title = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.pic_SideBar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.SuspendLayout();
+            lbl_score = new System.Windows.Forms.Label();
+            btn_ExitProgram = new System.Windows.Forms.Button();
+            pic_SideBar = new System.Windows.Forms.PictureBox();
+            lbl_Title = new System.Windows.Forms.Label();
+            pictureBox1 = new System.Windows.Forms.PictureBox();
+            lbl_PlayerScored = new System.Windows.Forms.Label();
+            lbl_HighScore = new System.Windows.Forms.Label();
+            lbl_GameStatus = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)pic_SideBar).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            SuspendLayout();
             // 
             // lbl_score
             // 
-            this.lbl_score.AutoSize = true;
-            this.lbl_score.Font = new System.Drawing.Font("Segoe UI Black", 22F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lbl_score.Location = new System.Drawing.Point(12, 131);
-            this.lbl_score.Name = "lbl_score";
-            this.lbl_score.Size = new System.Drawing.Size(140, 41);
-            this.lbl_score.TabIndex = 0;
-            this.lbl_score.Text = "[SCORE]";
+            lbl_score.AutoSize = true;
+            lbl_score.Font = new System.Drawing.Font("Segoe UI Black", 19F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            lbl_score.Location = new System.Drawing.Point(10, 164);
+            lbl_score.Name = "lbl_score";
+            lbl_score.Size = new System.Drawing.Size(120, 36);
+            lbl_score.TabIndex = 0;
+            lbl_score.Text = "[SCORE]";
             // 
             // btn_ExitProgram
             // 
-            this.btn_ExitProgram.BackColor = System.Drawing.Color.IndianRed;
-            this.btn_ExitProgram.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btn_ExitProgram.ForeColor = System.Drawing.SystemColors.Window;
-            this.btn_ExitProgram.Location = new System.Drawing.Point(593, 9);
-            this.btn_ExitProgram.Margin = new System.Windows.Forms.Padding(0);
-            this.btn_ExitProgram.Name = "btn_ExitProgram";
-            this.btn_ExitProgram.Size = new System.Drawing.Size(27, 23);
-            this.btn_ExitProgram.TabIndex = 12;
-            this.btn_ExitProgram.Text = "X";
-            this.btn_ExitProgram.UseVisualStyleBackColor = false;
+            btn_ExitProgram.BackColor = System.Drawing.Color.IndianRed;
+            btn_ExitProgram.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            btn_ExitProgram.ForeColor = System.Drawing.SystemColors.Window;
+            btn_ExitProgram.Location = new System.Drawing.Point(593, 9);
+            btn_ExitProgram.Margin = new System.Windows.Forms.Padding(0);
+            btn_ExitProgram.Name = "btn_ExitProgram";
+            btn_ExitProgram.Size = new System.Drawing.Size(27, 23);
+            btn_ExitProgram.TabIndex = 12;
+            btn_ExitProgram.Text = "X";
+            btn_ExitProgram.UseVisualStyleBackColor = false;
             // 
             // pic_SideBar
             // 
-            this.pic_SideBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(23)))), ((int)(((byte)(23)))));
-            this.pic_SideBar.BackgroundImage = global::AS_Coursework.Properties.Resources.Board_Z;
-            this.pic_SideBar.Image = global::AS_Coursework.Properties.Resources.sidebar_gameover;
-            this.pic_SideBar.Location = new System.Drawing.Point(320, -38);
-            this.pic_SideBar.Name = "pic_SideBar";
-            this.pic_SideBar.Size = new System.Drawing.Size(318, 387);
-            this.pic_SideBar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pic_SideBar.TabIndex = 13;
-            this.pic_SideBar.TabStop = false;
+            pic_SideBar.BackColor = System.Drawing.Color.FromArgb(23, 23, 23);
+            pic_SideBar.BackgroundImage = Properties.Resources.Board_Z;
+            pic_SideBar.Image = Properties.Resources.sidebar_gameover;
+            pic_SideBar.Location = new System.Drawing.Point(320, -38);
+            pic_SideBar.Name = "pic_SideBar";
+            pic_SideBar.Size = new System.Drawing.Size(318, 387);
+            pic_SideBar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            pic_SideBar.TabIndex = 13;
+            pic_SideBar.TabStop = false;
             // 
             // lbl_Title
             // 
-            this.lbl_Title.AutoSize = true;
-            this.lbl_Title.Font = new System.Drawing.Font("Segoe UI Black", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lbl_Title.ForeColor = System.Drawing.Color.Crimson;
-            this.lbl_Title.Location = new System.Drawing.Point(12, 6);
-            this.lbl_Title.Name = "lbl_Title";
-            this.lbl_Title.Size = new System.Drawing.Size(157, 32);
-            this.lbl_Title.TabIndex = 14;
-            this.lbl_Title.Text = "GAME OVER";
+            lbl_Title.AutoSize = true;
+            lbl_Title.Font = new System.Drawing.Font("Segoe UI Black", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            lbl_Title.ForeColor = System.Drawing.Color.Crimson;
+            lbl_Title.Location = new System.Drawing.Point(12, 6);
+            lbl_Title.Name = "lbl_Title";
+            lbl_Title.Size = new System.Drawing.Size(157, 32);
+            lbl_Title.TabIndex = 14;
+            lbl_Title.Text = "GAME OVER";
             // 
             // pictureBox1
             // 
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox1.Image = global::AS_Coursework.Properties.Resources.Blocks;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 23);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(226, 95);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 15;
-            this.pictureBox1.TabStop = false;
+            pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            pictureBox1.Image = Properties.Resources.Blocks;
+            pictureBox1.Location = new System.Drawing.Point(12, 23);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new System.Drawing.Size(226, 95);
+            pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 15;
+            pictureBox1.TabStop = false;
             // 
-            // label1
+            // lbl_PlayerScored
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(12, 101);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(134, 30);
-            this.label1.TabIndex = 16;
-            this.label1.Text = "You scored...";
+            lbl_PlayerScored.AutoSize = true;
+            lbl_PlayerScored.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            lbl_PlayerScored.Location = new System.Drawing.Point(12, 143);
+            lbl_PlayerScored.Name = "lbl_PlayerScored";
+            lbl_PlayerScored.Size = new System.Drawing.Size(134, 30);
+            lbl_PlayerScored.TabIndex = 16;
+            lbl_PlayerScored.Text = "You scored...";
+            // 
+            // lbl_HighScore
+            // 
+            lbl_HighScore.AutoSize = true;
+            lbl_HighScore.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            lbl_HighScore.Location = new System.Drawing.Point(12, 198);
+            lbl_HighScore.Name = "lbl_HighScore";
+            lbl_HighScore.Size = new System.Drawing.Size(195, 90);
+            lbl_HighScore.TabIndex = 17;
+            lbl_HighScore.Text = "which is {0} than \r\nyour high score of \r\n{1}.\r\n";
+            // 
+            // lbl_GameStatus
+            // 
+            lbl_GameStatus.AutoSize = true;
+            lbl_GameStatus.Font = new System.Drawing.Font("Segoe UI Black", 25.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            lbl_GameStatus.Location = new System.Drawing.Point(4, 100);
+            lbl_GameStatus.Name = "lbl_GameStatus";
+            lbl_GameStatus.Size = new System.Drawing.Size(201, 46);
+            lbl_GameStatus.TabIndex = 18;
+            lbl_GameStatus.Text = "WD/BLNT!";
             // 
             // GameEnd
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(629, 341);
-            this.ControlBox = false;
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.lbl_Title);
-            this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.btn_ExitProgram);
-            this.Controls.Add(this.pic_SideBar);
-            this.Controls.Add(this.lbl_score);
-            this.Name = "GameEnd";
-            this.Text = "GameEnd";
-            ((System.ComponentModel.ISupportInitialize)(this.pic_SideBar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            ClientSize = new System.Drawing.Size(629, 341);
+            ControlBox = false;
+            Controls.Add(lbl_GameStatus);
+            Controls.Add(lbl_HighScore);
+            Controls.Add(lbl_PlayerScored);
+            Controls.Add(lbl_Title);
+            Controls.Add(pictureBox1);
+            Controls.Add(btn_ExitProgram);
+            Controls.Add(pic_SideBar);
+            Controls.Add(lbl_score);
+            Name = "GameEnd";
+            Text = "GameEnd";
+            ((System.ComponentModel.ISupportInitialize)pic_SideBar).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -133,6 +156,8 @@
         private System.Windows.Forms.PictureBox pic_SideBar;
         private System.Windows.Forms.Label lbl_Title;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lbl_PlayerScored;
+        private System.Windows.Forms.Label lbl_HighScore;
+        private System.Windows.Forms.Label lbl_GameStatus;
     }
 }
