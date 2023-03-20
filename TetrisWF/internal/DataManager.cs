@@ -1,16 +1,16 @@
-﻿using AS_Coursework.models;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
 using System.Windows.Forms;
+using AS_Coursework.models;
 
 namespace AS_Coursework.io;
 
 internal static class DataManager
 {
-    private static List<Player> players = new List<Player>();
+    private static List<Player> players = new();
 
     public static void AddPlayer(Player player)
     {
@@ -20,11 +20,9 @@ internal static class DataManager
 
     public static void OverwritePlayer(Player player)
     {
-        for (int i = 0; i < DataManager.getPlayers().Count; i++)
-            if (DataManager.getPlayers()[i].Username == player.Username)
-            {
+        for (var i = 0; i < getPlayers().Count; i++)
+            if (getPlayers()[i].Username == player.Username)
                 players[i] = player;
-            }
     }
 
     public static void SavePlayers()
@@ -73,8 +71,8 @@ internal static class DataManager
 
     public static string getHashString(string inputString)
     {
-        StringBuilder sb = new StringBuilder();
-        foreach (byte b in createHash(inputString))
+        var sb = new StringBuilder();
+        foreach (var b in createHash(inputString))
             sb.Append(b.ToString("X2"));
 
         return sb.ToString();

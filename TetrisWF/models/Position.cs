@@ -1,4 +1,5 @@
 using System;
+using System.Drawing;
 
 namespace AS_Coursework.models;
 
@@ -39,7 +40,7 @@ public sealed class Position : IEquatable<Position>
 
     public float dot(Position other)
     {
-        float total = 0.0f;
+        var total = 0.0f;
         total += x * other.x;
         total += y * other.y;
         return total;
@@ -62,15 +63,15 @@ public sealed class Position : IEquatable<Position>
 
     public Position unit()
     {
-        float mag = magnitude();
+        var mag = magnitude();
         return new Position(x / mag, y / mag);
     }
 
     public Position rotate(float theta)
     {
         theta *= 0.0174533f;
-        return new((x * (float)Math.Cos(theta)) - (y * (float)Math.Sin(theta)),
-                   (x * (float)Math.Sin(theta)) + (y * (float)Math.Cos(theta)));
+        return new Position(x * (float)Math.Cos(theta) - y * (float)Math.Sin(theta),
+            x * (float)Math.Sin(theta) + y * (float)Math.Cos(theta));
     }
 
     public static bool operator ==(Position self, Position other)
@@ -85,26 +86,26 @@ public sealed class Position : IEquatable<Position>
 
     public static Position operator +(Position self, Position other)
     {
-        return new(self.x + other.x, self.y + other.y);
+        return new Position(self.x + other.x, self.y + other.y);
     }
 
     public static Position operator -(Position self, Position other)
     {
-        return new(self.x - other.x, self.y - other.y);
+        return new Position(self.x - other.x, self.y - other.y);
     }
 
     public static Position operator *(Position self, float other)
     {
-        return new(self.x * other, self.y * other);
+        return new Position(self.x * other, self.y * other);
     }
 
     public static Position operator /(Position self, float other)
     {
-        return new(self.x / other, self.y / other);
+        return new Position(self.x / other, self.y / other);
     }
 
-    public static implicit operator System.Drawing.PointF(Position self)
+    public static implicit operator PointF(Position self)
     {
-        return new System.Drawing.PointF(self.x, self.y);
+        return new PointF(self.x, self.y);
     }
 }

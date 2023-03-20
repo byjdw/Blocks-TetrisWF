@@ -1,12 +1,11 @@
 ﻿using System.Windows.Forms;
 
-namespace AS_Coursework.forms
+namespace AS_Coursework.forms;
+
+public partial class SettingsPane : Form
 {
-    public partial class SettingsPane : Form
+    public SettingsPane()
     {
-        public SettingsPane()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }

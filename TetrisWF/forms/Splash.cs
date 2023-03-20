@@ -1,8 +1,8 @@
-﻿using AS_Coursework.@internal;
+﻿using System;
+using System.Windows.Forms;
+using AS_Coursework.@internal;
 using AS_Coursework.io;
 using AS_Coursework.models;
-using System;
-using System.Windows.Forms;
 
 namespace AS_Coursework;
 
@@ -15,9 +15,9 @@ public partial class Splash : Form
 
     private void loginUser_onClick(object sender, EventArgs e)
     {
-        bool valid = false;
+        var valid = false;
         Player? loggedInPlayer = null;
-        for (int i = 0; i < DataManager.getPlayers().Count; i++)
+        for (var i = 0; i < DataManager.getPlayers().Count; i++)
             if (DataManager.getPlayers()[i].Username == txt_username.Text && DataManager.getPlayers()[i].Password ==
                 DataManager.getHashString(txt_password.Text))
             {
@@ -31,7 +31,7 @@ public partial class Splash : Form
                 MessageBoxButtons.OK);
             SessionManager.CurrentPlayer = loggedInPlayer;
             new MainMenu(this).Show();
-            this.Hide();
+            Hide();
         }
         else
         {
@@ -52,12 +52,12 @@ public partial class Splash : Form
     {
         Form registerForm = new Registration(this);
         registerForm.Show();
-        this.Hide();
+        Hide();
     }
 
     private void btn_Guest_Click(object sender, EventArgs e)
     {
-        DialogResult playAsGuest =
+        var playAsGuest =
             MessageBox.Show(
                 "Are you sure you want to play as a Guest?\nThe ability to save your game and publish your score will be disabled.",
                 "Blocks · Confirmation Dialouge", MessageBoxButtons.YesNo);
@@ -70,7 +70,7 @@ public partial class Splash : Form
                 IsGuest = true
             };
             new MainMenu(this).Show();
-            this.Hide();
+            Hide();
         }
     }
 

@@ -1,17 +1,18 @@
-﻿using AS_Coursework.io;
+﻿using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.Windows.Forms;
+using AS_Coursework.io;
 using AS_Coursework.models;
 using AS_Coursework.Properties;
-using System;
-using System.Collections.Generic;
-using System.Windows.Forms;
 
 namespace AS_Coursework;
 
 public partial class Registration : Form
 {
-    private Form parentForm;
+    private readonly Form parentForm;
+    private readonly List<Image> profilePictures;
     private int pfpIndex;
-    private List<System.Drawing.Image> profilePictures;
 
     public Registration(Form _parentForm)
     {
@@ -22,7 +23,7 @@ public partial class Registration : Form
         lbl_usernameError.Text = "";
         lbl_passwordError.Text = "";
         lbl_passwordConfirmError.Text = "";
-        profilePictures = new List<System.Drawing.Image>
+        profilePictures = new List<Image>
         {
             Resources.Avatar_L,
             Resources.Avatar_Line,
@@ -44,8 +45,8 @@ public partial class Registration : Form
 
     private void registerPlayer_onClick(object sender, EventArgs e)
     {
-        bool valid = true;
-        for (int i = 0; i < DataManager.getPlayers().Count; i++)
+        var valid = true;
+        for (var i = 0; i < DataManager.getPlayers().Count; i++)
             if (DataManager.getPlayers()[i].Username == txt_username.Text)
             {
                 lbl_usernameError.Text = "Already in use.";
@@ -90,7 +91,7 @@ public partial class Registration : Form
                 Surname = txt_surname.Text,
                 Username = txt_username.Text,
                 Password = DataManager.getHashString(txt_password.Text),
-                Avatar = pfpIndex,
+                Avatar = pfpIndex
             };
             DataManager.AddPlayer(newPlayer);
             MessageBox.Show("Welcome, " + newPlayer.Username + "!" +
@@ -103,7 +104,7 @@ public partial class Registration : Form
             txt_passwordConfirm.Text = "";
             pic_playerAvatar.Image = Resources.Guest;
             parentForm.Show();
-            this.Close();
+            Close();
         }
         else
         {
@@ -131,8 +132,8 @@ public partial class Registration : Form
 
     private void Username_ValueChanged(object sender, EventArgs e)
     {
-        bool alreadyExists = false;
-        for (int i = 0; i < DataManager.getPlayers().Count; i++)
+        var alreadyExists = false;
+        for (var i = 0; i < DataManager.getPlayers().Count; i++)
             if (DataManager.getPlayers()[i].Username == txt_username.Text)
                 alreadyExists = true;
         if (alreadyExists)
@@ -192,6 +193,6 @@ public partial class Registration : Form
     private void btn_Exit_Click(object sender, EventArgs e)
     {
         parentForm.Show();
-        this.Close();
+        Close();
     }
 }

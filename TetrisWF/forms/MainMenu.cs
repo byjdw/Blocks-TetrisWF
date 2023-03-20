@@ -1,29 +1,29 @@
-﻿using AS_Coursework.game;
-using AS_Coursework.@internal;
-using AS_Coursework.io;
-using AS_Coursework.Properties;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
+using AS_Coursework.game;
+using AS_Coursework.@internal;
+using AS_Coursework.io;
+using AS_Coursework.Properties;
 
 namespace AS_Coursework;
 
 public partial class MainMenu : Form
 {
-    private Form parentForm;
+    private readonly Form parentForm;
 
-    List<Image> profilePictures = new List<System.Drawing.Image>
-        {
-            Resources.Avatar_L,
-            Resources.Avatar_Line,
-            Resources.Avatar_Reverse_L,
-            Resources.Avatar_S,
-            Resources.Avatar_Square,
-            Resources.Avatar_T,
-            Resources.Avatar_Z,
-            Resources.Guest
-};
+    private readonly List<Image> profilePictures = new()
+    {
+        Resources.Avatar_L,
+        Resources.Avatar_Line,
+        Resources.Avatar_Reverse_L,
+        Resources.Avatar_S,
+        Resources.Avatar_Square,
+        Resources.Avatar_T,
+        Resources.Avatar_Z,
+        Resources.Guest
+    };
 
     public MainMenu(Form parentForm)
     {
@@ -37,7 +37,8 @@ public partial class MainMenu : Form
         if (CurrentPlayer != null)
         {
             lbl_currentPlayer.Text = CurrentPlayer.Username;
-            if (CurrentPlayer.Avatar != null) pic_PlayerAvatar.Image = profilePictures[SessionManager.CurrentPlayer!.Avatar];
+            if (CurrentPlayer.Avatar != null)
+                pic_PlayerAvatar.Image = profilePictures[SessionManager.CurrentPlayer!.Avatar];
         }
         else
         {
@@ -47,15 +48,15 @@ public partial class MainMenu : Form
 
     private void btn_ExitProgram_Click(object sender, EventArgs e)
     {
-        DialogResult quit = MessageBox.Show("Are you sure you want to quit?", "Blocks · Confirmation Dialouge",
+        var quit = MessageBox.Show("Are you sure you want to quit?", "Blocks · Confirmation Dialouge",
             MessageBoxButtons.YesNo);
-        if (quit == DialogResult.Yes) this.Close();
+        if (quit == DialogResult.Yes) Close();
     }
 
     private void btn_StartGame_Click(object sender, EventArgs e)
     {
         new GameWindow().Show();
-        this.Close();
+        Close();
     }
 
     private void btn_ContinueGame_Click(object sender, EventArgs e)
@@ -63,7 +64,7 @@ public partial class MainMenu : Form
         if (SessionManager.CurrentPlayer.PreviousGameState != null)
         {
             new GameWindow(SessionManager.CurrentPlayer.PreviousGameState).Show();
-            this.Close();
+            Close();
         }
     }
 
@@ -72,7 +73,7 @@ public partial class MainMenu : Form
         if (openFileDialog1.ShowDialog() == DialogResult.OK)
             try
             {
-                System.Drawing.Image selected = System.Drawing.Image.FromFile(openFileDialog1.FileName);
+                var selected = Image.FromFile(openFileDialog1.FileName);
                 pic_PlayerAvatar.Image = new Bitmap(selected);
             }
             catch
@@ -90,7 +91,7 @@ public partial class MainMenu : Form
     private void btn_ChangeUser_Click(object sender, EventArgs e)
     {
         parentForm.Show();
-        this.Close();
+        Close();
     }
 
     private void pictureBox2_DoubleClick(object sender, EventArgs e)

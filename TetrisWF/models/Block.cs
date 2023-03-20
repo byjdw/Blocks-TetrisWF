@@ -1,38 +1,33 @@
-﻿using AS_Coursework.enums;
-using AS_Coursework.game;
-using AS_Coursework.Properties;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Windows.Forms;
+using AS_Coursework.enums;
+using AS_Coursework.game;
+using AS_Coursework.Properties;
 
 namespace AS_Coursework.models;
 
 [Serializable]
 public class Block
 {
-    // Block Configuration
-    private int id;
-    private int moves;
-    private bool idle;
-    private Image tile;
-    private BlockType type;
     private readonly int maxR;
     private readonly int maxX;
+
     private readonly int maxY;
+
+    // Block Configuration
+    private int id;
+    private bool idle;
+    private int moves;
+    private Position position;
 
     // Position Tracking
     private int r;
-    private Position position;
-
-    public int Id { get => id; set => id = value; }
-    public BlockType Type { get => type; set => type = value; }
-    public bool Idle { get => idle; set => idle = value; }
-    public Position Pos { get => position; set => position = value; }
+    private Image tile;
+    private BlockType type;
 
     public Block()
     {
-
     }
 
     public Block(int id, BlockType type, int maxX, int maxY)
@@ -77,24 +72,51 @@ public class Block
                 tile = Resources.Board_T; // Set block tile for rendering;
                 break;
         }
+
         tile.Tag = type;
+    }
+
+    public int Id
+    {
+        get => id;
+        set => id = value;
+    }
+
+    public BlockType Type
+    {
+        get => type;
+        set => type = value;
+    }
+
+    public bool Idle
+    {
+        get => idle;
+        set => idle = value;
+    }
+
+    public Position Pos
+    {
+        get => position;
+        set => position = value;
     }
 
     public void AdjustX(GameWindow instance, int adjX)
     {
         Console.WriteLine($"X: {position.x} => {position.x + adjX}");
-        RenderNext(instance, position.x + adjX, position.y, r); // Calls RenderNext() with params causing the block to move horizontally.
+        RenderNext(instance, position.x + adjX, position.y,
+            r); // Calls RenderNext() with params causing the block to move horizontally.
     }
 
     public void Descend(GameWindow instance)
     {
         Console.WriteLine($"Y: {position.y} => {position.y + 1}");
-        RenderNext(instance, position.x, position.y + 1, r); // Calls RenderNext() with params causing the block to descend by 1.
+        RenderNext(instance, position.x, position.y + 1,
+            r); // Calls RenderNext() with params causing the block to descend by 1.
     }
 
     public void Rotate(GameWindow instance)
     {
-        int newR = r + 1;
+        var newR = r + 1;
         if (newR > maxR) newR = 0;
         Console.Write($"R: {r} => {newR}");
         RenderNext(instance, position.x, position.y, newR);
@@ -102,24 +124,25 @@ public class Block
 
     private void RenderNext(GameWindow instance, float x, float y, int r)
     {
-        List<Position> newBlock = GeneratePositions(x, y, r);
-        bool[] validation = ValidatesTiles(instance, newBlock);
-        bool h = validation[0]; // Valid horizontal move.
-        bool v = validation[1]; // Valid vertical move.
+        var newBlock = GeneratePositions(x, y, r);
+        var validation = ValidatesTiles(instance, newBlock);
+        var h = validation[0]; // Valid horizontal move.
+        var v = validation[1]; // Valid vertical move.
         if (!v)
         {
             if (moves == 0) instance.GameOver();
             else idle = true;
         }
+
         if (!h) return;
         if (idle) return;
 
         if (y > 0)
         {
-            List<Position> oldBlock = GeneratePositions(position.x, position.y, this.r);
-            foreach (Position pos in oldBlock)
+            var oldBlock = GeneratePositions(position.x, position.y, this.r);
+            foreach (var pos in oldBlock)
             {
-                PictureBox oldTile = instance.GetTileFromCoordinates((int)Math.Round(pos.x), (int)Math.Round(pos.y));
+                var oldTile = instance.GetTileFromCoordinates((int)Math.Round(pos.x), (int)Math.Round(pos.y));
                 if (oldTile != null)
                 {
                     oldTile.Image = Resources.Empty;
@@ -129,21 +152,21 @@ public class Block
         }
         else
         {
-            for (int i = 0; i < maxX; i++)
+            for (var i = 0; i < maxX; i++)
             {
-                PictureBox tile = instance.GetTileFromCoordinates(i, 0);
+                var tile = instance.GetTileFromCoordinates(i, 0);
                 if (tile != null)
                 {
-                    tile.Image = Properties.Resources.Empty;
+                    tile.Image = Resources.Empty;
                     tile.Tag = "Empty";
                 }
             }
         }
 
-        foreach (Position pos in newBlock)
+        foreach (var pos in newBlock)
         {
-            PictureBox newTile = instance.GetTileFromCoordinates((int)Math.Round(pos.x),
-                                                                 (int)Math.Round(pos.y));
+            var newTile = instance.GetTileFromCoordinates((int)Math.Round(pos.x),
+                (int)Math.Round(pos.y));
             if (newTile != null)
             {
                 newTile.Image = tile;
@@ -154,16 +177,16 @@ public class Block
         position.x = x;
         position.y = y;
         this.r = r;
-        this.moves += 1;
+        moves += 1;
     }
 
     public void ForceRender(GameWindow instance)
     {
-        List<Position> newBlock = GeneratePositions(position.x, position.y, this.r);
-        foreach (Position pos in newBlock)
+        var newBlock = GeneratePositions(position.x, position.y, r);
+        foreach (var pos in newBlock)
         {
-            PictureBox newTile = instance.GetTileFromCoordinates((int)Math.Round(pos.x),
-                                                                 (int)Math.Round(pos.y));
+            var newTile = instance.GetTileFromCoordinates((int)Math.Round(pos.x),
+                (int)Math.Round(pos.y));
             newTile.Image = tile;
             newTile.Tag = id.ToString();
         }
@@ -173,10 +196,10 @@ public class Block
     {
         if (position.y > 0)
         {
-            List<Position> oldBlock = GeneratePositions(position.x, position.y, this.r);
-            foreach (Position pos in oldBlock)
+            var oldBlock = GeneratePositions(position.x, position.y, r);
+            foreach (var pos in oldBlock)
             {
-                PictureBox oldTile = instance.GetTileFromCoordinates((int)Math.Round(pos.x), (int)Math.Round(pos.y));
+                var oldTile = instance.GetTileFromCoordinates((int)Math.Round(pos.x), (int)Math.Round(pos.y));
                 if (oldTile != null)
                 {
                     oldTile.Image = Resources.Empty;
@@ -186,10 +209,10 @@ public class Block
         }
         else
         {
-            for (int i = 0; i < maxX; i++)
+            for (var i = 0; i < maxX; i++)
             {
-                PictureBox tile = instance.GetTileFromCoordinates(i, 0);
-                tile.Image = Properties.Resources.Empty;
+                var tile = instance.GetTileFromCoordinates(i, 0);
+                tile.Image = Resources.Empty;
                 tile.Tag = "Empty";
             }
         }
@@ -197,12 +220,11 @@ public class Block
 
     private List<Position> GeneratePositions(float row, float column, int r)
     {
-        List<Position> tilePositions = new List<Position>();
-        int x = (int)row;
+        var tilePositions = new List<Position>();
+        var x = (int)row;
 
 
-
-        int y = (int)column;
+        var y = (int)column;
         switch (type)
         {
             case BlockType.LINE:
@@ -254,17 +276,17 @@ public class Block
 
     private bool[] ValidatesTiles(GameWindow instance, List<Position> positions)
     {
-        int baseX = (int)Math.Round(positions[0].x);
-        int baseY = (int)Math.Round(positions[0].y);
-        bool horizontal = true;
-        bool vertical = true;
-        foreach (Position pos in positions)
+        var baseX = (int)Math.Round(positions[0].x);
+        var baseY = (int)Math.Round(positions[0].y);
+        var horizontal = true;
+        var vertical = true;
+        foreach (var pos in positions)
         {
-            bool h = true;
-            bool v = true;
-            int x = (int)Math.Round(pos.x);
-            int y = (int)Math.Round(pos.y);
-            PictureBox tile = instance.GetTileFromCoordinates(x, y);
+            var h = true;
+            var v = true;
+            var x = (int)Math.Round(pos.x);
+            var y = (int)Math.Round(pos.y);
+            var tile = instance.GetTileFromCoordinates(x, y);
             if (tile == null)
             {
                 if (y == maxY) v = false;
@@ -279,6 +301,7 @@ public class Block
                     else v = false;
                 }
             }
+
             if (!v || !h) Console.WriteLine($"Tile @ [{x},{y}] is NOT Valid.");
             else Console.WriteLine($"Tile @ [{x},{y}] is Valid.");
             if (!(!horizontal || !vertical))
@@ -298,6 +321,7 @@ public class Block
 
     public override string ToString()
     {
-        return $"BLOCK: Type {type.ToString()}, Id {id}, Moves {moves}, Idle {idle}, X: {position.x}, Y: {position.y}, Dist to MaxY: {maxY - 1 - position.y}";
+        return
+            $"BLOCK: Type {type.ToString()}, Id {id}, Moves {moves}, Idle {idle}, X: {position.x}, Y: {position.y}, Dist to MaxY: {maxY - 1 - position.y}";
     }
 }
