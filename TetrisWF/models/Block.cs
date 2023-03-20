@@ -23,11 +23,12 @@ public class Block
 
     // Position Tracking
     private int r;
-    private readonly Position position;
+    private Position position;
 
     public int Id { get => id; set => id = value; }
     public BlockType Type { get => type; set => type = value; }
     public bool Idle { get => idle; set => idle = value; }
+    public Position Pos { get => position; set => position = value; }
 
     public Block()
     {

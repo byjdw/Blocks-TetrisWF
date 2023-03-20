@@ -106,6 +106,15 @@ public partial class GameWindow : Form
             pictureBox.Tag = "Empty";
             tlp_GameBoard.Controls.Add(pictureBox);
         }
+        for (int c = 0; c < tlp_pauseIndicator.ColumnCount * tlp_pauseIndicator.RowCount; c++)
+        {
+            PictureBox pictureBox = new PictureBox();
+            pictureBox.Image = Resources.Empty;
+            pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox.Dock = DockStyle.Fill;
+            pictureBox.Margin = new Padding(0);
+            tlp_pauseIndicator.Controls.Add(pictureBox);
+        }
         this.session = new GameSession(this, gameState);
         soundPlayer = new SoundPlayer();
         lbl_currentPlayer.Text = SessionManager.CurrentPlayer!.Username;
@@ -230,8 +239,24 @@ public partial class GameWindow : Form
             tiles.Add(tile.Image);
             tags.Add((string)tile.Tag);
         }
-        tiles.RemoveRange((boardHeight * boardWidth) - (boardWidth * (boardHeight - row)), boardWidth);
-        tags.RemoveRange((boardHeight * boardWidth) - (boardWidth * (boardHeight - row)), boardWidth);
+        for (int i = 0; i < tlp_GameBoard.Controls.Count; i++)
+        {
+                if (tags[i] != "Empty")
+                    Console.Write("[" + tags[i] + "]");
+                else
+                    Console.Write("[E]");
+            if (((tlp_GameBoard.Controls.Count + 1) / boardWidth) == boardHeight)
+            {
+                Console.Write("\n");
+            }
+        }
+        tiles.RemoveRange((tlp_GameBoard.Controls.Count) - (boardWidth * (boardHeight - row)), boardWidth);
+        tags.RemoveRange((tlp_GameBoard.Controls.Count) - (boardWidth * (boardHeight - row)), boardWidth);
+        for (int i = 0; i < boardWidth; i++)
+        {
+            tiles.Insert(0, Resources.Empty);
+            tags.Insert(0, "Empty");
+        }
         ForceRender(tiles, tags);
     }
 
@@ -260,7 +285,9 @@ public partial class GameWindow : Form
         {
             if (tile != "Empty")
             {
-                tiles.Add(tileArray[(int)Enum.Parse(typeof(BlockType), tile)]);
+                Image newTile = tileArray[(int) Enum.Parse(typeof(BlockType), tile)];
+                newTile.Tag = tile;
+                tiles.Add(newTile);
             }
             else
             {
@@ -280,7 +307,7 @@ public partial class GameWindow : Form
             foreach (PictureBox tile in tlp_GameBoard.Controls)
             {
                 Image image = tile.Image;
-                if (tile.Tag == "Empty") image.Tag = "Empty";
+                if (Convert.ToString(tile.Tag).Equals("Empty")) image.Tag = "Empty";
                 tiles.Add(image);
             }
             return tiles;
@@ -302,18 +329,13 @@ public partial class GameWindow : Form
 
     public void ForceRender(List<Image> tiles, List<String> tags)
     {
-        for (int i = 0; i < boardWidth; i++)
-        {
-            tiles.Insert(0, Resources.Empty);
-            tags.Insert(0, "Empty");
-        }
-        for (int i = 0; i < boardWidth * boardHeight; i++)
+        for (int i = 0; i < tlp_GameBoard.Controls.Count; i++)
         {
             (tlp_GameBoard.Controls[i] as PictureBox).Image = tiles[i];
-            (tlp_GameBoard.Controls[i] as PictureBox).Tag = tags[i];
+            tlp_GameBoard.Controls[i].Tag = tags[i];
         }
     }
-
+    
     public void CheckLines()
     {
         int lines = 0;
@@ -322,7 +344,7 @@ public partial class GameWindow : Form
             bool full = true;
             for (int j = 0; j < boardWidth; j++)
             {
-                if (GetTileFromCoordinates(j, i).Tag == "Empty") full = false;
+                if (Convert.ToString(GetTileFromCoordinates(j, i).Tag).Equals("Empty")) full = false;
             }
             if (full)
             {
@@ -388,7 +410,6 @@ public partial class GameWindow : Form
                 Console.WriteLine(exitTicks);
                 int totalTiles = boardWidth * boardHeight;
                 int startIndex = totalTiles - (boardWidth * exitTicks);
-
                 for (int i = startIndex; i < totalTiles; i++)
                 {
                     (tlp_pauseIndicator.Controls[i] as PictureBox).Image = Resources.Board_Reverse_L;

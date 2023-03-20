@@ -43,7 +43,10 @@ public class GameSession
     {
         score = gameState.Score;
         multiplier = gameState.Multiplier;
-        current = new Block(gameState.CurrentBlock.Id, gameState.CurrentBlock.Type, instance.boardWidth, instance.boardHeight);
+        current = new Block(gameState.CurrentBlock.Id, gameState.CurrentBlock.Type, instance.boardWidth, instance.boardHeight)
+        {
+            Pos = gameState.CurrentBlock.Pos,
+        };
         held = gameState.HeldBlock;
         queue = new List<Block>();
         foreach (Block block in gameState.BlockQueue)
@@ -123,7 +126,7 @@ public class GameSession
     public void Rotate() => current.Rotate(instance);
 
     public void GameOver()
-    {
+     {
         Player player = SessionManager.CurrentPlayer;
         player.AllScore += Score;
         if (Score > player.HighScore)
