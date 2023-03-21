@@ -29,27 +29,28 @@
         private void InitializeComponent()
         {
             btn_Exit = new System.Windows.Forms.Button();
-            circularPictureBox1 = new controls.CircularPictureBox();
+            pic_PlayerAvatar = new controls.CircularPictureBox();
             lbl_name = new System.Windows.Forms.Label();
             lbl_username = new System.Windows.Forms.Label();
-            label1 = new System.Windows.Forms.Label();
-            label2 = new System.Windows.Forms.Label();
-            label3 = new System.Windows.Forms.Label();
-            label4 = new System.Windows.Forms.Label();
-            label5 = new System.Windows.Forms.Label();
-            label6 = new System.Windows.Forms.Label();
-            label7 = new System.Windows.Forms.Label();
-            label8 = new System.Windows.Forms.Label();
-            label9 = new System.Windows.Forms.Label();
-            label10 = new System.Windows.Forms.Label();
-            label11 = new System.Windows.Forms.Label();
-            label12 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)circularPictureBox1).BeginInit();
+            lbl_HighScoreText = new System.Windows.Forms.Label();
+            lbl_TotalScoreText = new System.Windows.Forms.Label();
+            lbl_PRsText = new System.Windows.Forms.Label();
+            lbl_BlocksPlacedText = new System.Windows.Forms.Label();
+            lbl_GamesPlayedText = new System.Windows.Forms.Label();
+            lbl_MovesText = new System.Windows.Forms.Label();
+            lbl_Moves = new System.Windows.Forms.Label();
+            lbl_GamesPlayed = new System.Windows.Forms.Label();
+            lbl_BlocksPlaced = new System.Windows.Forms.Label();
+            lbl_PRs = new System.Windows.Forms.Label();
+            lbl_TotalScore = new System.Windows.Forms.Label();
+            lbl_HighScore = new System.Windows.Forms.Label();
+            checkedListBox1 = new System.Windows.Forms.CheckedListBox();
+            ((System.ComponentModel.ISupportInitialize)pic_PlayerAvatar).BeginInit();
             SuspendLayout();
             // 
             // btn_Exit
             // 
-            btn_Exit.BackColor = System.Drawing.Color.IndianRed;
+            btn_Exit.BackColor = System.Drawing.Color.AliceBlue;
             btn_Exit.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             btn_Exit.ForeColor = System.Drawing.SystemColors.Window;
             btn_Exit.Location = new System.Drawing.Point(273, 9);
@@ -59,25 +60,26 @@
             btn_Exit.TabIndex = 30;
             btn_Exit.Text = "X";
             btn_Exit.UseVisualStyleBackColor = false;
+            btn_Exit.Click += btn_Exit_Click;
             // 
-            // circularPictureBox1
+            // pic_PlayerAvatar
             // 
-            circularPictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            circularPictureBox1.Image = Properties.Resources.Guest;
-            circularPictureBox1.Location = new System.Drawing.Point(105, 23);
-            circularPictureBox1.Name = "circularPictureBox1";
-            circularPictureBox1.Size = new System.Drawing.Size(100, 100);
-            circularPictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            circularPictureBox1.TabIndex = 31;
-            circularPictureBox1.TabStop = false;
+            pic_PlayerAvatar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            pic_PlayerAvatar.Image = Properties.Resources.Guest;
+            pic_PlayerAvatar.Location = new System.Drawing.Point(12, 9);
+            pic_PlayerAvatar.Name = "pic_PlayerAvatar";
+            pic_PlayerAvatar.Size = new System.Drawing.Size(65, 65);
+            pic_PlayerAvatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            pic_PlayerAvatar.TabIndex = 31;
+            pic_PlayerAvatar.TabStop = false;
             // 
             // lbl_name
             // 
             lbl_name.AutoSize = true;
-            lbl_name.Font = new System.Drawing.Font("Segoe UI Black", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            lbl_name.Location = new System.Drawing.Point(33, 126);
+            lbl_name.Font = new System.Drawing.Font("Segoe UI Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            lbl_name.Location = new System.Drawing.Point(83, 21);
             lbl_name.Name = "lbl_name";
-            lbl_name.Size = new System.Drawing.Size(239, 32);
+            lbl_name.Size = new System.Drawing.Size(161, 21);
             lbl_name.TabIndex = 32;
             lbl_name.Text = "Forename Surname";
             lbl_name.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -85,150 +87,172 @@
             // lbl_username
             // 
             lbl_username.AutoSize = true;
-            lbl_username.Location = new System.Drawing.Point(127, 158);
+            lbl_username.Location = new System.Drawing.Point(83, 42);
             lbl_username.Name = "lbl_username";
             lbl_username.Size = new System.Drawing.Size(60, 15);
             lbl_username.TabIndex = 33;
             lbl_username.Text = "Username";
             // 
-            // label1
+            // lbl_HighScoreText
             // 
-            label1.AutoSize = true;
-            label1.Location = new System.Drawing.Point(40, 201);
-            label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(38, 15);
-            label1.TabIndex = 34;
-            label1.Text = "label1";
-            label1.Click += label1_Click;
+            lbl_HighScoreText.AutoSize = true;
+            lbl_HighScoreText.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            lbl_HighScoreText.Location = new System.Drawing.Point(17, 85);
+            lbl_HighScoreText.Name = "lbl_HighScoreText";
+            lbl_HighScoreText.Size = new System.Drawing.Size(72, 15);
+            lbl_HighScoreText.TabIndex = 34;
+            lbl_HighScoreText.Text = "High Score";
+            lbl_HighScoreText.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label2
+            // lbl_TotalScoreText
             // 
-            label2.AutoSize = true;
-            label2.Location = new System.Drawing.Point(40, 216);
-            label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(38, 15);
-            label2.TabIndex = 35;
-            label2.Text = "label2";
-            label2.Click += label2_Click;
+            lbl_TotalScoreText.AutoSize = true;
+            lbl_TotalScoreText.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            lbl_TotalScoreText.Location = new System.Drawing.Point(17, 100);
+            lbl_TotalScoreText.Name = "lbl_TotalScoreText";
+            lbl_TotalScoreText.Size = new System.Drawing.Size(75, 15);
+            lbl_TotalScoreText.TabIndex = 35;
+            lbl_TotalScoreText.Text = "Total Score";
+            lbl_TotalScoreText.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label3
+            // lbl_PRsText
             // 
-            label3.AutoSize = true;
-            label3.Location = new System.Drawing.Point(40, 231);
-            label3.Name = "label3";
-            label3.Size = new System.Drawing.Size(38, 15);
-            label3.TabIndex = 36;
-            label3.Text = "label3";
-            label3.Click += label3_Click;
+            lbl_PRsText.AutoSize = true;
+            lbl_PRsText.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            lbl_PRsText.Location = new System.Drawing.Point(17, 115);
+            lbl_PRsText.Name = "lbl_PRsText";
+            lbl_PRsText.Size = new System.Drawing.Size(29, 15);
+            lbl_PRsText.TabIndex = 36;
+            lbl_PRsText.Text = "PRs";
+            lbl_PRsText.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label4
+            // lbl_BlocksPlacedText
             // 
-            label4.AutoSize = true;
-            label4.Location = new System.Drawing.Point(40, 246);
-            label4.Name = "label4";
-            label4.Size = new System.Drawing.Size(38, 15);
-            label4.TabIndex = 37;
-            label4.Text = "label4";
-            label4.Click += label4_Click;
+            lbl_BlocksPlacedText.AutoSize = true;
+            lbl_BlocksPlacedText.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            lbl_BlocksPlacedText.Location = new System.Drawing.Point(17, 130);
+            lbl_BlocksPlacedText.Name = "lbl_BlocksPlacedText";
+            lbl_BlocksPlacedText.Size = new System.Drawing.Size(89, 15);
+            lbl_BlocksPlacedText.TabIndex = 37;
+            lbl_BlocksPlacedText.Text = "Blocks Placed";
+            lbl_BlocksPlacedText.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label5
+            // lbl_GamesPlayedText
             // 
-            label5.AutoSize = true;
-            label5.Location = new System.Drawing.Point(40, 261);
-            label5.Name = "label5";
-            label5.Size = new System.Drawing.Size(38, 15);
-            label5.TabIndex = 38;
-            label5.Text = "label5";
-            label5.Click += label5_Click;
+            lbl_GamesPlayedText.AutoSize = true;
+            lbl_GamesPlayedText.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            lbl_GamesPlayedText.Location = new System.Drawing.Point(17, 145);
+            lbl_GamesPlayedText.Name = "lbl_GamesPlayedText";
+            lbl_GamesPlayedText.Size = new System.Drawing.Size(91, 15);
+            lbl_GamesPlayedText.TabIndex = 38;
+            lbl_GamesPlayedText.Text = "Games Played";
+            lbl_GamesPlayedText.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label6
+            // lbl_MovesText
             // 
-            label6.AutoSize = true;
-            label6.Location = new System.Drawing.Point(40, 276);
-            label6.Name = "label6";
-            label6.Size = new System.Drawing.Size(38, 15);
-            label6.TabIndex = 39;
-            label6.Text = "label6";
+            lbl_MovesText.AutoSize = true;
+            lbl_MovesText.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            lbl_MovesText.Location = new System.Drawing.Point(17, 160);
+            lbl_MovesText.Name = "lbl_MovesText";
+            lbl_MovesText.Size = new System.Drawing.Size(47, 15);
+            lbl_MovesText.TabIndex = 39;
+            lbl_MovesText.Text = "Moves";
+            lbl_MovesText.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label7
+            // lbl_Moves
             // 
-            label7.AutoSize = true;
-            label7.Location = new System.Drawing.Point(84, 276);
-            label7.Name = "label7";
-            label7.Size = new System.Drawing.Size(38, 15);
-            label7.TabIndex = 45;
-            label7.Text = "label7";
+            lbl_Moves.AutoSize = true;
+            lbl_Moves.Location = new System.Drawing.Point(124, 160);
+            lbl_Moves.Name = "lbl_Moves";
+            lbl_Moves.Size = new System.Drawing.Size(54, 15);
+            lbl_Moves.TabIndex = 45;
+            lbl_Moves.Text = "[MOVES]";
+            lbl_Moves.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // label8
+            // lbl_GamesPlayed
             // 
-            label8.AutoSize = true;
-            label8.Location = new System.Drawing.Point(84, 261);
-            label8.Name = "label8";
-            label8.Size = new System.Drawing.Size(38, 15);
-            label8.TabIndex = 44;
-            label8.Text = "label8";
+            lbl_GamesPlayed.AutoSize = true;
+            lbl_GamesPlayed.Location = new System.Drawing.Point(124, 145);
+            lbl_GamesPlayed.Name = "lbl_GamesPlayed";
+            lbl_GamesPlayed.Size = new System.Drawing.Size(100, 15);
+            lbl_GamesPlayed.TabIndex = 44;
+            lbl_GamesPlayed.Text = "[GAMES_PLAYED]";
+            lbl_GamesPlayed.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // label9
+            // lbl_BlocksPlaced
             // 
-            label9.AutoSize = true;
-            label9.Location = new System.Drawing.Point(84, 246);
-            label9.Name = "label9";
-            label9.Size = new System.Drawing.Size(38, 15);
-            label9.TabIndex = 43;
-            label9.Text = "label9";
+            lbl_BlocksPlaced.AutoSize = true;
+            lbl_BlocksPlaced.Location = new System.Drawing.Point(124, 130);
+            lbl_BlocksPlaced.Name = "lbl_BlocksPlaced";
+            lbl_BlocksPlaced.Size = new System.Drawing.Size(106, 15);
+            lbl_BlocksPlaced.TabIndex = 43;
+            lbl_BlocksPlaced.Text = "[BLOCKS_PLACED]";
+            lbl_BlocksPlaced.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // label10
+            // lbl_PRs
             // 
-            label10.AutoSize = true;
-            label10.Location = new System.Drawing.Point(84, 231);
-            label10.Name = "label10";
-            label10.Size = new System.Drawing.Size(44, 15);
-            label10.TabIndex = 42;
-            label10.Text = "label10";
+            lbl_PRs.AutoSize = true;
+            lbl_PRs.Location = new System.Drawing.Point(124, 115);
+            lbl_PRs.Name = "lbl_PRs";
+            lbl_PRs.Size = new System.Drawing.Size(35, 15);
+            lbl_PRs.TabIndex = 42;
+            lbl_PRs.Text = "[PRS]";
+            lbl_PRs.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // label11
+            // lbl_TotalScore
             // 
-            label11.AutoSize = true;
-            label11.Location = new System.Drawing.Point(84, 216);
-            label11.Name = "label11";
-            label11.Size = new System.Drawing.Size(44, 15);
-            label11.TabIndex = 41;
-            label11.Text = "label11";
+            lbl_TotalScore.AutoSize = true;
+            lbl_TotalScore.Location = new System.Drawing.Point(124, 100);
+            lbl_TotalScore.Name = "lbl_TotalScore";
+            lbl_TotalScore.Size = new System.Drawing.Size(88, 15);
+            lbl_TotalScore.TabIndex = 41;
+            lbl_TotalScore.Text = "[TOTAL_SCORE]";
+            lbl_TotalScore.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // label12
+            // lbl_HighScore
             // 
-            label12.AutoSize = true;
-            label12.Location = new System.Drawing.Point(84, 201);
-            label12.Name = "label12";
-            label12.Size = new System.Drawing.Size(44, 15);
-            label12.TabIndex = 40;
-            label12.Text = "label12";
+            lbl_HighScore.AutoSize = true;
+            lbl_HighScore.Location = new System.Drawing.Point(124, 85);
+            lbl_HighScore.Name = "lbl_HighScore";
+            lbl_HighScore.Size = new System.Drawing.Size(85, 15);
+            lbl_HighScore.TabIndex = 40;
+            lbl_HighScore.Text = "[HIGH_SCORE]";
+            lbl_HighScore.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // checkedListBox1
+            // 
+            checkedListBox1.FormattingEnabled = true;
+            checkedListBox1.Location = new System.Drawing.Point(34, 343);
+            checkedListBox1.Name = "checkedListBox1";
+            checkedListBox1.Size = new System.Drawing.Size(8, 4);
+            checkedListBox1.TabIndex = 46;
             // 
             // Profile
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(309, 344);
+            ClientSize = new System.Drawing.Size(309, 195);
             ControlBox = false;
-            Controls.Add(label7);
-            Controls.Add(label8);
-            Controls.Add(label9);
-            Controls.Add(label10);
-            Controls.Add(label11);
-            Controls.Add(label12);
-            Controls.Add(label6);
-            Controls.Add(label5);
-            Controls.Add(label4);
-            Controls.Add(label3);
-            Controls.Add(label2);
-            Controls.Add(label1);
+            Controls.Add(checkedListBox1);
+            Controls.Add(lbl_Moves);
+            Controls.Add(lbl_GamesPlayed);
+            Controls.Add(lbl_BlocksPlaced);
+            Controls.Add(lbl_PRs);
+            Controls.Add(lbl_TotalScore);
+            Controls.Add(lbl_HighScore);
+            Controls.Add(lbl_MovesText);
+            Controls.Add(lbl_GamesPlayedText);
+            Controls.Add(lbl_BlocksPlacedText);
+            Controls.Add(lbl_PRsText);
+            Controls.Add(lbl_TotalScoreText);
+            Controls.Add(lbl_HighScoreText);
             Controls.Add(lbl_username);
             Controls.Add(lbl_name);
-            Controls.Add(circularPictureBox1);
+            Controls.Add(pic_PlayerAvatar);
             Controls.Add(btn_Exit);
             Name = "Profile";
             Text = "Blocks • Your Profile";
-            ((System.ComponentModel.ISupportInitialize)circularPictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pic_PlayerAvatar).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -236,20 +260,21 @@
         #endregion
 
         private System.Windows.Forms.Button btn_Exit;
-        private controls.CircularPictureBox circularPictureBox1;
+        private controls.CircularPictureBox pic_PlayerAvatar;
         private System.Windows.Forms.Label lbl_name;
         private System.Windows.Forms.Label lbl_username;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label lbl_HighScoreText;
+        private System.Windows.Forms.Label lbl_TotalScoreText;
+        private System.Windows.Forms.Label lbl_PRsText;
+        private System.Windows.Forms.Label lbl_BlocksPlacedText;
+        private System.Windows.Forms.Label lbl_GamesPlayedText;
+        private System.Windows.Forms.Label lbl_MovesText;
+        private System.Windows.Forms.Label lbl_Moves;
+        private System.Windows.Forms.Label lbl_GamesPlayed;
+        private System.Windows.Forms.Label lbl_BlocksPlaced;
+        private System.Windows.Forms.Label lbl_PRs;
+        private System.Windows.Forms.Label lbl_TotalScore;
+        private System.Windows.Forms.Label lbl_HighScore;
+        private System.Windows.Forms.CheckedListBox checkedListBox1;
     }
 }
