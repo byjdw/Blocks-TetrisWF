@@ -1,4 +1,5 @@
 ﻿using AS_Coursework.models;
+using AS_Coursework.exceptions;
 using AS_Coursework.Properties;
 using System.Collections.Generic;
 using System.Drawing;
@@ -48,12 +49,35 @@ internal static class DataManager
         Resources.Guest
     };
 
+/// <summary>
+/// It adds a player to the list of players, then saves the list of players
+/// </summary>
+/// <param name="Player">The player object that you want to add to the list.</param>
     public static void AddPlayer(Player player)
     {
+        if (player.Username == "Guest")
+            throw new InvalidPlayerException("Guest is a reserved username.");
+        else if (DoesPlayerExist(player.Username))
+            throw new InvalidPlayerException("A player with that username already exists.");
+
         players.Add(player);
         SavePlayers();
     }
 
+    public static bool DoesPlayerExist(string username)
+    {
+        foreach (var player in players)
+            if (player.Username == username)
+                return true;
+        return false;
+    }
+
+/// <summary>
+/// It loops through all the players in the list, and if the username of the player in the list matches
+/// the username of the player passed into the function, it overwrites the player in the list with the
+/// player passed into the function
+/// </summary>
+/// <param name="Player">The player object you want to overwrite.</param>
     public static void OverwritePlayer(Player player)
     {
         for (var i = 0; i < getPlayers().Count; i++)
@@ -61,6 +85,9 @@ internal static class DataManager
                 players[i] = player;
     }
 
+/// <summary>
+/// It takes the players list and serializes it into a JSON file
+/// </summary>
     public static void SavePlayers()
     {
         Stream fileStream;
@@ -74,6 +101,9 @@ internal static class DataManager
         }
     }
 
+/// <summary>
+/// It reads the player details from a JSON file and stores them in a list
+/// </summary>
     public static void ReadPlayers()
     {
         try
@@ -94,17 +124,37 @@ internal static class DataManager
         }
     }
 
+/// <summary>
+/// It returns a list of players
+/// </summary>
+/// <returns>
+/// The list of players.
+/// </returns>
     public static List<Player> getPlayers()
     {
         return players;
     }
 
+/// <summary>
+/// It takes a string, converts it to a byte array, and then hashes it using the SHA256 algorithm
+/// </summary>
+/// <param name="inputString">The string to be hashed.</param>
+/// <returns>
+/// A byte array.
+/// </returns>
     public static byte[] createHash(string inputString)
     {
         HashAlgorithm algorithm = SHA256.Create();
         return algorithm.ComputeHash(Encoding.UTF8.GetBytes(inputString));
     }
 
+/// <summary>
+/// It takes a string, creates a hash of it, and returns the hash as a string
+/// </summary>
+/// <param name="inputString">The string to be hashed.</param>
+/// <returns>
+/// A string of hexadecimal characters.
+/// </returns>
     public static string getHashString(string inputString)
     {
         var sb = new StringBuilder();
@@ -112,9 +162,5 @@ internal static class DataManager
             sb.Append(b.ToString("X2"));
 
         return sb.ToString();
-    }
-
-    public static void FinishUp()
-    {
     }
 }

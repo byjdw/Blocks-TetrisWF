@@ -98,6 +98,11 @@ public class GameSession
         Ticks += 1;
     }
 
+/// <summary>
+/// If the block hasn't been held yet, hide the current block, set the held block to the current block,
+/// set the current block to the next block in the queue, remove the next block from the queue, add a
+/// new block to the queue, and set the usedHold variable to true
+/// </summary>
     public void Hold()
     {
         if (usedHold) return;
