@@ -1,12 +1,14 @@
-﻿using AS_Coursework.enums;
-using AS_Coursework.game;
-using AS_Coursework.io;
-using AS_Coursework.Properties;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using AS_Coursework.enums;
+using AS_Coursework.forms.game;
+using AS_Coursework.forms;
+using AS_Coursework.Properties;
+using AS_Coursework.io;
 
-namespace AS_Coursework.models;
+namespace AS_Coursework.models
+{
 
 [Serializable]
 public class Block
@@ -88,7 +90,7 @@ public class Block
     }
 
     /// <summary>
-    /// It adjusts the X position of the block by the amount specified in the parameter
+    ///     It adjusts the X position of the block by the amount specified in the parameter
     /// </summary>
     /// <param name="GameWindow">The instance of the game window.</param>
     /// <param name="adjX">The amount to adjust the X position by.</param>
@@ -100,7 +102,7 @@ public class Block
     }
 
     /// <summary>
-    /// It calls RenderNext() with params causing the block to descend by 1
+    ///     It calls RenderNext() with params causing the block to descend by 1
     /// </summary>
     /// <param name="GameWindow">The instance of the game window.</param>
     public void Descend(GameWindow instance)
@@ -111,11 +113,10 @@ public class Block
     }
 
     /// <summary>
-    /// It takes the current rotation, adds one to it, and if it's greater than the maximum rotation, it
-    /// sets it to zero.
-    /// 
-    /// The next step is to call the `RenderNext` function, which is the function that actually draws the
-    /// next shape.
+    ///     It takes the current rotation, adds one to it, and if it's greater than the maximum rotation, it
+    ///     sets it to zero.
+    ///     The next step is to call the `RenderNext` function, which is the function that actually draws the
+    ///     next shape.
     /// </summary>
     /// <param name="GameWindow">The instance of the game window.</param>
     public void Rotate(GameWindow instance)
@@ -127,7 +128,7 @@ public class Block
     }
 
     /// <summary>
-    /// It renders the next block
+    ///     It renders the next block
     /// </summary>
     /// <param name="GameWindow">The instance of the game window.</param>
     /// <param name="x">The x position of the block.</param>
@@ -192,7 +193,7 @@ public class Block
     }
 
     /// <summary>
-    /// It hides the block by replacing the tiles with empty tiles
+    ///     It hides the block by replacing the tiles with empty tiles
     /// </summary>
     /// <param name="GameWindow">The instance of the game window.</param>
     public void Hide(GameWindow instance)
@@ -222,14 +223,14 @@ public class Block
     }
 
     /// <summary>
-    /// It takes a row, column, and rotation, and returns a list of positions that represent the block in
-    /// that state.
+    ///     It takes a row, column, and rotation, and returns a list of positions that represent the block in
+    ///     that state.
     /// </summary>
     /// <param name="row">the row of the block</param>
     /// <param name="column">the column of the block</param>
     /// <param name="r">rotation</param>
     /// <returns>
-    /// A list of positions.
+    ///     A list of positions.
     /// </returns>
     private List<Position> GeneratePositions(float row, float column, int r)
     {
@@ -288,12 +289,12 @@ public class Block
     }
 
     /// <summary>
-    /// It checks if the tiles are valid for the current piece's next movement
+    ///     It checks if the tiles are valid for the current piece's next movement
     /// </summary>
     /// <param name="GameWindow">The instance of the game window.</param>
     /// <param name="positions">A list of positions that the piece is going to be occupying.</param>
     /// <returns>
-    /// A boolean array.
+    ///     A boolean array.
     /// </returns>
     private bool[] ValidatesTiles(GameWindow instance, List<Position> positions)
     {
@@ -341,14 +342,15 @@ public class Block
     }
 
     /// <summary>
-    /// It returns a string that contains the block's type, id, moves, idle, x, y, and distance to the maxY
+    ///     It returns a string that contains the block's type, id, moves, idle, x, y, and distance to the maxY
     /// </summary>
     /// <returns>
-    /// The parameters of the block.
+    ///     The parameters of the block.
     /// </returns>
     public override string ToString()
     {
         return
             $"BLOCK: Type {type.ToString()}, Id {id}, Moves {moves}, Idle {idle}, X: {position.x}, Y: {position.y}, Dist to MaxY: {maxY - 1 - position.y}";
     }
+}
 }

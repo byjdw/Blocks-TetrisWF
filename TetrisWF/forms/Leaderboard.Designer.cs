@@ -1,6 +1,8 @@
-﻿namespace AS_Coursework.forms
+﻿using System.Windows.Forms;
+
+namespace AS_Coursework.forms
 {
-    partial class Scoreboard
+    partial class Leaderboard
     {
         /// <summary>
         /// Required designer variable.
@@ -11,7 +13,7 @@
         /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        protected override void Dispose(bool disposing)
+        protected void Dispose(bool disposing)
         {
             if (disposing && (components != null))
             {
@@ -28,27 +30,30 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label1 = new System.Windows.Forms.Label();
+            lbl_HighScore1 = new System.Windows.Forms.Label();
             lbl_Title = new System.Windows.Forms.Label();
             pic_TitleCard = new System.Windows.Forms.PictureBox();
-            label2 = new System.Windows.Forms.Label();
             panel1 = new System.Windows.Forms.Panel();
+            btn_ExitProgram = new System.Windows.Forms.Button();
             pic_SideBar = new System.Windows.Forms.PictureBox();
-            circularPictureBox1 = new controls.CircularPictureBox();
+            lbl_HighScore2 = new System.Windows.Forms.Label();
+            lbl_HighScore3 = new System.Windows.Forms.Label();
+            lbl_HighScoreGeneric = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)pic_TitleCard).BeginInit();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pic_SideBar).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)circularPictureBox1).BeginInit();
             SuspendLayout();
             // 
-            // label1
+            // lbl_HighScore1
             // 
-            label1.AutoSize = true;
-            label1.Location = new System.Drawing.Point(12, 121);
-            label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(38, 15);
-            label1.TabIndex = 0;
-            label1.Text = "label1";
+            lbl_HighScore1.AutoSize = true;
+            lbl_HighScore1.Font = new System.Drawing.Font("Segoe UI Black", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            lbl_HighScore1.ForeColor = System.Drawing.Color.Gold;
+            lbl_HighScore1.Location = new System.Drawing.Point(12, 121);
+            lbl_HighScore1.Name = "lbl_HighScore1";
+            lbl_HighScore1.Size = new System.Drawing.Size(261, 30);
+            lbl_HighScore1.TabIndex = 0;
+            lbl_HighScore1.Text = "1. [PLAYER1] - [SCORE1]";
             // 
             // lbl_Title
             // 
@@ -72,23 +77,28 @@
             pic_TitleCard.TabIndex = 33;
             pic_TitleCard.TabStop = false;
             // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new System.Drawing.Point(12, 103);
-            label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(38, 15);
-            label2.TabIndex = 35;
-            label2.Text = "label2";
-            // 
             // panel1
             // 
-            panel1.Controls.Add(circularPictureBox1);
+            panel1.Controls.Add(btn_ExitProgram);
             panel1.Controls.Add(pic_SideBar);
             panel1.Location = new System.Drawing.Point(329, -3);
             panel1.Name = "panel1";
             panel1.Size = new System.Drawing.Size(305, 350);
             panel1.TabIndex = 36;
+            // 
+            // btn_ExitProgram
+            // 
+            btn_ExitProgram.BackColor = System.Drawing.Color.IndianRed;
+            btn_ExitProgram.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            btn_ExitProgram.ForeColor = System.Drawing.SystemColors.Window;
+            btn_ExitProgram.Location = new System.Drawing.Point(264, 12);
+            btn_ExitProgram.Margin = new System.Windows.Forms.Padding(0);
+            btn_ExitProgram.Name = "btn_ExitProgram";
+            btn_ExitProgram.Size = new System.Drawing.Size(27, 23);
+            btn_ExitProgram.TabIndex = 37;
+            btn_ExitProgram.Text = "X";
+            btn_ExitProgram.UseVisualStyleBackColor = false;
+            btn_ExitProgram.Click += btn_ExitProgram_Click;
             // 
             // pic_SideBar
             // 
@@ -101,16 +111,37 @@
             pic_SideBar.TabIndex = 35;
             pic_SideBar.TabStop = false;
             // 
-            // circularPictureBox1
+            // lbl_HighScore2
             // 
-            circularPictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            circularPictureBox1.Image = Properties.Resources.Guest;
-            circularPictureBox1.Location = new System.Drawing.Point(105, 71);
-            circularPictureBox1.Name = "circularPictureBox1";
-            circularPictureBox1.Size = new System.Drawing.Size(100, 100);
-            circularPictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            circularPictureBox1.TabIndex = 36;
-            circularPictureBox1.TabStop = false;
+            lbl_HighScore2.AutoSize = true;
+            lbl_HighScore2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            lbl_HighScore2.ForeColor = System.Drawing.Color.Silver;
+            lbl_HighScore2.Location = new System.Drawing.Point(13, 148);
+            lbl_HighScore2.Name = "lbl_HighScore2";
+            lbl_HighScore2.Size = new System.Drawing.Size(223, 25);
+            lbl_HighScore2.TabIndex = 37;
+            lbl_HighScore2.Text = "2. [PLAYER2] -[SCORE2]";
+            // 
+            // lbl_HighScore3
+            // 
+            lbl_HighScore3.AutoSize = true;
+            lbl_HighScore3.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            lbl_HighScore3.ForeColor = System.Drawing.Color.Peru;
+            lbl_HighScore3.Location = new System.Drawing.Point(16, 173);
+            lbl_HighScore3.Name = "lbl_HighScore3";
+            lbl_HighScore3.Size = new System.Drawing.Size(186, 21);
+            lbl_HighScore3.TabIndex = 38;
+            lbl_HighScore3.Text = "3.  [PLAYER3] - [SCORE3]";
+            // 
+            // lbl_HighScoreGeneric
+            // 
+            lbl_HighScoreGeneric.AutoSize = true;
+            lbl_HighScoreGeneric.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            lbl_HighScoreGeneric.Location = new System.Drawing.Point(18, 196);
+            lbl_HighScoreGeneric.Name = "lbl_HighScoreGeneric";
+            lbl_HighScoreGeneric.Size = new System.Drawing.Size(155, 85);
+            lbl_HighScoreGeneric.TabIndex = 39;
+            lbl_HighScoreGeneric.Text = "4.   [PLAYER4] - [SCORE4]\r\n5.   [PLAYER5] - [SCORE5]\r\n6.   [PLAYER6] - [SCORE6]\r\n7.   [PLAYER7] - [SCORE7]\r\n8.   [PLAYER8] - [SCORE8]";
             // 
             // Scoreboard
             // 
@@ -119,29 +150,32 @@
             BackColor = System.Drawing.Color.AliceBlue;
             ClientSize = new System.Drawing.Size(629, 344);
             ControlBox = false;
+            Controls.Add(lbl_HighScoreGeneric);
+            Controls.Add(lbl_HighScore3);
+            Controls.Add(lbl_HighScore2);
             Controls.Add(panel1);
-            Controls.Add(label2);
             Controls.Add(lbl_Title);
             Controls.Add(pic_TitleCard);
-            Controls.Add(label1);
+            Controls.Add(lbl_HighScore1);
             Name = "Scoreboard";
             Text = "Blocks • Scoreboard";
             ((System.ComponentModel.ISupportInitialize)pic_TitleCard).EndInit();
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pic_SideBar).EndInit();
-            ((System.ComponentModel.ISupportInitialize)circularPictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lbl_HighScore1;
         private System.Windows.Forms.Label lbl_Title;
         private System.Windows.Forms.PictureBox pic_TitleCard;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel1;
-        private controls.CircularPictureBox circularPictureBox1;
         private System.Windows.Forms.PictureBox pic_SideBar;
+        private System.Windows.Forms.Button btn_ExitProgram;
+        private System.Windows.Forms.Label lbl_HighScore2;
+        private System.Windows.Forms.Label lbl_HighScore3;
+        private System.Windows.Forms.Label lbl_HighScoreGeneric;
     }
 }

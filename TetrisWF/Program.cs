@@ -1,22 +1,23 @@
-using AS_Coursework.io;
 using System;
 using System.Windows.Forms;
+using AS_Coursework.forms;
+using AS_Coursework.io;
 
-namespace AS_Coursework;
-
-internal static class App
+namespace AS_Coursework
 {
-    /// <summary>
-    ///     The main entry point for the application.
-    /// </summary>
-    [STAThread]
-    private static void Main()
+
+    internal static class Program
     {
-        // To customize application configuration such as set high DPI settings or default font,
-        // see https://aka.ms/applicationconfiguration.
-        ApplicationConfiguration.Initialize();
-        /* Reading the players from the file. */
-        DataManager.ReadPlayers();
-        Application.Run(new Splash());
+        /// <summary>
+        ///     The main entry point for the application.
+        /// </summary>
+        [STAThread]
+        private static void Main()
+        {
+            ApplicationConfiguration.Initialize();
+            /* Reading the players from the file. */
+            DataManager.ReadPlayers();
+            Application.Run(new Login());
+        }
     }
 }

@@ -1,13 +1,14 @@
-﻿using AS_Coursework.@internal;
-using AS_Coursework.models;
+﻿using System;
 using System.Windows.Forms;
+using AS_Coursework.@internal;
+using AS_Coursework.models;
 
-namespace AS_Coursework.game;
+namespace AS_Coursework.forms.game {
 
 public partial class GameEnd : Form
 {
-    private GameSession session;
     private int exitTimer;
+    private GameSession session;
 
     public GameEnd(GameSession session, int hs)
     {
@@ -33,15 +34,16 @@ public partial class GameEnd : Form
         lbl_SecondsRemaining.Text = 15 + " seconds...";
     }
 
-    private void ReturnToMenuTimer_Tick(object sender, System.EventArgs e)
+    private void ReturnToMenuTimer_Tick(object sender, EventArgs e)
     {
         exitTimer++;
         if (exitTimer == 16)
         {
-            this.Close();
+            Close();
             SessionManager.MainMenuForm.Show();
         }
 
-        lbl_SecondsRemaining.Text = (15 - exitTimer).ToString() + " seconds...";
+        lbl_SecondsRemaining.Text = (15 - exitTimer) + " seconds...";
     }
+}
 }

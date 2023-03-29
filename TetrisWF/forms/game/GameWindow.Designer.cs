@@ -1,7 +1,7 @@
 ﻿using System.Drawing;
 using System.Windows.Forms;
 
-namespace AS_Coursework.game
+namespace AS_Coursework.forms.game
 {
     partial class GameWindow
     {

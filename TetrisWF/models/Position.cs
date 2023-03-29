@@ -1,7 +1,8 @@
 using System;
 using System.Drawing;
 
-namespace AS_Coursework.models;
+namespace AS_Coursework.models
+{
 
 public sealed class Position : IEquatable<Position>
 {
@@ -108,4 +109,5 @@ public sealed class Position : IEquatable<Position>
     {
         return new PointF(self.x, self.y);
     }
+}
 }

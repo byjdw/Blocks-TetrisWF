@@ -1,9 +1,9 @@
 ﻿using System.Drawing;
 using System.Windows.Forms;
 
-namespace AS_Coursework
+namespace AS_Coursework.forms
 {
-    partial class Registration
+    partial class Register
     {
         /// <summary>
         /// Required designer variable.
@@ -38,14 +38,9 @@ namespace AS_Coursework
             txt_passwordConfirm = new TextBox();
             btn_registerPlayer = new Button();
             lbl_Title = new Label();
-            lbl_forenameError = new Label();
-            lbl_surnameError = new Label();
-            lbl_usernameError = new Label();
-            lbl_passwordError = new Label();
-            lbl_passwordConfirmError = new Label();
             pic_playerAvatar = new controls.CircularPictureBox();
             openFileDialog1 = new OpenFileDialog();
-            button1 = new Button();
+            btn_QuickCreate = new Button();
             btn_CycleAvatarBack = new Button();
             btn_CycleAvatarForward = new Button();
             pic_SideBar = new PictureBox();
@@ -56,6 +51,11 @@ namespace AS_Coursework
             label5 = new Label();
             btn_Exit = new Button();
             pic_TitleCard = new PictureBox();
+            lbl_forenameError = new Label();
+            lbl_surnameError = new Label();
+            lbl_passwordError = new Label();
+            lbl_usernameError = new Label();
+            lbl_passwordConfirmError = new Label();
             ((System.ComponentModel.ISupportInitialize)pic_playerAvatar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pic_SideBar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pic_TitleCard).BeginInit();
@@ -64,6 +64,7 @@ namespace AS_Coursework
             // txt_forename
             // 
             txt_forename.Location = new Point(14, 112);
+            txt_forename.MaxLength = 18;
             txt_forename.Name = "txt_forename";
             txt_forename.PlaceholderText = "Forename";
             txt_forename.Size = new Size(140, 23);
@@ -73,6 +74,7 @@ namespace AS_Coursework
             // txt_surname
             // 
             txt_surname.Location = new Point(169, 112);
+            txt_surname.MaxLength = 18;
             txt_surname.Name = "txt_surname";
             txt_surname.PlaceholderText = "Surname";
             txt_surname.Size = new Size(140, 23);
@@ -82,7 +84,7 @@ namespace AS_Coursework
             // txt_username
             // 
             txt_username.Location = new Point(14, 157);
-            txt_username.MaxLength = 16;
+            txt_username.MaxLength = 18;
             txt_username.Name = "txt_username";
             txt_username.PlaceholderText = "Username";
             txt_username.Size = new Size(140, 23);
@@ -92,6 +94,7 @@ namespace AS_Coursework
             // txt_password
             // 
             txt_password.Location = new Point(169, 157);
+            txt_password.MaxLength = 24;
             txt_password.Name = "txt_password";
             txt_password.PasswordChar = '*';
             txt_password.PlaceholderText = "Password";
@@ -102,6 +105,7 @@ namespace AS_Coursework
             // txt_passwordConfirm
             // 
             txt_passwordConfirm.Location = new Point(14, 201);
+            txt_passwordConfirm.MaxLength = 24;
             txt_passwordConfirm.Name = "txt_passwordConfirm";
             txt_passwordConfirm.PasswordChar = '*';
             txt_passwordConfirm.PlaceholderText = "Confirm Password";
@@ -130,56 +134,6 @@ namespace AS_Coursework
             lbl_Title.TabIndex = 11;
             lbl_Title.Text = "REGISTER FOR";
             // 
-            // lbl_forenameError
-            // 
-            lbl_forenameError.AutoSize = true;
-            lbl_forenameError.ForeColor = Color.Crimson;
-            lbl_forenameError.Location = new Point(75, 97);
-            lbl_forenameError.Name = "lbl_forenameError";
-            lbl_forenameError.Size = new Size(88, 15);
-            lbl_forenameError.TabIndex = 12;
-            lbl_forenameError.Text = "Forename Error";
-            // 
-            // lbl_surnameError
-            // 
-            lbl_surnameError.AutoSize = true;
-            lbl_surnameError.ForeColor = Color.Crimson;
-            lbl_surnameError.Location = new Point(224, 97);
-            lbl_surnameError.Name = "lbl_surnameError";
-            lbl_surnameError.Size = new Size(82, 15);
-            lbl_surnameError.TabIndex = 13;
-            lbl_surnameError.Text = "Surname Error";
-            // 
-            // lbl_usernameError
-            // 
-            lbl_usernameError.AutoSize = true;
-            lbl_usernameError.ForeColor = Color.Crimson;
-            lbl_usernameError.Location = new Point(75, 139);
-            lbl_usernameError.Name = "lbl_usernameError";
-            lbl_usernameError.Size = new Size(88, 15);
-            lbl_usernameError.TabIndex = 14;
-            lbl_usernameError.Text = "Username Error";
-            // 
-            // lbl_passwordError
-            // 
-            lbl_passwordError.AutoSize = true;
-            lbl_passwordError.ForeColor = Color.Crimson;
-            lbl_passwordError.Location = new Point(224, 139);
-            lbl_passwordError.Name = "lbl_passwordError";
-            lbl_passwordError.Size = new Size(85, 15);
-            lbl_passwordError.TabIndex = 16;
-            lbl_passwordError.Text = "Password Error";
-            // 
-            // lbl_passwordConfirmError
-            // 
-            lbl_passwordConfirmError.AutoSize = true;
-            lbl_passwordConfirmError.ForeColor = Color.Crimson;
-            lbl_passwordConfirmError.Location = new Point(124, 183);
-            lbl_passwordConfirmError.Name = "lbl_passwordConfirmError";
-            lbl_passwordConfirmError.Size = new Size(132, 15);
-            lbl_passwordConfirmError.TabIndex = 17;
-            lbl_passwordConfirmError.Text = "Password Confirm Error";
-            // 
             // pic_playerAvatar
             // 
             pic_playerAvatar.BorderStyle = BorderStyle.FixedSingle;
@@ -197,16 +151,16 @@ namespace AS_Coursework
             openFileDialog1.FileName = "openFileDialog1";
             openFileDialog1.Title = "Blocks · Pick Avatar Image";
             // 
-            // button1
+            // btn_QuickCreate
             // 
-            button1.Location = new Point(92, 299);
-            button1.Margin = new Padding(2, 1, 2, 1);
-            button1.Name = "button1";
-            button1.Size = new Size(140, 22);
-            button1.TabIndex = 20;
-            button1.Text = "Quick Create";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            btn_QuickCreate.Location = new Point(92, 299);
+            btn_QuickCreate.Margin = new Padding(2, 1, 2, 1);
+            btn_QuickCreate.Name = "btn_QuickCreate";
+            btn_QuickCreate.Size = new Size(140, 22);
+            btn_QuickCreate.TabIndex = 20;
+            btn_QuickCreate.Text = "Quick Create";
+            btn_QuickCreate.UseVisualStyleBackColor = true;
+            btn_QuickCreate.Click += btn_QuickCreate_Click;
             // 
             // btn_CycleAvatarBack
             // 
@@ -316,13 +270,68 @@ namespace AS_Coursework
             pic_TitleCard.TabIndex = 30;
             pic_TitleCard.TabStop = false;
             // 
-            // Registration
+            // lbl_forenameError
+            // 
+            lbl_forenameError.AutoSize = true;
+            lbl_forenameError.ForeColor = Color.Crimson;
+            lbl_forenameError.Location = new Point(14, 97);
+            lbl_forenameError.Name = "lbl_forenameError";
+            lbl_forenameError.Size = new Size(88, 15);
+            lbl_forenameError.TabIndex = 12;
+            lbl_forenameError.Text = "Forename Error";
+            // 
+            // lbl_surnameError
+            // 
+            lbl_surnameError.AutoSize = true;
+            lbl_surnameError.ForeColor = Color.Crimson;
+            lbl_surnameError.Location = new Point(169, 97);
+            lbl_surnameError.Name = "lbl_surnameError";
+            lbl_surnameError.Size = new Size(82, 15);
+            lbl_surnameError.TabIndex = 13;
+            lbl_surnameError.Text = "Surname Error";
+            // 
+            // lbl_passwordError
+            // 
+            lbl_passwordError.AutoSize = true;
+            lbl_passwordError.ForeColor = Color.Crimson;
+            lbl_passwordError.Location = new Point(169, 139);
+            lbl_passwordError.Name = "lbl_passwordError";
+            lbl_passwordError.Size = new Size(85, 15);
+            lbl_passwordError.TabIndex = 16;
+            lbl_passwordError.Text = "Password Error";
+            // 
+            // lbl_usernameError
+            // 
+            lbl_usernameError.AutoSize = true;
+            lbl_usernameError.ForeColor = Color.Crimson;
+            lbl_usernameError.Location = new Point(14, 139);
+            lbl_usernameError.Name = "lbl_usernameError";
+            lbl_usernameError.Size = new Size(88, 15);
+            lbl_usernameError.TabIndex = 14;
+            lbl_usernameError.Text = "Username Error";
+            // 
+            // lbl_passwordConfirmError
+            // 
+            lbl_passwordConfirmError.AutoSize = true;
+            lbl_passwordConfirmError.ForeColor = Color.Crimson;
+            lbl_passwordConfirmError.Location = new Point(14, 183);
+            lbl_passwordConfirmError.Name = "lbl_passwordConfirmError";
+            lbl_passwordConfirmError.Size = new Size(132, 15);
+            lbl_passwordConfirmError.TabIndex = 17;
+            lbl_passwordConfirmError.Text = "Password Confirm Error";
+            // 
+            // Register
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.AliceBlue;
             ClientSize = new Size(629, 344);
             ControlBox = false;
+            Controls.Add(lbl_passwordConfirmError);
+            Controls.Add(lbl_passwordError);
+            Controls.Add(lbl_usernameError);
+            Controls.Add(lbl_surnameError);
+            Controls.Add(lbl_forenameError);
             Controls.Add(btn_Exit);
             Controls.Add(label5);
             Controls.Add(label4);
@@ -332,13 +341,8 @@ namespace AS_Coursework
             Controls.Add(pic_SideBar);
             Controls.Add(btn_CycleAvatarForward);
             Controls.Add(btn_CycleAvatarBack);
-            Controls.Add(button1);
+            Controls.Add(btn_QuickCreate);
             Controls.Add(pic_playerAvatar);
-            Controls.Add(lbl_passwordConfirmError);
-            Controls.Add(lbl_passwordError);
-            Controls.Add(lbl_usernameError);
-            Controls.Add(lbl_surnameError);
-            Controls.Add(lbl_forenameError);
             Controls.Add(lbl_Title);
             Controls.Add(btn_registerPlayer);
             Controls.Add(txt_passwordConfirm);
@@ -349,7 +353,7 @@ namespace AS_Coursework
             Controls.Add(pic_TitleCard);
             MaximumSize = new Size(645, 383);
             MinimumSize = new Size(645, 383);
-            Name = "Registration";
+            Name = "Register";
             Text = "Blocks · Registration";
             ((System.ComponentModel.ISupportInitialize)pic_playerAvatar).EndInit();
             ((System.ComponentModel.ISupportInitialize)pic_SideBar).EndInit();
@@ -366,14 +370,9 @@ namespace AS_Coursework
         private TextBox txt_passwordConfirm;
         private Button btn_registerPlayer;
         private Label lbl_Title;
-        private Label lbl_forenameError;
-        private Label lbl_surnameError;
-        private Label lbl_usernameError;
-        private Label lbl_passwordError;
-        private Label lbl_passwordConfirmError;
         private controls.CircularPictureBox pic_playerAvatar;
         private OpenFileDialog openFileDialog1;
-        private Button button1;
+        private Button btn_QuickCreate;
         private Button btn_CycleAvatarBack;
         private Button btn_CycleAvatarForward;
         private PictureBox pic_SideBar;
@@ -384,5 +383,10 @@ namespace AS_Coursework
         private Label label5;
         private Button btn_Exit;
         private PictureBox pic_TitleCard;
+        private Label lbl_forenameError;
+        private Label lbl_surnameError;
+        private Label lbl_passwordError;
+        private Label lbl_usernameError;
+        private Label lbl_passwordConfirmError;
     }
 }

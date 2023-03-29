@@ -1,10 +1,10 @@
-﻿using AS_Coursework.controls;
-using System.Drawing;
+﻿using System.Drawing;
 using System.Windows.Forms;
+using AS_Coursework.controls;
 
-namespace AS_Coursework
+namespace AS_Coursework.forms
 {
-    partial class MainMenu
+    partial class GameMenu
     {
         /// <summary>
         ///  Required designer variable.
@@ -43,7 +43,6 @@ namespace AS_Coursework
             btn_ChangeUser = new Button();
             btn_OpenLeaderboardForm = new Button();
             btn_OpenStatisticsForm = new Button();
-            btn_OpenSettingsPane = new Button();
             lbl_Title = new Label();
             pic_TitleCard = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)pic_PlayerAvatar).BeginInit();
@@ -142,7 +141,7 @@ namespace AS_Coursework
             // btn_ChangeUser
             // 
             btn_ChangeUser.BackColor = SystemColors.Control;
-            btn_ChangeUser.Location = new Point(130, 300);
+            btn_ChangeUser.Location = new Point(107, 300);
             btn_ChangeUser.Name = "btn_ChangeUser";
             btn_ChangeUser.Size = new Size(90, 24);
             btn_ChangeUser.TabIndex = 26;
@@ -175,17 +174,6 @@ namespace AS_Coursework
             btn_OpenStatisticsForm.UseVisualStyleBackColor = false;
             btn_OpenStatisticsForm.Click += btn_OpenStatisticsForm_Click;
             // 
-            // btn_OpenSettingsPane
-            // 
-            btn_OpenSettingsPane.BackColor = SystemColors.Control;
-            btn_OpenSettingsPane.Location = new Point(105, 300);
-            btn_OpenSettingsPane.Name = "btn_OpenSettingsPane";
-            btn_OpenSettingsPane.Size = new Size(25, 24);
-            btn_OpenSettingsPane.TabIndex = 29;
-            btn_OpenSettingsPane.Text = "⚙️⚙";
-            btn_OpenSettingsPane.UseVisualStyleBackColor = false;
-            btn_OpenSettingsPane.Click += btn_OpenSettingsPane_Click;
-            // 
             // lbl_Title
             // 
             lbl_Title.AutoSize = true;
@@ -216,7 +204,6 @@ namespace AS_Coursework
             ClientSize = new Size(629, 344);
             ControlBox = false;
             Controls.Add(lbl_Title);
-            Controls.Add(btn_OpenSettingsPane);
             Controls.Add(btn_OpenStatisticsForm);
             Controls.Add(btn_OpenLeaderboardForm);
             Controls.Add(btn_ChangeUser);
@@ -256,7 +243,6 @@ namespace AS_Coursework
         private Button btn_ChangeUser;
         private Button btn_OpenLeaderboardForm;
         private Button btn_OpenStatisticsForm;
-        private Button btn_OpenSettingsPane;
         private Label lbl_Title;
         private PictureBox pic_TitleCard;
     }

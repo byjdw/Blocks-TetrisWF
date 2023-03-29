@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace AS_Coursework.models;
+namespace AS_Coursework.models
+{
 
 [Serializable]
 public class GameState
@@ -9,13 +10,13 @@ public class GameState
     // Block Storage
     private Block? current; // Current Block
     private Block? held; // Held Block
-    private List<Block> queue; // Future Blocks
+    private double multiplier; // Speed Multiplier
     private int n; // Block Count
+    private List<Block> queue; // Future Blocks
+    private int score; // Total Game Score
 
     // Session Information
-    private int t; // Total Game Ticks
-    private int score; // Total Game Score
-    private double multiplier; // Speed Multiplier
+    private int clearedLines; // Total Game Ticks
 
     // Board Information
     private List<string> tags; // Cached Tags
@@ -58,10 +59,10 @@ public class GameState
         set => n = value;
     }
 
-    public int Ticks
+    public int ClearedLines
     {
-        get => t;
-        set => t = value;
+        get => clearedLines;
+        set => clearedLines = value;
     }
 
     public List<string> Tiles
@@ -75,4 +76,5 @@ public class GameState
         get => tags;
         set => tags = value;
     }
+}
 }

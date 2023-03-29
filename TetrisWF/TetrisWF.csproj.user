@@ -5,29 +5,25 @@
     <Compile Update="controls\CircularPictureBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Update="forms\GameEnd.cs">
+    <Compile Update="forms\ProfilePane.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="forms\GameWindow.cs">
+    <Compile Update="forms\Leaderboard.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="forms\Profile.cs">
+    <Compile Update="forms\Login.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="forms\Scoreboard.cs">
+    <Compile Update="forms\Register.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="forms\SettingsPane.cs">
+    <Compile Update="forms\GameMenu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="forms\Splash.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="forms\Registration.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="forms\MainMenu.cs">
-      <SubType>Form</SubType>
-    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>

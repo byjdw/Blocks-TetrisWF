@@ -1,6 +1,8 @@
-﻿namespace AS_Coursework.forms
+﻿using System.Windows.Forms;
+
+namespace AS_Coursework.forms
 {
-    partial class Profile
+    partial class ProfilePane
     {
         /// <summary>
         /// Required designer variable.
@@ -11,7 +13,7 @@
         /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        protected override void Dispose(bool disposing)
+        protected void Dispose(bool disposing)
         {
             if (disposing && (components != null))
             {
@@ -28,33 +30,33 @@
         /// </summary>
         private void InitializeComponent()
         {
-            btn_Exit = new System.Windows.Forms.Button();
+            btn_Exit = new Button();
             pic_PlayerAvatar = new controls.CircularPictureBox();
-            lbl_name = new System.Windows.Forms.Label();
-            lbl_username = new System.Windows.Forms.Label();
-            lbl_HighScoreText = new System.Windows.Forms.Label();
-            lbl_TotalScoreText = new System.Windows.Forms.Label();
-            lbl_PRsText = new System.Windows.Forms.Label();
-            lbl_BlocksPlacedText = new System.Windows.Forms.Label();
-            lbl_GamesPlayedText = new System.Windows.Forms.Label();
-            lbl_MovesText = new System.Windows.Forms.Label();
-            lbl_Moves = new System.Windows.Forms.Label();
-            lbl_GamesPlayed = new System.Windows.Forms.Label();
-            lbl_BlocksPlaced = new System.Windows.Forms.Label();
-            lbl_PRs = new System.Windows.Forms.Label();
-            lbl_TotalScore = new System.Windows.Forms.Label();
-            lbl_HighScore = new System.Windows.Forms.Label();
-            checkedListBox1 = new System.Windows.Forms.CheckedListBox();
+            lbl_name = new Label();
+            lbl_username = new Label();
+            lbl_HighScoreText = new Label();
+            lbl_TotalScoreText = new Label();
+            lbl_PRsText = new Label();
+            lbl_BlocksPlacedText = new Label();
+            lbl_GamesPlayedText = new Label();
+            lbl_MovesText = new Label();
+            lbl_Moves = new Label();
+            lbl_GamesPlayed = new Label();
+            lbl_BlocksPlaced = new Label();
+            lbl_PRs = new Label();
+            lbl_TotalScore = new Label();
+            lbl_HighScore = new Label();
+            checkedListBox1 = new CheckedListBox();
             ((System.ComponentModel.ISupportInitialize)pic_PlayerAvatar).BeginInit();
             SuspendLayout();
             // 
             // btn_Exit
             // 
-            btn_Exit.BackColor = System.Drawing.Color.AliceBlue;
+            btn_Exit.BackColor = System.Drawing.Color.IndianRed;
             btn_Exit.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             btn_Exit.ForeColor = System.Drawing.SystemColors.Window;
             btn_Exit.Location = new System.Drawing.Point(273, 9);
-            btn_Exit.Margin = new System.Windows.Forms.Padding(0);
+            btn_Exit.Margin = new Padding(0);
             btn_Exit.Name = "btn_Exit";
             btn_Exit.Size = new System.Drawing.Size(27, 23);
             btn_Exit.TabIndex = 30;
@@ -64,12 +66,12 @@
             // 
             // pic_PlayerAvatar
             // 
-            pic_PlayerAvatar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            pic_PlayerAvatar.BorderStyle = BorderStyle.FixedSingle;
             pic_PlayerAvatar.Image = Properties.Resources.Guest;
             pic_PlayerAvatar.Location = new System.Drawing.Point(12, 9);
             pic_PlayerAvatar.Name = "pic_PlayerAvatar";
             pic_PlayerAvatar.Size = new System.Drawing.Size(65, 65);
-            pic_PlayerAvatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            pic_PlayerAvatar.SizeMode = PictureBoxSizeMode.StretchImage;
             pic_PlayerAvatar.TabIndex = 31;
             pic_PlayerAvatar.TabStop = false;
             // 
@@ -154,9 +156,9 @@
             lbl_MovesText.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             lbl_MovesText.Location = new System.Drawing.Point(17, 160);
             lbl_MovesText.Name = "lbl_MovesText";
-            lbl_MovesText.Size = new System.Drawing.Size(47, 15);
+            lbl_MovesText.Size = new System.Drawing.Size(87, 15);
             lbl_MovesText.TabIndex = 39;
-            lbl_MovesText.Text = "Moves";
+            lbl_MovesText.Text = "Lines Cleared";
             lbl_MovesText.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lbl_Moves
@@ -164,9 +166,9 @@
             lbl_Moves.AutoSize = true;
             lbl_Moves.Location = new System.Drawing.Point(124, 160);
             lbl_Moves.Name = "lbl_Moves";
-            lbl_Moves.Size = new System.Drawing.Size(54, 15);
+            lbl_Moves.Size = new System.Drawing.Size(99, 15);
             lbl_Moves.TabIndex = 45;
-            lbl_Moves.Text = "[MOVES]";
+            lbl_Moves.Text = "{LINES_CLEARED]";
             lbl_Moves.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // lbl_GamesPlayed
@@ -227,10 +229,10 @@
             checkedListBox1.Size = new System.Drawing.Size(8, 4);
             checkedListBox1.TabIndex = 46;
             // 
-            // Profile
+            // ProfilePane
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(309, 195);
             ControlBox = false;
             Controls.Add(checkedListBox1);
@@ -250,7 +252,7 @@
             Controls.Add(lbl_name);
             Controls.Add(pic_PlayerAvatar);
             Controls.Add(btn_Exit);
-            Name = "Profile";
+            Name = "ProfilePane";
             Text = "Blocks • Your Profile";
             ((System.ComponentModel.ISupportInitialize)pic_PlayerAvatar).EndInit();
             ResumeLayout(false);

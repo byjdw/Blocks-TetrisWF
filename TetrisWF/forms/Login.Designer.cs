@@ -1,9 +1,9 @@
 ﻿using System.Drawing;
 using System.Windows.Forms;
 
-namespace AS_Coursework
+namespace AS_Coursework.forms
 {
-    partial class Splash
+    partial class Login
     {
         /// <summary>
         /// Required designer variable.
