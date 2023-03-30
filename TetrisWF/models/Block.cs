@@ -6,6 +6,7 @@ using AS_Coursework.forms.game;
 using AS_Coursework.forms;
 using AS_Coursework.Properties;
 using AS_Coursework.io;
+using System.Numerics;
 
 namespace AS_Coursework.models
 {
@@ -63,9 +64,9 @@ public class Block
         }
 
         tile.Tag = type.ToString();
-    }
+        }
 
-    public int Id
+        public int Id
     {
         get => id;
         set => id = value;
@@ -127,76 +128,123 @@ public class Block
         RenderNext(instance, position.x, position.y, newR);
     }
 
-    /// <summary>
-    ///     It renders the next block
-    /// </summary>
-    /// <param name="GameWindow">The instance of the game window.</param>
-    /// <param name="x">The x position of the block.</param>
-    /// <param name="y">The y-coordinate of the block.</param>
-    /// <param name="r">Rotation</param>
-    private void RenderNext(GameWindow instance, float x, float y, int r)
-    {
-        var newBlock = GeneratePositions(x, y, r);
-        var validation = ValidatesTiles(instance, newBlock);
-        var h = validation[0]; // Valid horizontal move.
-        var v = validation[1]; // Valid vertical move.
-        if (!v)
+        /// <summary>
+        ///     It renders the next block
+        /// </summary>
+        /// <param name="GameWindow">The instance of the game window.</param>
+        /// <param name="x">The x position of the block.</param>
+        /// <param name="y">The y-coordinate of the block.</param>
+        /// <param name="r">Rotation</param>
+        private void RenderNext(GameWindow instance, float x, float y, int r)
         {
-            if (moves == 0) instance.GameOver();
-            else idle = true;
-        }
-
-        if (!h) return;
-        if (idle) return;
-
-        if (y > 0)
-        {
-            var oldBlock = GeneratePositions(position.x, position.y, this.r);
-            foreach (var pos in oldBlock)
+            var newBlock = GeneratePositions(x, y, r);
+            var validation = ValidateTiles(instance, newBlock);
+            var h = validation[0]; // Valid horizontal move.
+            var v = validation[1]; // Valid vertical move.
+            if (!v)
             {
-                var oldTile = instance.GetTileFromCoordinates((int)Math.Round(pos.x), (int)Math.Round(pos.y));
-                if (oldTile != null)
+                if (moves == 0) instance.Clear();
+                else idle = true;
+            }
+            if (!h) return;
+            if (idle) return;
+
+            instance.SuspendLayout();
+
+            if (y > 0)
+            {
+                var oldBlock = GeneratePositions(position.x, position.y, this.r);
+                foreach (var pos in oldBlock)
                 {
-                    oldTile.Image = Resources.Empty;
-                    oldTile.Tag = "Empty";
+                    var oldTile = instance.GetTileFromCoordinates((int)Math.Round(pos.x), (int)Math.Round(pos.y));
+                    if (oldTile != null)
+                    {
+                        oldTile.Image = Resources.Empty;
+                        oldTile.Tag = "Empty";
+                    }
+                }
+                List<Position> OldGhostBlock = GeneratePositions(position.x, position.y, this.r);
+                bool ValidOldGhostPlacement = true;
+                while (ValidOldGhostPlacement)
+                {
+                    List<Position> NewOldGhostBlock = GeneratePositions(position.x, OldGhostBlock[0].y + 1, this.r);
+                    bool[] ValidGhostBlock = ValidateTiles(instance, NewOldGhostBlock);
+                    if (ValidGhostBlock[0] && ValidGhostBlock[1]) OldGhostBlock = NewOldGhostBlock;
+                    else ValidOldGhostPlacement = false;
+                }
+
+                foreach (var pos in OldGhostBlock)
+                {
+                    var ghostTile = instance.GetTileFromCoordinates((int)Math.Round(pos.x), (int)Math.Round(pos.y));
+                    if (ghostTile != null)
+                    {
+                        ghostTile.Image = Resources.Empty;
+                        ghostTile.Tag = "Empty";
+                    }
                 }
             }
-        }
-        else
-        {
-            for (var i = 0; i < maxX; i++)
+            else
             {
-                var tile = instance.GetTileFromCoordinates(i, 0);
-                if (tile != null)
+                for (var i = 0; i < maxX; i++)
                 {
-                    tile.Image = Resources.Empty;
-                    tile.Tag = "Empty";
+                    var tile = instance.GetTileFromCoordinates(i, 0);
+                    if (tile != null)
+                    {
+                        tile.Image = Resources.Empty;
+                        tile.Tag = "Empty";
+                    }
                 }
             }
-        }
 
-        foreach (var pos in newBlock)
-        {
-            var newTile = instance.GetTileFromCoordinates((int)Math.Round(pos.x),
-                (int)Math.Round(pos.y));
-            if (newTile != null)
+            // Calculate the ghost block positions.
+            List<Position> GhostBlock = GeneratePositions(x, y, r);
+            bool ValidGhostPlacement = true;
+            while (ValidGhostPlacement)
             {
-                newTile.Image = tile;
-                newTile.Tag = id.ToString();
+                List<Position> NewGhostBlock = GeneratePositions(x, GhostBlock[0].y + 1, r);
+                bool[] ValidGhostBlock = ValidateTiles(instance, NewGhostBlock);
+                if (ValidGhostBlock[0] && ValidGhostBlock[1]) GhostBlock = NewGhostBlock;
+                else ValidGhostPlacement = false;
             }
+
+            // Render the ghost block.
+            foreach (var pos in GhostBlock)
+            {
+                var ghostTile = instance.GetTileFromCoordinates((int)Math.Round(pos.x), (int)Math.Round(pos.y));
+                if (ghostTile != null)
+                {
+                    ghostTile.Image = Resources.Ghost;
+                    ghostTile.Tag = id.ToString();
+                }
+            }
+
+            // Render the new block.
+            foreach (var pos in newBlock)
+            {
+                var newTile = instance.GetTileFromCoordinates((int)Math.Round(pos.x),
+                    (int)Math.Round(pos.y));
+                if (newTile != null)
+                {
+                    newTile.Image = tile;
+                    newTile.Tag = id.ToString();
+                }
+            }
+
+            instance.ResumeLayout(true);
+
+            position.x = x;
+            position.y = y;
+            this.r = r;
+            moves += 1;
         }
 
-        position.x = x;
-        position.y = y;
-        this.r = r;
-        moves += 1;
-    }
 
-    /// <summary>
-    ///     It hides the block by replacing the tiles with empty tiles
-    /// </summary>
-    /// <param name="GameWindow">The instance of the game window.</param>
-    public void Hide(GameWindow instance)
+
+        /// <summary>
+        ///     It hides the block by replacing the tiles with empty tiles
+        /// </summary>
+        /// <param name="GameWindow">The instance of the game window.</param>
+        public void Hide(GameWindow instance)
     {
         if (position.y > 0)
         {
@@ -210,7 +258,26 @@ public class Block
                     oldTile.Tag = "Empty";
                 }
             }
-        }
+                List<Position> OldGhostBlock = GeneratePositions(position.x, position.y, this.r);
+                bool ValidOldGhostPlacement = true;
+                while (ValidOldGhostPlacement)
+                {
+                    List<Position> NewOldGhostBlock = GeneratePositions(position.x, OldGhostBlock[0].y + 1, this.r);
+                    bool[] ValidGhostBlock = ValidateTiles(instance, NewOldGhostBlock);
+                    if (ValidGhostBlock[0] && ValidGhostBlock[1]) OldGhostBlock = NewOldGhostBlock;
+                    else ValidOldGhostPlacement = false;
+                }
+
+                foreach (var pos in OldGhostBlock)
+                {
+                    var ghostTile = instance.GetTileFromCoordinates((int)Math.Round(pos.x), (int)Math.Round(pos.y));
+                    if (ghostTile != null)
+                    {
+                        ghostTile.Image = Resources.Empty;
+                        ghostTile.Tag = "Empty";
+                    }
+                }
+            }
         else
         {
             for (var i = 0; i < maxX; i++)
@@ -296,18 +363,17 @@ public class Block
     /// <returns>
     ///     A boolean array.
     /// </returns>
-    private bool[] ValidatesTiles(GameWindow instance, List<Position> positions)
+    private bool[] ValidateTiles(GameWindow instance, List<Position> positions)
     {
         var baseX = (int)Math.Round(positions[0].x);
-        var baseY = (int)Math.Round(positions[0].y);
         var horizontal = true;
         var vertical = true;
         foreach (var pos in positions)
         {
             var h = true;
             var v = true;
-            var x = (int)Math.Round(pos.x);
-            var y = (int)Math.Round(pos.y);
+            var x = (int) Math.Round(pos.x);
+            var y = (int) Math.Round(pos.y);
             var tile = instance.GetTileFromCoordinates(x, y);
             if (tile == null)
             {
@@ -317,7 +383,7 @@ public class Block
             else
             {
                 Console.WriteLine($"TILE: Tag {tile.Tag}");
-                if (!tile.Tag.Equals("Empty") && !tile.Tag.Equals(id.ToString()))
+                if ((!tile.Tag.Equals("Empty")) && !tile.Tag.Equals(id.ToString()))
                 {
                     if (baseX != position.x) h = false;
                     else v = false;

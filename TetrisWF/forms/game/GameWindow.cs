@@ -233,6 +233,14 @@ namespace AS_Coursework.forms.game
             return (PictureBox)control;
         }
 
+        public void Clear()
+        {
+            for (int i = 0; i < boardHeight; i++)
+            {
+                RemoveRow(16);
+            }
+        }
+
         public void RemoveRow(int row)
         {
             var tiles = new List<Image>();
@@ -241,15 +249,6 @@ namespace AS_Coursework.forms.game
             {
                 tiles.Add(tile.Image);
                 tags.Add((string)tile.Tag);
-            }
-
-            for (var i = 0; i < tlp_GameBoard.Controls.Count; i++)
-            {
-                if (tags[i] != "Empty")
-                    Console.Write("[" + tags[i] + "]");
-                else
-                    Console.Write("[E]");
-                if ((tlp_GameBoard.Controls.Count + 1) / boardWidth == boardHeight) Console.Write("\n");
             }
 
             tiles.RemoveRange(tlp_GameBoard.Controls.Count - boardWidth * (boardHeight - row), boardWidth);
@@ -268,7 +267,7 @@ namespace AS_Coursework.forms.game
         {
             var tiles = new List<string>();
             foreach (var tile in tilesimg)
-                if (tile.Tag != "Empty")
+                if (tile.Tag != null && tile.Tag != "Empty")
                     tiles.Add(tile.Tag!.ToString()!);
                 else
                     tiles.Add("Empty");
@@ -310,7 +309,8 @@ namespace AS_Coursework.forms.game
             {
                 var full = true;
                 for (var j = 0; j < boardWidth; j++)
-                    if (Convert.ToString(GetTileFromCoordinates(j, i).Tag).Equals("Empty"))
+                    if (Convert.ToString(GetTileFromCoordinates(j, i).Tag).Equals("Empty")
+                        || Convert.ToString(GetTileFromCoordinates(j, i).Tag).Equals("Ghost"))
                         full = false;
                 if (full)
                 {
