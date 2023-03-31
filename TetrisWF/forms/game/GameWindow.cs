@@ -1,14 +1,13 @@
-﻿using System;
+﻿using AS_Coursework.enums;
+using AS_Coursework.@internal;
+using AS_Coursework.io;
+using AS_Coursework.models;
+using AS_Coursework.Properties;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Media;
 using System.Windows.Forms;
-using AS_Coursework.enums;
-using AS_Coursework.@internal;
-using AS_Coursework.forms;
-using AS_Coursework.models;
-using AS_Coursework.Properties;
-using AS_Coursework.io;
 
 namespace AS_Coursework.forms.game
 {
@@ -99,6 +98,10 @@ namespace AS_Coursework.forms.game
         public int boardHeight => tlp_GameBoard.RowCount;
         public bool Tick => GameTimer.Enabled;
         public bool Halt { get; private set; }
+    
+        public TableLayoutControlCollection Cells {
+            get => tlp_GameBoard.Controls;
+       }
 
 
         public List<Image> Tiles
@@ -162,15 +165,13 @@ namespace AS_Coursework.forms.game
             switch (e.KeyCode)
             {
                 case Keys.Left:
-                    Console.WriteLine("Left Key -> x-1");
                     session.AdjustX(-1);
                     break;
                 case Keys.Right:
-                    Console.WriteLine("Right Key -> x+1");
                     session.AdjustX(1);
                     break;
                 case Keys.Down:
-                    GameTimer.Interval = 50;
+                    GameTimer.Interval = 35;
                     break;
                 case Keys.Space:
                     GameTimer.Interval = 1;
@@ -197,7 +198,7 @@ namespace AS_Coursework.forms.game
                     break;
                 case Keys.Down:
                     if (!GameTimer.Enabled) return;
-                    GameTimer.Interval = gameInterval;
+                    GameTimer.Interval = Convert.ToInt32((double) gameInterval / session.Multiplier);
                     break;
                 case Keys.Q:
                     if (!GameTimer.Enabled) return;
@@ -218,7 +219,7 @@ namespace AS_Coursework.forms.game
             }
         }
 
-        public PictureBox? GetTileFromCoordinates(int x, int y)
+        public PictureBox? GetCellFromCoordinates(int x, int y)
         {
             Control control;
             try
@@ -261,6 +262,10 @@ namespace AS_Coursework.forms.game
 
             ForceRender(tiles, tags);
             session.ClearedLines += 1;
+            if (session.ClearedLines > 5 && session.ClearedLines % 5 == 0 && session.Multiplier < 9.95)
+            {
+                session.Multiplier += 0.10;
+            }
         }
 
         public List<string> TilesToString(List<Image> tilesimg)
@@ -309,8 +314,8 @@ namespace AS_Coursework.forms.game
             {
                 var full = true;
                 for (var j = 0; j < boardWidth; j++)
-                    if (Convert.ToString(GetTileFromCoordinates(j, i).Tag).Equals("Empty")
-                        || Convert.ToString(GetTileFromCoordinates(j, i).Tag).Equals("Ghost"))
+                    if (Convert.ToString(GetCellFromCoordinates(j, i).Tag).Equals("Empty")
+                        || Convert.ToString(GetCellFromCoordinates(j, i).Tag).Equals("Ghost"))
                         full = false;
                 if (full)
                 {
@@ -328,9 +333,6 @@ namespace AS_Coursework.forms.game
             GameTimer.Stop();
             Halt = true;
             currentBlock = null;
-            for (var i = 0; i < boardHeight; i++)
-            for (var j = 0; j < boardWidth; j++)
-                GetTileFromCoordinates(j, i).Image = Resources.Board_Z;
             new GameEnd(session, SessionManager.CurrentPlayer.HighScore).Show();
             session.GameOver();
             soundPlayer.Stop();

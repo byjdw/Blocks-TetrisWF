@@ -1,11 +1,9 @@
-﻿using System;
+﻿using AS_Coursework.forms.game;
+using AS_Coursework.@internal;
+using AS_Coursework.io;
+using System;
 using System.Drawing;
 using System.Windows.Forms;
-using AS_Coursework.forms;
-using AS_Coursework.forms.game;
-using AS_Coursework.@internal;
-using AS_Coursework.forms;
-using AS_Coursework.io;
 
 namespace AS_Coursework.forms
 {
@@ -59,13 +57,14 @@ namespace AS_Coursework.forms
             if (SessionManager.CurrentPlayer.PreviousGameState != null)
             {
                 var response = MessageBox.Show(
-                    "Starting a new game will overwrite your existing one,\nare you sure you want to start a new game?",
+                    "Starting a new game will overwrite your existing one," +
+                    "\nare you sure you want to start a new game?",
                     "Blocks · Notifcation",
                     MessageBoxButtons.YesNo,
                     MessageBoxIcon.Warning);
                 if (response.Equals(DialogResult.Yes))
                 {
-                    SessionManager.CurrentPlayer.PreviousGameState = null;
+                    SessionManager.CurrentPlayer.ClearGameState();
                     new GameWindow().Show();
                     Hide();
                 }

@@ -1,11 +1,10 @@
-using System;
-using System.Collections.Generic;
-using System.Windows.Forms;
 using AS_Coursework.enums;
 using AS_Coursework.forms.game;
 using AS_Coursework.@internal;
-using AS_Coursework.forms;
 using AS_Coursework.io;
+using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace AS_Coursework.models
 {
@@ -92,7 +91,7 @@ namespace AS_Coursework.models
             if (!instance.Tick) return;
             if (instance.Halt) return;
             CurrentBlock.Descend(instance);
-            if (instance.Interval == 50) AddScore(0, 1);
+            if (instance.Interval == 35) AddScore(0, 1);
             if (instance.Interval == 1) AddScore(0, 2);
             if (CurrentBlock.Idle)
             {
@@ -102,13 +101,11 @@ namespace AS_Coursework.models
                 instance.CheckLines();
                 return;
             }
-            if (clearedLines > 5 && clearedLines % 5 == 0)
-            {
-                Multiplier += 0.1;
-            }
+
             Ticks += 1;
-            Console.WriteLine(CurrentBlock.ToString());
             Console.WriteLine($"Cleared Lines: {clearedLines}");
+            Console.WriteLine($"Multiplier: {Multiplier}");
+            Console.WriteLine($"Interval: {instance.Interval}");
         }
 
         /// <summary>
@@ -175,7 +172,7 @@ namespace AS_Coursework.models
             if (Player == null) return;
             /* Adding the score to the player's total score, and if the score is greater than the player's high
             score, it sets the player's high score to the score and increments the player's personal records. */
-            if (!Player.IsGuest) return;
+            if (Player.IsGuest) return;
             Player.AllScore += Score;
             if (Score > Player.HighScore)
             {
@@ -186,7 +183,8 @@ namespace AS_Coursework.models
             /* Recording other misc statistics. */
             Player.BlocksPlaced += BlocksPlaced;
             Player.Games += 1;
-            Player.ClearedLines += ClearedLines;
+            Player.ClearedLines += clearedLines;
+            Player.ClearGameState();
             /* Overwriting the SessionManager's player cache and Saving the player's data to a file. */
             SessionManager.CurrentPlayer = Player;
             DataManager.OverwritePlayer(Player);

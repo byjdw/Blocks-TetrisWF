@@ -1,3 +1,6 @@
+using AS_Coursework.exceptions;
+using AS_Coursework.models;
+using AS_Coursework.Properties;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
@@ -5,9 +8,6 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
 using System.Windows.Forms;
-using AS_Coursework.exceptions;
-using AS_Coursework.models;
-using AS_Coursework.Properties;
 
 namespace AS_Coursework.io
 {

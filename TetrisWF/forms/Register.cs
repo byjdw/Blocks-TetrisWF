@@ -1,10 +1,9 @@
-﻿using System;
-using System.Windows.Forms;
-using AS_Coursework.exceptions;
+﻿using AS_Coursework.exceptions;
 using AS_Coursework.@internal;
-using AS_Coursework.forms;
-using AS_Coursework.models;
 using AS_Coursework.io;
+using AS_Coursework.models;
+using System;
+using System.Windows.Forms;
 
 namespace AS_Coursework.forms
 {
@@ -131,14 +130,14 @@ namespace AS_Coursework.forms
         {
             if (txt_password.Text.Length < 8)
             {
-                NewPlayer.Password = DataManager.GetHashString(txt_password.Text);
                 lbl_passwordError.Text = "Must be >8 chars long.";
-                ValidPassword = true;
+                ValidPassword = false;
             }
             else
             {
+                NewPlayer.Password = DataManager.GetHashString(txt_password.Text);
                 lbl_passwordError.Text = "";
-                ValidPassword = false;
+                ValidPassword = true;
             }
         }
 
@@ -147,12 +146,12 @@ namespace AS_Coursework.forms
             if (txt_password.Text != txt_passwordConfirm.Text)
             {
                 lbl_passwordConfirmError.Text = "Your passwords do not match!";
-                ValidPasswordConfirm = true;
+                ValidPasswordConfirm = false;
             }
             else
             {
                 lbl_passwordConfirmError.Text = "";
-                ValidPasswordConfirm = false;
+                ValidPasswordConfirm = true;
             }
         }
 

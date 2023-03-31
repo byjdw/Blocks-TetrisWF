@@ -1,7 +1,6 @@
-﻿using System;
-using AS_Coursework.exceptions;
+﻿using AS_Coursework.exceptions;
 using AS_Coursework.io;
-using AS_Coursework.models;
+using System;
 
 namespace AS_Coursework.models
 {
@@ -18,7 +17,7 @@ namespace AS_Coursework.models
         private bool isGuest;
         private string password;
         private int personalRecords;
-        private GameState previousGameState;
+        private GameState? previousGameState;
         private string surname;
         private int ticks;
         private string username;
@@ -59,10 +58,10 @@ namespace AS_Coursework.models
 
         public string Password
         {
-            get 
-            { 
-                return password; 
-            } 
+            get
+            {
+                return password;
+            }
             set
             {
                 password = value;
@@ -154,6 +153,11 @@ namespace AS_Coursework.models
         {
             get => previousGameState;
             set => previousGameState = value;
+        }
+
+        public void ClearGameState()
+        {
+            previousGameState = null;
         }
 
         /// <summary>
