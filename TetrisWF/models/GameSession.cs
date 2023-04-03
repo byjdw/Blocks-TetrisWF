@@ -34,7 +34,6 @@ namespace AS_Coursework.models
 
             usedHold = false;
             this.instance = instance;
-            Console.WriteLine(instance.boardHeight);
         }
 
         public GameSession(GameWindow instance, GameState gameState)
@@ -91,10 +90,18 @@ namespace AS_Coursework.models
             if (!instance.Tick) return;
             if (instance.Halt) return;
             CurrentBlock.Descend(instance);
-            if (instance.Interval == 35) AddScore(0, 1);
-            if (instance.Interval == 1) AddScore(0, 2);
+            if (instance.Interval == 35)
+            {
+                AddScore(0, 1);
+            }
+            if (instance.Interval == 1)
+            {
+                AddScore(0, 2);
+            }
             if (CurrentBlock.Idle)
             {
+                if (instance.Interval == 1) DataManager.PlaySoundEffect("harddrop");
+                else DataManager.PlaySoundEffect("softdrop");
                 instance.Interval = 100;
                 CurrentBlock = null;
                 usedHold = false;
@@ -103,9 +110,9 @@ namespace AS_Coursework.models
             }
 
             Ticks += 1;
-            Console.WriteLine($"Cleared Lines: {clearedLines}");
-            Console.WriteLine($"Multiplier: {Multiplier}");
-            Console.WriteLine($"Interval: {instance.Interval}");
+            // Console.WriteLine($"Cleared Lines: {clearedLines}");
+            // Console.WriteLine($"Multiplier: {Multiplier}");
+            // Console.WriteLine($"Interval: {instance.Interval}");
         }
 
         /// <summary>
@@ -136,6 +143,7 @@ namespace AS_Coursework.models
                 HeldBlock = temp;
             }
 
+            DataManager.PlaySoundEffect("hold");
             usedHold = true;
         }
 
@@ -230,6 +238,7 @@ namespace AS_Coursework.models
                 "Blocks · Save Game Confirmation",
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Exclamation);
+            DataManager.PlaySoundEffect("ok");
             SessionManager.MainMenuForm.Show();
         }
 
@@ -245,12 +254,21 @@ namespace AS_Coursework.models
             /* Adding the score based on the number of lines cleared. */
             switch (lines)
             {
+                case 1:
+                    sc += 100;
+                    DataManager.PlaySoundEffect("single");
+                    break;
                 case 2:
+                    sc += 300;
+                    DataManager.PlaySoundEffect("double");
+                    break;
                 case 3:
-                    sc += lines * 200 - 100;
+                    sc += 500;
+                    DataManager.PlaySoundEffect("triple");
                     break;
                 case 4:
                     sc += 800;
+                    DataManager.PlaySoundEffect("tetris");
                     break;
             }
 

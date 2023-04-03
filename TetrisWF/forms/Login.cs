@@ -16,6 +16,7 @@ namespace AS_Coursework.forms
 
         private void loginUser_onClick(object sender, EventArgs e)
         {
+
             var valid = false;
             Player? loggedInPlayer = null;
             for (var i = 0; i < DataManager.GetPlayers().Count; i++)
@@ -28,15 +29,18 @@ namespace AS_Coursework.forms
 
             if (valid && !loggedInPlayer.Equals(null))
             {
+                DataManager.PlaySoundEffect("dialog");
                 MessageBox.Show("Welcome Back, " + loggedInPlayer.Username + "!\nYou are now logged in.",
                     "Login Success",
                     MessageBoxButtons.OK);
                 SessionManager.CurrentPlayer = loggedInPlayer;
+                DataManager.PlaySoundEffect("ok");
                 new GameMenu().Show();
                 Hide();
             }
             else
             {
+                DataManager.PlaySoundEffect("caution");
                 MessageBox.Show("You have entered an invalid username/password combination.", "Login Error");
             }
 
@@ -51,6 +55,7 @@ namespace AS_Coursework.forms
 
         private void btn_Register_Click(object sender, EventArgs e)
         {
+            DataManager.PlaySoundEffect("select");
             Form registerForm = new Register();
             registerForm.Show();
             Hide();
@@ -58,6 +63,7 @@ namespace AS_Coursework.forms
 
         private void btn_Guest_Click(object sender, EventArgs e)
         {
+            DataManager.PlaySoundEffect("alert");
             var playAsGuest =
                 MessageBox.Show(
                     "Are you sure you want to play as a Guest?\nThe ability to save your game and publish your score will be disabled.",
@@ -70,8 +76,13 @@ namespace AS_Coursework.forms
                     Avatar = 7,
                     IsGuest = true
                 };
+                DataManager.PlaySoundEffect("ok");
                 new GameMenu().Show();
                 Hide();
+            }
+            else
+            {
+                DataManager.PlaySoundEffect("cancel");
             }
         }
 

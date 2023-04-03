@@ -32,6 +32,7 @@ namespace AS_Coursework.forms
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GameMenu));
             lbl_currentPlayer = new Label();
             btn_StartGame = new Button();
             btn_ContinueGame = new Button();
@@ -196,7 +197,7 @@ namespace AS_Coursework.forms
             pic_TitleCard.TabIndex = 31;
             pic_TitleCard.TabStop = false;
             // 
-            // MainMenu
+            // GameMenu
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -216,12 +217,13 @@ namespace AS_Coursework.forms
             Controls.Add(lbl_currentPlayer);
             Controls.Add(pic_TitleCard);
             Cursor = Cursors.Hand;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(2, 1, 2, 1);
             MaximizeBox = false;
             MaximumSize = new Size(645, 383);
             MinimizeBox = false;
             MinimumSize = new Size(645, 383);
-            Name = "MainMenu";
+            Name = "GameMenu";
             Text = "Blocks · Main Menu";
             VisibleChanged += Splash_VisibilityChange;
             ((System.ComponentModel.ISupportInitialize)pic_PlayerAvatar).EndInit();

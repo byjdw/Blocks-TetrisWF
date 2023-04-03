@@ -17,16 +17,14 @@ namespace AS_Coursework.forms.game
         private readonly int gameInterval;
 
         private readonly GameSession session;
-        private readonly SoundPlayer soundPlayer;
 
+        private SoundPlayer soundPlayer;
 
-        private Block? currentBlock;
         private int exitTicks;
 
         public GameWindow()
         {
             InitializeComponent();
-            lbl_dbgPlayerInfo.Text = $"SessionManager -> CurrentPlayer:\n{SessionManager.CurrentPlayer}";
             for (var c = 0; c < tlp_GameBoard.ColumnCount * tlp_GameBoard.RowCount; c++)
             {
                 var pictureBox = new PictureBox();
@@ -49,16 +47,15 @@ namespace AS_Coursework.forms.game
             }
 
             session = new GameSession(this);
-            soundPlayer = new SoundPlayer();
             lbl_currentPlayer.Text = SessionManager.CurrentPlayer!.Username;
             pic_userAvatar.Image = DataManager.Avatars[SessionManager.CurrentPlayer!.Avatar];
             gameInterval = GameTimer.Interval;
+            BackgroundImage = DataManager.Backgrounds[Random.Shared.Next(0, DataManager.Backgrounds.Count - 1)];
         }
 
         public GameWindow(GameState gameState)
         {
             InitializeComponent();
-            lbl_dbgPlayerInfo.Text = $"SessionManager -> CurrentPlayer:\n{SessionManager.CurrentPlayer}";
             for (var c = 0; c < tlp_GameBoard.ColumnCount * tlp_GameBoard.RowCount; c++)
             {
                 var pictureBox = new PictureBox();
@@ -81,7 +78,6 @@ namespace AS_Coursework.forms.game
             }
 
             session = new GameSession(this, gameState);
-            soundPlayer = new SoundPlayer();
             lbl_currentPlayer.Text = SessionManager.CurrentPlayer!.Username;
             pic_userAvatar.Image = DataManager.Avatars[SessionManager.CurrentPlayer!.Avatar];
             gameInterval = GameTimer.Interval;
@@ -98,10 +94,11 @@ namespace AS_Coursework.forms.game
         public int boardHeight => tlp_GameBoard.RowCount;
         public bool Tick => GameTimer.Enabled;
         public bool Halt { get; private set; }
-    
-        public TableLayoutControlCollection Cells {
+
+        public TableLayoutControlCollection Cells
+        {
             get => tlp_GameBoard.Controls;
-       }
+        }
 
 
         public List<Image> Tiles
@@ -130,21 +127,23 @@ namespace AS_Coursework.forms.game
             }
         }
 
-        private void startCutscene()
-        {
-        }
-
         private void pic_GameScreen_Click(object sender, EventArgs e)
         {
         }
 
         private void GameWindow_VisibilityChanged(object sender, EventArgs e)
         {
-            if (!Visible) return;
-            UpdateHud();
-            soundPlayer.SoundLocation = "X:/Documents/TetrisWF/TetrisWF/Resources/background_sfx.wav";
-            // soundPlayer.PlayLooping();
-            GameTimer.Start();
+            soundPlayer = EmbeddedResourceManager.get<SoundPlayer>("AS_Coursework.Resources.tetris-swing.wav");
+            if (!Visible)
+            {
+                soundPlayer.Stop();
+            }
+            else
+            {
+                UpdateHud();
+                GameTimer.Start();
+                soundPlayer.Play();
+            }
         }
 
         private void GameWindow_Load(object sender, EventArgs e)
@@ -173,6 +172,10 @@ namespace AS_Coursework.forms.game
                 case Keys.Down:
                     GameTimer.Interval = 35;
                     break;
+                case Keys.Tab:
+                    if (!SessionManager.DebugMode) return;
+                    GameTimer.Stop();
+                    break;
                 case Keys.Space:
                     GameTimer.Interval = 1;
                     break;
@@ -198,11 +201,32 @@ namespace AS_Coursework.forms.game
                     break;
                 case Keys.Down:
                     if (!GameTimer.Enabled) return;
-                    GameTimer.Interval = Convert.ToInt32((double) gameInterval / session.Multiplier);
+                    GameTimer.Interval = Convert.ToInt32((double)gameInterval / session.Multiplier);
+                    break;
+                case Keys.Tab:
+                    GameTimer.Start();
+                    break;
+                case Keys.F10:
+                    if (!SessionManager.DebugMode)
+                    {
+                        SessionManager.DebugMode = true;
+                        lbl_DebugModeEnabled.Visible = true;
+                    }
+                    else
+                    {
+                        SessionManager.DebugMode = false;
+                        lbl_DebugModeEnabled.Visible = false;
+                    }
+                    break;
+                case Keys.Enter:
+                    ChangeWallpaper();
                     break;
                 case Keys.Q:
-                    if (!GameTimer.Enabled) return;
+                    if (!SessionManager.DebugMode) return;
+                    if (GameTimer.Enabled) return;
+                    session.CurrentBlock.Hide(this);
                     RemoveRow(boardHeight - 1);
+                    session.CurrentBlock.AdjustX(this, 0);
                     break;
                 case Keys.Escape:
                     ExitTimer.Stop();
@@ -332,11 +356,10 @@ namespace AS_Coursework.forms.game
         {
             GameTimer.Stop();
             Halt = true;
-            currentBlock = null;
             new GameEnd(session, SessionManager.CurrentPlayer.HighScore).Show();
             session.GameOver();
-            soundPlayer.Stop();
-            Close();
+            Hide();
+            Dispose();
         }
 
         private void UpdateHud()
@@ -373,18 +396,26 @@ namespace AS_Coursework.forms.game
                     lbl_exitText3.Visible = true;
                     lbl_exitText4.Visible = true;
                     tlp_pauseIndicator.Visible = true;
-                    Console.WriteLine(exitTicks);
+                    // Console.WriteLine(exitTicks);
                     var totalTiles = boardWidth * boardHeight;
                     var startIndex = totalTiles - boardWidth * exitTicks;
                     for (var i = startIndex; i < totalTiles; i++)
-                        (tlp_pauseIndicator.Controls[i] as PictureBox).Image = Resources.Board_Reverse_L;
+                        (tlp_pauseIndicator.Controls[i] as PictureBox).Image = DataManager.Tiles[Random.Shared.Next(0, DataManager.Tiles.Count - 1)];
+                    DataManager.PlaySoundEffect("rotate");
                 }
             }
             else
             {
+                soundPlayer.Stop();
                 ExitTimer.Stop();
+                if (SessionManager.CurrentPlayer.IsGuest) DataManager.PlaySoundEffect("pause");
                 session.Save(this, TilesToString(Tiles), Tags);
             }
+        }
+
+        public void ChangeWallpaper()
+        {
+            BackgroundImage = DataManager.Backgrounds[Random.Shared.Next(0, DataManager.Backgrounds.Count - 1)];
         }
     }
 }

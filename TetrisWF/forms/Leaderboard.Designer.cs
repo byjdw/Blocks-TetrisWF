@@ -30,15 +30,16 @@ namespace AS_Coursework.forms
         /// </summary>
         private void InitializeComponent()
         {
-            lbl_HighScore1 = new System.Windows.Forms.Label();
-            lbl_Title = new System.Windows.Forms.Label();
-            pic_TitleCard = new System.Windows.Forms.PictureBox();
-            panel1 = new System.Windows.Forms.Panel();
-            btn_ExitProgram = new System.Windows.Forms.Button();
-            pic_SideBar = new System.Windows.Forms.PictureBox();
-            lbl_HighScore2 = new System.Windows.Forms.Label();
-            lbl_HighScore3 = new System.Windows.Forms.Label();
-            lbl_HighScoreGeneric = new System.Windows.Forms.Label();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Leaderboard));
+            lbl_HighScore1 = new Label();
+            lbl_Title = new Label();
+            pic_TitleCard = new PictureBox();
+            panel1 = new Panel();
+            btn_ExitProgram = new Button();
+            pic_SideBar = new PictureBox();
+            lbl_HighScore2 = new Label();
+            lbl_HighScore3 = new Label();
+            lbl_HighScoreGeneric = new Label();
             ((System.ComponentModel.ISupportInitialize)pic_TitleCard).BeginInit();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pic_SideBar).BeginInit();
@@ -68,12 +69,12 @@ namespace AS_Coursework.forms
             // 
             // pic_TitleCard
             // 
-            pic_TitleCard.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            pic_TitleCard.BackgroundImageLayout = ImageLayout.None;
             pic_TitleCard.Image = Properties.Resources.Blocks;
             pic_TitleCard.Location = new System.Drawing.Point(12, 23);
             pic_TitleCard.Name = "pic_TitleCard";
             pic_TitleCard.Size = new System.Drawing.Size(226, 95);
-            pic_TitleCard.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            pic_TitleCard.SizeMode = PictureBoxSizeMode.Zoom;
             pic_TitleCard.TabIndex = 33;
             pic_TitleCard.TabStop = false;
             // 
@@ -92,7 +93,7 @@ namespace AS_Coursework.forms
             btn_ExitProgram.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             btn_ExitProgram.ForeColor = System.Drawing.SystemColors.Window;
             btn_ExitProgram.Location = new System.Drawing.Point(264, 12);
-            btn_ExitProgram.Margin = new System.Windows.Forms.Padding(0);
+            btn_ExitProgram.Margin = new Padding(0);
             btn_ExitProgram.Name = "btn_ExitProgram";
             btn_ExitProgram.Size = new System.Drawing.Size(27, 23);
             btn_ExitProgram.TabIndex = 37;
@@ -107,7 +108,7 @@ namespace AS_Coursework.forms
             pic_SideBar.Location = new System.Drawing.Point(2, -2);
             pic_SideBar.Name = "pic_SideBar";
             pic_SideBar.Size = new System.Drawing.Size(300, 362);
-            pic_SideBar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            pic_SideBar.SizeMode = PictureBoxSizeMode.Zoom;
             pic_SideBar.TabIndex = 35;
             pic_SideBar.TabStop = false;
             // 
@@ -143,10 +144,10 @@ namespace AS_Coursework.forms
             lbl_HighScoreGeneric.TabIndex = 39;
             lbl_HighScoreGeneric.Text = "4.   [PLAYER4] - [SCORE4]\r\n5.   [PLAYER5] - [SCORE5]\r\n6.   [PLAYER6] - [SCORE6]\r\n7.   [PLAYER7] - [SCORE7]\r\n8.   [PLAYER8] - [SCORE8]";
             // 
-            // Scoreboard
+            // Leaderboard
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            AutoScaleMode = AutoScaleMode.Font;
             BackColor = System.Drawing.Color.AliceBlue;
             ClientSize = new System.Drawing.Size(629, 344);
             ControlBox = false;
@@ -157,7 +158,8 @@ namespace AS_Coursework.forms
             Controls.Add(lbl_Title);
             Controls.Add(pic_TitleCard);
             Controls.Add(lbl_HighScore1);
-            Name = "Scoreboard";
+            Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
+            Name = "Leaderboard";
             Text = "Blocks • Scoreboard";
             ((System.ComponentModel.ISupportInitialize)pic_TitleCard).EndInit();
             panel1.ResumeLayout(false);

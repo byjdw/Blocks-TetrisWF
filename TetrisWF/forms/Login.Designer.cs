@@ -31,6 +31,7 @@ namespace AS_Coursework.forms
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             txt_username = new TextBox();
             txt_password = new TextBox();
             btn_LoginUser = new Button();
@@ -160,7 +161,7 @@ namespace AS_Coursework.forms
             btn_Guest.UseVisualStyleBackColor = true;
             btn_Guest.Click += btn_Guest_Click;
             // 
-            // Splash
+            // Login
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -178,9 +179,10 @@ namespace AS_Coursework.forms
             Controls.Add(txt_username);
             Controls.Add(pic_TitleCard);
             Controls.Add(pic_SideBar);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MaximumSize = new Size(645, 383);
             MinimumSize = new Size(645, 383);
-            Name = "Splash";
+            Name = "Login";
             Text = "Blocks · Login";
             VisibleChanged += Splash_VisibleChanged;
             ((System.ComponentModel.ISupportInitialize)pic_TitleCard).EndInit();

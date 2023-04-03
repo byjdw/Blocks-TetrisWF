@@ -60,24 +60,30 @@ namespace AS_Coursework.forms
             if (valid)
                 try
                 {
+                    DataManager.PlaySoundEffect("dialog");
                     DataManager.AddPlayer(NewPlayer);
                     MessageBox.Show("Welcome, " + NewPlayer.Username + "!" +
                                     "\nYou may now login." +
                                     "\nHave fun!", "Blocks · Account Registered");
-
+                    DataManager.PlaySoundEffect("ok");
                     SessionManager.SplashForm!.Show();
                     Close();
                 }
                 catch (InvalidPlayerException ipe)
                 {
+                    DataManager.PlaySoundEffect("caution");
                     MessageBox.Show(ipe.Message, "Blocks · Registration Error", MessageBoxButtons.OK,
                         MessageBoxIcon.Hand);
                     txt_username.Text = "";
                 }
             else
+            {
+                DataManager.PlaySoundEffect("caution");
                 MessageBox.Show(
                     "There was a problem registering your account, please review and correct the errors presented.",
-                    "Registration Error");
+                    "Registration Error"
+                    );
+            }
         }
 
         private void Forename_ValueChanged(object sender, EventArgs e)
@@ -157,6 +163,7 @@ namespace AS_Coursework.forms
 
         private void btn_QuickCreate_Click(object sender, EventArgs e)
         {
+            DataManager.PlaySoundEffect("single");
             txt_forename.Text = "John";
             txt_surname.Text = "Doe";
             txt_username.Text = "JohnDoe" + new Random().Next(0, 100);
@@ -166,6 +173,7 @@ namespace AS_Coursework.forms
 
         private void btn_CycleAvatarBack_Click(object sender, EventArgs e)
         {
+            DataManager.PlaySoundEffect("rotate");
             if (AvatarIndex != 0) AvatarIndex -= 1;
             else AvatarIndex = 6;
             if (AvatarIndex <= 6) pic_playerAvatar.Image = DataManager.Avatars[AvatarIndex];
@@ -173,6 +181,7 @@ namespace AS_Coursework.forms
 
         private void btn_CycleAvatarForward_Click(object sender, EventArgs e)
         {
+            DataManager.PlaySoundEffect("rotate");
             if (AvatarIndex != 6) AvatarIndex += 1;
             else AvatarIndex = 0;
             if (AvatarIndex <= 6) pic_playerAvatar.Image = DataManager.Avatars[AvatarIndex];
@@ -180,6 +189,7 @@ namespace AS_Coursework.forms
 
         private void btn_Exit_Click(object sender, EventArgs e)
         {
+            DataManager.PlaySoundEffect("cancel");
             SessionManager.SplashForm!.Show();
             Close();
         }

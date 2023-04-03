@@ -14,13 +14,11 @@ namespace AS_Coursework.forms
             InitializeComponent();
             var sortedPlayerArray = new List<Player>(DataManager.GetPlayers());
             sortedPlayerArray.Sort((b, a) => a.HighScore.CompareTo(b.HighScore));
-            var names = new List<string>();
-            foreach (var player in sortedPlayerArray) names.Add($"{player.Username} - {player.HighScore}");
             var HighScores = new List<string>();
             for (var i = 0; i < 8; i++)
                 try
                 {
-                    HighScores.Add($"{i + 1}. {sortedPlayerArray[i].Username} - {sortedPlayerArray[i].HighScore}");
+                    HighScores.Add($"{i + 1}. {sortedPlayerArray[i].Username} [{sortedPlayerArray[i].HighScore}]");
                 }
                 catch (ArgumentOutOfRangeException)
                 {
@@ -36,8 +34,10 @@ namespace AS_Coursework.forms
 
         private void btn_ExitProgram_Click(object sender, EventArgs e)
         {
-            Close();
+            DataManager.PlaySoundEffect("cancel");
             SessionManager.MainMenuForm.Show();
+            Close();
+            Dispose();
         }
     }
 }

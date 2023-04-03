@@ -25,8 +25,10 @@ namespace AS_Coursework.forms
 
         private void btn_Exit_Click(object sender, EventArgs e)
         {
-            Close();
+            DataManager.PlaySoundEffect("cancel");
             SessionManager.MainMenuForm.Show();
+            Close();
+            Dispose();
         }
     }
 }

@@ -31,6 +31,7 @@ namespace AS_Coursework.forms
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Register));
             txt_forename = new TextBox();
             txt_surname = new TextBox();
             txt_username = new TextBox();
@@ -39,7 +40,6 @@ namespace AS_Coursework.forms
             btn_registerPlayer = new Button();
             lbl_Title = new Label();
             pic_playerAvatar = new controls.CircularPictureBox();
-            openFileDialog1 = new OpenFileDialog();
             btn_QuickCreate = new Button();
             btn_CycleAvatarBack = new Button();
             btn_CycleAvatarForward = new Button();
@@ -145,11 +145,6 @@ namespace AS_Coursework.forms
             pic_playerAvatar.SizeMode = PictureBoxSizeMode.StretchImage;
             pic_playerAvatar.TabIndex = 18;
             pic_playerAvatar.TabStop = false;
-            // 
-            // openFileDialog1
-            // 
-            openFileDialog1.FileName = "openFileDialog1";
-            openFileDialog1.Title = "Blocks · Pick Avatar Image";
             // 
             // btn_QuickCreate
             // 
@@ -351,6 +346,7 @@ namespace AS_Coursework.forms
             Controls.Add(txt_surname);
             Controls.Add(txt_forename);
             Controls.Add(pic_TitleCard);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MaximumSize = new Size(645, 383);
             MinimumSize = new Size(645, 383);
             Name = "Register";
@@ -371,7 +367,6 @@ namespace AS_Coursework.forms
         private Button btn_registerPlayer;
         private Label lbl_Title;
         private controls.CircularPictureBox pic_playerAvatar;
-        private OpenFileDialog openFileDialog1;
         private Button btn_QuickCreate;
         private Button btn_CycleAvatarBack;
         private Button btn_CycleAvatarForward;

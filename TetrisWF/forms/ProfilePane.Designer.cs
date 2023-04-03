@@ -30,6 +30,7 @@ namespace AS_Coursework.forms
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProfilePane));
             btn_Exit = new Button();
             pic_PlayerAvatar = new controls.CircularPictureBox();
             lbl_name = new Label();
@@ -252,6 +253,7 @@ namespace AS_Coursework.forms
             Controls.Add(lbl_name);
             Controls.Add(pic_PlayerAvatar);
             Controls.Add(btn_Exit);
+            Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
             Name = "ProfilePane";
             Text = "Blocks • Your Profile";
             ((System.ComponentModel.ISupportInitialize)pic_PlayerAvatar).EndInit();

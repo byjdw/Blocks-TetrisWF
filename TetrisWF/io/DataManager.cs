@@ -1,12 +1,17 @@
 using AS_Coursework.exceptions;
 using AS_Coursework.models;
 using AS_Coursework.Properties;
+using NAudio.Mixer;
+using NAudio.Wave;
+using NAudio.Wave.SampleProviders;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace AS_Coursework.io
@@ -15,6 +20,16 @@ namespace AS_Coursework.io
     internal static class DataManager
     {
         private static List<Player> players = new();
+
+        public static readonly List<Image> Backgrounds = new()
+        {
+            Resources.background1,
+            Resources.background2,
+            Resources.background3,
+            Resources.background4,
+            Resources.background5,
+            Resources.background6,
+        };
 
         public static readonly List<Image> Tiles = new()
         {
@@ -49,6 +64,90 @@ namespace AS_Coursework.io
             Resources.Avatar_Z,
             Resources.Guest
         };
+
+        public static void PlaySoundEffect(string soundName)
+        {
+            Stream soundEffectStream = new MemoryStream();
+            switch (soundName)
+            {
+                case "single":
+                    soundEffectStream = Resources.single;
+                    break;
+                case "double":
+                    soundEffectStream = Resources._double;
+                    break;
+                case "triple":
+                    soundEffectStream = Resources.triple;
+                    break;
+                case "tetris":
+                    soundEffectStream = Resources.tetris;
+                    break;
+                case "move":
+                    soundEffectStream = Resources.move;
+                    break;
+                case "rotate":
+                    soundEffectStream = Resources.rotate;
+                    break;
+                case "hold":
+                    soundEffectStream = Resources.hold;
+                    break;
+                case "softdrop":
+                    soundEffectStream = Resources.softdrop;
+                    break;
+                case "harddrop":
+                    soundEffectStream = Resources.harddrop;
+                    break;
+                case "pause":
+                    soundEffectStream = Resources.pause;
+                    break;
+                case "cancel":
+                    soundEffectStream = Resources.cancel;
+                    break;
+                case "alert":
+                    soundEffectStream = Resources.alert;
+                    break;
+                case "caution":
+                    soundEffectStream = Resources.caution;
+                    break;
+                case "msg":
+                    soundEffectStream = Resources.msg;
+                    break;
+                case "dialog":
+                    soundEffectStream = Resources.dialog;
+                    break;
+                case "ok":
+                    soundEffectStream = Resources.ok;
+                    break;
+                case "select":
+                    soundEffectStream = Resources.select;
+                    break;
+                case "gameover":
+                    soundEffectStream = Resources.game_over;
+                    break;
+                default: throw new ArgumentException("Invalid Sound Name");
+            }
+
+            // create a new thread
+            new Thread(() =>
+            {
+                // Get the WaveFormat from the audio file
+                var soundEffectReader = new WaveFileReader(soundEffectStream);
+                var waveFormat = soundEffectReader.WaveFormat;
+
+                // Create a new RawSourceWaveStream with the WaveFormat of the audio file
+                var importer = new RawSourceWaveStream(soundEffectStream, waveFormat);
+                var soundFx = new WaveOut();
+                soundFx.DesiredLatency = 100;
+                soundFx.Init(importer);
+                soundFx.Play();
+            }).Start();
+        }
+
+        public static ISampleProvider FollowedBy(this ISampleProvider sampleProvider, TimeSpan silenceDuration, ISampleProvider next)
+        {
+            var silenceAppended = new OffsetSampleProvider(sampleProvider) { LeadOut = silenceDuration };
+            return new ConcatenatingSampleProvider(new[] { silenceAppended, next });
+        }
 
         /// <summary>
         ///     It adds a player to the list of players, then saves the list of players
@@ -112,22 +211,15 @@ namespace AS_Coursework.io
         /// </summary>
         public static void ReadPlayers()
         {
-            try
-            {
                 try
                 {
                     players = JsonSerializer.Deserialize<List<Player>>(File.ReadAllText("PlayerDetails.json"));
                 }
                 catch (IOException e)
                 {
-                    MessageBox.Show("" + e.Message);
+                    if (!e.Message.ToLower().Contains("find"))
+                        MessageBox.Show("" + e.Message);
                 }
-            }
-            catch (IOException e)
-            {
-                if (!e.Message.ToLower().Contains("find"))
-                    MessageBox.Show("" + e.Message);
-            }
         }
 
         /// <summary>

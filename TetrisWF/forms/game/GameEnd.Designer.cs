@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GameEnd));
             lbl_score = new System.Windows.Forms.Label();
             pic_SideBar = new System.Windows.Forms.PictureBox();
             lbl_Title = new System.Windows.Forms.Label();
@@ -39,6 +40,7 @@
             ReturnToMenuTimer = new System.Windows.Forms.Timer(components);
             lbl_ReturnText = new System.Windows.Forms.Label();
             lbl_SecondsRemaining = new System.Windows.Forms.Label();
+            btn_ExitProgram = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)pic_SideBar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -144,12 +146,27 @@
             lbl_SecondsRemaining.TabIndex = 20;
             lbl_SecondsRemaining.Text = "[s] seconds...";
             // 
+            // btn_ExitProgram
+            // 
+            btn_ExitProgram.BackColor = System.Drawing.Color.IndianRed;
+            btn_ExitProgram.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            btn_ExitProgram.ForeColor = System.Drawing.SystemColors.Window;
+            btn_ExitProgram.Location = new System.Drawing.Point(266, 312);
+            btn_ExitProgram.Margin = new System.Windows.Forms.Padding(0);
+            btn_ExitProgram.Name = "btn_ExitProgram";
+            btn_ExitProgram.Size = new System.Drawing.Size(51, 23);
+            btn_ExitProgram.TabIndex = 21;
+            btn_ExitProgram.Text = "▶▶";
+            btn_ExitProgram.UseVisualStyleBackColor = false;
+            btn_ExitProgram.Click += btn_ExitProgram_Click;
+            // 
             // GameEnd
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(629, 341);
             ControlBox = false;
+            Controls.Add(btn_ExitProgram);
             Controls.Add(lbl_SecondsRemaining);
             Controls.Add(lbl_ReturnText);
             Controls.Add(lbl_GameStatus);
@@ -159,8 +176,10 @@
             Controls.Add(pictureBox1);
             Controls.Add(pic_SideBar);
             Controls.Add(lbl_score);
+            Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
             Name = "GameEnd";
-            Text = "GameEnd";
+            Text = "Blocks · Game Over";
+            VisibleChanged += GameEnd_VisibleChanged;
             ((System.ComponentModel.ISupportInitialize)pic_SideBar).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
@@ -179,5 +198,6 @@
         private System.Windows.Forms.Timer ReturnToMenuTimer;
         private System.Windows.Forms.Label lbl_ReturnText;
         private System.Windows.Forms.Label lbl_SecondsRemaining;
+        private System.Windows.Forms.Button btn_ExitProgram;
     }
 }
