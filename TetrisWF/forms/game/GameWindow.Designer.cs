@@ -237,7 +237,7 @@ namespace AS_Coursework.forms.game
             lbl_exitText1.BackColor = Color.Lime;
             lbl_exitText1.Font = new Font("Segoe UI Black", 36F, FontStyle.Bold, GraphicsUnit.Point);
             lbl_exitText1.ForeColor = Color.White;
-            lbl_exitText1.Location = new Point(240, 470);
+            lbl_exitText1.Location = new Point(240, 539);
             lbl_exitText1.Name = "lbl_exitText1";
             lbl_exitText1.Size = new Size(144, 65);
             lbl_exitText1.TabIndex = 22;
@@ -251,7 +251,7 @@ namespace AS_Coursework.forms.game
             lbl_exitText2.BackColor = Color.Gold;
             lbl_exitText2.Font = new Font("Segoe UI Black", 36F, FontStyle.Bold, GraphicsUnit.Point);
             lbl_exitText2.ForeColor = Color.White;
-            lbl_exitText2.Location = new Point(240, 542);
+            lbl_exitText2.Location = new Point(240, 611);
             lbl_exitText2.Name = "lbl_exitText2";
             lbl_exitText2.Size = new Size(257, 65);
             lbl_exitText2.TabIndex = 24;
@@ -265,7 +265,7 @@ namespace AS_Coursework.forms.game
             lbl_exitText3.BackColor = Color.DodgerBlue;
             lbl_exitText3.Font = new Font("Segoe UI Black", 36F, FontStyle.Bold, GraphicsUnit.Point);
             lbl_exitText3.ForeColor = Color.White;
-            lbl_exitText3.Location = new Point(240, 614);
+            lbl_exitText3.Location = new Point(240, 683);
             lbl_exitText3.Name = "lbl_exitText3";
             lbl_exitText3.Size = new Size(96, 65);
             lbl_exitText3.TabIndex = 25;
@@ -279,7 +279,7 @@ namespace AS_Coursework.forms.game
             lbl_exitText4.BackColor = Color.Red;
             lbl_exitText4.Font = new Font("Segoe UI Black", 36F, FontStyle.Bold, GraphicsUnit.Point);
             lbl_exitText4.ForeColor = Color.White;
-            lbl_exitText4.Location = new Point(240, 685);
+            lbl_exitText4.Location = new Point(345, 683);
             lbl_exitText4.Name = "lbl_exitText4";
             lbl_exitText4.Size = new Size(136, 65);
             lbl_exitText4.TabIndex = 26;
@@ -302,6 +302,7 @@ namespace AS_Coursework.forms.game
             // 
             // pic_BoardBorder
             // 
+            pic_BoardBorder.BackColor = Color.Transparent;
             pic_BoardBorder.Image = Properties.Resources.board;
             pic_BoardBorder.Location = new Point(228, 35);
             pic_BoardBorder.Name = "pic_BoardBorder";
