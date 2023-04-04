@@ -111,8 +111,6 @@ namespace AS_Coursework.forms
 
         private void btn_ChangeUser_Click(object sender, EventArgs e)
         {
-            DataManager.PlaySoundEffect("select");
-            SessionManager.SplashForm?.Show();
             Close();
         }
 
@@ -134,6 +132,19 @@ namespace AS_Coursework.forms
             DataManager.PlaySoundEffect("select");
             new Leaderboard().Show();
             Hide();
+        }
+
+        private void btn_Help_Click(object sender, EventArgs e)
+        {
+            DataManager.PlaySoundEffect("select");
+            new HelpPane().Show();
+            Hide();
+        }
+
+        private void GameMenu_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DataManager.PlaySoundEffect("select");
+            SessionManager.SplashForm?.Show();
         }
     }
 }

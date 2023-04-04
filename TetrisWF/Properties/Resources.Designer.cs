@@ -308,36 +308,6 @@ namespace AS_Coursework.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap CatNerd {
-            get {
-                object obj = ResourceManager.GetObject("CatNerd", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap CatSilly {
-            get {
-                object obj = ResourceManager.GetObject("CatSilly", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap CatStare {
-            get {
-                object obj = ResourceManager.GetObject("CatStare", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
         /// </summary>
         internal static System.IO.UnmanagedMemoryStream caution {
@@ -361,16 +331,6 @@ namespace AS_Coursework.Properties {
         internal static System.Drawing.Bitmap Empty {
             get {
                 object obj = ResourceManager.GetObject("Empty", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap game_background {
-            get {
-                object obj = ResourceManager.GetObject("game_background", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -475,16 +435,6 @@ namespace AS_Coursework.Properties {
         internal static System.IO.UnmanagedMemoryStream pause {
             get {
                 return ResourceManager.GetStream("pause", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Preview_Backing {
-            get {
-                object obj = ResourceManager.GetObject("Preview_Backing", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -599,16 +549,6 @@ namespace AS_Coursework.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap sidebar {
-            get {
-                object obj = ResourceManager.GetObject("sidebar", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap sidebar_gameover {
             get {
                 object obj = ResourceManager.GetObject("sidebar_gameover", resourceCulture);
@@ -619,9 +559,9 @@ namespace AS_Coursework.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap sidebar_main {
+        internal static System.Drawing.Bitmap sidebar_menu {
             get {
-                object obj = ResourceManager.GetObject("sidebar_main", resourceCulture);
+                object obj = ResourceManager.GetObject("sidebar_menu", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -629,9 +569,29 @@ namespace AS_Coursework.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap sidebar_reg {
+        internal static System.Drawing.Bitmap sidebar_register {
             get {
-                object obj = ResourceManager.GetObject("sidebar_reg", resourceCulture);
+                object obj = ResourceManager.GetObject("sidebar_register", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap sidebar_scoreboard {
+            get {
+                object obj = ResourceManager.GetObject("sidebar_scoreboard", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap sidebar_splash {
+            get {
+                object obj = ResourceManager.GetObject("sidebar_splash", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

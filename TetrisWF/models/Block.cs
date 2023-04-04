@@ -311,14 +311,12 @@ namespace AS_Coursework.models
                 {
                     if ((!tile.Tag.Equals("Empty")) && !tile.Tag.Equals(id.ToString()))
                     {
-                        // Console.WriteLine(tile.Tag);
                         if (baseX != position.x) h = false;
                         else v = false;
                     }
                 }
 
-                // if (!v || !h) Console.WriteLine($"Tile @ [{x},{y}] is NOT Valid.");
-                // else Console.WriteLine($"Tile @ [{x},{y}] is Valid.");
+
                 if (!(!horizontal || !vertical))
                 {
                     horizontal = h;

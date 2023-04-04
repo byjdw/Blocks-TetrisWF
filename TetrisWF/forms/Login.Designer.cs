@@ -133,7 +133,7 @@ namespace AS_Coursework.forms
             // pic_SideBar
             // 
             pic_SideBar.BackColor = Color.FromArgb(23, 23, 23);
-            pic_SideBar.Image = Properties.Resources.sidebar;
+            pic_SideBar.Image = Properties.Resources.sidebar_splash;
             pic_SideBar.Location = new Point(327, 0);
             pic_SideBar.Name = "pic_SideBar";
             pic_SideBar.Size = new Size(297, 348);
@@ -143,7 +143,7 @@ namespace AS_Coursework.forms
             // 
             // btn_Register
             // 
-            btn_Register.Location = new Point(12, 298);
+            btn_Register.Location = new Point(12, 309);
             btn_Register.Name = "btn_Register";
             btn_Register.Size = new Size(75, 23);
             btn_Register.TabIndex = 13;
@@ -153,7 +153,7 @@ namespace AS_Coursework.forms
             // 
             // btn_Guest
             // 
-            btn_Guest.Location = new Point(93, 298);
+            btn_Guest.Location = new Point(93, 309);
             btn_Guest.Name = "btn_Guest";
             btn_Guest.Size = new Size(100, 23);
             btn_Guest.TabIndex = 14;

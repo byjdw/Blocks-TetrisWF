@@ -5,6 +5,7 @@ using AS_Coursework.models;
 using AS_Coursework.Properties;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.Media;
 using System.Windows.Forms;
@@ -21,6 +22,8 @@ namespace AS_Coursework.forms.game
         private SoundPlayer soundPlayer;
 
         private int exitTicks;
+
+        bool musicMuted;
 
         public GameWindow()
         {
@@ -46,9 +49,10 @@ namespace AS_Coursework.forms.game
                 tlp_pauseIndicator.Controls.Add(pictureBox);
             }
 
+            bool musicMuted = false;
             session = new GameSession(this);
             lbl_currentPlayer.Text = SessionManager.CurrentPlayer!.Username;
-            pic_userAvatar.Image = DataManager.Avatars[SessionManager.CurrentPlayer!.Avatar];
+            pic_PlayerAvatar.Image = DataManager.Avatars[SessionManager.CurrentPlayer!.Avatar];
             gameInterval = GameTimer.Interval;
             BackgroundImage = DataManager.Backgrounds[Random.Shared.Next(0, DataManager.Backgrounds.Count - 1)];
         }
@@ -79,7 +83,7 @@ namespace AS_Coursework.forms.game
 
             session = new GameSession(this, gameState);
             lbl_currentPlayer.Text = SessionManager.CurrentPlayer!.Username;
-            pic_userAvatar.Image = DataManager.Avatars[SessionManager.CurrentPlayer!.Avatar];
+            pic_PlayerAvatar.Image = DataManager.Avatars[SessionManager.CurrentPlayer!.Avatar];
             gameInterval = GameTimer.Interval;
             ForceRender(TilesFromString(gameState.Tiles), gameState.Tags);
         }
@@ -141,8 +145,9 @@ namespace AS_Coursework.forms.game
             else
             {
                 UpdateHud();
+
                 GameTimer.Start();
-                soundPlayer.Play();
+                soundPlayer.PlayLooping();
             }
         }
 
@@ -172,6 +177,15 @@ namespace AS_Coursework.forms.game
                 case Keys.Down:
                     GameTimer.Interval = 35;
                     break;
+                case Keys.A:
+                    session.AdjustX(-1);
+                    break;
+                case Keys.D:
+                    session.AdjustX(1);
+                    break;
+                case Keys.S:
+                    GameTimer.Interval = 35;
+                    break;
                 case Keys.Tab:
                     if (!SessionManager.DebugMode) return;
                     GameTimer.Stop();
@@ -199,7 +213,15 @@ namespace AS_Coursework.forms.game
                     if (!GameTimer.Enabled) return;
                     session.Rotate();
                     break;
+                case Keys.W:
+                    if (!GameTimer.Enabled) return;
+                    session.Rotate();
+                    break;
                 case Keys.Down:
+                    if (!GameTimer.Enabled) return;
+                    GameTimer.Interval = Convert.ToInt32((double)gameInterval / session.Multiplier);
+                    break;
+                case Keys.S:
                     if (!GameTimer.Enabled) return;
                     GameTimer.Interval = Convert.ToInt32((double)gameInterval / session.Multiplier);
                     break;
@@ -217,6 +239,18 @@ namespace AS_Coursework.forms.game
                         SessionManager.DebugMode = false;
                         lbl_DebugModeEnabled.Visible = false;
                     }
+                    break;
+                case Keys.M:
+                    if (musicMuted)
+                    {
+                        soundPlayer.PlayLooping();
+                        musicMuted = false;
+                    } else
+                    {
+                        soundPlayer.Stop();
+                        musicMuted = true;
+                    }
+                    
                     break;
                 case Keys.Enter:
                     ChangeWallpaper();
@@ -381,6 +415,8 @@ namespace AS_Coursework.forms.game
 
         private void GameWindow_FormClosing(object sender, FormClosingEventArgs e)
         {
+            soundPlayer.Stop();
+            GameOver();
         }
 
         private void ExitTimer_Tick(object sender, EventArgs e)

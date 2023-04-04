@@ -46,9 +46,12 @@ namespace AS_Coursework.forms
             btn_OpenStatisticsForm = new Button();
             lbl_Title = new Label();
             pic_TitleCard = new PictureBox();
+            circularPictureBox1 = new CircularPictureBox();
+            btn_Help = new Button();
             ((System.ComponentModel.ISupportInitialize)pic_PlayerAvatar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pic_SideBar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pic_TitleCard).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)circularPictureBox1).BeginInit();
             SuspendLayout();
             // 
             // lbl_currentPlayer
@@ -56,7 +59,7 @@ namespace AS_Coursework.forms
             lbl_currentPlayer.AutoSize = true;
             lbl_currentPlayer.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold, GraphicsUnit.Point);
             lbl_currentPlayer.ForeColor = SystemColors.ControlText;
-            lbl_currentPlayer.Location = new Point(80, 282);
+            lbl_currentPlayer.Location = new Point(84, 287);
             lbl_currentPlayer.Name = "lbl_currentPlayer";
             lbl_currentPlayer.Size = new Size(42, 15);
             lbl_currentPlayer.TabIndex = 3;
@@ -68,9 +71,9 @@ namespace AS_Coursework.forms
             btn_StartGame.BackgroundImageLayout = ImageLayout.Center;
             btn_StartGame.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btn_StartGame.ForeColor = Color.Snow;
-            btn_StartGame.Location = new Point(7, 100);
+            btn_StartGame.Location = new Point(7, 97);
             btn_StartGame.Name = "btn_StartGame";
-            btn_StartGame.Size = new Size(70, 111);
+            btn_StartGame.Size = new Size(70, 114);
             btn_StartGame.TabIndex = 4;
             btn_StartGame.Text = "START";
             btn_StartGame.UseVisualStyleBackColor = false;
@@ -81,7 +84,7 @@ namespace AS_Coursework.forms
             btn_ContinueGame.BackColor = Color.Gold;
             btn_ContinueGame.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btn_ContinueGame.ForeColor = Color.Snow;
-            btn_ContinueGame.Location = new Point(81, 100);
+            btn_ContinueGame.Location = new Point(81, 97);
             btn_ContinueGame.Name = "btn_ContinueGame";
             btn_ContinueGame.Size = new Size(220, 66);
             btn_ContinueGame.TabIndex = 5;
@@ -106,7 +109,7 @@ namespace AS_Coursework.forms
             // 
             pic_PlayerAvatar.BorderStyle = BorderStyle.FixedSingle;
             pic_PlayerAvatar.Image = Properties.Resources.Guest;
-            pic_PlayerAvatar.Location = new Point(7, 265);
+            pic_PlayerAvatar.Location = new Point(12, 267);
             pic_PlayerAvatar.Margin = new Padding(2, 1, 2, 1);
             pic_PlayerAvatar.Name = "pic_PlayerAvatar";
             pic_PlayerAvatar.Size = new Size(65, 65);
@@ -118,7 +121,7 @@ namespace AS_Coursework.forms
             // 
             label1.AutoSize = true;
             label1.ForeColor = SystemColors.ControlText;
-            label1.Location = new Point(80, 267);
+            label1.Location = new Point(84, 272);
             label1.Name = "label1";
             label1.Size = new Size(74, 15);
             label1.TabIndex = 8;
@@ -131,7 +134,7 @@ namespace AS_Coursework.forms
             // pic_SideBar
             // 
             pic_SideBar.BackColor = Color.FromArgb(23, 23, 23);
-            pic_SideBar.Image = Properties.Resources.sidebar_main;
+            pic_SideBar.Image = Properties.Resources.sidebar_menu;
             pic_SideBar.Location = new Point(325, 0);
             pic_SideBar.Name = "pic_SideBar";
             pic_SideBar.Size = new Size(300, 362);
@@ -142,7 +145,7 @@ namespace AS_Coursework.forms
             // btn_ChangeUser
             // 
             btn_ChangeUser.BackColor = SystemColors.Control;
-            btn_ChangeUser.Location = new Point(107, 300);
+            btn_ChangeUser.Location = new Point(148, 305);
             btn_ChangeUser.Name = "btn_ChangeUser";
             btn_ChangeUser.Size = new Size(90, 24);
             btn_ChangeUser.TabIndex = 26;
@@ -167,7 +170,7 @@ namespace AS_Coursework.forms
             // btn_OpenStatisticsForm
             // 
             btn_OpenStatisticsForm.BackColor = SystemColors.Control;
-            btn_OpenStatisticsForm.Location = new Point(80, 300);
+            btn_OpenStatisticsForm.Location = new Point(84, 305);
             btn_OpenStatisticsForm.Name = "btn_OpenStatisticsForm";
             btn_OpenStatisticsForm.Size = new Size(25, 24);
             btn_OpenStatisticsForm.TabIndex = 28;
@@ -197,6 +200,31 @@ namespace AS_Coursework.forms
             pic_TitleCard.TabIndex = 31;
             pic_TitleCard.TabStop = false;
             // 
+            // circularPictureBox1
+            // 
+            circularPictureBox1.BackColor = Color.FromArgb(64, 64, 64);
+            circularPictureBox1.BorderStyle = BorderStyle.FixedSingle;
+            circularPictureBox1.Location = new Point(7, 262);
+            circularPictureBox1.Margin = new Padding(2, 1, 2, 1);
+            circularPictureBox1.Name = "circularPictureBox1";
+            circularPictureBox1.Size = new Size(75, 75);
+            circularPictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            circularPictureBox1.TabIndex = 33;
+            circularPictureBox1.TabStop = false;
+            // 
+            // btn_Help
+            // 
+            btn_Help.BackColor = SystemColors.Control;
+            btn_Help.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btn_Help.ForeColor = SystemColors.ControlText;
+            btn_Help.Location = new Point(115, 306);
+            btn_Help.Name = "btn_Help";
+            btn_Help.Size = new Size(27, 23);
+            btn_Help.TabIndex = 34;
+            btn_Help.Text = "?";
+            btn_Help.UseVisualStyleBackColor = false;
+            btn_Help.Click += btn_Help_Click;
+            // 
             // GameMenu
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -204,6 +232,7 @@ namespace AS_Coursework.forms
             BackColor = Color.AliceBlue;
             ClientSize = new Size(629, 344);
             ControlBox = false;
+            Controls.Add(btn_Help);
             Controls.Add(lbl_Title);
             Controls.Add(btn_OpenStatisticsForm);
             Controls.Add(btn_OpenLeaderboardForm);
@@ -216,6 +245,7 @@ namespace AS_Coursework.forms
             Controls.Add(btn_StartGame);
             Controls.Add(lbl_currentPlayer);
             Controls.Add(pic_TitleCard);
+            Controls.Add(circularPictureBox1);
             Cursor = Cursors.Hand;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(2, 1, 2, 1);
@@ -225,10 +255,12 @@ namespace AS_Coursework.forms
             MinimumSize = new Size(645, 383);
             Name = "GameMenu";
             Text = "Blocks · Main Menu";
+            FormClosing += GameMenu_FormClosing;
             VisibleChanged += Splash_VisibilityChange;
             ((System.ComponentModel.ISupportInitialize)pic_PlayerAvatar).EndInit();
             ((System.ComponentModel.ISupportInitialize)pic_SideBar).EndInit();
             ((System.ComponentModel.ISupportInitialize)pic_TitleCard).EndInit();
+            ((System.ComponentModel.ISupportInitialize)circularPictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -247,5 +279,7 @@ namespace AS_Coursework.forms
         private Button btn_OpenStatisticsForm;
         private Label lbl_Title;
         private PictureBox pic_TitleCard;
+        private CircularPictureBox circularPictureBox1;
+        private Button btn_Help;
     }
 }

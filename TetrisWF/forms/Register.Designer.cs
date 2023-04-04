@@ -40,7 +40,6 @@ namespace AS_Coursework.forms
             btn_registerPlayer = new Button();
             lbl_Title = new Label();
             pic_playerAvatar = new controls.CircularPictureBox();
-            btn_QuickCreate = new Button();
             btn_CycleAvatarBack = new Button();
             btn_CycleAvatarForward = new Button();
             pic_SideBar = new PictureBox();
@@ -56,9 +55,11 @@ namespace AS_Coursework.forms
             lbl_passwordError = new Label();
             lbl_usernameError = new Label();
             lbl_passwordConfirmError = new Label();
+            circularPictureBox1 = new controls.CircularPictureBox();
             ((System.ComponentModel.ISupportInitialize)pic_playerAvatar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pic_SideBar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pic_TitleCard).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)circularPictureBox1).BeginInit();
             SuspendLayout();
             // 
             // txt_forename
@@ -115,7 +116,7 @@ namespace AS_Coursework.forms
             // 
             // btn_registerPlayer
             // 
-            btn_registerPlayer.Location = new Point(12, 299);
+            btn_registerPlayer.Location = new Point(12, 312);
             btn_registerPlayer.Name = "btn_registerPlayer";
             btn_registerPlayer.Size = new Size(75, 23);
             btn_registerPlayer.TabIndex = 10;
@@ -138,7 +139,7 @@ namespace AS_Coursework.forms
             // 
             pic_playerAvatar.BorderStyle = BorderStyle.FixedSingle;
             pic_playerAvatar.Image = Properties.Resources.Guest;
-            pic_playerAvatar.Location = new Point(127, 228);
+            pic_playerAvatar.Location = new Point(128, 237);
             pic_playerAvatar.Margin = new Padding(2, 1, 2, 1);
             pic_playerAvatar.Name = "pic_playerAvatar";
             pic_playerAvatar.Size = new Size(65, 65);
@@ -146,20 +147,9 @@ namespace AS_Coursework.forms
             pic_playerAvatar.TabIndex = 18;
             pic_playerAvatar.TabStop = false;
             // 
-            // btn_QuickCreate
-            // 
-            btn_QuickCreate.Location = new Point(92, 299);
-            btn_QuickCreate.Margin = new Padding(2, 1, 2, 1);
-            btn_QuickCreate.Name = "btn_QuickCreate";
-            btn_QuickCreate.Size = new Size(140, 22);
-            btn_QuickCreate.TabIndex = 20;
-            btn_QuickCreate.Text = "Quick Create";
-            btn_QuickCreate.UseVisualStyleBackColor = true;
-            btn_QuickCreate.Click += btn_QuickCreate_Click;
-            // 
             // btn_CycleAvatarBack
             // 
-            btn_CycleAvatarBack.Location = new Point(96, 249);
+            btn_CycleAvatarBack.Location = new Point(92, 257);
             btn_CycleAvatarBack.Margin = new Padding(2, 1, 2, 1);
             btn_CycleAvatarBack.Name = "btn_CycleAvatarBack";
             btn_CycleAvatarBack.Size = new Size(27, 23);
@@ -170,7 +160,7 @@ namespace AS_Coursework.forms
             // 
             // btn_CycleAvatarForward
             // 
-            btn_CycleAvatarForward.Location = new Point(196, 249);
+            btn_CycleAvatarForward.Location = new Point(199, 257);
             btn_CycleAvatarForward.Margin = new Padding(2, 1, 2, 1);
             btn_CycleAvatarForward.Name = "btn_CycleAvatarForward";
             btn_CycleAvatarForward.Size = new Size(27, 23);
@@ -182,7 +172,7 @@ namespace AS_Coursework.forms
             // pic_SideBar
             // 
             pic_SideBar.BackColor = Color.FromArgb(23, 23, 23);
-            pic_SideBar.Image = Properties.Resources.sidebar_reg;
+            pic_SideBar.Image = Properties.Resources.sidebar_register;
             pic_SideBar.Location = new Point(325, 0);
             pic_SideBar.Name = "pic_SideBar";
             pic_SideBar.Size = new Size(303, 360);
@@ -315,6 +305,18 @@ namespace AS_Coursework.forms
             lbl_passwordConfirmError.TabIndex = 17;
             lbl_passwordConfirmError.Text = "Password Confirm Error";
             // 
+            // circularPictureBox1
+            // 
+            circularPictureBox1.BackColor = Color.FromArgb(64, 64, 64);
+            circularPictureBox1.BorderStyle = BorderStyle.FixedSingle;
+            circularPictureBox1.Location = new Point(123, 232);
+            circularPictureBox1.Margin = new Padding(2, 1, 2, 1);
+            circularPictureBox1.Name = "circularPictureBox1";
+            circularPictureBox1.Size = new Size(75, 75);
+            circularPictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            circularPictureBox1.TabIndex = 33;
+            circularPictureBox1.TabStop = false;
+            // 
             // Register
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -336,7 +338,6 @@ namespace AS_Coursework.forms
             Controls.Add(pic_SideBar);
             Controls.Add(btn_CycleAvatarForward);
             Controls.Add(btn_CycleAvatarBack);
-            Controls.Add(btn_QuickCreate);
             Controls.Add(pic_playerAvatar);
             Controls.Add(lbl_Title);
             Controls.Add(btn_registerPlayer);
@@ -346,14 +347,17 @@ namespace AS_Coursework.forms
             Controls.Add(txt_surname);
             Controls.Add(txt_forename);
             Controls.Add(pic_TitleCard);
+            Controls.Add(circularPictureBox1);
             Icon = (Icon)resources.GetObject("$this.Icon");
             MaximumSize = new Size(645, 383);
             MinimumSize = new Size(645, 383);
             Name = "Register";
             Text = "Blocks · Registration";
+            FormClosing += Register_FormClosing;
             ((System.ComponentModel.ISupportInitialize)pic_playerAvatar).EndInit();
             ((System.ComponentModel.ISupportInitialize)pic_SideBar).EndInit();
             ((System.ComponentModel.ISupportInitialize)pic_TitleCard).EndInit();
+            ((System.ComponentModel.ISupportInitialize)circularPictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -367,7 +371,6 @@ namespace AS_Coursework.forms
         private Button btn_registerPlayer;
         private Label lbl_Title;
         private controls.CircularPictureBox pic_playerAvatar;
-        private Button btn_QuickCreate;
         private Button btn_CycleAvatarBack;
         private Button btn_CycleAvatarForward;
         private PictureBox pic_SideBar;
@@ -383,5 +386,6 @@ namespace AS_Coursework.forms
         private Label lbl_passwordError;
         private Label lbl_usernameError;
         private Label lbl_passwordConfirmError;
+        private controls.CircularPictureBox circularPictureBox1;
     }
 }

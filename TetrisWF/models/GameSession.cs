@@ -215,7 +215,8 @@ namespace AS_Coursework.models
                 return;
             }
 
-            instance.Close();
+            instance.Hide();
+            instance.Dispose();
 
             var gameState = new GameState
             {

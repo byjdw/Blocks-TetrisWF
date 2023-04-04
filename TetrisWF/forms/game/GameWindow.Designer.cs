@@ -35,7 +35,6 @@ namespace AS_Coursework.forms.game
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GameWindow));
             lbl_nextUpQueue = new Label();
             slbl_playingAs = new Label();
-            pic_userAvatar = new controls.CircularPictureBox();
             lbl_currentPlayer = new Label();
             tlp_GameBoard = new TableLayoutPanel();
             pic_hold = new PictureBox();
@@ -56,10 +55,10 @@ namespace AS_Coursework.forms.game
             lbl_heldBlock = new Label();
             tableLayoutPanel1 = new TableLayoutPanel();
             pictureBox3 = new PictureBox();
-            circularPictureBox1 = new controls.CircularPictureBox();
             tableLayoutPanel2 = new TableLayoutPanel();
             tlp_pauseIndicator = new TableLayoutPanel();
-            ((System.ComponentModel.ISupportInitialize)pic_userAvatar).BeginInit();
+            pic_PlayerAvatar = new controls.CircularPictureBox();
+            circularPictureBox1 = new controls.CircularPictureBox();
             ((System.ComponentModel.ISupportInitialize)pic_hold).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pic_nextUp1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pic_nextUp2).BeginInit();
@@ -68,6 +67,7 @@ namespace AS_Coursework.forms.game
             ((System.ComponentModel.ISupportInitialize)pic_BoardBorder).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pic_PlayerAvatar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)circularPictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -89,23 +89,11 @@ namespace AS_Coursework.forms.game
             slbl_playingAs.AutoSize = true;
             slbl_playingAs.BackColor = Color.Transparent;
             slbl_playingAs.ForeColor = Color.Snow;
-            slbl_playingAs.Location = new Point(88, 761);
+            slbl_playingAs.Location = new Point(89, 765);
             slbl_playingAs.Name = "slbl_playingAs";
             slbl_playingAs.Size = new Size(60, 15);
             slbl_playingAs.TabIndex = 11;
             slbl_playingAs.Text = "Playing as";
-            // 
-            // pic_userAvatar
-            // 
-            pic_userAvatar.BackColor = Color.Black;
-            pic_userAvatar.BorderStyle = BorderStyle.FixedSingle;
-            pic_userAvatar.Location = new Point(16, 745);
-            pic_userAvatar.Margin = new Padding(2, 1, 2, 1);
-            pic_userAvatar.Name = "pic_userAvatar";
-            pic_userAvatar.Size = new Size(65, 65);
-            pic_userAvatar.SizeMode = PictureBoxSizeMode.Zoom;
-            pic_userAvatar.TabIndex = 10;
-            pic_userAvatar.TabStop = false;
             // 
             // lbl_currentPlayer
             // 
@@ -113,7 +101,7 @@ namespace AS_Coursework.forms.game
             lbl_currentPlayer.BackColor = Color.Transparent;
             lbl_currentPlayer.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold, GraphicsUnit.Point);
             lbl_currentPlayer.ForeColor = Color.Snow;
-            lbl_currentPlayer.Location = new Point(88, 776);
+            lbl_currentPlayer.Location = new Point(89, 780);
             lbl_currentPlayer.Name = "lbl_currentPlayer";
             lbl_currentPlayer.Size = new Size(42, 15);
             lbl_currentPlayer.TabIndex = 9;
@@ -249,7 +237,7 @@ namespace AS_Coursework.forms.game
             lbl_exitText1.BackColor = Color.Lime;
             lbl_exitText1.Font = new Font("Segoe UI Black", 36F, FontStyle.Bold, GraphicsUnit.Point);
             lbl_exitText1.ForeColor = Color.White;
-            lbl_exitText1.Location = new Point(288, 290);
+            lbl_exitText1.Location = new Point(240, 470);
             lbl_exitText1.Name = "lbl_exitText1";
             lbl_exitText1.Size = new Size(144, 65);
             lbl_exitText1.TabIndex = 22;
@@ -263,7 +251,7 @@ namespace AS_Coursework.forms.game
             lbl_exitText2.BackColor = Color.Gold;
             lbl_exitText2.Font = new Font("Segoe UI Black", 36F, FontStyle.Bold, GraphicsUnit.Point);
             lbl_exitText2.ForeColor = Color.White;
-            lbl_exitText2.Location = new Point(333, 362);
+            lbl_exitText2.Location = new Point(240, 542);
             lbl_exitText2.Name = "lbl_exitText2";
             lbl_exitText2.Size = new Size(257, 65);
             lbl_exitText2.TabIndex = 24;
@@ -277,7 +265,7 @@ namespace AS_Coursework.forms.game
             lbl_exitText3.BackColor = Color.DodgerBlue;
             lbl_exitText3.Font = new Font("Segoe UI Black", 36F, FontStyle.Bold, GraphicsUnit.Point);
             lbl_exitText3.ForeColor = Color.White;
-            lbl_exitText3.Location = new Point(288, 436);
+            lbl_exitText3.Location = new Point(240, 614);
             lbl_exitText3.Name = "lbl_exitText3";
             lbl_exitText3.Size = new Size(96, 65);
             lbl_exitText3.TabIndex = 25;
@@ -291,7 +279,7 @@ namespace AS_Coursework.forms.game
             lbl_exitText4.BackColor = Color.Red;
             lbl_exitText4.Font = new Font("Segoe UI Black", 36F, FontStyle.Bold, GraphicsUnit.Point);
             lbl_exitText4.ForeColor = Color.White;
-            lbl_exitText4.Location = new Point(453, 436);
+            lbl_exitText4.Location = new Point(240, 685);
             lbl_exitText4.Name = "lbl_exitText4";
             lbl_exitText4.Size = new Size(136, 65);
             lbl_exitText4.TabIndex = 26;
@@ -400,18 +388,6 @@ namespace AS_Coursework.forms.game
             pictureBox3.TabIndex = 31;
             pictureBox3.TabStop = false;
             // 
-            // circularPictureBox1
-            // 
-            circularPictureBox1.BackColor = Color.FromArgb(64, 64, 64);
-            circularPictureBox1.BorderStyle = BorderStyle.FixedSingle;
-            circularPictureBox1.Location = new Point(11, 740);
-            circularPictureBox1.Margin = new Padding(2, 1, 2, 1);
-            circularPictureBox1.Name = "circularPictureBox1";
-            circularPictureBox1.Size = new Size(75, 75);
-            circularPictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            circularPictureBox1.TabIndex = 32;
-            circularPictureBox1.TabStop = false;
-            // 
             // tableLayoutPanel2
             // 
             tableLayoutPanel2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
@@ -500,6 +476,29 @@ namespace AS_Coursework.forms.game
             tlp_pauseIndicator.TabIndex = 33;
             tlp_pauseIndicator.Visible = false;
             // 
+            // pic_PlayerAvatar
+            // 
+            pic_PlayerAvatar.BorderStyle = BorderStyle.FixedSingle;
+            pic_PlayerAvatar.Image = Properties.Resources.Guest;
+            pic_PlayerAvatar.Location = new Point(12, 745);
+            pic_PlayerAvatar.Name = "pic_PlayerAvatar";
+            pic_PlayerAvatar.Size = new Size(65, 65);
+            pic_PlayerAvatar.SizeMode = PictureBoxSizeMode.StretchImage;
+            pic_PlayerAvatar.TabIndex = 48;
+            pic_PlayerAvatar.TabStop = false;
+            // 
+            // circularPictureBox1
+            // 
+            circularPictureBox1.BackColor = Color.FromArgb(64, 64, 64);
+            circularPictureBox1.BorderStyle = BorderStyle.FixedSingle;
+            circularPictureBox1.Location = new Point(7, 740);
+            circularPictureBox1.Margin = new Padding(2, 1, 2, 1);
+            circularPictureBox1.Name = "circularPictureBox1";
+            circularPictureBox1.Size = new Size(75, 75);
+            circularPictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            circularPictureBox1.TabIndex = 49;
+            circularPictureBox1.TabStop = false;
+            // 
             // GameWindow
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -509,6 +508,8 @@ namespace AS_Coursework.forms.game
             BackgroundImageLayout = ImageLayout.Center;
             ClientSize = new Size(885, 822);
             ControlBox = false;
+            Controls.Add(pic_PlayerAvatar);
+            Controls.Add(circularPictureBox1);
             Controls.Add(lbl_exitText4);
             Controls.Add(lbl_exitText3);
             Controls.Add(lbl_exitText2);
@@ -524,13 +525,11 @@ namespace AS_Coursework.forms.game
             Controls.Add(pic_nextUp2);
             Controls.Add(pic_nextUp1);
             Controls.Add(slbl_playingAs);
-            Controls.Add(pic_userAvatar);
             Controls.Add(lbl_currentPlayer);
             Controls.Add(lbl_nextUpQueue);
             Controls.Add(tlp_GameBoard);
             Controls.Add(pic_BoardBorder);
             Controls.Add(pictureBox3);
-            Controls.Add(circularPictureBox1);
             DoubleBuffered = true;
             FormBorderStyle = FormBorderStyle.FixedDialog;
             Icon = (Icon)resources.GetObject("$this.Icon");
@@ -541,7 +540,6 @@ namespace AS_Coursework.forms.game
             VisibleChanged += GameWindow_VisibilityChanged;
             KeyDown += GameWindow_KeyDown;
             KeyUp += GameWindow_KeyUp;
-            ((System.ComponentModel.ISupportInitialize)pic_userAvatar).EndInit();
             ((System.ComponentModel.ISupportInitialize)pic_hold).EndInit();
             ((System.ComponentModel.ISupportInitialize)pic_nextUp1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pic_nextUp2).EndInit();
@@ -550,6 +548,7 @@ namespace AS_Coursework.forms.game
             ((System.ComponentModel.ISupportInitialize)pic_BoardBorder).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pic_PlayerAvatar).EndInit();
             ((System.ComponentModel.ISupportInitialize)circularPictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -588,5 +587,6 @@ namespace AS_Coursework.forms.game
         private controls.CircularPictureBox circularPictureBox1;
         private TableLayoutPanel tableLayoutPanel2;
         private TableLayoutPanel tlp_pauseIndicator;
+        private controls.CircularPictureBox pic_PlayerAvatar;
     }
 }

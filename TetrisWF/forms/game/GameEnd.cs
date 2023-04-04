@@ -41,23 +41,21 @@ namespace AS_Coursework.forms.game
             exitTimer++;
             if (exitTimer == 16)
             {
-                DataManager.PlaySoundEffect("cancel");
                 Close();
-                SessionManager.MainMenuForm.Show();
             }
             else if (exitTimer == 1) DataManager.PlaySoundEffect("gameover");
 
             lbl_SecondsRemaining.Text = (15 - exitTimer) + " seconds...";
         }
 
-        private void GameEnd_VisibleChanged(object sender, EventArgs e)
-        {
-        }
-
         private void btn_ExitProgram_Click(object sender, EventArgs e)
         {
-            DataManager.PlaySoundEffect("cancel");
             Close();
+        }
+
+        private void GameEnd_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DataManager.PlaySoundEffect("cancel");
             SessionManager.MainMenuForm.Show();
         }
     }

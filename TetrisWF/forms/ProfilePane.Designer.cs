@@ -48,7 +48,9 @@ namespace AS_Coursework.forms
             lbl_TotalScore = new Label();
             lbl_HighScore = new Label();
             checkedListBox1 = new CheckedListBox();
+            circularPictureBox1 = new controls.CircularPictureBox();
             ((System.ComponentModel.ISupportInitialize)pic_PlayerAvatar).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)circularPictureBox1).BeginInit();
             SuspendLayout();
             // 
             // btn_Exit
@@ -90,7 +92,7 @@ namespace AS_Coursework.forms
             // lbl_username
             // 
             lbl_username.AutoSize = true;
-            lbl_username.Location = new System.Drawing.Point(83, 42);
+            lbl_username.Location = new System.Drawing.Point(84, 41);
             lbl_username.Name = "lbl_username";
             lbl_username.Size = new System.Drawing.Size(60, 15);
             lbl_username.TabIndex = 33;
@@ -230,6 +232,18 @@ namespace AS_Coursework.forms
             checkedListBox1.Size = new System.Drawing.Size(8, 4);
             checkedListBox1.TabIndex = 46;
             // 
+            // circularPictureBox1
+            // 
+            circularPictureBox1.BackColor = System.Drawing.Color.FromArgb(64, 64, 64);
+            circularPictureBox1.BorderStyle = BorderStyle.FixedSingle;
+            circularPictureBox1.Location = new System.Drawing.Point(7, 4);
+            circularPictureBox1.Margin = new Padding(2, 1, 2, 1);
+            circularPictureBox1.Name = "circularPictureBox1";
+            circularPictureBox1.Size = new System.Drawing.Size(75, 75);
+            circularPictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            circularPictureBox1.TabIndex = 47;
+            circularPictureBox1.TabStop = false;
+            // 
             // ProfilePane
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -253,10 +267,13 @@ namespace AS_Coursework.forms
             Controls.Add(lbl_name);
             Controls.Add(pic_PlayerAvatar);
             Controls.Add(btn_Exit);
+            Controls.Add(circularPictureBox1);
             Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
             Name = "ProfilePane";
             Text = "Blocks • Your Profile";
+            FormClosing += ProfilePane_FormClosing;
             ((System.ComponentModel.ISupportInitialize)pic_PlayerAvatar).EndInit();
+            ((System.ComponentModel.ISupportInitialize)circularPictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -280,5 +297,6 @@ namespace AS_Coursework.forms
         private System.Windows.Forms.Label lbl_TotalScore;
         private System.Windows.Forms.Label lbl_HighScore;
         private System.Windows.Forms.CheckedListBox checkedListBox1;
+        private controls.CircularPictureBox circularPictureBox1;
     }
 }

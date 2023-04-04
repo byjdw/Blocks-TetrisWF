@@ -14,30 +14,50 @@ namespace AS_Coursework.forms
             InitializeComponent();
             var sortedPlayerArray = new List<Player>(DataManager.GetPlayers());
             sortedPlayerArray.Sort((b, a) => a.HighScore.CompareTo(b.HighScore));
-            var HighScores = new List<string>();
-            for (var i = 0; i < 8; i++)
+            for (int i = 0; i < tlp_Scoreboard.RowCount - 1; i++)
+            {
+                Player player;
                 try
                 {
-                    HighScores.Add($"{i + 1}. {sortedPlayerArray[i].Username} [{sortedPlayerArray[i].HighScore}]");
+                    player = sortedPlayerArray[i];
                 }
-                catch (ArgumentOutOfRangeException)
+                catch
                 {
-                    HighScores.Add($"{i + 1}. N/A");
+                    player = new Player() { Username = "-----" };
                 }
+                Label PlayerLabel = GetLabelFromCoordinates(1, i + 1);
+                PlayerLabel.Text = player.Username;
+                Label ScoreLabel = GetLabelFromCoordinates(2, i + 1);
+                if (player.HighScore == 0) ScoreLabel.Text = "-----";
+                else ScoreLabel.Text = player.HighScore.ToString();
+            }
+        }
 
-            lbl_HighScore1.Text = HighScores[0];
-            lbl_HighScore2.Text = HighScores[1];
-            lbl_HighScore3.Text = HighScores[2];
-            HighScores.RemoveRange(0, 3);
-            lbl_HighScoreGeneric.Text = string.Join("\n", HighScores.ToArray());
+        public Label? GetLabelFromCoordinates(int x, int y)
+        {
+            Control control;
+            try
+            {
+                control = tlp_Scoreboard.GetControlFromPosition(x, y);
+            }
+            catch
+            {
+                return null;
+            }
+
+            return (Label)control;
         }
 
         private void btn_ExitProgram_Click(object sender, EventArgs e)
         {
+
+            Close();
+        }
+
+        private void Leaderboard_FormClosing(object sender, FormClosingEventArgs e)
+        {
             DataManager.PlaySoundEffect("cancel");
             SessionManager.MainMenuForm.Show();
-            Close();
-            Dispose();
         }
     }
 }

@@ -140,6 +140,7 @@ namespace AS_Coursework.io
                 soundFx.DesiredLatency = 100;
                 soundFx.Init(importer);
                 soundFx.Play();
+                
             }).Start();
         }
 

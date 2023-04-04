@@ -60,6 +60,7 @@ namespace AS_Coursework.forms
             if (valid)
                 try
                 {
+                    NewPlayer.Avatar = AvatarIndex;
                     DataManager.PlaySoundEffect("dialog");
                     DataManager.AddPlayer(NewPlayer);
                     MessageBox.Show("Welcome, " + NewPlayer.Username + "!" +
@@ -161,16 +162,6 @@ namespace AS_Coursework.forms
             }
         }
 
-        private void btn_QuickCreate_Click(object sender, EventArgs e)
-        {
-            DataManager.PlaySoundEffect("single");
-            txt_forename.Text = "John";
-            txt_surname.Text = "Doe";
-            txt_username.Text = "JohnDoe" + new Random().Next(0, 100);
-            txt_password.Text = "Password1";
-            txt_passwordConfirm.Text = "Password1";
-        }
-
         private void btn_CycleAvatarBack_Click(object sender, EventArgs e)
         {
             DataManager.PlaySoundEffect("rotate");
@@ -189,9 +180,13 @@ namespace AS_Coursework.forms
 
         private void btn_Exit_Click(object sender, EventArgs e)
         {
+            Close();
+        }
+
+        private void Register_FormClosing(object sender, FormClosingEventArgs e)
+        {
             DataManager.PlaySoundEffect("cancel");
             SessionManager.SplashForm!.Show();
-            Close();
         }
     }
 }

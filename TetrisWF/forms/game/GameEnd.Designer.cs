@@ -179,7 +179,7 @@
             Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
             Name = "GameEnd";
             Text = "Blocks · Game Over";
-            VisibleChanged += GameEnd_VisibleChanged;
+            FormClosing += GameEnd_FormClosing;
             ((System.ComponentModel.ISupportInitialize)pic_SideBar).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
