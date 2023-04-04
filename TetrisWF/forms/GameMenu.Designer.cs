@@ -137,7 +137,7 @@ namespace AS_Coursework.forms
             pic_SideBar.Image = Properties.Resources.sidebar_menu;
             pic_SideBar.Location = new Point(325, 0);
             pic_SideBar.Name = "pic_SideBar";
-            pic_SideBar.Size = new Size(300, 362);
+            pic_SideBar.Size = new Size(308, 362);
             pic_SideBar.SizeMode = PictureBoxSizeMode.Zoom;
             pic_SideBar.TabIndex = 24;
             pic_SideBar.TabStop = false;
@@ -247,6 +247,7 @@ namespace AS_Coursework.forms
             Controls.Add(pic_TitleCard);
             Controls.Add(circularPictureBox1);
             Cursor = Cursors.Hand;
+            FormBorderStyle = FormBorderStyle.FixedToolWindow;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(2, 1, 2, 1);
             MaximizeBox = false;

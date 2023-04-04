@@ -268,7 +268,10 @@ namespace AS_Coursework.forms
             Controls.Add(pic_PlayerAvatar);
             Controls.Add(btn_Exit);
             Controls.Add(circularPictureBox1);
+            FormBorderStyle = FormBorderStyle.FixedToolWindow;
             Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
+            MaximumSize = new System.Drawing.Size(325, 234);
+            MinimumSize = new System.Drawing.Size(325, 234);
             Name = "ProfilePane";
             Text = "Blocks • Your Profile";
             FormClosing += ProfilePane_FormClosing;

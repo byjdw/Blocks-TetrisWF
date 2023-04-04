@@ -612,7 +612,10 @@ namespace AS_Coursework.forms
             Controls.Add(lbl_Title);
             Controls.Add(pic_TitleCard);
             Controls.Add(lbl_HighScore1);
+            FormBorderStyle = FormBorderStyle.FixedToolWindow;
             Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
+            MaximumSize = new System.Drawing.Size(645, 383);
+            MinimumSize = new System.Drawing.Size(645, 383);
             Name = "Leaderboard";
             Text = "Blocks • Scoreboard";
             FormClosing += Leaderboard_FormClosing;

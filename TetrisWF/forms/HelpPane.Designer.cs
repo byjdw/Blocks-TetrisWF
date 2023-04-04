@@ -79,7 +79,7 @@
             // 
             lbl_GameRulesHeader.AutoSize = true;
             lbl_GameRulesHeader.Font = new System.Drawing.Font("Segoe UI Black", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            lbl_GameRulesHeader.Location = new System.Drawing.Point(12, 121);
+            lbl_GameRulesHeader.Location = new System.Drawing.Point(12, 93);
             lbl_GameRulesHeader.Name = "lbl_GameRulesHeader";
             lbl_GameRulesHeader.Size = new System.Drawing.Size(148, 30);
             lbl_GameRulesHeader.TabIndex = 34;
@@ -88,7 +88,7 @@
             // lbl_GameRules
             // 
             lbl_GameRules.AutoSize = true;
-            lbl_GameRules.Location = new System.Drawing.Point(16, 151);
+            lbl_GameRules.Location = new System.Drawing.Point(16, 123);
             lbl_GameRules.Name = "lbl_GameRules";
             lbl_GameRules.Size = new System.Drawing.Size(316, 60);
             lbl_GameRules.TabIndex = 35;
@@ -98,7 +98,7 @@
             // 
             lbl_GameControlsHeader.AutoSize = true;
             lbl_GameControlsHeader.Font = new System.Drawing.Font("Segoe UI Black", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            lbl_GameControlsHeader.Location = new System.Drawing.Point(16, 211);
+            lbl_GameControlsHeader.Location = new System.Drawing.Point(16, 183);
             lbl_GameControlsHeader.Name = "lbl_GameControlsHeader";
             lbl_GameControlsHeader.Size = new System.Drawing.Size(195, 30);
             lbl_GameControlsHeader.TabIndex = 36;
@@ -107,7 +107,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new System.Drawing.Point(16, 241);
+            label1.Location = new System.Drawing.Point(16, 213);
             label1.Name = "label1";
             label1.Size = new System.Drawing.Size(374, 240);
             label1.TabIndex = 37;
@@ -118,7 +118,7 @@
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             BackColor = System.Drawing.Color.AliceBlue;
-            ClientSize = new System.Drawing.Size(431, 501);
+            ClientSize = new System.Drawing.Size(431, 386);
             ControlBox = false;
             Controls.Add(label1);
             Controls.Add(lbl_GameControlsHeader);
@@ -128,7 +128,10 @@
             Controls.Add(pic_TitleCard);
             Controls.Add(btn_Exit);
             Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
+            MaximumSize = new System.Drawing.Size(447, 498);
+            MinimumSize = new System.Drawing.Size(447, 425);
             Name = "HelpPane";
             Text = "Blocks • Help";
             FormClosing += HelpPane_FormClosing;

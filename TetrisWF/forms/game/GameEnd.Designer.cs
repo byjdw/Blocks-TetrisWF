@@ -176,7 +176,10 @@
             Controls.Add(pictureBox1);
             Controls.Add(pic_SideBar);
             Controls.Add(lbl_score);
+            FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
+            MaximumSize = new System.Drawing.Size(645, 380);
+            MinimumSize = new System.Drawing.Size(645, 380);
             Name = "GameEnd";
             Text = "Blocks · Game Over";
             FormClosing += GameEnd_FormClosing;
