@@ -245,12 +245,13 @@ namespace AS_Coursework.forms.game
                     {
                         soundPlayer.PlayLooping();
                         musicMuted = false;
-                    } else
+                    }
+                    else
                     {
                         soundPlayer.Stop();
                         musicMuted = true;
                     }
-                    
+
                     break;
                 case Keys.Enter:
                     ChangeWallpaper();

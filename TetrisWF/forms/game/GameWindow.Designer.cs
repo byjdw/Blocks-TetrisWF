@@ -303,9 +303,9 @@ namespace AS_Coursework.forms.game
             // pic_BoardBorder
             // 
             pic_BoardBorder.Image = Properties.Resources.board;
-            pic_BoardBorder.Location = new Point(230, 35);
+            pic_BoardBorder.Location = new Point(228, 35);
             pic_BoardBorder.Name = "pic_BoardBorder";
-            pic_BoardBorder.Size = new Size(416, 723);
+            pic_BoardBorder.Size = new Size(420, 723);
             pic_BoardBorder.SizeMode = PictureBoxSizeMode.StretchImage;
             pic_BoardBorder.TabIndex = 28;
             pic_BoardBorder.TabStop = false;
@@ -528,8 +528,8 @@ namespace AS_Coursework.forms.game
             Controls.Add(lbl_currentPlayer);
             Controls.Add(lbl_nextUpQueue);
             Controls.Add(tlp_GameBoard);
-            Controls.Add(pic_BoardBorder);
             Controls.Add(pictureBox3);
+            Controls.Add(pic_BoardBorder);
             DoubleBuffered = true;
             FormBorderStyle = FormBorderStyle.FixedDialog;
             Icon = (Icon)resources.GetObject("$this.Icon");
