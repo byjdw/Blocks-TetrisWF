@@ -2,6 +2,7 @@ using AS_Coursework.enums;
 using AS_Coursework.forms.game;
 using AS_Coursework.@internal;
 using AS_Coursework.io;
+using AS_Coursework.io.audio;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -10,109 +11,98 @@ namespace AS_Coursework.models
 {
     public class GameSession
     {
-        // Block Storage
-
         // Session Information
-        private readonly GameWindow instance;
-        private int clearedLines;
-        private int n;
-        private bool usedHold;
+        private readonly GameWindow GameInstance;
+        private int BlocksSpawned;
+        private bool RestrictHold;
 
-        public GameSession(GameWindow instance)
+        public int LinesCleared { get; set; }
+        public int Score { get; private set; }
+        public double Multiplier { get; set; }
+        public int BlocksPlaced => BlocksSpawned + 1;
+        public int Ticks { get; private set; }
+
+        // Block Storage
+        public Block CurrentBlock { get; private set; }
+        public Block HeldBlock { get; private set; }
+        public List<Block> BlockQueue { get; }
+
+        public GameSession(GameWindow GameInstance)
         {
-            n = 0;
+            BlocksSpawned = 0;
             Score = 0;
-            clearedLines = 0;
+            LinesCleared = 0;
             Multiplier = 1;
             BlockQueue = new List<Block>();
             for (var i = 0; i < 4; i++)
             {
                 var type = (BlockType)new Random().Next(Enum.GetValues(typeof(BlockType)).Length);
-                BlockQueue.Add(new Block(n, type, instance.boardWidth, instance.boardHeight));
-                n += 1;
+                BlockQueue.Add(new Block(BlocksSpawned, type, GameInstance.boardWidth, GameInstance.boardHeight));
+                BlocksSpawned += 1;
             }
 
-            usedHold = false;
-            this.instance = instance;
+            RestrictHold = false;
+            this.GameInstance = GameInstance;
         }
 
-        public GameSession(GameWindow instance, GameState gameState)
+        public GameSession(GameWindow GameInstance, GameState gameState)
         {
             Score = gameState.Score;
             Multiplier = gameState.Multiplier;
-            CurrentBlock = new Block(gameState.CurrentBlock.Id, gameState.CurrentBlock.Type, instance.boardWidth,
-                instance.boardHeight)
+            CurrentBlock = new Block(gameState.CurrentBlock.Id, gameState.CurrentBlock.Type, GameInstance.boardWidth,
+                GameInstance.boardHeight)
             {
                 Pos = gameState.CurrentBlock.Pos
             };
             HeldBlock = gameState.HeldBlock;
             BlockQueue = new List<Block>();
             foreach (var block in gameState.BlockQueue)
-                BlockQueue.Add(new Block(block.Id, block.Type, instance.boardWidth, instance.boardHeight));
-            n = gameState.BlocksPlaced;
-            clearedLines = gameState.ClearedLines;
-            this.instance = instance;
+                BlockQueue.Add(new Block(block.Id, block.Type, GameInstance.boardWidth, GameInstance.boardHeight));
+            BlocksSpawned = gameState.BlocksPlaced;
+            LinesCleared = gameState.ClearedLines;
+            this.GameInstance = GameInstance;
         }
-
-        public int Score { get; private set; }
-
-        public double Multiplier { get; set; }
-
-        public Block CurrentBlock { get; private set; }
-
-        public int ClearedLines
-        {
-            get { return clearedLines; }
-            set { clearedLines = value; }
-        }
-
-        public Block HeldBlock { get; private set; }
-
-        public List<Block> BlockQueue { get; }
-
-        public int BlocksPlaced => n + 1;
-        public int Ticks { get; private set; }
 
         public void Tick()
         {
-            if (instance.Halt) return;
-            if (!instance.Tick) return;
+            if (GameInstance.Halt) return;
+            if (!GameInstance.Tick) return;
             if (CurrentBlock == null)
             {
-                instance.Interval = (int)(1000 / Multiplier);
+                GameInstance.Interval = (int)(1000 / Multiplier);
                 CurrentBlock = BlockQueue[0];
                 BlockQueue.RemoveAt(0);
                 var type = (BlockType)new Random().Next(Enum.GetValues(typeof(BlockType)).Length);
-                BlockQueue.Add(new Block(n, type, instance.boardWidth, instance.boardHeight));
-                n += 1;
+                BlockQueue.Add(new Block(BlocksSpawned, type, GameInstance.boardWidth, GameInstance.boardHeight));
+                BlocksSpawned += 1;
             }
 
-            if (!instance.Tick) return;
-            if (instance.Halt) return;
-            CurrentBlock.Descend(instance);
-            if (instance.Interval == 35)
+            if (!GameInstance.Tick) return;
+            if (GameInstance.Halt) return;
+            CurrentBlock.Descend(GameInstance);
+            if (GameInstance.Interval == 35)
             {
                 AddScore(0, 1);
             }
-            if (instance.Interval == 1)
+            if (GameInstance.Interval == 1)
             {
                 AddScore(0, 2);
             }
             if (CurrentBlock.Idle)
             {
-                if (instance.Interval == 1) DataManager.PlaySoundEffect("harddrop");
-                else DataManager.PlaySoundEffect("softdrop");
-                instance.Interval = 100;
+                if (GameInstance.Interval == 1) AudioController.PlaySoundEffect("harddrop");
+                else AudioController.PlaySoundEffect("softdrop");
+                GameInstance.Interval = 100;
                 CurrentBlock = null;
-                usedHold = false;
-                instance.CheckLines();
+                RestrictHold = false;
+                GameInstance.CheckLines();
                 return;
             }
 
             Ticks += 1;
             // Console.WriteLine($"Cleared Lines: {clearedLines}");
             // Console.WriteLine($"Multiplier: {Multiplier}");
-            // Console.WriteLine($"Interval: {instance.Interval}");
+            // Console.WriteLine($"Interval: {GameInstance.Interval}");
         }
 
         /// <summary>
@@ -122,29 +112,29 @@ namespace AS_Coursework.models
         /// </summary>
         public void Hold()
         {
-            if (usedHold) return;
+            if (RestrictHold) return;
             if (HeldBlock == null)
             {
-                CurrentBlock.Hide(instance);
-                HeldBlock = new Block(CurrentBlock.Id, CurrentBlock.Type, instance.boardHeight, instance.boardHeight);
+                CurrentBlock.Hide(GameInstance);
+                HeldBlock = new Block(CurrentBlock.Id, CurrentBlock.Type, GameInstance.boardHeight, GameInstance.boardHeight);
                 CurrentBlock = BlockQueue[0];
-                CurrentBlock.AdjustX(instance, 0);
+                CurrentBlock.AdjustX(GameInstance, 0);
                 BlockQueue.RemoveAt(0);
                 var type = (BlockType)new Random().Next(Enum.GetValues(typeof(BlockType)).Length);
-                BlockQueue.Add(new Block(n, type, instance.boardWidth, instance.boardHeight));
-                n += 1;
+                BlockQueue.Add(new Block(BlocksSpawned, type, GameInstance.boardWidth, GameInstance.boardHeight));
+                BlocksSpawned += 1;
             }
             else
             {
-                CurrentBlock.Hide(instance);
-                var temp = new Block(CurrentBlock.Id, CurrentBlock.Type, instance.boardHeight, instance.boardHeight);
-                CurrentBlock = new Block(HeldBlock.Id, HeldBlock.Type, instance.boardHeight, instance.boardHeight);
-                CurrentBlock.AdjustX(instance, 0);
+                CurrentBlock.Hide(GameInstance);
+                var temp = new Block(CurrentBlock.Id, CurrentBlock.Type, GameInstance.boardHeight, GameInstance.boardHeight);
+                CurrentBlock = new Block(HeldBlock.Id, HeldBlock.Type, GameInstance.boardHeight, GameInstance.boardHeight);
+                CurrentBlock.AdjustX(GameInstance, 0);
                 HeldBlock = temp;
             }
 
-            DataManager.PlaySoundEffect("hold");
-            usedHold = true;
+            AudioController.PlaySoundEffect("hold");
+            RestrictHold = true;
         }
 
         /// <summary>
@@ -152,7 +142,7 @@ namespace AS_Coursework.models
         /// </summary>
         public void AdjustX(int x)
         {
-            CurrentBlock.AdjustX(instance, x);
+            CurrentBlock.AdjustX(GameInstance, x);
         }
 
         /// <summary>
@@ -160,7 +150,7 @@ namespace AS_Coursework.models
         /// </summary>
         public void Rotate()
         {
-            CurrentBlock.Rotate(instance);
+            CurrentBlock.Rotate(GameInstance);
         }
 
 
@@ -191,32 +181,32 @@ namespace AS_Coursework.models
             /* Recording other misc statistics. */
             Player.BlocksPlaced += BlocksPlaced;
             Player.Games += 1;
-            Player.ClearedLines += clearedLines;
+            Player.ClearedLines += LinesCleared;
             Player.ClearGameState();
             /* Overwriting the SessionManager's player cache and Saving the player's data to a file. */
             SessionManager.CurrentPlayer = Player;
-            DataManager.OverwritePlayer(Player);
-            DataManager.SavePlayers();
+            IOManager.OverwritePlayer(Player);
+            IOManager.SavePlayers();
         }
 
         /// <summary>
         ///     It saves the current game state to a file
         /// </summary>
-        /// <param name="GameWindow">The current instance of the game window.</param>
+        /// <param name="GameWindow">The current GameInstance of the game window.</param>
         /// <param name="tiles">A list of strings that represent the tiles on the board.</param>
         /// <param name="tags">A list of strings that represent the tags of the blocks that are currently on the board.</param>
-        public void Save(GameWindow instance, List<string> tiles, List<string> tags)
+        public void Save(GameWindow GameInstance, List<string> tiles, List<string> tags)
         {
             var Player = SessionManager.CurrentPlayer;
             if (Player == null) return;
             if (Player.IsGuest)
             {
-                instance.GameOver();
+                GameInstance.GameOver();
                 return;
             }
 
-            instance.Hide();
-            instance.Dispose();
+            GameInstance.Hide();
+            GameInstance.Dispose();
 
             var gameState = new GameState
             {
@@ -225,21 +215,21 @@ namespace AS_Coursework.models
                 CurrentBlock = CurrentBlock,
                 HeldBlock = HeldBlock,
                 BlockQueue = BlockQueue,
-                BlocksPlaced = n,
-                ClearedLines = clearedLines,
+                BlocksPlaced = BlocksSpawned,
+                ClearedLines = LinesCleared,
                 Tiles = tiles,
                 Tags = tags
             };
 
             Player.PreviousGameState = gameState;
             SessionManager.CurrentPlayer = Player;
-            DataManager.OverwritePlayer(Player);
-            DataManager.SavePlayers();
+            IOManager.OverwritePlayer(Player);
+            IOManager.SavePlayers();
             MessageBox.Show("Your progress has been saved successfully.",
                 "Blocks · Save Game Confirmation",
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Exclamation);
-            DataManager.PlaySoundEffect("ok");
+            AudioController.PlaySoundEffect("ok");
             SessionManager.MainMenuForm.Show();
         }
 
@@ -257,24 +247,24 @@ namespace AS_Coursework.models
             {
                 case 1:
                     sc += 100;
-                    DataManager.PlaySoundEffect("single");
+                    AudioController.PlaySoundEffect("single");
                     break;
                 case 2:
                     sc += 300;
-                    DataManager.PlaySoundEffect("double");
+                    AudioController.PlaySoundEffect("_double");
                     break;
                 case 3:
                     sc += 500;
-                    DataManager.PlaySoundEffect("triple");
+                    AudioController.PlaySoundEffect("triple");
                     break;
                 case 4:
                     sc += 800;
-                    DataManager.PlaySoundEffect("tetris");
+                    AudioController.PlaySoundEffect("tetris");
                     break;
             }
 
             /* Adding the score based on the number of lines cleared and the adjustment value. */
-            Score += sc + adj;
+            Score += (int)Math.Round((sc + adj) * Multiplier);
         }
     }
 }

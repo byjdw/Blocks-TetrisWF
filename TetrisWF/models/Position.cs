@@ -32,7 +32,7 @@ namespace AS_Coursework.models
 
         public override string ToString()
         {
-            return "Vector2 {\v" +
+            return "Position {\v" +
                    new string('\b', 5) + x + ",\v" +
                    new string('\b', x.ToString().Length + 1) + y + "\v" +
                    new string('\b', y.ToString().Length + 4) + // Go back to same column as the "V" of "Vector2"

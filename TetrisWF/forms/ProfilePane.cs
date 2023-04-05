@@ -1,5 +1,6 @@
 ﻿using AS_Coursework.@internal;
 using AS_Coursework.io;
+using AS_Coursework.io.audio;
 using System;
 using System.Windows.Forms;
 
@@ -12,7 +13,7 @@ namespace AS_Coursework.forms
         {
             InitializeComponent();
             var player = SessionManager.CurrentPlayer;
-            pic_PlayerAvatar.Image = DataManager.Avatars[player.Avatar];
+            pic_PlayerAvatar.Image = IOManager.Avatars[player.Avatar];
             lbl_name.Text = player.Forename + " " + player.Surname;
             lbl_username.Text = player.Username;
             lbl_HighScore.Text = player.HighScore.ToString();
@@ -31,7 +32,7 @@ namespace AS_Coursework.forms
 
         private void ProfilePane_FormClosing(object sender, FormClosingEventArgs e)
         {
-            DataManager.PlaySoundEffect("cancel");
+            AudioController.PlaySoundEffect("cancel");
             SessionManager.MainMenuForm.Show();
         }
     }

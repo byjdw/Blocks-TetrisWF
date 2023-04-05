@@ -1,5 +1,5 @@
 ﻿using AS_Coursework.@internal;
-using AS_Coursework.io;
+using AS_Coursework.io.audio;
 using AS_Coursework.models;
 using System;
 using System.Windows.Forms;
@@ -43,7 +43,7 @@ namespace AS_Coursework.forms.game
             {
                 Close();
             }
-            else if (exitTimer == 1) DataManager.PlaySoundEffect("gameover");
+            else if (exitTimer == 1) AudioController.PlaySoundEffect("game_over");
 
             lbl_SecondsRemaining.Text = (15 - exitTimer) + " seconds...";
         }
@@ -55,7 +55,7 @@ namespace AS_Coursework.forms.game
 
         private void GameEnd_FormClosing(object sender, FormClosingEventArgs e)
         {
-            DataManager.PlaySoundEffect("cancel");
+            AudioController.PlaySoundEffect("cancel");
             SessionManager.MainMenuForm.Show();
         }
     }

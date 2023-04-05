@@ -1,6 +1,7 @@
 ﻿using AS_Coursework.forms.game;
 using AS_Coursework.@internal;
 using AS_Coursework.io;
+using AS_Coursework.io.audio;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -23,7 +24,7 @@ namespace AS_Coursework.forms
             {
                 lbl_currentPlayer.Text = CurrentPlayer.Username;
                 if (CurrentPlayer.Avatar != null)
-                    pic_PlayerAvatar.Image = DataManager.Avatars[SessionManager.CurrentPlayer!.Avatar];
+                    pic_PlayerAvatar.Image = IOManager.Avatars[SessionManager.CurrentPlayer!.Avatar];
             }
             else
             {
@@ -47,22 +48,22 @@ namespace AS_Coursework.forms
 
         private void btn_ExitProgram_Click(object sender, EventArgs e)
         {
-            DataManager.PlaySoundEffect("caution");
+            AudioController.PlaySoundEffect("caution");
             var quit = MessageBox.Show("Are you sure you want to quit?", "Blocks · Confirmation Dialouge",
                 MessageBoxButtons.YesNo);
             if (quit == DialogResult.Yes)
             {
-                DataManager.PlaySoundEffect("ok");
+                AudioController.PlaySoundEffect("ok");
                 Environment.Exit(0);
             }
-            else DataManager.PlaySoundEffect("cancel");
+            else AudioController.PlaySoundEffect("cancel");
         }
 
         private void btn_StartGame_Click(object sender, EventArgs e)
         {
             if (SessionManager.CurrentPlayer.PreviousGameState != null)
             {
-                DataManager.PlaySoundEffect("alert");
+                AudioController.PlaySoundEffect("alert");
                 var response = MessageBox.Show(
                     "Starting a new game will overwrite your existing one," +
                     "\nare you sure you want to start a new game?",
@@ -71,14 +72,14 @@ namespace AS_Coursework.forms
                     MessageBoxIcon.Warning);
                 if (response.Equals(DialogResult.Yes))
                 {
-                    DataManager.PlaySoundEffect("ok");
+                    AudioController.PlaySoundEffect("ok");
                     SessionManager.CurrentPlayer.ClearGameState();
                     new GameWindow().Show();
                     Hide();
                 }
                 else
                 {
-                    DataManager.PlaySoundEffect("cancel");
+                    AudioController.PlaySoundEffect("cancel");
                 }
             }
             else
@@ -93,18 +94,18 @@ namespace AS_Coursework.forms
         {
             if (SessionManager.CurrentPlayer.PreviousGameState != null)
             {
-                DataManager.PlaySoundEffect("select");
+                AudioController.PlaySoundEffect("select");
                 new GameWindow(SessionManager.CurrentPlayer.PreviousGameState).Show();
                 Hide();
             }
             else
             {
-                DataManager.PlaySoundEffect("alert");
+                AudioController.PlaySoundEffect("alert");
                 MessageBox.Show("You don't have a saved game to continue.",
                     "Blocks · Notifcation",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Warning);
-                DataManager.PlaySoundEffect("cancel");
+                AudioController.PlaySoundEffect("cancel");
             }
 
         }
@@ -122,28 +123,28 @@ namespace AS_Coursework.forms
         private void btn_OpenStatisticsForm_Click(object sender, EventArgs e)
         {
             if (SessionManager.CurrentPlayer.IsGuest) return;
-            DataManager.PlaySoundEffect("select");
+            AudioController.PlaySoundEffect("select");
             new ProfilePane().Show();
             Hide();
         }
 
         private void btn_OpenLeaderboardForm_Click(object sender, EventArgs e)
         {
-            DataManager.PlaySoundEffect("select");
+            AudioController.PlaySoundEffect("select");
             new Leaderboard().Show();
             Hide();
         }
 
         private void btn_Help_Click(object sender, EventArgs e)
         {
-            DataManager.PlaySoundEffect("select");
+            AudioController.PlaySoundEffect("select");
             new HelpPane().Show();
             Hide();
         }
 
         private void GameMenu_FormClosing(object sender, FormClosingEventArgs e)
         {
-            DataManager.PlaySoundEffect("select");
+            AudioController.PlaySoundEffect("select");
             SessionManager.SplashForm?.Show();
         }
     }

@@ -59,6 +59,9 @@ namespace AS_Coursework.forms.game
             tlp_pauseIndicator = new TableLayoutPanel();
             pic_PlayerAvatar = new controls.CircularPictureBox();
             circularPictureBox1 = new controls.CircularPictureBox();
+            lbl_LinesCleared = new Label();
+            lbl_SpeedMultiplier = new Label();
+            lbl_LevelUpNotifcation = new Label();
             ((System.ComponentModel.ISupportInitialize)pic_hold).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pic_nextUp1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pic_nextUp2).BeginInit();
@@ -199,16 +202,16 @@ namespace AS_Coursework.forms.game
             // 
             lbl_GameScore.AutoSize = true;
             lbl_GameScore.BackColor = Color.Transparent;
-            lbl_GameScore.Font = new Font("Segoe UI Black", 26.25F, FontStyle.Bold, GraphicsUnit.Point);
+            lbl_GameScore.Font = new Font("Segoe UI Black", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
             lbl_GameScore.ForeColor = Color.Snow;
-            lbl_GameScore.Location = new Point(233, 763);
-            lbl_GameScore.MaximumSize = new Size(410, 47);
-            lbl_GameScore.MinimumSize = new Size(410, 47);
+            lbl_GameScore.Location = new Point(233, 771);
+            lbl_GameScore.MaximumSize = new Size(410, 32);
+            lbl_GameScore.MinimumSize = new Size(410, 32);
             lbl_GameScore.Name = "lbl_GameScore";
-            lbl_GameScore.Size = new Size(410, 47);
+            lbl_GameScore.Size = new Size(410, 32);
             lbl_GameScore.TabIndex = 18;
             lbl_GameScore.Text = "0";
-            lbl_GameScore.TextAlign = ContentAlignment.MiddleCenter;
+            lbl_GameScore.TextAlign = ContentAlignment.TopCenter;
             // 
             // pic_nextUp4
             // 
@@ -500,6 +503,51 @@ namespace AS_Coursework.forms.game
             circularPictureBox1.TabIndex = 49;
             circularPictureBox1.TabStop = false;
             // 
+            // lbl_LinesCleared
+            // 
+            lbl_LinesCleared.AutoSize = true;
+            lbl_LinesCleared.BackColor = Color.Transparent;
+            lbl_LinesCleared.Font = new Font("Segoe UI Black", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            lbl_LinesCleared.ForeColor = SystemColors.Control;
+            lbl_LinesCleared.ImageAlign = ContentAlignment.MiddleLeft;
+            lbl_LinesCleared.Location = new Point(649, 478);
+            lbl_LinesCleared.MaximumSize = new Size(205, 35);
+            lbl_LinesCleared.MinimumSize = new Size(205, 35);
+            lbl_LinesCleared.Name = "lbl_LinesCleared";
+            lbl_LinesCleared.Size = new Size(205, 35);
+            lbl_LinesCleared.TabIndex = 50;
+            lbl_LinesCleared.Text = "[X] Lines Cleared";
+            lbl_LinesCleared.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // lbl_SpeedMultiplier
+            // 
+            lbl_SpeedMultiplier.AutoSize = true;
+            lbl_SpeedMultiplier.BackColor = Color.Transparent;
+            lbl_SpeedMultiplier.Font = new Font("Segoe UI Black", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            lbl_SpeedMultiplier.ForeColor = SystemColors.Control;
+            lbl_SpeedMultiplier.ImageAlign = ContentAlignment.MiddleLeft;
+            lbl_SpeedMultiplier.Location = new Point(649, 513);
+            lbl_SpeedMultiplier.MaximumSize = new Size(205, 35);
+            lbl_SpeedMultiplier.MinimumSize = new Size(205, 35);
+            lbl_SpeedMultiplier.Name = "lbl_SpeedMultiplier";
+            lbl_SpeedMultiplier.Size = new Size(205, 35);
+            lbl_SpeedMultiplier.TabIndex = 51;
+            lbl_SpeedMultiplier.Text = "Xx Speed";
+            lbl_SpeedMultiplier.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // lbl_LevelUpNotifcation
+            // 
+            lbl_LevelUpNotifcation.AutoSize = true;
+            lbl_LevelUpNotifcation.BackColor = Color.Transparent;
+            lbl_LevelUpNotifcation.Font = new Font("Segoe UI Black", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            lbl_LevelUpNotifcation.ForeColor = Color.DarkOrchid;
+            lbl_LevelUpNotifcation.Location = new Point(654, 548);
+            lbl_LevelUpNotifcation.Name = "lbl_LevelUpNotifcation";
+            lbl_LevelUpNotifcation.Size = new Size(145, 90);
+            lbl_LevelUpNotifcation.TabIndex = 52;
+            lbl_LevelUpNotifcation.Text = "LEVEL UP \r\n+ 0.1x Speed\r\n+ 0.1x Score";
+            lbl_LevelUpNotifcation.Visible = false;
+            // 
             // GameWindow
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -509,6 +557,9 @@ namespace AS_Coursework.forms.game
             BackgroundImageLayout = ImageLayout.Center;
             ClientSize = new Size(885, 822);
             ControlBox = false;
+            Controls.Add(lbl_LevelUpNotifcation);
+            Controls.Add(lbl_SpeedMultiplier);
+            Controls.Add(lbl_LinesCleared);
             Controls.Add(pic_PlayerAvatar);
             Controls.Add(circularPictureBox1);
             Controls.Add(lbl_exitText4);
@@ -589,5 +640,8 @@ namespace AS_Coursework.forms.game
         private TableLayoutPanel tableLayoutPanel2;
         private TableLayoutPanel tlp_pauseIndicator;
         private controls.CircularPictureBox pic_PlayerAvatar;
+        private Label lbl_LinesCleared;
+        private Label lbl_SpeedMultiplier;
+        private Label lbl_LevelUpNotifcation;
     }
 }

@@ -1,5 +1,6 @@
 ﻿using AS_Coursework.@internal;
 using AS_Coursework.io;
+using AS_Coursework.io.audio;
 using AS_Coursework.models;
 using System;
 using System.Collections.Generic;
@@ -12,7 +13,7 @@ namespace AS_Coursework.forms
         public Leaderboard()
         {
             InitializeComponent();
-            var sortedPlayerArray = new List<Player>(DataManager.GetPlayers());
+            var sortedPlayerArray = new List<Player>(IOManager.GetPlayers());
             sortedPlayerArray.Sort((b, a) => a.HighScore.CompareTo(b.HighScore));
             for (int i = 0; i < tlp_Scoreboard.RowCount - 1; i++)
             {
@@ -56,7 +57,7 @@ namespace AS_Coursework.forms
 
         private void Leaderboard_FormClosing(object sender, FormClosingEventArgs e)
         {
-            DataManager.PlaySoundEffect("cancel");
+            AudioController.PlaySoundEffect("cancel");
             SessionManager.MainMenuForm.Show();
         }
     }

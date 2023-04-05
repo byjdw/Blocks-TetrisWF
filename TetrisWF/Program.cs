@@ -16,7 +16,8 @@ namespace AS_Coursework
         {
             ApplicationConfiguration.Initialize();
             /* Reading the players from the file. */
-            DataManager.ReadPlayers();
+            IOManager.ReadPlayers();
+            SprixDocGen.SprixDocGen.gen();
             Application.Run(new Login());
         }
     }

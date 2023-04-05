@@ -33,7 +33,7 @@ namespace AS_Coursework.Properties {
         }
         
         /// <summary>
-        ///   Returns the cached ResourceManager instance used by this class.
+        ///   Returns the cached ResourceManager GameInstance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
         internal static global::System.Resources.ResourceManager ResourceManager {
@@ -399,6 +399,15 @@ namespace AS_Coursework.Properties {
             get {
                 object obj = ResourceManager.GetObject("icon", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream levelup {
+            get {
+                return ResourceManager.GetStream("levelup", resourceCulture);
             }
         }
         

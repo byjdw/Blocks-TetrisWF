@@ -5,6 +5,8 @@ VisualStudioVersion = 17.5.33103.201
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TetrisWF", "TetrisWF\TetrisWF.csproj", "{CAB742B3-34FC-4240-B70A-F98628012012}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoGenMyCourseworkReport", "..\AutoGenMyCourseworkReport(1)\AutoGenMyCourseworkReport\AutoGenMyCourseworkReport.csproj", "{A07019F8-070C-4D86-B2FD-6C19585D7E0A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{CAB742B3-34FC-4240-B70A-F98628012012}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CAB742B3-34FC-4240-B70A-F98628012012}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CAB742B3-34FC-4240-B70A-F98628012012}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A07019F8-070C-4D86-B2FD-6C19585D7E0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A07019F8-070C-4D86-B2FD-6C19585D7E0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A07019F8-070C-4D86-B2FD-6C19585D7E0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A07019F8-070C-4D86-B2FD-6C19585D7E0A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

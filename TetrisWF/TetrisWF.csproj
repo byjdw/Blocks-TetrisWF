@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <OutputType>WinExe</OutputType>
+        <OutputType>Exe</OutputType>
         <TargetFramework>net6.0-windows</TargetFramework>
         <RootNamespace>AS_Coursework</RootNamespace>
         <Nullable>enable</Nullable>
@@ -11,15 +11,6 @@
         <PublishSingleFile>true</PublishSingleFile>
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     </PropertyGroup>
-
-    <ItemGroup>
-      <None Remove="Resources\tetris-swing.wav" />
-    </ItemGroup>
-
-
-    <ItemGroup>
-      <EmbeddedResource Include="Resources\tetris-swing.wav" />
-    </ItemGroup>
 
     <ItemGroup>
         <!--<Compile Update="controls\CircularPictureBox.cs">!-->
@@ -47,5 +38,9 @@
 
     <ItemGroup>
       <PackageReference Include="NAudio" Version="2.1.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\AutoGenMyCourseworkReport(1)\AutoGenMyCourseworkReport\AutoGenMyCourseworkReport.csproj" />
     </ItemGroup>
 </Project>

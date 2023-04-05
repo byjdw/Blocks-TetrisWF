@@ -109,7 +109,7 @@
             label1.AutoSize = true;
             label1.Location = new System.Drawing.Point(16, 213);
             label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(374, 240);
+            label1.Size = new System.Drawing.Size(338, 240);
             label1.TabIndex = 37;
             label1.Text = resources.GetString("label1.Text");
             // 
@@ -118,7 +118,7 @@
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             BackColor = System.Drawing.Color.AliceBlue;
-            ClientSize = new System.Drawing.Size(431, 386);
+            ClientSize = new System.Drawing.Size(431, 384);
             ControlBox = false;
             Controls.Add(label1);
             Controls.Add(lbl_GameControlsHeader);
@@ -131,7 +131,7 @@
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
             MaximumSize = new System.Drawing.Size(447, 498);
-            MinimumSize = new System.Drawing.Size(447, 425);
+            MinimumSize = new System.Drawing.Size(447, 407);
             Name = "HelpPane";
             Text = "Blocks • Help";
             FormClosing += HelpPane_FormClosing;

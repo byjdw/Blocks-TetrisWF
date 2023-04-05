@@ -1,6 +1,7 @@
 ﻿using AS_Coursework.exceptions;
 using AS_Coursework.@internal;
 using AS_Coursework.io;
+using AS_Coursework.io.audio;
 using AS_Coursework.models;
 using System;
 using System.Windows.Forms;
@@ -26,7 +27,7 @@ namespace AS_Coursework.forms
             InitializeComponent();
             NewPlayer = new Player();
             AvatarIndex = new Random().Next(0, 6);
-            pic_playerAvatar.Image = DataManager.Avatars[AvatarIndex];
+            pic_playerAvatar.Image = IOManager.Avatars[AvatarIndex];
             ValidForename = false;
             ValidSurname = false;
             ValidUsername = false;
@@ -61,25 +62,25 @@ namespace AS_Coursework.forms
                 try
                 {
                     NewPlayer.Avatar = AvatarIndex;
-                    DataManager.PlaySoundEffect("dialog");
-                    DataManager.AddPlayer(NewPlayer);
+                    AudioController.PlaySoundEffect("dialog");
+                    IOManager.AddPlayer(NewPlayer);
                     MessageBox.Show("Welcome, " + NewPlayer.Username + "!" +
                                     "\nYou may now login." +
                                     "\nHave fun!", "Blocks · Account Registered");
-                    DataManager.PlaySoundEffect("ok");
+                    AudioController.PlaySoundEffect("ok");
                     SessionManager.SplashForm!.Show();
                     Close();
                 }
                 catch (InvalidPlayerException ipe)
                 {
-                    DataManager.PlaySoundEffect("caution");
+                    AudioController.PlaySoundEffect("caution");
                     MessageBox.Show(ipe.Message, "Blocks · Registration Error", MessageBoxButtons.OK,
                         MessageBoxIcon.Hand);
                     txt_username.Text = "";
                 }
             else
             {
-                DataManager.PlaySoundEffect("caution");
+                AudioController.PlaySoundEffect("caution");
                 MessageBox.Show(
                     "There was a problem registering your account, please review and correct the errors presented.",
                     "Registration Error"
@@ -142,7 +143,7 @@ namespace AS_Coursework.forms
             }
             else
             {
-                NewPlayer.Password = DataManager.GetHashString(txt_password.Text);
+                NewPlayer.Password = IOManager.GetHashString(txt_password.Text);
                 lbl_passwordError.Text = "";
                 ValidPassword = true;
             }
@@ -164,18 +165,18 @@ namespace AS_Coursework.forms
 
         private void btn_CycleAvatarBack_Click(object sender, EventArgs e)
         {
-            DataManager.PlaySoundEffect("rotate");
+            AudioController.PlaySoundEffect("rotate");
             if (AvatarIndex != 0) AvatarIndex -= 1;
             else AvatarIndex = 6;
-            if (AvatarIndex <= 6) pic_playerAvatar.Image = DataManager.Avatars[AvatarIndex];
+            if (AvatarIndex <= 6) pic_playerAvatar.Image = IOManager.Avatars[AvatarIndex];
         }
 
         private void btn_CycleAvatarForward_Click(object sender, EventArgs e)
         {
-            DataManager.PlaySoundEffect("rotate");
+            AudioController.PlaySoundEffect("rotate");
             if (AvatarIndex != 6) AvatarIndex += 1;
             else AvatarIndex = 0;
-            if (AvatarIndex <= 6) pic_playerAvatar.Image = DataManager.Avatars[AvatarIndex];
+            if (AvatarIndex <= 6) pic_playerAvatar.Image = IOManager.Avatars[AvatarIndex];
         }
 
         private void btn_Exit_Click(object sender, EventArgs e)
@@ -185,7 +186,7 @@ namespace AS_Coursework.forms
 
         private void Register_FormClosing(object sender, FormClosingEventArgs e)
         {
-            DataManager.PlaySoundEffect("cancel");
+            AudioController.PlaySoundEffect("cancel");
             SessionManager.SplashForm!.Show();
         }
     }

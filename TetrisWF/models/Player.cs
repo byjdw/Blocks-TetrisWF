@@ -23,12 +23,12 @@ namespace AS_Coursework.models
         private string username;
         private int clearedLines;
 
-        /* A default constructor. It is used to create an instance of the class. */
+        /* A default constructor. It is used to create an GameInstance of the class. */
         public Player()
         {
         }
 
-        /* This is a paramaterised constructor. It is used to create an instance of the class. */
+        /* This is a paramaterised constructor. It is used to create an GameInstance of the class. */
         public Player(string username, string password, string forename, string surname, int avatar)
         {
             Username = username;
@@ -51,7 +51,7 @@ namespace AS_Coursework.models
             set
             {
                 if (value.Length == 0) throw new InvalidPlayerException("Username cannot be empty.");
-                if (DataManager.DoesPlayerExist(value)) throw new InvalidPlayerException("Username is already in use.");
+                if (IOManager.DoesPlayerExist(value)) throw new InvalidPlayerException("Username is already in use.");
                 username = value;
             }
         }
@@ -107,7 +107,7 @@ namespace AS_Coursework.models
             {
                 if (
                     value < 0
-                    || value > DataManager.Avatars.Count
+                    || value > IOManager.Avatars.Count
                 ) throw new InvalidPlayerException("Avatar index is out of range.");
                 avatar = value;
             }

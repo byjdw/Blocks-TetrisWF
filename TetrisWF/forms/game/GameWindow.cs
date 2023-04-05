@@ -1,13 +1,12 @@
 ﻿using AS_Coursework.enums;
 using AS_Coursework.@internal;
 using AS_Coursework.io;
+using AS_Coursework.io.audio;
 using AS_Coursework.models;
 using AS_Coursework.Properties;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
-using System.Media;
 using System.Windows.Forms;
 
 namespace AS_Coursework.forms.game
@@ -18,8 +17,6 @@ namespace AS_Coursework.forms.game
         private readonly int gameInterval;
 
         private readonly GameSession session;
-
-        private SoundPlayer soundPlayer;
 
         private int exitTicks;
 
@@ -52,9 +49,9 @@ namespace AS_Coursework.forms.game
             bool musicMuted = false;
             session = new GameSession(this);
             lbl_currentPlayer.Text = SessionManager.CurrentPlayer!.Username;
-            pic_PlayerAvatar.Image = DataManager.Avatars[SessionManager.CurrentPlayer!.Avatar];
+            pic_PlayerAvatar.Image = IOManager.Avatars[SessionManager.CurrentPlayer!.Avatar];
             gameInterval = GameTimer.Interval;
-            BackgroundImage = DataManager.Backgrounds[Random.Shared.Next(0, DataManager.Backgrounds.Count - 1)];
+            BackgroundImage = IOManager.Backgrounds[Random.Shared.Next(0, IOManager.Backgrounds.Count - 1)];
         }
 
         public GameWindow(GameState gameState)
@@ -83,7 +80,7 @@ namespace AS_Coursework.forms.game
 
             session = new GameSession(this, gameState);
             lbl_currentPlayer.Text = SessionManager.CurrentPlayer!.Username;
-            pic_PlayerAvatar.Image = DataManager.Avatars[SessionManager.CurrentPlayer!.Avatar];
+            pic_PlayerAvatar.Image = IOManager.Avatars[SessionManager.CurrentPlayer!.Avatar];
             gameInterval = GameTimer.Interval;
             ForceRender(TilesFromString(gameState.Tiles), gameState.Tags);
         }
@@ -137,17 +134,16 @@ namespace AS_Coursework.forms.game
 
         private void GameWindow_VisibilityChanged(object sender, EventArgs e)
         {
-            soundPlayer = EmbeddedResourceManager.get<SoundPlayer>("AS_Coursework.Resources.tetris-swing.wav");
             if (!Visible)
             {
-                soundPlayer.Stop();
+                AudioController.StopBackgroundMusic();
             }
             else
             {
                 UpdateHud();
 
                 GameTimer.Start();
-                soundPlayer.PlayLooping();
+                AudioController.PlayBackgroundMusic();
             }
         }
 
@@ -185,6 +181,18 @@ namespace AS_Coursework.forms.game
                     break;
                 case Keys.S:
                     GameTimer.Interval = 35;
+                    break;
+                case Keys.M:
+                    if (musicMuted)
+                    {
+                        AudioController.PlayBackgroundMusic();
+                        musicMuted = false;
+                    }
+                    else
+                    {
+                        AudioController.StopBackgroundMusic();
+                        musicMuted = true;
+                    }
                     break;
                 case Keys.Tab:
                     if (!SessionManager.DebugMode) return;
@@ -240,19 +248,6 @@ namespace AS_Coursework.forms.game
                         lbl_DebugModeEnabled.Visible = false;
                     }
                     break;
-                case Keys.M:
-                    if (musicMuted)
-                    {
-                        soundPlayer.PlayLooping();
-                        musicMuted = false;
-                    }
-                    else
-                    {
-                        soundPlayer.Stop();
-                        musicMuted = true;
-                    }
-
-                    break;
                 case Keys.Enter:
                     ChangeWallpaper();
                     break;
@@ -293,14 +288,6 @@ namespace AS_Coursework.forms.game
             return (PictureBox)control;
         }
 
-        public void Clear()
-        {
-            for (int i = 0; i < boardHeight; i++)
-            {
-                RemoveRow(16);
-            }
-        }
-
         public void RemoveRow(int row)
         {
             var tiles = new List<Image>();
@@ -320,10 +307,12 @@ namespace AS_Coursework.forms.game
             }
 
             ForceRender(tiles, tags);
-            session.ClearedLines += 1;
-            if (session.ClearedLines > 5 && session.ClearedLines % 5 == 0 && session.Multiplier < 9.95)
+            session.LinesCleared += 1;
+            if (session.LinesCleared > 5 && session.LinesCleared % 5 == 0 && session.Multiplier < 9.95)
             {
                 session.Multiplier += 0.10;
+                AudioController.PlaySoundEffect("levelup");
+
             }
         }
 
@@ -345,7 +334,7 @@ namespace AS_Coursework.forms.game
             foreach (var tile in tilesstr)
                 if (tile != "Empty")
                 {
-                    var newTile = DataManager.Tiles[(int)Enum.Parse(typeof(BlockType), tile)];
+                    var newTile = IOManager.Tiles[(int)Enum.Parse(typeof(BlockType), tile)];
                     newTile.Tag = tile;
                     tiles.Add(newTile);
                 }
@@ -403,20 +392,22 @@ namespace AS_Coursework.forms.game
             {
                 var hudImg = pic_hold;
                 var index = (int)session.HeldBlock.Type;
-                var previewImg = DataManager.Previews[index];
+                var previewImg = IOManager.Previews[index];
                 hudImg.Image = previewImg;
             }
 
-            pic_nextUp1.Image = DataManager.Previews[(int)session.BlockQueue[0].Type];
-            pic_nextUp2.Image = DataManager.Previews[(int)session.BlockQueue[1].Type];
-            pic_nextUp3.Image = DataManager.Previews[(int)session.BlockQueue[2].Type];
-            pic_nextUp4.Image = DataManager.Previews[(int)session.BlockQueue[3].Type];
+            pic_nextUp1.Image = IOManager.Previews[(int)session.BlockQueue[0].Type];
+            pic_nextUp2.Image = IOManager.Previews[(int)session.BlockQueue[1].Type];
+            pic_nextUp3.Image = IOManager.Previews[(int)session.BlockQueue[2].Type];
+            pic_nextUp4.Image = IOManager.Previews[(int)session.BlockQueue[3].Type];
             lbl_GameScore.Text = session.Score.ToString();
+            lbl_LinesCleared.Text = session.LinesCleared.ToString() + " Lines";
+            lbl_SpeedMultiplier.Text = Math.Round(session.Multiplier, 2).ToString("0.00") + "x Speed";
         }
 
         private void GameWindow_FormClosing(object sender, FormClosingEventArgs e)
         {
-            soundPlayer.Stop();
+            AudioController.StopBackgroundMusic();
             GameOver();
         }
 
@@ -437,22 +428,22 @@ namespace AS_Coursework.forms.game
                     var totalTiles = boardWidth * boardHeight;
                     var startIndex = totalTiles - boardWidth * exitTicks;
                     for (var i = startIndex; i < totalTiles; i++)
-                        (tlp_pauseIndicator.Controls[i] as PictureBox).Image = DataManager.Tiles[Random.Shared.Next(0, DataManager.Tiles.Count - 1)];
-                    DataManager.PlaySoundEffect("rotate");
+                        (tlp_pauseIndicator.Controls[i] as PictureBox).Image = IOManager.Tiles[Random.Shared.Next(0, IOManager.Tiles.Count - 1)];
+                    AudioController.PlaySoundEffect("rotate");
                 }
             }
             else
             {
-                soundPlayer.Stop();
+                AudioController.StopBackgroundMusic();
                 ExitTimer.Stop();
-                if (SessionManager.CurrentPlayer.IsGuest) DataManager.PlaySoundEffect("pause");
+                if (SessionManager.CurrentPlayer.IsGuest) AudioController.PlaySoundEffect("pause");
                 session.Save(this, TilesToString(Tiles), Tags);
             }
         }
 
         public void ChangeWallpaper()
         {
-            BackgroundImage = DataManager.Backgrounds[Random.Shared.Next(0, DataManager.Backgrounds.Count - 1)];
+            BackgroundImage = IOManager.Backgrounds[Random.Shared.Next(0, IOManager.Backgrounds.Count - 1)];
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using AS_Coursework.@internal;
 using AS_Coursework.io;
+using AS_Coursework.io.audio;
 using AS_Coursework.models;
 using System;
 using System.Windows.Forms;
@@ -19,28 +20,28 @@ namespace AS_Coursework.forms
 
             var valid = false;
             Player? loggedInPlayer = null;
-            for (var i = 0; i < DataManager.GetPlayers().Count; i++)
-                if (DataManager.GetPlayers()[i].Username == txt_username.Text && DataManager.GetPlayers()[i].Password ==
-                    DataManager.GetHashString(txt_password.Text))
+            for (var i = 0; i < IOManager.GetPlayers().Count; i++)
+                if (IOManager.GetPlayers()[i].Username == txt_username.Text && IOManager.GetPlayers()[i].Password ==
+                    IOManager.GetHashString(txt_password.Text))
                 {
                     valid = true;
-                    loggedInPlayer = DataManager.GetPlayers()[i];
+                    loggedInPlayer = IOManager.GetPlayers()[i];
                 }
 
             if (valid && !loggedInPlayer.Equals(null))
             {
-                DataManager.PlaySoundEffect("dialog");
+                AudioController.PlaySoundEffect("dialog");
                 MessageBox.Show("Welcome Back, " + loggedInPlayer.Username + "!\nYou are now logged in.",
                     "Login Success",
                     MessageBoxButtons.OK);
                 SessionManager.CurrentPlayer = loggedInPlayer;
-                DataManager.PlaySoundEffect("ok");
+                AudioController.PlaySoundEffect("ok");
                 new GameMenu().Show();
                 Hide();
             }
             else
             {
-                DataManager.PlaySoundEffect("caution");
+                AudioController.PlaySoundEffect("caution");
                 MessageBox.Show("You have entered an invalid username/password combination.", "Login Error");
             }
 
@@ -55,7 +56,7 @@ namespace AS_Coursework.forms
 
         private void btn_Register_Click(object sender, EventArgs e)
         {
-            DataManager.PlaySoundEffect("select");
+            AudioController.PlaySoundEffect("select");
             Form registerForm = new Register();
             registerForm.Show();
             Hide();
@@ -63,7 +64,7 @@ namespace AS_Coursework.forms
 
         private void btn_Guest_Click(object sender, EventArgs e)
         {
-            DataManager.PlaySoundEffect("alert");
+            AudioController.PlaySoundEffect("alert");
             var playAsGuest =
                 MessageBox.Show(
                     "Are you sure you want to play as a Guest?\nThe ability to save your game and publish your score will be disabled.",
@@ -76,13 +77,13 @@ namespace AS_Coursework.forms
                     Avatar = 7,
                     IsGuest = true
                 };
-                DataManager.PlaySoundEffect("ok");
+                AudioController.PlaySoundEffect("ok");
                 new GameMenu().Show();
                 Hide();
             }
             else
             {
-                DataManager.PlaySoundEffect("cancel");
+                AudioController.PlaySoundEffect("cancel");
             }
         }
 
