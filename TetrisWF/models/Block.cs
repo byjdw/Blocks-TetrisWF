@@ -30,7 +30,6 @@ namespace AS_Coursework.models
         private Image tile;
         private BlockType type;
 
-
         public Block() { } // For resuming of game.
 
         public Block(int id, BlockType type, int maxX, int maxY)
@@ -39,11 +38,12 @@ namespace AS_Coursework.models
             this.type = type;
             this.maxX = maxX;
             this.maxY = maxY;
-            this.r = 0;
-            this.maxR = 3;
+            r = 0;
+            moves = 0;
+            maxR = 3;
             position = new Position { x = 4, y = 0 };
 
-            switch (type) // Initialise block params for blocks that require it;;
+            switch (type) // Initialise block params for blocks that require it;
             {
                 case BlockType.LINE:
                     position.y = -1; // This block is only 1 tile tall in default pos; custom start y set;
@@ -62,115 +62,116 @@ namespace AS_Coursework.models
             tile.Tag = type.ToString();
         }
 
-        public int Id
-        {
-            get => id;
-            set => id = value;
-        }
+        public int Id { get => id; set => id = value; }
+        public BlockType Type { get => type; set => type = value; }
+        public bool Idle { get => idle; set => idle = value; }
+        public Position Pos { get => position; set => position = value; }
 
-        public BlockType Type
+        /// <summary>
+        /// Moves the block horizontally by the specified amount.
+        /// </summary>
+        /// <param name="gameWindow">The game window instance.</param>
+        /// <param name="adjustment">The amount to adjust the X position by.</param>
+        public void MoveHorizontally(GameWindow gameWindow, int adjustment)
         {
-            get => type;
-            set => type = value;
-        }
-
-        public bool Idle
-        {
-            get => idle;
-            set => idle = value;
-        }
-
-        public Position Pos
-        {
-            get => position;
-            set => position = value;
+            RenderNextFrame(gameWindow, position.x + adjustment, position.y, r);
         }
 
         /// <summary>
-        ///     It adjusts the X position of the block by the amount specified in the parameter
+        /// Moves the block down by one position.
         /// </summary>
-        /// <param name="GameWindow">The GameInstance of the game window.</param>
-        /// <param name="adjX">The amount to adjust the X position by.</param>
-        public void AdjustX(GameWindow GameInstance, int adjX)
+        /// <param name="gameWindow">The game window instance.</param>
+        public void MoveDown(GameWindow gameWindow)
         {
-            RenderNextFrame(GameInstance, position.x + adjX, position.y,
-                r); // Calls RenderNext() with params causing the block to move horizontally.
+            RenderNextFrame(gameWindow, position.x, position.y + 1, r);
         }
 
         /// <summary>
-        ///     It calls RenderNext() with params causing the block to descend by 1
+        /// Rotates the block clockwise by 90 degrees.
         /// </summary>
-        /// <param name="GameWindow">The GameInstance of the game window.</param>
-        public void Descend(GameWindow GameInstance)
+        /// <param name="gameWindow">The game window instance.</param>
+        public void RotateClockwise(GameWindow gameWindow)
         {
-            RenderNextFrame(GameInstance, position.x, position.y + 1,
-                r); // Calls RenderNext() with params causing the block to descend by 1.
+            int newRotation = (r + 1) % (maxR + 1);
+            RenderNextFrame(gameWindow, position.x, position.y, newRotation);
         }
 
         /// <summary>
-        ///     It takes the current rotation, adds one to it, and if it's greater than the maximum rotation, it
-        ///     sets it to zero.
-        ///     The next step is to call the `RenderNext` function, which is the function that actually draws the
-        ///     next shape.
+        /// Renders the next frame of the block's movement.
         /// </summary>
-        /// <param name="GameWindow">The GameInstance of the game window.</param>
-        public void Rotate(GameWindow GameInstance)
+        /// <param name="gameWindow">The game window instance.</param>
+        /// <param name="x">The X position of the block.</param>
+        /// <param name="y">The Y position of the block.</param>
+        /// <param name="rotation">The rotation of the block.</param>
+        private void RenderNextFrame(GameWindow gameWindow, float x, float y, int rotation)
         {
-            var newR = r + 1;
-            if (newR > maxR) newR = 0;
-            RenderNextFrame(GameInstance, position.x, position.y, newR);
-        }
-
-        /// <summary>
-        ///     It renders the next block
-        /// </summary>
-        /// <param name="GameWindow">The GameInstance of the game window.</param>
-        /// <param name="x">The x position of the block.</param>
-        /// <param name="y">The y-coordinate of the block.</param>
-        /// <param name="r">Rotation</param>
-        private void RenderNextFrame(GameWindow GameInstance, float x, float y, int r)
-        {
-            var NewBlock = GeneratePositions(x, y, r);
-            var PositionValidation = ValidateTiles(GameInstance, NewBlock);
-            if (!PositionValidation[1])
-                if (moves == 0) GameInstance.GameOver();
-                else idle = true;
-            if (!PositionValidation[0]) return;
-            if (idle) return;
-            GameInstance.SuspendLayout();
-            this.Hide(GameInstance);
-            // Calculate the ghost block positions.
-            List<Position> GhostBlock = GenerateGhostBlockPositions(GameInstance, x, y, r);
-            foreach (var pos in GhostBlock)
+            var newBlockPositions = GeneratePositions(x, y, rotation);
+            var positionValidation = ValidateTiles(gameWindow, newBlockPositions);
+            if (!positionValidation[0])
             {
-                RenderTile(GameInstance, pos.x, pos.y, Resources.Ghost, id.ToString());
+                return;
+            }
+
+            if (!positionValidation[1])
+            {
+                if (moves == 0)
+                {
+                    gameWindow.GameOver();
+                }
+                else
+                {
+                    idle = true;
+                }
+            }
+
+            if (idle)
+            {
+                return;
+            }
+
+            gameWindow.SuspendLayout();
+            this.Hide(gameWindow);
+
+            // Calculate the ghost block positions.
+            List<Position> ghostBlockPositions = GenerateGhostBlockPositions(gameWindow, x, y, rotation);
+            foreach (var pos in ghostBlockPositions)
+            {
+                RenderTile(gameWindow, pos.x, pos.y, Resources.Ghost, id.ToString());
             }
 
             // Render the new block.
-            foreach (var pos in NewBlock)
+            foreach (var pos in newBlockPositions)
             {
-                RenderTile(GameInstance, pos.x, pos.y, tile, id.ToString());
+                RenderTile(gameWindow, pos.x, pos.y, tile, id.ToString());
             }
 
-            GameInstance.ResumeLayout(true);
+            gameWindow.ResumeLayout(true);
 
             if (y == position.y)
-                if (r == this.r) AudioController.PlaySoundEffect("move");
-                else AudioController.PlaySoundEffect("rotate");
+            {
+                if (rotation == this.r)
+                {
+                    AudioController.PlaySoundEffect("move");
+                }
+                else
+                {
+                    AudioController.PlaySoundEffect("rotate");
+                }
+            }
 
             position.x = x;
             position.y = y;
-            this.r = r;
-            moves += 1;
+            this.r = rotation;
+            moves++;
         }
 
-        private void RenderTile(GameWindow GameInstance, float x, float y, Image tile, String tag)
+        private void RenderTile(GameWindow gameWindow, float x, float y, Image tile, string tag)
         {
-            PictureBox Cell = GameInstance.GetCellFromCoordinates((int)Math.Round(x), (int)Math.Round(y));
-            RenderTile(GameInstance, Cell, tile, tag);
+            PictureBox cell = gameWindow.GetCellFromCoordinates((int)Math.Round(x), (int)Math.Round(y));
+            RenderTile(gameWindow, cell, tile, tag);
         }
 
-        private void RenderTile(GameWindow GameInstance, PictureBox cell, Image tile, String tag)
+        private void RenderTile(GameWindow gameWindow, PictureBox cell, Image tile, string tag)
         {
             if (cell != null)
             {
@@ -179,7 +180,7 @@ namespace AS_Coursework.models
             }
         }
 
-        private List<Position> GenerateGhostBlockPositions(GameWindow GameInstance, float x, float y, int rotation)
+        private List<Position> GenerateGhostBlockPositions(GameWindow gameWindow, float x, float y, int rotation)
         {
             int row = (int)Math.Round(x);
             int column = (int)Math.Round(y);
@@ -189,7 +190,7 @@ namespace AS_Coursework.models
                 while (ValidGhostPlacement)
                 {
                     List<Position> NewGhostBlock = GeneratePositions(x, positions[0].y + 1, rotation);
-                    bool[] ValidGhostBlock = ValidateTiles(GameInstance, NewGhostBlock);
+                    bool[] ValidGhostBlock = ValidateTiles(gameWindow, NewGhostBlock);
                     if (ValidGhostBlock[0] && ValidGhostBlock[1]) positions = NewGhostBlock;
                     else ValidGhostPlacement = false;
                 }
@@ -203,15 +204,15 @@ namespace AS_Coursework.models
         /// <summary>
         ///     It hides the block by replacing the tiles with empty tiles
         /// </summary> 
-        /// <param name="GameWindow">The GameInstance of the game window.</param>
-        public void Hide(GameWindow GameInstance)
+        /// <param name="GameWindow">The gameWindow of the game window.</param>
+        public void Hide(GameWindow gameWindow)
         {
-            GameInstance.SuspendLayout();
+            gameWindow.SuspendLayout();
             List<PictureBox> OccupiedCells = new List<PictureBox>();
-            foreach (PictureBox BoardCell in GameInstance.Cells)
+            foreach (PictureBox BoardCell in gameWindow.Cells)
                 if (Convert.ToString(BoardCell.Tag) == id.ToString()) OccupiedCells.Add(BoardCell);
-            foreach (PictureBox Cell in OccupiedCells) RenderTile(GameInstance, Cell, Resources.Empty, "Empty");
-            GameInstance.ResumeLayout(true);
+            foreach (PictureBox Cell in OccupiedCells) RenderTile(gameWindow, Cell, Resources.Empty, "Empty");
+            gameWindow.ResumeLayout(true);
 
         }
 
@@ -282,53 +283,53 @@ namespace AS_Coursework.models
         }
 
         /// <summary>
-        ///     It checks if the tiles are valid for the current piece's next movement
+        /// Validates if the tiles are valid for the current piece's next movement
         /// </summary>
-        /// <param name="GameWindow">The GameInstance of the game window.</param>
-        /// <param name="positions">A list of positions that the piece is going to be occupying.</param>
-        /// <returns>
-        ///     A boolean array.
-        /// </returns>
-        private bool[] ValidateTiles(GameWindow GameInstance, List<Position> positions)
+        /// <param name="gameWindow">The game window object</param>
+        /// <param name="positions">A list of positions that the piece is going to be occupying</param>
+        /// <returns>A boolean array indicating if the movement is valid horizontally and vertically</returns>
+        private bool[] ValidateTiles(GameWindow gameWindow, List<Position> positions)
         {
-            var baseX = (int)Math.Round(positions[0].x);
-            var horizontal = true;
-            var vertical = true;
-            foreach (var pos in positions)
+            int baseX = (int)Math.Round(positions[0].x);
+            bool horizontal = true;
+            bool vertical = true;
+
+            foreach (Position pos in positions)
             {
-                var h = true;
-                var v = true;
-                var x = (int)Math.Round(pos.x);
-                var y = (int)Math.Round(pos.y);
-                var tile = GameInstance.GetCellFromCoordinates(x, y);
+                bool h = true;
+                bool v = true;
+                int x = (int)Math.Round(pos.x);
+                int y = (int)Math.Round(pos.y);
+                var tile = gameWindow.GetCellFromCoordinates(x, y);
+
                 if (tile == null)
                 {
-                    if (y == maxY) v = false;
-                    else h = false;
-                }
-                else
-                {
-                    if ((!tile.Tag.Equals("Empty")) && !tile.Tag.Equals(id.ToString()))
+                    if (y == maxY)
                     {
-                        if (baseX != position.x) h = false;
-                        else v = false;
+                        v = false;
+                    }
+                    else
+                    {
+                        h = false;
+                    }
+                }
+                else if (!tile.Tag.Equals("Empty") && !tile.Tag.Equals(id.ToString()))
+                {
+                    if (baseX != position.x)
+                    {
+                        h = false;
+                    }
+                    else
+                    {
+                        v = false;
                     }
                 }
 
-
-                if (!(!horizontal || !vertical))
-                {
-                    horizontal = h;
-                    vertical = v;
-                }
+                horizontal &= h;
+                vertical &= v;
             }
 
-            // Console.WriteLine(horizontal + " " + vertical);
-            return new[]
-            {
-            horizontal,
-            vertical
-        };
+            return new bool[] { horizontal, vertical };
         }
     }
 }

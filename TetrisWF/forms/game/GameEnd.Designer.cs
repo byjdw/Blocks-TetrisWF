@@ -158,7 +158,7 @@
             btn_ExitProgram.TabIndex = 21;
             btn_ExitProgram.Text = "▶▶";
             btn_ExitProgram.UseVisualStyleBackColor = false;
-            btn_ExitProgram.Click += btn_ExitProgram_Click;
+            btn_ExitProgram.Click += ExitButton_OnClick;
             // 
             // GameEnd
             // 
@@ -182,7 +182,7 @@
             MinimumSize = new System.Drawing.Size(645, 380);
             Name = "GameEnd";
             Text = "Blocks · Game Over";
-            FormClosing += GameEnd_FormClosing;
+            FormClosing += Form_OnClosing;
             ((System.ComponentModel.ISupportInitialize)pic_SideBar).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);

@@ -77,7 +77,7 @@ namespace AS_Coursework.forms
             btn_StartGame.TabIndex = 4;
             btn_StartGame.Text = "START";
             btn_StartGame.UseVisualStyleBackColor = false;
-            btn_StartGame.Click += btn_StartGame_Click;
+            btn_StartGame.Click += StartButton_OnClick;
             // 
             // btn_ContinueGame
             // 
@@ -90,7 +90,7 @@ namespace AS_Coursework.forms
             btn_ContinueGame.TabIndex = 5;
             btn_ContinueGame.Text = "CONTINUE";
             btn_ContinueGame.UseVisualStyleBackColor = false;
-            btn_ContinueGame.Click += btn_ContinueGame_Click;
+            btn_ContinueGame.Click += ContinueButton_OnClick;
             // 
             // btn_ExitProgram
             // 
@@ -103,7 +103,7 @@ namespace AS_Coursework.forms
             btn_ExitProgram.TabIndex = 6;
             btn_ExitProgram.Text = "EXIT";
             btn_ExitProgram.UseVisualStyleBackColor = false;
-            btn_ExitProgram.Click += btn_ExitProgram_Click;
+            btn_ExitProgram.Click += ExitButton_OnClick;
             // 
             // pic_PlayerAvatar
             // 
@@ -152,7 +152,7 @@ namespace AS_Coursework.forms
             btn_ChangeUser.Text = "Change User";
             btn_ChangeUser.TextAlign = ContentAlignment.TopCenter;
             btn_ChangeUser.UseVisualStyleBackColor = false;
-            btn_ChangeUser.Click += btn_ChangeUser_Click;
+            btn_ChangeUser.Click += ChangeUserButton_OnClick;
             // 
             // btn_OpenLeaderboardForm
             // 
@@ -165,7 +165,7 @@ namespace AS_Coursework.forms
             btn_OpenLeaderboardForm.TabIndex = 27;
             btn_OpenLeaderboardForm.Text = "LEADERBOARD";
             btn_OpenLeaderboardForm.UseVisualStyleBackColor = false;
-            btn_OpenLeaderboardForm.Click += btn_OpenLeaderboardForm_Click;
+            btn_OpenLeaderboardForm.Click += LeaderboardButton_OnClick;
             // 
             // btn_OpenStatisticsForm
             // 
@@ -176,7 +176,7 @@ namespace AS_Coursework.forms
             btn_OpenStatisticsForm.TabIndex = 28;
             btn_OpenStatisticsForm.Text = "📊";
             btn_OpenStatisticsForm.UseVisualStyleBackColor = false;
-            btn_OpenStatisticsForm.Click += btn_OpenStatisticsForm_Click;
+            btn_OpenStatisticsForm.Click += StatisticsButton_OnClick;
             // 
             // lbl_Title
             // 
@@ -223,7 +223,7 @@ namespace AS_Coursework.forms
             btn_Help.TabIndex = 34;
             btn_Help.Text = "?";
             btn_Help.UseVisualStyleBackColor = false;
-            btn_Help.Click += btn_Help_Click;
+            btn_Help.Click += HelpButton_OnClick;
             // 
             // GameMenu
             // 
@@ -256,8 +256,8 @@ namespace AS_Coursework.forms
             MinimumSize = new Size(645, 383);
             Name = "GameMenu";
             Text = "Blocks · Main Menu";
-            FormClosing += GameMenu_FormClosing;
-            VisibleChanged += Splash_VisibilityChange;
+            FormClosing += Form_OnClosing;
+            VisibleChanged += Form_OnVisibilityChange;
             ((System.ComponentModel.ISupportInitialize)pic_PlayerAvatar).EndInit();
             ((System.ComponentModel.ISupportInitialize)pic_SideBar).EndInit();
             ((System.ComponentModel.ISupportInitialize)pic_TitleCard).EndInit();

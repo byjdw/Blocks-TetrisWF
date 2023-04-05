@@ -122,7 +122,7 @@ namespace AS_Coursework.forms
             btn_registerPlayer.TabIndex = 10;
             btn_registerPlayer.Text = "Register";
             btn_registerPlayer.UseVisualStyleBackColor = true;
-            btn_registerPlayer.Click += registerPlayer_onClick;
+            btn_registerPlayer.Click += RegisterPlayerButton_OnClick;
             // 
             // lbl_Title
             // 
@@ -156,7 +156,7 @@ namespace AS_Coursework.forms
             btn_CycleAvatarBack.TabIndex = 21;
             btn_CycleAvatarBack.Text = "◀";
             btn_CycleAvatarBack.UseVisualStyleBackColor = true;
-            btn_CycleAvatarBack.Click += btn_CycleAvatarBack_Click;
+            btn_CycleAvatarBack.Click += CycleAvatarBackwardsButton_OnClick;
             // 
             // btn_CycleAvatarForward
             // 
@@ -167,7 +167,7 @@ namespace AS_Coursework.forms
             btn_CycleAvatarForward.TabIndex = 22;
             btn_CycleAvatarForward.Text = "▶";
             btn_CycleAvatarForward.UseVisualStyleBackColor = true;
-            btn_CycleAvatarForward.Click += btn_CycleAvatarForward_Click;
+            btn_CycleAvatarForward.Click += CycleAvatarForwardButton_OnClick;
             // 
             // pic_SideBar
             // 
@@ -242,7 +242,7 @@ namespace AS_Coursework.forms
             btn_Exit.TabIndex = 29;
             btn_Exit.Text = "X";
             btn_Exit.UseVisualStyleBackColor = false;
-            btn_Exit.Click += btn_Exit_Click;
+            btn_Exit.Click += ExitButton_OnClick;
             // 
             // pic_TitleCard
             // 
@@ -354,7 +354,7 @@ namespace AS_Coursework.forms
             MinimumSize = new Size(645, 383);
             Name = "Register";
             Text = "Blocks · Registration";
-            FormClosing += Register_FormClosing;
+            FormClosing += Form_OnClosing;
             ((System.ComponentModel.ISupportInitialize)pic_playerAvatar).EndInit();
             ((System.ComponentModel.ISupportInitialize)pic_SideBar).EndInit();
             ((System.ComponentModel.ISupportInitialize)pic_TitleCard).EndInit();

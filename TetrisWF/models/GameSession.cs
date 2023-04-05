@@ -12,7 +12,7 @@ namespace AS_Coursework.models
     public class GameSession
     {
         // Session Information
-        private readonly GameWindow GameInstance;
+        private readonly GameWindow gameWindow;
         private int BlocksSpawned;
         private bool RestrictHold;
 
@@ -27,7 +27,7 @@ namespace AS_Coursework.models
         public Block HeldBlock { get; private set; }
         public List<Block> BlockQueue { get; }
 
-        public GameSession(GameWindow GameInstance)
+        public GameSession(GameWindow gameWindow)
         {
             BlocksSpawned = 0;
             Score = 0;
@@ -37,72 +37,72 @@ namespace AS_Coursework.models
             for (var i = 0; i < 4; i++)
             {
                 var type = (BlockType)new Random().Next(Enum.GetValues(typeof(BlockType)).Length);
-                BlockQueue.Add(new Block(BlocksSpawned, type, GameInstance.boardWidth, GameInstance.boardHeight));
+                BlockQueue.Add(new Block(BlocksSpawned, type, gameWindow.boardWidth, gameWindow.boardHeight));
                 BlocksSpawned += 1;
             }
 
             RestrictHold = false;
-            this.GameInstance = GameInstance;
+            this.gameWindow = gameWindow;
         }
 
-        public GameSession(GameWindow GameInstance, GameState gameState)
+        public GameSession(GameWindow gameWindow, GameState gameState)
         {
             Score = gameState.Score;
             Multiplier = gameState.Multiplier;
-            CurrentBlock = new Block(gameState.CurrentBlock.Id, gameState.CurrentBlock.Type, GameInstance.boardWidth,
-                GameInstance.boardHeight)
+            CurrentBlock = new Block(gameState.CurrentBlock.Id, gameState.CurrentBlock.Type, gameWindow.boardWidth,
+                gameWindow.boardHeight)
             {
                 Pos = gameState.CurrentBlock.Pos
             };
             HeldBlock = gameState.HeldBlock;
             BlockQueue = new List<Block>();
             foreach (var block in gameState.BlockQueue)
-                BlockQueue.Add(new Block(block.Id, block.Type, GameInstance.boardWidth, GameInstance.boardHeight));
+                BlockQueue.Add(new Block(block.Id, block.Type, gameWindow.boardWidth, gameWindow.boardHeight));
             BlocksSpawned = gameState.BlocksPlaced;
             LinesCleared = gameState.ClearedLines;
-            this.GameInstance = GameInstance;
+            this.gameWindow = gameWindow;
         }
 
         public void Tick()
         {
-            if (GameInstance.Halt) return;
-            if (!GameInstance.Tick) return;
+            if (gameWindow.Halt) return;
+            if (!gameWindow.Tick) return;
             if (CurrentBlock == null)
             {
-                GameInstance.Interval = (int)(1000 / Multiplier);
+                gameWindow.Interval = (int)(1000 / Multiplier);
                 CurrentBlock = BlockQueue[0];
                 BlockQueue.RemoveAt(0);
                 var type = (BlockType)new Random().Next(Enum.GetValues(typeof(BlockType)).Length);
-                BlockQueue.Add(new Block(BlocksSpawned, type, GameInstance.boardWidth, GameInstance.boardHeight));
+                BlockQueue.Add(new Block(BlocksSpawned, type, gameWindow.boardWidth, gameWindow.boardHeight));
                 BlocksSpawned += 1;
             }
 
-            if (!GameInstance.Tick) return;
-            if (GameInstance.Halt) return;
-            CurrentBlock.Descend(GameInstance);
-            if (GameInstance.Interval == 35)
+            if (!gameWindow.Tick) return;
+            if (gameWindow.Halt) return;
+            CurrentBlock.MoveDown(gameWindow);
+            if (gameWindow.Interval == 35)
             {
                 AddScore(0, 1);
             }
-            if (GameInstance.Interval == 1)
+            if (gameWindow.Interval == 1)
             {
                 AddScore(0, 2);
             }
             if (CurrentBlock.Idle)
             {
-                if (GameInstance.Interval == 1) AudioController.PlaySoundEffect("harddrop");
+                if (gameWindow.Interval == 1) AudioController.PlaySoundEffect("harddrop");
                 else AudioController.PlaySoundEffect("softdrop");
-                GameInstance.Interval = 100;
+                gameWindow.Interval = 100;
                 CurrentBlock = null;
                 RestrictHold = false;
-                GameInstance.CheckLines();
+                gameWindow.CheckLines();
                 return;
             }
 
             Ticks += 1;
             // Console.WriteLine($"Cleared Lines: {clearedLines}");
             // Console.WriteLine($"Multiplier: {Multiplier}");
-            // Console.WriteLine($"Interval: {GameInstance.Interval}");
+            // Console.WriteLine($"Interval: {gameWindow.Interval}");
         }
 
         /// <summary>
@@ -115,21 +115,21 @@ namespace AS_Coursework.models
             if (RestrictHold) return;
             if (HeldBlock == null)
             {
-                CurrentBlock.Hide(GameInstance);
-                HeldBlock = new Block(CurrentBlock.Id, CurrentBlock.Type, GameInstance.boardHeight, GameInstance.boardHeight);
+                CurrentBlock.Hide(gameWindow);
+                HeldBlock = new Block(CurrentBlock.Id, CurrentBlock.Type, gameWindow.boardHeight, gameWindow.boardHeight);
                 CurrentBlock = BlockQueue[0];
-                CurrentBlock.AdjustX(GameInstance, 0);
+                CurrentBlock.MoveHorizontally(gameWindow, 0);
                 BlockQueue.RemoveAt(0);
                 var type = (BlockType)new Random().Next(Enum.GetValues(typeof(BlockType)).Length);
-                BlockQueue.Add(new Block(BlocksSpawned, type, GameInstance.boardWidth, GameInstance.boardHeight));
+                BlockQueue.Add(new Block(BlocksSpawned, type, gameWindow.boardWidth, gameWindow.boardHeight));
                 BlocksSpawned += 1;
             }
             else
             {
-                CurrentBlock.Hide(GameInstance);
-                var temp = new Block(CurrentBlock.Id, CurrentBlock.Type, GameInstance.boardHeight, GameInstance.boardHeight);
-                CurrentBlock = new Block(HeldBlock.Id, HeldBlock.Type, GameInstance.boardHeight, GameInstance.boardHeight);
-                CurrentBlock.AdjustX(GameInstance, 0);
+                CurrentBlock.Hide(gameWindow);
+                var temp = new Block(CurrentBlock.Id, CurrentBlock.Type, gameWindow.boardHeight, gameWindow.boardHeight);
+                CurrentBlock = new Block(HeldBlock.Id, HeldBlock.Type, gameWindow.boardHeight, gameWindow.boardHeight);
+                CurrentBlock.MoveHorizontally(gameWindow, 0);
                 HeldBlock = temp;
             }
 
@@ -140,17 +140,17 @@ namespace AS_Coursework.models
         /// <summary>
         ///     It adjusts the X value of the current block by the supplied value.
         /// </summary>
-        public void AdjustX(int x)
+        public void MoveHorizontally(int x)
         {
-            CurrentBlock.AdjustX(GameInstance, x);
+            CurrentBlock.MoveHorizontally(gameWindow, x);
         }
 
         /// <summary>
         ///     It rotates the current block.
         /// </summary>
-        public void Rotate()
+        public void RotateClockwise()
         {
-            CurrentBlock.Rotate(GameInstance);
+            CurrentBlock.RotateClockwise(gameWindow);
         }
 
 
@@ -192,21 +192,21 @@ namespace AS_Coursework.models
         /// <summary>
         ///     It saves the current game state to a file
         /// </summary>
-        /// <param name="GameWindow">The current GameInstance of the game window.</param>
+        /// <param name="GameWindow">The current gameWindow of the game window.</param>
         /// <param name="tiles">A list of strings that represent the tiles on the board.</param>
         /// <param name="tags">A list of strings that represent the tags of the blocks that are currently on the board.</param>
-        public void Save(GameWindow GameInstance, List<string> tiles, List<string> tags)
+        public void Save(GameWindow gameWindow, List<string> tiles, List<string> tags)
         {
             var Player = SessionManager.CurrentPlayer;
             if (Player == null) return;
             if (Player.IsGuest)
             {
-                GameInstance.GameOver();
+                gameWindow.GameOver();
                 return;
             }
 
-            GameInstance.Hide();
-            GameInstance.Dispose();
+            gameWindow.Hide();
+            gameWindow.Dispose();
 
             var gameState = new GameState
             {

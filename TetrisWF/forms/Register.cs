@@ -45,12 +45,7 @@ namespace AS_Coursework.forms
             lbl_passwordConfirmError.Text = "";
         }
 
-        private void Window_OnClose(object sender, FormClosingEventArgs e)
-        {
-            SessionManager.SplashForm!.Show();
-        }
-
-        private void registerPlayer_onClick(object sender, EventArgs e)
+        private void RegisterPlayerButton_OnClick(object sender, EventArgs e)
         {
             bool valid = true;
             if (!ValidForename) valid = false;
@@ -163,7 +158,7 @@ namespace AS_Coursework.forms
             }
         }
 
-        private void btn_CycleAvatarBack_Click(object sender, EventArgs e)
+        private void CycleAvatarBackwardsButton_OnClick(object sender, EventArgs e)
         {
             AudioController.PlaySoundEffect("rotate");
             if (AvatarIndex != 0) AvatarIndex -= 1;
@@ -171,7 +166,7 @@ namespace AS_Coursework.forms
             if (AvatarIndex <= 6) pic_playerAvatar.Image = IOManager.Avatars[AvatarIndex];
         }
 
-        private void btn_CycleAvatarForward_Click(object sender, EventArgs e)
+        private void CycleAvatarForwardButton_OnClick(object sender, EventArgs e)
         {
             AudioController.PlaySoundEffect("rotate");
             if (AvatarIndex != 6) AvatarIndex += 1;
@@ -179,12 +174,12 @@ namespace AS_Coursework.forms
             if (AvatarIndex <= 6) pic_playerAvatar.Image = IOManager.Avatars[AvatarIndex];
         }
 
-        private void btn_Exit_Click(object sender, EventArgs e)
+        private void ExitButton_OnClick(object sender, EventArgs e)
         {
             Close();
         }
 
-        private void Register_FormClosing(object sender, FormClosingEventArgs e)
+        private void Form_OnClosing(object sender, FormClosingEventArgs e)
         {
             AudioController.PlaySoundEffect("cancel");
             SessionManager.SplashForm!.Show();

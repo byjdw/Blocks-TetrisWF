@@ -17,7 +17,7 @@ namespace AS_Coursework.forms
             SessionManager.MainMenuForm = this;
         }
 
-        private void Splash_VisibilityChange(object sender, EventArgs e)
+        private void Form_OnVisibilityChange(object sender, EventArgs e)
         {
             var CurrentPlayer = SessionManager.CurrentPlayer;
             if (CurrentPlayer != null)
@@ -46,7 +46,7 @@ namespace AS_Coursework.forms
             else btn_ContinueGame.BackColor = Color.Gold;
         }
 
-        private void btn_ExitProgram_Click(object sender, EventArgs e)
+        private void ExitButton_OnClick(object sender, EventArgs e)
         {
             AudioController.PlaySoundEffect("caution");
             var quit = MessageBox.Show("Are you sure you want to quit?", "Blocks · Confirmation Dialouge",
@@ -59,7 +59,7 @@ namespace AS_Coursework.forms
             else AudioController.PlaySoundEffect("cancel");
         }
 
-        private void btn_StartGame_Click(object sender, EventArgs e)
+        private void StartButton_OnClick(object sender, EventArgs e)
         {
             if (SessionManager.CurrentPlayer.PreviousGameState != null)
             {
@@ -90,7 +90,7 @@ namespace AS_Coursework.forms
 
         }
 
-        private void btn_ContinueGame_Click(object sender, EventArgs e)
+        private void ContinueButton_OnClick(object sender, EventArgs e)
         {
             if (SessionManager.CurrentPlayer.PreviousGameState != null)
             {
@@ -110,17 +110,17 @@ namespace AS_Coursework.forms
 
         }
 
-        private void btn_ChangeUser_Click(object sender, EventArgs e)
+        private void ChangeUserButton_OnClick(object sender, EventArgs e)
         {
             Close();
         }
 
-        private void pictureBox2_DoubleClick(object sender, EventArgs e)
+        private void Secret_OnClick(object sender, EventArgs e)
         {
             MessageBox.Show("you found secret :)");
         }
 
-        private void btn_OpenStatisticsForm_Click(object sender, EventArgs e)
+        private void StatisticsButton_OnClick(object sender, EventArgs e)
         {
             if (SessionManager.CurrentPlayer.IsGuest) return;
             AudioController.PlaySoundEffect("select");
@@ -128,21 +128,21 @@ namespace AS_Coursework.forms
             Hide();
         }
 
-        private void btn_OpenLeaderboardForm_Click(object sender, EventArgs e)
+        private void LeaderboardButton_OnClick(object sender, EventArgs e)
         {
             AudioController.PlaySoundEffect("select");
             new Leaderboard().Show();
             Hide();
         }
 
-        private void btn_Help_Click(object sender, EventArgs e)
+        private void HelpButton_OnClick(object sender, EventArgs e)
         {
             AudioController.PlaySoundEffect("select");
             new HelpPane().Show();
             Hide();
         }
 
-        private void GameMenu_FormClosing(object sender, FormClosingEventArgs e)
+        private void Form_OnClosing(object sender, FormClosingEventArgs e)
         {
             AudioController.PlaySoundEffect("select");
             SessionManager.SplashForm?.Show();

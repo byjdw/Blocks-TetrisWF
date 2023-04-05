@@ -24,13 +24,13 @@ namespace AS_Coursework.forms
             lbl_Moves.Text = player.ClearedLines + " Lines";
         }
 
-        private void btn_Exit_Click(object sender, EventArgs e)
+        private void ExitButton_OnClick(object sender, EventArgs e)
         {
 
             Close();
         }
 
-        private void ProfilePane_FormClosing(object sender, FormClosingEventArgs e)
+        private void Form_OnClosing(object sender, FormClosingEventArgs e)
         {
             AudioController.PlaySoundEffect("cancel");
             SessionManager.MainMenuForm.Show();

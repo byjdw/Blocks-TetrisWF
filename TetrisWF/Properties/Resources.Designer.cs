@@ -33,7 +33,7 @@ namespace AS_Coursework.Properties {
         }
         
         /// <summary>
-        ///   Returns the cached ResourceManager GameInstance used by this class.
+        ///   Returns the cached ResourceManager gameWindow used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
         internal static global::System.Resources.ResourceManager ResourceManager {

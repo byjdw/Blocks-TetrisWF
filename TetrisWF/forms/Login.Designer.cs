@@ -72,7 +72,7 @@ namespace AS_Coursework.forms
             btn_LoginUser.TabIndex = 3;
             btn_LoginUser.Text = "Start Playing";
             btn_LoginUser.UseVisualStyleBackColor = true;
-            btn_LoginUser.Click += loginUser_onClick;
+            btn_LoginUser.Click += LoginButton_OnClick;
             // 
             // lbl_Title
             // 
@@ -108,7 +108,7 @@ namespace AS_Coursework.forms
             btn_ExitProgram.TabIndex = 7;
             btn_ExitProgram.Text = "X";
             btn_ExitProgram.UseVisualStyleBackColor = false;
-            btn_ExitProgram.Click += btn_ExitProgram_Click;
+            btn_ExitProgram.Click += ExitButton_OnClick;
             // 
             // label1
             // 
@@ -149,7 +149,7 @@ namespace AS_Coursework.forms
             btn_Register.TabIndex = 13;
             btn_Register.Text = "Register";
             btn_Register.UseVisualStyleBackColor = true;
-            btn_Register.Click += btn_Register_Click;
+            btn_Register.Click += RegisterButton_OnClick;
             // 
             // btn_Guest
             // 
@@ -159,7 +159,7 @@ namespace AS_Coursework.forms
             btn_Guest.TabIndex = 14;
             btn_Guest.Text = "Play as Guest";
             btn_Guest.UseVisualStyleBackColor = true;
-            btn_Guest.Click += btn_Guest_Click;
+            btn_Guest.Click += GuestButton_OnClick;
             // 
             // Login
             // 
@@ -185,7 +185,7 @@ namespace AS_Coursework.forms
             MinimumSize = new Size(645, 383);
             Name = "Login";
             Text = "Blocks · Login";
-            VisibleChanged += Splash_VisibleChanged;
+            VisibleChanged += Form_OnVisibilityChange;
             ((System.ComponentModel.ISupportInitialize)pic_TitleCard).EndInit();
             ((System.ComponentModel.ISupportInitialize)pic_SideBar).EndInit();
             ResumeLayout(false);

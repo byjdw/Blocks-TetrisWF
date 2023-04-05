@@ -4,7 +4,6 @@ using System;
 
 namespace AS_Coursework.models
 {
-
     [Serializable]
     public class Player
     {
@@ -23,12 +22,8 @@ namespace AS_Coursework.models
         private string username;
         private int clearedLines;
 
-        /* A default constructor. It is used to create an GameInstance of the class. */
-        public Player()
-        {
-        }
+        public Player() { }
 
-        /* This is a paramaterised constructor. It is used to create an GameInstance of the class. */
         public Player(string username, string password, string forename, string surname, int avatar)
         {
             Username = username;
@@ -50,22 +45,18 @@ namespace AS_Coursework.models
             get => username;
             set
             {
-                if (value.Length == 0) throw new InvalidPlayerException("Username cannot be empty.");
-                if (IOManager.DoesPlayerExist(value)) throw new InvalidPlayerException("Username is already in use.");
+                if (string.IsNullOrEmpty(value))
+                    throw new InvalidPlayerException("Username cannot be empty.");
+                if (IOManager.DoesPlayerExist(value))
+                    throw new InvalidPlayerException("Username is already in use.");
                 username = value;
             }
         }
 
         public string Password
         {
-            get
-            {
-                return password;
-            }
-            set
-            {
-                password = value;
-            }
+            get => password;
+            set => password = value;
         }
 
         public string Forename
@@ -73,7 +64,8 @@ namespace AS_Coursework.models
             get => forename;
             set
             {
-                if (value.Length == 0) throw new InvalidPlayerException("Forename cannot be empty.");
+                if (string.IsNullOrEmpty(value))
+                    throw new InvalidPlayerException("Forename cannot be empty.");
                 forename = value;
             }
         }
@@ -83,21 +75,16 @@ namespace AS_Coursework.models
             get => surname;
             set
             {
-                if (value.Length == 0) throw new InvalidPlayerException("Surname cannot be empty.");
+                if (string.IsNullOrEmpty(value))
+                    throw new InvalidPlayerException("Surname cannot be empty.");
                 surname = value;
             }
         }
 
         public bool IsGuest
         {
-            get
-            {
-                return isGuest;
-            }
-            set
-            {
-                isGuest = value;
-            }
+            get => isGuest;
+            set => isGuest = value;
         }
 
         public int Avatar
@@ -105,10 +92,8 @@ namespace AS_Coursework.models
             get => avatar;
             set
             {
-                if (
-                    value < 0
-                    || value > IOManager.Avatars.Count
-                ) throw new InvalidPlayerException("Avatar index is out of range.");
+                if (value < 0 || value >= IOManager.Avatars.Count)
+                    throw new InvalidPlayerException("Avatar index is out of range.");
                 avatar = value;
             }
         }
@@ -149,7 +134,7 @@ namespace AS_Coursework.models
             set => clearedLines = value;
         }
 
-        public GameState PreviousGameState
+        public GameState? PreviousGameState
         {
             get => previousGameState;
             set => previousGameState = value;
@@ -158,20 +143,6 @@ namespace AS_Coursework.models
         public void ClearGameState()
         {
             previousGameState = null;
-        }
-
-        /// <summary>
-        ///     The ToString() function is a method that is used to return a string representation of the object
-        /// </summary>
-        /// <returns>
-        ///     The ToString() method is being overridden to return the values of the properties.
-        /// </returns>
-        public override string ToString()
-        {
-            return $"Forename: {Forename}\n" +
-                   $"Surname: {Surname}\n" +
-                   $"Username: {Username}\n" +
-                   $"Password: {Password}";
         }
     }
 }

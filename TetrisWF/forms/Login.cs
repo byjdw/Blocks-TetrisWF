@@ -15,7 +15,7 @@ namespace AS_Coursework.forms
             SessionManager.SplashForm = this;
         }
 
-        private void loginUser_onClick(object sender, EventArgs e)
+        private void LoginButton_OnClick(object sender, EventArgs e)
         {
 
             var valid = false;
@@ -49,12 +49,12 @@ namespace AS_Coursework.forms
             txt_password.Text = "";
         }
 
-        private void btn_ExitProgram_Click(object sender, EventArgs e)
+        private void ExitButton_OnClick(object sender, EventArgs e)
         {
             Environment.Exit(0);
         }
 
-        private void btn_Register_Click(object sender, EventArgs e)
+        private void RegisterButton_OnClick(object sender, EventArgs e)
         {
             AudioController.PlaySoundEffect("select");
             Form registerForm = new Register();
@@ -62,7 +62,7 @@ namespace AS_Coursework.forms
             Hide();
         }
 
-        private void btn_Guest_Click(object sender, EventArgs e)
+        private void GuestButton_OnClick(object sender, EventArgs e)
         {
             AudioController.PlaySoundEffect("alert");
             var playAsGuest =
@@ -87,7 +87,7 @@ namespace AS_Coursework.forms
             }
         }
 
-        private void Splash_VisibleChanged(object sender, EventArgs e)
+        private void Form_OnVisibilityChange(object sender, EventArgs e)
         {
             txt_username.Text = "";
             txt_password.Text = "";

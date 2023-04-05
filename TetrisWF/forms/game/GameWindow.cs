@@ -165,19 +165,19 @@ namespace AS_Coursework.forms.game
             switch (e.KeyCode)
             {
                 case Keys.Left:
-                    session.AdjustX(-1);
+                    session.MoveHorizontally(-1);
                     break;
                 case Keys.Right:
-                    session.AdjustX(1);
+                    session.MoveHorizontally(1);
                     break;
                 case Keys.Down:
                     GameTimer.Interval = 35;
                     break;
                 case Keys.A:
-                    session.AdjustX(-1);
+                    session.MoveHorizontally(-1);
                     break;
                 case Keys.D:
-                    session.AdjustX(1);
+                    session.MoveHorizontally(1);
                     break;
                 case Keys.S:
                     GameTimer.Interval = 35;
@@ -219,11 +219,11 @@ namespace AS_Coursework.forms.game
             {
                 case Keys.Up:
                     if (!GameTimer.Enabled) return;
-                    session.Rotate();
+                    session.RotateClockwise();
                     break;
                 case Keys.W:
                     if (!GameTimer.Enabled) return;
-                    session.Rotate();
+                    session.RotateClockwise();
                     break;
                 case Keys.Down:
                     if (!GameTimer.Enabled) return;
@@ -256,7 +256,7 @@ namespace AS_Coursework.forms.game
                     if (GameTimer.Enabled) return;
                     session.CurrentBlock.Hide(this);
                     RemoveRow(boardHeight - 1);
-                    session.CurrentBlock.AdjustX(this, 0);
+                    session.MoveHorizontally(0);
                     break;
                 case Keys.Escape:
                     ExitTimer.Stop();
@@ -405,7 +405,7 @@ namespace AS_Coursework.forms.game
             lbl_SpeedMultiplier.Text = Math.Round(session.Multiplier, 2).ToString("0.00") + "x Speed";
         }
 
-        private void GameWindow_FormClosing(object sender, FormClosingEventArgs e)
+        private void Form_OnClosing(object sender, FormClosingEventArgs e)
         {
             AudioController.StopBackgroundMusic();
             GameOver();

@@ -131,7 +131,7 @@ namespace AS_Coursework.forms
             btn_ExitProgram.TabIndex = 37;
             btn_ExitProgram.Text = "X";
             btn_ExitProgram.UseVisualStyleBackColor = false;
-            btn_ExitProgram.Click += btn_ExitProgram_Click;
+            btn_ExitProgram.Click += ExitButton_OnClick;
             // 
             // pic_SideBar
             // 
@@ -618,7 +618,7 @@ namespace AS_Coursework.forms
             MinimumSize = new System.Drawing.Size(645, 383);
             Name = "Leaderboard";
             Text = "Blocks • Scoreboard";
-            FormClosing += Leaderboard_FormClosing;
+            FormClosing += Form_OnClosing;
             ((System.ComponentModel.ISupportInitialize)pic_TitleCard).EndInit();
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pic_SideBar).EndInit();

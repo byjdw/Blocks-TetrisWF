@@ -588,7 +588,7 @@ namespace AS_Coursework.forms.game
             Margin = new Padding(2, 1, 2, 1);
             Name = "GameWindow";
             Text = "Blocks · Game in Progress";
-            FormClosing += GameWindow_FormClosing;
+            FormClosing += Form_OnClosing;
             VisibleChanged += GameWindow_VisibilityChanged;
             KeyDown += GameWindow_KeyDown;
             KeyUp += GameWindow_KeyUp;

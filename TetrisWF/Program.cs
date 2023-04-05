@@ -5,20 +5,25 @@ using System.Windows.Forms;
 
 namespace AS_Coursework
 {
-
     internal static class Program
     {
-        /// <summary>
-        ///     The main entry point for the application.
-        /// </summary>
         [STAThread]
         private static void Main()
         {
-            ApplicationConfiguration.Initialize();
-            /* Reading the players from the file. */
-            IOManager.ReadPlayers();
-            SprixDocGen.SprixDocGen.gen();
-            Application.Run(new Login());
+            try
+            {
+                ApplicationConfiguration.Initialize();
+                IOManager.ReadPlayers();
+                // Generates documention for all classes.
+                SprixDocGen.SprixDocGen.gen();
+                Application.Run(new Login());
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("An error occurred: " + e.Message
+                    + "\nPlease delete PlayerDetails.json and try relaunching the application.");
+                Environment.Exit(1);
+            }
         }
     }
 }

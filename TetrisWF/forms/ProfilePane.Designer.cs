@@ -65,7 +65,7 @@ namespace AS_Coursework.forms
             btn_Exit.TabIndex = 30;
             btn_Exit.Text = "X";
             btn_Exit.UseVisualStyleBackColor = false;
-            btn_Exit.Click += btn_Exit_Click;
+            btn_Exit.Click += ExitButton_OnClick;
             // 
             // pic_PlayerAvatar
             // 
@@ -274,7 +274,7 @@ namespace AS_Coursework.forms
             MinimumSize = new System.Drawing.Size(325, 234);
             Name = "ProfilePane";
             Text = "Blocks • Your Profile";
-            FormClosing += ProfilePane_FormClosing;
+            FormClosing += Form_OnClosing;
             ((System.ComponentModel.ISupportInitialize)pic_PlayerAvatar).EndInit();
             ((System.ComponentModel.ISupportInitialize)circularPictureBox1).EndInit();
             ResumeLayout(false);

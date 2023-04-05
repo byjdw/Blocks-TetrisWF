@@ -12,12 +12,12 @@ namespace AS_Coursework.forms
             InitializeComponent();
         }
 
-        private void btn_Exit_Click(object sender, EventArgs e)
+        private void ExitButton_OnClick(object sender, EventArgs e)
         {
             Close();
         }
 
-        private void HelpPane_FormClosing(object sender, FormClosingEventArgs e)
+        private void Form_OnClosing(object sender, FormClosingEventArgs e)
         {
 
             AudioController.PlaySoundEffect("cancel");

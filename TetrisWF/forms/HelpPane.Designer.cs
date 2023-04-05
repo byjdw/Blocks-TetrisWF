@@ -51,7 +51,7 @@
             btn_Exit.TabIndex = 31;
             btn_Exit.Text = "X";
             btn_Exit.UseVisualStyleBackColor = false;
-            btn_Exit.Click += btn_Exit_Click;
+            btn_Exit.Click += ExitButton_OnClick;
             // 
             // lbl_Title
             // 
@@ -134,7 +134,7 @@
             MinimumSize = new System.Drawing.Size(447, 407);
             Name = "HelpPane";
             Text = "Blocks • Help";
-            FormClosing += HelpPane_FormClosing;
+            FormClosing += Form_OnClosing;
             ((System.ComponentModel.ISupportInitialize)pic_TitleCard).EndInit();
             ResumeLayout(false);
             PerformLayout();

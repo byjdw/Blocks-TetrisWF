@@ -49,13 +49,13 @@ namespace AS_Coursework.forms
             return (Label)control;
         }
 
-        private void btn_ExitProgram_Click(object sender, EventArgs e)
+        private void ExitButton_OnClick(object sender, EventArgs e)
         {
 
             Close();
         }
 
-        private void Leaderboard_FormClosing(object sender, FormClosingEventArgs e)
+        private void Form_OnClosing(object sender, FormClosingEventArgs e)
         {
             AudioController.PlaySoundEffect("cancel");
             SessionManager.MainMenuForm.Show();

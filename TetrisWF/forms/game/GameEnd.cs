@@ -48,12 +48,12 @@ namespace AS_Coursework.forms.game
             lbl_SecondsRemaining.Text = (15 - exitTimer) + " seconds...";
         }
 
-        private void btn_ExitProgram_Click(object sender, EventArgs e)
+        private void ExitButton_OnClick(object sender, EventArgs e)
         {
             Close();
         }
 
-        private void GameEnd_FormClosing(object sender, FormClosingEventArgs e)
+        private void Form_OnClosing(object sender, FormClosingEventArgs e)
         {
             AudioController.PlaySoundEffect("cancel");
             SessionManager.MainMenuForm.Show();
