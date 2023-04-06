@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <OutputType>Exe</OutputType>
+        <OutputType>WinExe</OutputType>
         <TargetFramework>net6.0-windows</TargetFramework>
         <RootNamespace>AS_Coursework</RootNamespace>
         <Nullable>enable</Nullable>
@@ -38,9 +38,5 @@
 
     <ItemGroup>
       <PackageReference Include="NAudio" Version="2.1.0" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <ProjectReference Include="..\..\AutoGenMyCourseworkReport(1)\AutoGenMyCourseworkReport\AutoGenMyCourseworkReport.csproj" />
     </ItemGroup>
 </Project>

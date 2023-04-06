@@ -20,12 +20,12 @@ namespace AS_Coursework.forms
 
             var valid = false;
             Player? loggedInPlayer = null;
-            for (var i = 0; i < IOManager.GetPlayers().Count; i++)
-                if (IOManager.GetPlayers()[i].Username == txt_username.Text && IOManager.GetPlayers()[i].Password ==
-                    IOManager.GetHashString(txt_password.Text))
+            for (var i = 0; i < GameIOManager.GetPlayers().Count; i++)
+                if (GameIOManager.GetPlayers()[i].Username == txt_username.Text && GameIOManager.GetPlayers()[i].Password ==
+                    GameIOManager.GetHashString(txt_password.Text))
                 {
                     valid = true;
-                    loggedInPlayer = IOManager.GetPlayers()[i];
+                    loggedInPlayer = GameIOManager.GetPlayers()[i];
                 }
 
             if (valid && !loggedInPlayer.Equals(null))

@@ -185,8 +185,8 @@ namespace AS_Coursework.models
             Player.ClearGameState();
             /* Overwriting the SessionManager's player cache and Saving the player's data to a file. */
             SessionManager.CurrentPlayer = Player;
-            IOManager.OverwritePlayer(Player);
-            IOManager.SavePlayers();
+            GameIOManager.OverwritePlayer(Player);
+            GameIOManager.SavePlayers();
         }
 
         /// <summary>
@@ -223,8 +223,8 @@ namespace AS_Coursework.models
 
             Player.PreviousGameState = gameState;
             SessionManager.CurrentPlayer = Player;
-            IOManager.OverwritePlayer(Player);
-            IOManager.SavePlayers();
+            GameIOManager.OverwritePlayer(Player);
+            GameIOManager.SavePlayers();
             MessageBox.Show("Your progress has been saved successfully.",
                 "Blocks · Save Game Confirmation",
                 MessageBoxButtons.OK,

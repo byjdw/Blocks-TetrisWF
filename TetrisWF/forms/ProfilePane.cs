@@ -13,7 +13,7 @@ namespace AS_Coursework.forms
         {
             InitializeComponent();
             var player = SessionManager.CurrentPlayer;
-            pic_PlayerAvatar.Image = IOManager.Avatars[player.Avatar];
+            pic_PlayerAvatar.Image = GameIOManager.Avatars[player.Avatar];
             lbl_name.Text = player.Forename + " " + player.Surname;
             lbl_username.Text = player.Username;
             lbl_HighScore.Text = player.HighScore.ToString();

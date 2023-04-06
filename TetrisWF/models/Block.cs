@@ -58,7 +58,7 @@ namespace AS_Coursework.models
                     break;
             }
 
-            tile = IOManager.Tiles[(int)type];
+            tile = GameIOManager.Tiles[(int)type];
             tile.Tag = type.ToString();
         }
 
@@ -130,20 +130,12 @@ namespace AS_Coursework.models
             }
 
             gameWindow.SuspendLayout();
-            this.Hide(gameWindow);
+            Hide(gameWindow);
 
             // Calculate the ghost block positions.
             List<Position> ghostBlockPositions = GenerateGhostBlockPositions(gameWindow, x, y, rotation);
-            foreach (var pos in ghostBlockPositions)
-            {
-                RenderTile(gameWindow, pos.x, pos.y, Resources.Ghost, id.ToString());
-            }
-
-            // Render the new block.
-            foreach (var pos in newBlockPositions)
-            {
-                RenderTile(gameWindow, pos.x, pos.y, tile, id.ToString());
-            }
+            foreach (var pos in ghostBlockPositions) RenderTile(gameWindow, pos.x, pos.y, Resources.Ghost, id.ToString());
+            foreach (var pos in newBlockPositions) RenderTile(gameWindow, pos.x, pos.y, tile, id.ToString());
 
             gameWindow.ResumeLayout(true);
 
@@ -185,15 +177,14 @@ namespace AS_Coursework.models
             int row = (int)Math.Round(x);
             int column = (int)Math.Round(y);
             List<Position> positions = GeneratePositions(row, column, rotation);
+
+            bool ValidGhostPlacement = true;
+            while (ValidGhostPlacement)
             {
-                bool ValidGhostPlacement = true;
-                while (ValidGhostPlacement)
-                {
-                    List<Position> NewGhostBlock = GeneratePositions(x, positions[0].y + 1, rotation);
-                    bool[] ValidGhostBlock = ValidateTiles(gameWindow, NewGhostBlock);
-                    if (ValidGhostBlock[0] && ValidGhostBlock[1]) positions = NewGhostBlock;
+                List<Position> newGhostBlock = GeneratePositions(x, positions[0].y + 1, rotation);
+                    bool[] ValidGhostBlock = ValidateTiles(gameWindow, newGhostBlock);
+                    if (ValidGhostBlock[0] && ValidGhostBlock[1]) positions = newGhostBlock;
                     else ValidGhostPlacement = false;
-                }
             }
 
             return positions;

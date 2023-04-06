@@ -33,7 +33,7 @@ namespace AS_Coursework.Properties {
         }
         
         /// <summary>
-        ///   Returns the cached ResourceManager gameWindow used by this class.
+        ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
         internal static global::System.Resources.ResourceManager ResourceManager {
@@ -319,6 +319,15 @@ namespace AS_Coursework.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
         /// </summary>
+        internal static System.IO.UnmanagedMemoryStream count {
+            get {
+                return ResourceManager.GetStream("count", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
         internal static System.IO.UnmanagedMemoryStream dialog {
             get {
                 return ResourceManager.GetStream("dialog", resourceCulture);
@@ -558,9 +567,19 @@ namespace AS_Coursework.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap sidebar_gameover {
+        internal static System.Drawing.Bitmap sidebar_gameover_frown {
             get {
-                object obj = ResourceManager.GetObject("sidebar_gameover", resourceCulture);
+                object obj = ResourceManager.GetObject("sidebar_gameover_frown", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap sidebar_gameover_smile {
+            get {
+                object obj = ResourceManager.GetObject("sidebar_gameover_smile", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -635,6 +654,15 @@ namespace AS_Coursework.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
         /// </summary>
+        internal static System.IO.UnmanagedMemoryStream start {
+            get {
+                return ResourceManager.GetStream("start", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
         internal static System.IO.UnmanagedMemoryStream tetris {
             get {
                 return ResourceManager.GetStream("tetris", resourceCulture);
@@ -647,6 +675,15 @@ namespace AS_Coursework.Properties {
         internal static System.IO.UnmanagedMemoryStream triple {
             get {
                 return ResourceManager.GetStream("triple", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream win {
+            get {
+                return ResourceManager.GetStream("win", resourceCulture);
             }
         }
     }

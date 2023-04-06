@@ -1,7 +1,9 @@
 ﻿using AS_Coursework.@internal;
 using AS_Coursework.io.audio;
 using AS_Coursework.models;
+using AS_Coursework.Properties;
 using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace AS_Coursework.forms.game
@@ -10,42 +12,67 @@ namespace AS_Coursework.forms.game
     public partial class GameEnd : Form
     {
         private int exitTimer;
-        private GameSession session;
 
         public GameEnd(GameSession session, int hs)
         {
             InitializeComponent();
-            this.session = session;
+
             lbl_score.Text = session.Score.ToString();
-            var hstxt = lbl_HighScore.Text;
-            if (session.Score > hs)
+
+            bool newHighScore = session.Score > hs;
+            Color color;
+
+            if (!SessionManager.CurrentPlayer.IsGuest)
             {
-                lbl_GameStatus.Text = "Well Done!";
-                hstxt = hstxt.Replace("{0}", "greater");
+                lbl_GameStatus.Text = newHighScore ? "Well Done!" : "That's too bad...";
+                color = newHighScore ? Color.Green : Color.Crimson;
+
+                if (newHighScore)
+                {
+                    lbl_Title.Text = "NEW HIGH SCORE";
+                    lbl_HighScore.Text = $"Your new high score is - {session.Score}!";
+                    pic_SideBar.BackgroundImage = Resources.Board_S; // green block
+                    pic_SideBar.Image = Resources.sidebar_gameover_smile; // smile face
+                    AudioController.PlaySoundEffect("win");
+                }
+                else
+                {
+                    lbl_HighScore.Text = $"Your current high score is - {hs}!";
+                    pic_SideBar.BackgroundImage = Resources.Board_Z; // Red Block
+                    pic_SideBar.Image = Resources.sidebar_gameover_frown; // frown face
+                    AudioController.PlaySoundEffect("game_over");
+                }
             }
             else
             {
-                lbl_GameStatus.Text = "That's too bad...";
-                hstxt = hstxt.Replace("{0}", "less");
+                lbl_GameStatus.Text = "━━━━━";
+                lbl_HighScore.Visible = false;
+                color = Color.Gray;
+                AudioController.PlaySoundEffect("game_over");
+                lbl_HighScore.Visible = false;
             }
 
-            hstxt = hstxt.Replace("{1}", hs.ToString());
-            if (SessionManager.CurrentPlayer.IsGuest) hstxt = "";
-            lbl_HighScore.Text = hstxt;
+            lbl_SecondsRemaining.ForeColor = color;
+            lbl_GameStatus.ForeColor = color;
+            lbl_Title.ForeColor = color;
+            btn_ExitProgram.BackColor = color;
+
             ReturnToMenuTimer.Start();
-            lbl_SecondsRemaining.Text = 15 + " seconds...";
+            exitTimer = 0;
+            lbl_SecondsRemaining.Text = "15 seconds...";
         }
 
         private void ReturnToMenuTimer_Tick(object sender, EventArgs e)
         {
             exitTimer++;
-            if (exitTimer == 16)
+            if (exitTimer >= 15)
             {
                 Close();
             }
-            else if (exitTimer == 1) AudioController.PlaySoundEffect("game_over");
-
-            lbl_SecondsRemaining.Text = (15 - exitTimer) + " seconds...";
+            else
+            {
+                lbl_SecondsRemaining.Text = $"{15 - exitTimer} seconds...";
+            }
         }
 
         private void ExitButton_OnClick(object sender, EventArgs e)
@@ -57,6 +84,11 @@ namespace AS_Coursework.forms.game
         {
             AudioController.PlaySoundEffect("cancel");
             SessionManager.MainMenuForm.Show();
+        }
+
+        private void lbl_HighScore_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

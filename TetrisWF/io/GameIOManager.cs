@@ -1,9 +1,11 @@
 using AS_Coursework.exceptions;
 using AS_Coursework.models;
 using AS_Coursework.Properties;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
@@ -12,7 +14,7 @@ using System.Windows.Forms;
 namespace AS_Coursework.io
 {
 
-    internal static class IOManager
+    internal static class GameIOManager
     {
         private static List<Player> players = new();
 
@@ -67,25 +69,23 @@ namespace AS_Coursework.io
         public static void AddPlayer(Player player)
         {
             if (DoesPlayerExist(player.Username))
+            {
                 throw new InvalidPlayerException("A player with that username already exists.");
+            }
+
             players.Add(player);
             SavePlayers();
         }
 
         public static bool DoesPlayerExist(string username)
         {
-            foreach (var player in players)
-                if (player.Username == username)
-                    return true;
-            return false;
+            return players.Any(player => player.Username == username);
         }
 
         public static bool IsPasswordCorrect(string password, string storedHash)
         {
-            var valid = false;
-            var hashedString = GetHashString(password);
-            if (hashedString == storedHash) valid = true;
-            return valid;
+            string hashedString = GetHashString(password);
+            return (hashedString == storedHash);
         }
 
         /// <summary>
@@ -96,9 +96,15 @@ namespace AS_Coursework.io
         /// <param name="Player">The player object you want to overwrite.</param>
         public static void OverwritePlayer(Player player)
         {
-            for (var i = 0; i < GetPlayers().Count; i++)
-                if (GetPlayers()[i].Username == player.Username)
-                    players[i] = player;
+            foreach (Player p in players)
+            {
+                if (p.Username == player.Username)
+                {
+                    int index = players.IndexOf(p);
+                    players[index] = player;
+                    break;
+                }
+            }
         }
 
         /// <summary>
@@ -106,14 +112,17 @@ namespace AS_Coursework.io
         /// </summary>
         public static void SavePlayers()
         {
-            Stream fileStream;
             try
             {
-                File.WriteAllText("PlayerDetails.json", JsonSerializer.Serialize(players));
+                using (FileStream stream = new FileStream("PlayerDetails.json", FileMode.Create))
+                using (Utf8JsonWriter writer = new Utf8JsonWriter(stream))
+                {
+                    JsonSerializer.Serialize(writer, players);
+                }
             }
             catch (IOException e)
             {
-                MessageBox.Show("" + e.Message);
+                MessageBox.Show(e.Message);
             }
         }
 
@@ -124,12 +133,19 @@ namespace AS_Coursework.io
         {
             try
             {
-                players = JsonSerializer.Deserialize<List<Player>>(File.ReadAllText("PlayerDetails.json"));
+                using (FileStream stream = File.OpenRead("PlayerDetails.json"))
+                using (StreamReader reader = new StreamReader(stream))
+                {
+                    players = JsonSerializer.Deserialize<List<Player>>(reader.ReadToEnd());
+                }
+            }
+            catch (FileNotFoundException)
+            {
+                // File not found. Do nothing.
             }
             catch (IOException e)
             {
-                if (!e.Message.ToLower().Contains("find"))
-                    MessageBox.Show("" + e.Message);
+                MessageBox.Show(e.Message);
             }
         }
 
@@ -153,7 +169,7 @@ namespace AS_Coursework.io
         /// </returns>
         public static byte[] CreateHash(string inputString)
         {
-            HashAlgorithm algorithm = SHA256.Create();
+            using var algorithm = SHA256.Create();
             return algorithm.ComputeHash(Encoding.UTF8.GetBytes(inputString));
         }
 

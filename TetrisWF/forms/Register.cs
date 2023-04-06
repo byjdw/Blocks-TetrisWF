@@ -27,7 +27,7 @@ namespace AS_Coursework.forms
             InitializeComponent();
             NewPlayer = new Player();
             AvatarIndex = new Random().Next(0, 6);
-            pic_playerAvatar.Image = IOManager.Avatars[AvatarIndex];
+            pic_playerAvatar.Image = GameIOManager.Avatars[AvatarIndex];
             ValidForename = false;
             ValidSurname = false;
             ValidUsername = false;
@@ -58,7 +58,7 @@ namespace AS_Coursework.forms
                 {
                     NewPlayer.Avatar = AvatarIndex;
                     AudioController.PlaySoundEffect("dialog");
-                    IOManager.AddPlayer(NewPlayer);
+                    GameIOManager.AddPlayer(NewPlayer);
                     MessageBox.Show("Welcome, " + NewPlayer.Username + "!" +
                                     "\nYou may now login." +
                                     "\nHave fun!", "Blocks · Account Registered");
@@ -138,7 +138,7 @@ namespace AS_Coursework.forms
             }
             else
             {
-                NewPlayer.Password = IOManager.GetHashString(txt_password.Text);
+                NewPlayer.Password = GameIOManager.GetHashString(txt_password.Text);
                 lbl_passwordError.Text = "";
                 ValidPassword = true;
             }
@@ -163,7 +163,7 @@ namespace AS_Coursework.forms
             AudioController.PlaySoundEffect("rotate");
             if (AvatarIndex != 0) AvatarIndex -= 1;
             else AvatarIndex = 6;
-            if (AvatarIndex <= 6) pic_playerAvatar.Image = IOManager.Avatars[AvatarIndex];
+            if (AvatarIndex <= 6) pic_playerAvatar.Image = GameIOManager.Avatars[AvatarIndex];
         }
 
         private void CycleAvatarForwardButton_OnClick(object sender, EventArgs e)
@@ -171,7 +171,7 @@ namespace AS_Coursework.forms
             AudioController.PlaySoundEffect("rotate");
             if (AvatarIndex != 6) AvatarIndex += 1;
             else AvatarIndex = 0;
-            if (AvatarIndex <= 6) pic_playerAvatar.Image = IOManager.Avatars[AvatarIndex];
+            if (AvatarIndex <= 6) pic_playerAvatar.Image = GameIOManager.Avatars[AvatarIndex];
         }
 
         private void ExitButton_OnClick(object sender, EventArgs e)

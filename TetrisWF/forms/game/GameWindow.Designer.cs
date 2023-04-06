@@ -56,12 +56,12 @@ namespace AS_Coursework.forms.game
             tableLayoutPanel1 = new TableLayoutPanel();
             pictureBox3 = new PictureBox();
             tableLayoutPanel2 = new TableLayoutPanel();
-            tlp_pauseIndicator = new TableLayoutPanel();
+            tlp_GameIndicator = new TableLayoutPanel();
             pic_PlayerAvatar = new controls.CircularPictureBox();
             circularPictureBox1 = new controls.CircularPictureBox();
             lbl_LinesCleared = new Label();
             lbl_SpeedMultiplier = new Label();
-            lbl_LevelUpNotifcation = new Label();
+            lbl_countdown = new Label();
             ((System.ComponentModel.ISupportInitialize)pic_hold).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pic_nextUp1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pic_nextUp2).BeginInit();
@@ -435,50 +435,50 @@ namespace AS_Coursework.forms.game
             tableLayoutPanel2.Size = new Size(200, 100);
             tableLayoutPanel2.TabIndex = 0;
             // 
-            // tlp_pauseIndicator
+            // tlp_GameIndicator
             // 
-            tlp_pauseIndicator.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            tlp_pauseIndicator.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            tlp_pauseIndicator.BackColor = Color.Black;
-            tlp_pauseIndicator.ColumnCount = 10;
-            tlp_pauseIndicator.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10F));
-            tlp_pauseIndicator.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10F));
-            tlp_pauseIndicator.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10F));
-            tlp_pauseIndicator.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10F));
-            tlp_pauseIndicator.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10F));
-            tlp_pauseIndicator.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10F));
-            tlp_pauseIndicator.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10F));
-            tlp_pauseIndicator.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10F));
-            tlp_pauseIndicator.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10F));
-            tlp_pauseIndicator.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10F));
-            tlp_pauseIndicator.GrowStyle = TableLayoutPanelGrowStyle.FixedSize;
-            tlp_pauseIndicator.Location = new Point(233, 35);
-            tlp_pauseIndicator.Margin = new Padding(0);
-            tlp_pauseIndicator.Name = "tlp_pauseIndicator";
-            tlp_pauseIndicator.RowCount = 20;
-            tlp_pauseIndicator.RowStyles.Add(new RowStyle(SizeType.Percent, 5F));
-            tlp_pauseIndicator.RowStyles.Add(new RowStyle(SizeType.Percent, 5F));
-            tlp_pauseIndicator.RowStyles.Add(new RowStyle(SizeType.Percent, 5F));
-            tlp_pauseIndicator.RowStyles.Add(new RowStyle(SizeType.Percent, 5F));
-            tlp_pauseIndicator.RowStyles.Add(new RowStyle(SizeType.Percent, 5F));
-            tlp_pauseIndicator.RowStyles.Add(new RowStyle(SizeType.Percent, 5F));
-            tlp_pauseIndicator.RowStyles.Add(new RowStyle(SizeType.Percent, 5F));
-            tlp_pauseIndicator.RowStyles.Add(new RowStyle(SizeType.Percent, 5F));
-            tlp_pauseIndicator.RowStyles.Add(new RowStyle(SizeType.Percent, 5F));
-            tlp_pauseIndicator.RowStyles.Add(new RowStyle(SizeType.Percent, 5F));
-            tlp_pauseIndicator.RowStyles.Add(new RowStyle(SizeType.Percent, 5F));
-            tlp_pauseIndicator.RowStyles.Add(new RowStyle(SizeType.Percent, 5F));
-            tlp_pauseIndicator.RowStyles.Add(new RowStyle(SizeType.Percent, 5F));
-            tlp_pauseIndicator.RowStyles.Add(new RowStyle(SizeType.Percent, 5F));
-            tlp_pauseIndicator.RowStyles.Add(new RowStyle(SizeType.Percent, 5F));
-            tlp_pauseIndicator.RowStyles.Add(new RowStyle(SizeType.Percent, 5F));
-            tlp_pauseIndicator.RowStyles.Add(new RowStyle(SizeType.Percent, 5F));
-            tlp_pauseIndicator.RowStyles.Add(new RowStyle(SizeType.Percent, 5F));
-            tlp_pauseIndicator.RowStyles.Add(new RowStyle(SizeType.Percent, 5F));
-            tlp_pauseIndicator.RowStyles.Add(new RowStyle(SizeType.Percent, 5F));
-            tlp_pauseIndicator.Size = new Size(410, 720);
-            tlp_pauseIndicator.TabIndex = 33;
-            tlp_pauseIndicator.Visible = false;
+            tlp_GameIndicator.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            tlp_GameIndicator.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            tlp_GameIndicator.BackColor = Color.Black;
+            tlp_GameIndicator.ColumnCount = 10;
+            tlp_GameIndicator.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10F));
+            tlp_GameIndicator.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10F));
+            tlp_GameIndicator.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10F));
+            tlp_GameIndicator.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10F));
+            tlp_GameIndicator.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10F));
+            tlp_GameIndicator.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10F));
+            tlp_GameIndicator.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10F));
+            tlp_GameIndicator.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10F));
+            tlp_GameIndicator.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10F));
+            tlp_GameIndicator.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10F));
+            tlp_GameIndicator.GrowStyle = TableLayoutPanelGrowStyle.FixedSize;
+            tlp_GameIndicator.Location = new Point(233, 35);
+            tlp_GameIndicator.Margin = new Padding(0);
+            tlp_GameIndicator.Name = "tlp_GameIndicator";
+            tlp_GameIndicator.RowCount = 20;
+            tlp_GameIndicator.RowStyles.Add(new RowStyle(SizeType.Percent, 5F));
+            tlp_GameIndicator.RowStyles.Add(new RowStyle(SizeType.Percent, 5F));
+            tlp_GameIndicator.RowStyles.Add(new RowStyle(SizeType.Percent, 5F));
+            tlp_GameIndicator.RowStyles.Add(new RowStyle(SizeType.Percent, 5F));
+            tlp_GameIndicator.RowStyles.Add(new RowStyle(SizeType.Percent, 5F));
+            tlp_GameIndicator.RowStyles.Add(new RowStyle(SizeType.Percent, 5F));
+            tlp_GameIndicator.RowStyles.Add(new RowStyle(SizeType.Percent, 5F));
+            tlp_GameIndicator.RowStyles.Add(new RowStyle(SizeType.Percent, 5F));
+            tlp_GameIndicator.RowStyles.Add(new RowStyle(SizeType.Percent, 5F));
+            tlp_GameIndicator.RowStyles.Add(new RowStyle(SizeType.Percent, 5F));
+            tlp_GameIndicator.RowStyles.Add(new RowStyle(SizeType.Percent, 5F));
+            tlp_GameIndicator.RowStyles.Add(new RowStyle(SizeType.Percent, 5F));
+            tlp_GameIndicator.RowStyles.Add(new RowStyle(SizeType.Percent, 5F));
+            tlp_GameIndicator.RowStyles.Add(new RowStyle(SizeType.Percent, 5F));
+            tlp_GameIndicator.RowStyles.Add(new RowStyle(SizeType.Percent, 5F));
+            tlp_GameIndicator.RowStyles.Add(new RowStyle(SizeType.Percent, 5F));
+            tlp_GameIndicator.RowStyles.Add(new RowStyle(SizeType.Percent, 5F));
+            tlp_GameIndicator.RowStyles.Add(new RowStyle(SizeType.Percent, 5F));
+            tlp_GameIndicator.RowStyles.Add(new RowStyle(SizeType.Percent, 5F));
+            tlp_GameIndicator.RowStyles.Add(new RowStyle(SizeType.Percent, 5F));
+            tlp_GameIndicator.Size = new Size(410, 720);
+            tlp_GameIndicator.TabIndex = 33;
+            tlp_GameIndicator.Visible = false;
             // 
             // pic_PlayerAvatar
             // 
@@ -535,18 +535,19 @@ namespace AS_Coursework.forms.game
             lbl_SpeedMultiplier.Text = "Xx Speed";
             lbl_SpeedMultiplier.TextAlign = ContentAlignment.MiddleLeft;
             // 
-            // lbl_LevelUpNotifcation
+            // lbl_countdown
             // 
-            lbl_LevelUpNotifcation.AutoSize = true;
-            lbl_LevelUpNotifcation.BackColor = Color.Transparent;
-            lbl_LevelUpNotifcation.Font = new Font("Segoe UI Black", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
-            lbl_LevelUpNotifcation.ForeColor = Color.DarkOrchid;
-            lbl_LevelUpNotifcation.Location = new Point(654, 548);
-            lbl_LevelUpNotifcation.Name = "lbl_LevelUpNotifcation";
-            lbl_LevelUpNotifcation.Size = new Size(145, 90);
-            lbl_LevelUpNotifcation.TabIndex = 52;
-            lbl_LevelUpNotifcation.Text = "LEVEL UP \r\n+ 0.1x Speed\r\n+ 0.1x Score";
-            lbl_LevelUpNotifcation.Visible = false;
+            lbl_countdown.AutoSize = true;
+            lbl_countdown.Font = new Font("Segoe UI Black", 48F, FontStyle.Bold, GraphicsUnit.Point);
+            lbl_countdown.ForeColor = SystemColors.Control;
+            lbl_countdown.Location = new Point(334, 352);
+            lbl_countdown.MaximumSize = new Size(210, 86);
+            lbl_countdown.MinimumSize = new Size(210, 86);
+            lbl_countdown.Name = "lbl_countdown";
+            lbl_countdown.Size = new Size(210, 86);
+            lbl_countdown.TabIndex = 53;
+            lbl_countdown.Text = "[GO]!";
+            lbl_countdown.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // GameWindow
             // 
@@ -557,7 +558,7 @@ namespace AS_Coursework.forms.game
             BackgroundImageLayout = ImageLayout.Center;
             ClientSize = new Size(885, 822);
             ControlBox = false;
-            Controls.Add(lbl_LevelUpNotifcation);
+            Controls.Add(lbl_countdown);
             Controls.Add(lbl_SpeedMultiplier);
             Controls.Add(lbl_LinesCleared);
             Controls.Add(pic_PlayerAvatar);
@@ -566,7 +567,7 @@ namespace AS_Coursework.forms.game
             Controls.Add(lbl_exitText3);
             Controls.Add(lbl_exitText2);
             Controls.Add(lbl_exitText1);
-            Controls.Add(tlp_pauseIndicator);
+            Controls.Add(tlp_GameIndicator);
             Controls.Add(lbl_heldBlock);
             Controls.Add(pic_hold);
             Controls.Add(pictureBox1);
@@ -589,6 +590,7 @@ namespace AS_Coursework.forms.game
             Name = "GameWindow";
             Text = "Blocks · Game in Progress";
             FormClosing += Form_OnClosing;
+            Load += GameWindow_Load;
             VisibleChanged += GameWindow_VisibilityChanged;
             KeyDown += GameWindow_KeyDown;
             KeyUp += GameWindow_KeyUp;
@@ -638,10 +640,10 @@ namespace AS_Coursework.forms.game
         private PictureBox pictureBox3;
         private controls.CircularPictureBox circularPictureBox1;
         private TableLayoutPanel tableLayoutPanel2;
-        private TableLayoutPanel tlp_pauseIndicator;
+        private TableLayoutPanel tlp_GameIndicator;
         private controls.CircularPictureBox pic_PlayerAvatar;
         private Label lbl_LinesCleared;
         private Label lbl_SpeedMultiplier;
-        private Label lbl_LevelUpNotifcation;
+        private Label lbl_countdown;
     }
 }

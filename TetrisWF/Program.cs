@@ -13,9 +13,7 @@ namespace AS_Coursework
             try
             {
                 ApplicationConfiguration.Initialize();
-                IOManager.ReadPlayers();
-                // Generates documention for all classes.
-                SprixDocGen.SprixDocGen.gen();
+                GameIOManager.ReadPlayers();
                 Application.Run(new Login());
             }
             catch (Exception e)

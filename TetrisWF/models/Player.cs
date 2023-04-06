@@ -47,7 +47,7 @@ namespace AS_Coursework.models
             {
                 if (string.IsNullOrEmpty(value))
                     throw new InvalidPlayerException("Username cannot be empty.");
-                if (IOManager.DoesPlayerExist(value))
+                if (GameIOManager.DoesPlayerExist(value))
                     throw new InvalidPlayerException("Username is already in use.");
                 username = value;
             }
@@ -92,7 +92,7 @@ namespace AS_Coursework.models
             get => avatar;
             set
             {
-                if (value < 0 || value >= IOManager.Avatars.Count)
+                if (value < 0 || value >= GameIOManager.Avatars.Count)
                     throw new InvalidPlayerException("Avatar index is out of range.");
                 avatar = value;
             }

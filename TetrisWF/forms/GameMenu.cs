@@ -24,7 +24,7 @@ namespace AS_Coursework.forms
             {
                 lbl_currentPlayer.Text = CurrentPlayer.Username;
                 if (CurrentPlayer.Avatar != null)
-                    pic_PlayerAvatar.Image = IOManager.Avatars[SessionManager.CurrentPlayer!.Avatar];
+                    pic_PlayerAvatar.Image = GameIOManager.Avatars[SessionManager.CurrentPlayer!.Avatar];
             }
             else
             {

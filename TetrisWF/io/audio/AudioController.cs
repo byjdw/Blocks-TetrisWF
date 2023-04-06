@@ -14,7 +14,7 @@ namespace AS_Coursework.io.audio
         public static void PlaySoundEffect(string soundName)
         {
             Stream soundResource = Resources.ResourceManager.GetStream(soundName);
-    ThreadPool.QueueUserWorkItem(_ =>
+            Task.Run(() =>
             {
                 // Get the WaveFormat from the audio file
                 var soundEffectReader = new WaveFileReader(soundResource);
@@ -39,7 +39,7 @@ namespace AS_Coursework.io.audio
                 SoundtrackWaveOut = new WaveOut();
                 SoundtrackWaveOut.Init(loopStream);
                 SoundtrackWaveOut.Play();
-                await Task.Delay(-1);
+                await Task.Delay(-1).ConfigureAwait(false);
             }
         }
 

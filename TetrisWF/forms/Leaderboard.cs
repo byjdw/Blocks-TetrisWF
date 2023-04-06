@@ -13,7 +13,7 @@ namespace AS_Coursework.forms
         public Leaderboard()
         {
             InitializeComponent();
-            var sortedPlayerArray = new List<Player>(IOManager.GetPlayers());
+            var sortedPlayerArray = new List<Player>(GameIOManager.GetPlayers());
             sortedPlayerArray.Sort((b, a) => a.HighScore.CompareTo(b.HighScore));
             for (int i = 0; i < tlp_Scoreboard.RowCount - 1; i++)
             {

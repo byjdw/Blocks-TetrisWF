@@ -250,7 +250,7 @@
     <value>..\Resources\S.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral,
             PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="sidebar_gameover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="sidebar_gameover_frown" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\sidebar_gameover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0,
             Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -329,5 +329,17 @@
   </data>
   <data name="_double" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\double.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="sidebar_gameover_smile" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sidebar_win.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="start" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\start.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="win" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\win.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="count" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\count.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

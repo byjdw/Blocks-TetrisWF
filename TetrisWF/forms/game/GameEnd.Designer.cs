@@ -49,7 +49,7 @@
             // 
             lbl_score.AutoSize = true;
             lbl_score.Font = new System.Drawing.Font("Segoe UI Black", 19F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            lbl_score.Location = new System.Drawing.Point(10, 164);
+            lbl_score.Location = new System.Drawing.Point(143, 142);
             lbl_score.Name = "lbl_score";
             lbl_score.Size = new System.Drawing.Size(120, 36);
             lbl_score.TabIndex = 0;
@@ -58,8 +58,7 @@
             // pic_SideBar
             // 
             pic_SideBar.BackColor = System.Drawing.Color.FromArgb(23, 23, 23);
-            pic_SideBar.BackgroundImage = Properties.Resources.Board_Z;
-            pic_SideBar.Image = Properties.Resources.sidebar_gameover;
+            pic_SideBar.BackgroundImage = Properties.Resources.Ghost;
             pic_SideBar.Location = new System.Drawing.Point(320, -38);
             pic_SideBar.Name = "pic_SideBar";
             pic_SideBar.Size = new System.Drawing.Size(318, 387);
@@ -71,7 +70,7 @@
             // 
             lbl_Title.AutoSize = true;
             lbl_Title.Font = new System.Drawing.Font("Segoe UI Black", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            lbl_Title.ForeColor = System.Drawing.Color.Crimson;
+            lbl_Title.ForeColor = System.Drawing.Color.SlateGray;
             lbl_Title.Location = new System.Drawing.Point(12, 6);
             lbl_Title.Name = "lbl_Title";
             lbl_Title.Size = new System.Drawing.Size(157, 32);
@@ -93,7 +92,7 @@
             // 
             lbl_PlayerScored.AutoSize = true;
             lbl_PlayerScored.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            lbl_PlayerScored.Location = new System.Drawing.Point(12, 143);
+            lbl_PlayerScored.Location = new System.Drawing.Point(12, 146);
             lbl_PlayerScored.Name = "lbl_PlayerScored";
             lbl_PlayerScored.Size = new System.Drawing.Size(134, 30);
             lbl_PlayerScored.TabIndex = 16;
@@ -102,18 +101,19 @@
             // lbl_HighScore
             // 
             lbl_HighScore.AutoSize = true;
-            lbl_HighScore.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            lbl_HighScore.Location = new System.Drawing.Point(12, 198);
+            lbl_HighScore.Font = new System.Drawing.Font("Segoe UI Black", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            lbl_HighScore.Location = new System.Drawing.Point(14, 176);
             lbl_HighScore.Name = "lbl_HighScore";
-            lbl_HighScore.Size = new System.Drawing.Size(195, 90);
+            lbl_HighScore.Size = new System.Drawing.Size(152, 40);
             lbl_HighScore.TabIndex = 17;
-            lbl_HighScore.Text = "which is {0} than \r\nyour high score of \r\n{1}.\r\n";
+            lbl_HighScore.Text = "High Score: [Score]\r\n\r\n";
+            lbl_HighScore.Click += lbl_HighScore_Click;
             // 
             // lbl_GameStatus
             // 
             lbl_GameStatus.AutoSize = true;
             lbl_GameStatus.Font = new System.Drawing.Font("Segoe UI Black", 25.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            lbl_GameStatus.Location = new System.Drawing.Point(4, 100);
+            lbl_GameStatus.Location = new System.Drawing.Point(9, 100);
             lbl_GameStatus.Name = "lbl_GameStatus";
             lbl_GameStatus.Size = new System.Drawing.Size(201, 46);
             lbl_GameStatus.TabIndex = 18;
@@ -139,7 +139,7 @@
             // 
             lbl_SecondsRemaining.AutoSize = true;
             lbl_SecondsRemaining.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            lbl_SecondsRemaining.ForeColor = System.Drawing.Color.Crimson;
+            lbl_SecondsRemaining.ForeColor = System.Drawing.Color.SlateGray;
             lbl_SecondsRemaining.Location = new System.Drawing.Point(176, 317);
             lbl_SecondsRemaining.Name = "lbl_SecondsRemaining";
             lbl_SecondsRemaining.Size = new System.Drawing.Size(87, 15);
