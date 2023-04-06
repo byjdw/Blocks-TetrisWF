@@ -301,17 +301,23 @@ namespace AS_Coursework.forms.game
                     session.MoveHorizontally(0);
                     break;
                 case Keys.Escape:
+                    if (!ExitTimer.Enabled) return;
                     ExitTimer.Stop();
                     GameTimer.Start();
-                    tlp_GameIndicator.Visible = false;
-                    lbl_exitText1.Visible = false;
-                    lbl_exitText2.Visible = false;
-                    lbl_exitText3.Visible = false;
-                    lbl_exitText4.Visible = false;
+                    HidePauseIndicator();
                     ClearPauseIndicator();
                     exitTicks = 0;
                     break;
             }
+        }
+
+        private void HidePauseIndicator()
+        {
+            tlp_GameIndicator.Visible = false;
+            lbl_exitText1.Visible = false;
+            lbl_exitText2.Visible = false;
+            lbl_exitText3.Visible = false;
+            lbl_exitText4.Visible = false;
         }
 
         private void ClearPauseIndicator()
@@ -451,21 +457,21 @@ namespace AS_Coursework.forms.game
 
         private void UpdateHud()
         {
-                if (session.HeldBlock != null)
-                {
-                    var hudImg = pic_hold;
-                    var index = (int)session.HeldBlock.Type;
-                    var previewImg = GameIOManager.Previews[index];
-                    hudImg.Image = previewImg;
-                }
+            if (session.HeldBlock != null)
+            {
+                var hudImg = pic_hold;
+                var index = (int)session.HeldBlock.Type;
+                var previewImg = GameIOManager.Previews[index];
+                hudImg.Image = previewImg;
+            }
 
-                pic_nextUp1.Image = GameIOManager.Previews[(int)session.BlockQueue[0].Type];
-                pic_nextUp2.Image = GameIOManager.Previews[(int)session.BlockQueue[1].Type];
-                pic_nextUp3.Image = GameIOManager.Previews[(int)session.BlockQueue[2].Type];
-                pic_nextUp4.Image = GameIOManager.Previews[(int)session.BlockQueue[3].Type];
-                lbl_GameScore.Text = session.Score.ToString();
-                lbl_LinesCleared.Text = session.LinesCleared.ToString() + " Lines";
-                lbl_SpeedMultiplier.Text = Math.Round(session.Multiplier, 2).ToString("0.00") + "x Speed";
+            pic_nextUp1.Image = GameIOManager.Previews[(int)session.BlockQueue[0].Type];
+            pic_nextUp2.Image = GameIOManager.Previews[(int)session.BlockQueue[1].Type];
+            pic_nextUp3.Image = GameIOManager.Previews[(int)session.BlockQueue[2].Type];
+            pic_nextUp4.Image = GameIOManager.Previews[(int)session.BlockQueue[3].Type];
+            lbl_GameScore.Text = session.Score.ToString();
+            lbl_LinesCleared.Text = session.LinesCleared.ToString() + " Lines";
+            lbl_SpeedMultiplier.Text = Math.Round(session.Multiplier, 2).ToString("0.00") + "x Speed";
         }
 
         private void Form_OnClosing(object sender, FormClosingEventArgs e)
@@ -474,7 +480,7 @@ namespace AS_Coursework.forms.game
             GameOver();
         }
 
-        private void ExitTimer_Tick(object sender, EventArgs e)
+        private async void ExitTimer_Tick(object sender, EventArgs e)
         {
             if (exitTicks < boardHeight)
             {
@@ -497,9 +503,10 @@ namespace AS_Coursework.forms.game
             }
             else
             {
+                AudioController.PlaySoundEffect("pause");
                 AudioController.StopBackgroundMusic();
                 ExitTimer.Stop();
-                if (SessionManager.CurrentPlayer.IsGuest) AudioController.PlaySoundEffect("pause");
+                await Task.Delay(250);
                 session.Save(this, TilesToString(Tiles), Tags);
             }
         }
