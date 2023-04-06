@@ -5,8 +5,6 @@ VisualStudioVersion = 17.5.33103.201
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TetrisWF", "TetrisWF\TetrisWF.csproj", "{CAB742B3-34FC-4240-B70A-F98628012012}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSToMD", "..\CSToMD-master\CSToMD-master\CSToMD.csproj", "{E25EF73D-C357-4821-80E9-89674026BB4E}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
