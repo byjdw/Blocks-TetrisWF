@@ -163,6 +163,7 @@ namespace AS_Coursework.models
             RenderTile(gameWindow, cell, tile, tag);
         }
 
+
         private void RenderTile(GameWindow gameWindow, PictureBox cell, Image tile, string tag)
         {
             if (cell != null)
