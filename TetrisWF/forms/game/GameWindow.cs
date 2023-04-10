@@ -145,7 +145,6 @@ namespace AS_Coursework.forms.game
             {
                 UpdateHud();
                 await PlayStartCutscene();
-                GameTimer.Start();
                 AudioController.PlayBackgroundMusic();
             }
         }
@@ -177,7 +176,10 @@ namespace AS_Coursework.forms.game
                 Colors.Remove(c);
                 // Play the sound effect for the current countdown number
                 Task.Run(() => AudioController.PlaySoundEffect("count"));
-
+                if (i == 1)
+                {
+                    GameTimer.Start();
+                }
                 // Wait for 1 second before moving to the next countdown number
                 await Task.Delay(1000);
             }

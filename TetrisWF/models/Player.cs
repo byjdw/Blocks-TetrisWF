@@ -49,6 +49,8 @@ namespace AS_Coursework.models
                     throw new InvalidPlayerException("Username cannot be empty.");
                 if (GameIOManager.DoesPlayerExist(value))
                     throw new InvalidPlayerException("Username is already in use.");
+                if (value.ToLower() == "guest" && !IsGuest) // IsGuest property must be set to True before attempting to set the username as "Guest".
+                    throw new InvalidPlayerException("This username is reserved.");
                 username = value;
             }
         }

@@ -73,9 +73,9 @@ namespace AS_Coursework.forms
             {
                 SessionManager.CurrentPlayer = new Player
                 {
-                    Username = "Guest",
+                    IsGuest = true,
                     Avatar = 7,
-                    IsGuest = true
+                    Username = "Guest",
                 };
                 AudioController.PlaySoundEffect("ok");
                 new GameMenu().Show();

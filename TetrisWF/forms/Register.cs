@@ -4,6 +4,7 @@ using AS_Coursework.io;
 using AS_Coursework.io.audio;
 using AS_Coursework.models;
 using System;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace AS_Coursework.forms
@@ -126,7 +127,7 @@ namespace AS_Coursework.forms
             {
                 lbl_usernameError.Text = ipe.Message;
                 ValidUsername = false;
-            }
+           }
         }
 
         private void Password_ValueChanged(object sender, EventArgs e)
