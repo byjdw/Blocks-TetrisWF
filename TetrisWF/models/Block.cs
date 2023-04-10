@@ -133,6 +133,7 @@ namespace AS_Coursework.models
             Hide(gameWindow);
 
             // Calculate the ghost block positions.
+
             List<Position> ghostBlockPositions = GenerateGhostBlockPositions(gameWindow, x, y, rotation);
             foreach (var pos in ghostBlockPositions) RenderTile(gameWindow, pos.x, pos.y, Resources.Ghost, id.ToString());
             foreach (var pos in newBlockPositions) RenderTile(gameWindow, pos.x, pos.y, tile, id.ToString());
@@ -160,11 +161,11 @@ namespace AS_Coursework.models
         private void RenderTile(GameWindow gameWindow, float x, float y, Image tile, string tag)
         {
             PictureBox cell = gameWindow.GetCellFromCoordinates((int)Math.Round(x), (int)Math.Round(y));
-            RenderTile(gameWindow, cell, tile, tag);
+            RenderTile(cell, tile, tag);
         }
 
 
-        private void RenderTile(GameWindow gameWindow, PictureBox cell, Image tile, string tag)
+        private void RenderTile(PictureBox cell, Image tile, string tag)
         {
             if (cell != null)
             {
@@ -183,15 +184,13 @@ namespace AS_Coursework.models
             while (ValidGhostPlacement)
             {
                 List<Position> newGhostBlock = GeneratePositions(x, positions[0].y + 1, rotation);
-                    bool[] ValidGhostBlock = ValidateTiles(gameWindow, newGhostBlock);
-                    if (ValidGhostBlock[0] && ValidGhostBlock[1]) positions = newGhostBlock;
-                    else ValidGhostPlacement = false;
+                bool[] ValidGhostBlock = ValidateTiles(gameWindow, newGhostBlock);
+                if (ValidGhostBlock[0] && ValidGhostBlock[1]) positions = newGhostBlock;
+                else ValidGhostPlacement = false;
             }
 
             return positions;
         }
-
-
 
         /// <summary>
         ///     It hides the block by replacing the tiles with empty tiles
@@ -203,7 +202,7 @@ namespace AS_Coursework.models
             List<PictureBox> OccupiedCells = new List<PictureBox>();
             foreach (PictureBox BoardCell in gameWindow.Cells)
                 if (Convert.ToString(BoardCell.Tag) == id.ToString()) OccupiedCells.Add(BoardCell);
-            foreach (PictureBox Cell in OccupiedCells) RenderTile(gameWindow, Cell, Resources.Empty, "Empty");
+            foreach (PictureBox Cell in OccupiedCells) RenderTile(Cell, Resources.Empty, "Empty");
             gameWindow.ResumeLayout(true);
 
         }
@@ -292,9 +291,9 @@ namespace AS_Coursework.models
                 bool v = true;
                 int x = (int)Math.Round(pos.x);
                 int y = (int)Math.Round(pos.y);
-                var tile = gameWindow.GetCellFromCoordinates(x, y);
+                var cell = gameWindow.GetCellFromCoordinates(x, y);
 
-                if (tile == null)
+                if (cell == null)
                 {
                     if (y == maxY)
                     {
@@ -305,7 +304,7 @@ namespace AS_Coursework.models
                         h = false;
                     }
                 }
-                else if (!tile.Tag.Equals("Empty") && !tile.Tag.Equals(id.ToString()))
+                else if (!cell.Tag.Equals("Empty") && !cell.Tag.Equals(id.ToString()))
                 {
                     if (baseX != position.x)
                     {

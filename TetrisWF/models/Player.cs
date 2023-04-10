@@ -24,22 +24,6 @@ namespace AS_Coursework.models
 
         public Player() { }
 
-        public Player(string username, string password, string forename, string surname, int avatar)
-        {
-            Username = username;
-            Password = password;
-            Forename = forename;
-            Surname = surname;
-            Avatar = avatar;
-            IsGuest = false;
-            HighScore = 0;
-            AllScore = 0;
-            BlocksPlaced = 0;
-            Games = 0;
-            PersonalRecords = 0;
-            ClearedLines = 0;
-        }
-
         public string Username
         {
             get => username;

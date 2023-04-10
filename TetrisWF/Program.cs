@@ -14,6 +14,7 @@ namespace AS_Coursework
             {
                 ApplicationConfiguration.Initialize();
                 GameIOManager.ReadPlayers();
+                CSToMD.CSToMD.gen_per_type();
                 Application.Run(new Login());
             }
             catch (Exception e)

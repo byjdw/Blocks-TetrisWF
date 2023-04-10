@@ -2,7 +2,6 @@
 using AS_Coursework.Properties;
 using NAudio.Wave;
 using System.IO;
-using System.Threading; 
 using System.Threading.Tasks;
 
 namespace AS_Coursework.io.audio

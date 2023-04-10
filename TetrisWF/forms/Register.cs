@@ -34,11 +34,12 @@ namespace AS_Coursework.forms
             ValidUsername = false;
             ValidPassword = false;
             ValidPasswordConfirm = false;
-            ClearErrorMessages();
+            ClearErrMsgs();
         }
 
-        public void ClearErrorMessages()
+        public void ClearErrMsgs()
         {
+            // clears error label placeholder text
             lbl_forenameError.Text = "";
             lbl_surnameError.Text = "";
             lbl_usernameError.Text = "";
@@ -178,11 +179,11 @@ namespace AS_Coursework.forms
         private void ExitButton_OnClick(object sender, EventArgs e)
         {
             Close();
+            AudioController.PlaySoundEffect("cancel");
         }
 
         private void Form_OnClosing(object sender, FormClosingEventArgs e)
         {
-            AudioController.PlaySoundEffect("cancel");
             SessionManager.SplashForm!.Show();
         }
     }

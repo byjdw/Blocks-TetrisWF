@@ -35,18 +35,8 @@ namespace AS_Coursework.forms
             pic_PlayerAvatar = new controls.CircularPictureBox();
             lbl_name = new Label();
             lbl_username = new Label();
-            lbl_HighScoreText = new Label();
-            lbl_TotalScoreText = new Label();
-            lbl_PRsText = new Label();
-            lbl_BlocksPlacedText = new Label();
-            lbl_GamesPlayedText = new Label();
-            lbl_MovesText = new Label();
-            lbl_Moves = new Label();
-            lbl_GamesPlayed = new Label();
-            lbl_BlocksPlaced = new Label();
-            lbl_PRs = new Label();
-            lbl_TotalScore = new Label();
-            lbl_HighScore = new Label();
+            lbl_Categories = new Label();
+            lbl_Statistics = new Label();
             checkedListBox1 = new CheckedListBox();
             circularPictureBox1 = new controls.CircularPictureBox();
             ((System.ComponentModel.ISupportInitialize)pic_PlayerAvatar).BeginInit();
@@ -98,131 +88,28 @@ namespace AS_Coursework.forms
             lbl_username.TabIndex = 33;
             lbl_username.Text = "Username";
             // 
-            // lbl_HighScoreText
+            // lbl_Categories
             // 
-            lbl_HighScoreText.AutoSize = true;
-            lbl_HighScoreText.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            lbl_HighScoreText.Location = new System.Drawing.Point(17, 85);
-            lbl_HighScoreText.Name = "lbl_HighScoreText";
-            lbl_HighScoreText.Size = new System.Drawing.Size(72, 15);
-            lbl_HighScoreText.TabIndex = 34;
-            lbl_HighScoreText.Text = "High Score";
-            lbl_HighScoreText.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            lbl_Categories.AutoSize = true;
+            lbl_Categories.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            lbl_Categories.Location = new System.Drawing.Point(17, 85);
+            lbl_Categories.Name = "lbl_Categories";
+            lbl_Categories.Size = new System.Drawing.Size(91, 90);
+            lbl_Categories.TabIndex = 34;
+            lbl_Categories.Text = "High Score\r\nTotal Score\r\nPRs\r\nBlocks Placed\r\nGames Played\r\nLines Cleared";
+            lbl_Categories.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // lbl_TotalScoreText
+            // lbl_Statistics
             // 
-            lbl_TotalScoreText.AutoSize = true;
-            lbl_TotalScoreText.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            lbl_TotalScoreText.Location = new System.Drawing.Point(17, 100);
-            lbl_TotalScoreText.Name = "lbl_TotalScoreText";
-            lbl_TotalScoreText.Size = new System.Drawing.Size(75, 15);
-            lbl_TotalScoreText.TabIndex = 35;
-            lbl_TotalScoreText.Text = "Total Score";
-            lbl_TotalScoreText.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // lbl_PRsText
-            // 
-            lbl_PRsText.AutoSize = true;
-            lbl_PRsText.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            lbl_PRsText.Location = new System.Drawing.Point(17, 115);
-            lbl_PRsText.Name = "lbl_PRsText";
-            lbl_PRsText.Size = new System.Drawing.Size(29, 15);
-            lbl_PRsText.TabIndex = 36;
-            lbl_PRsText.Text = "PRs";
-            lbl_PRsText.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // lbl_BlocksPlacedText
-            // 
-            lbl_BlocksPlacedText.AutoSize = true;
-            lbl_BlocksPlacedText.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            lbl_BlocksPlacedText.Location = new System.Drawing.Point(17, 130);
-            lbl_BlocksPlacedText.Name = "lbl_BlocksPlacedText";
-            lbl_BlocksPlacedText.Size = new System.Drawing.Size(89, 15);
-            lbl_BlocksPlacedText.TabIndex = 37;
-            lbl_BlocksPlacedText.Text = "Blocks Placed";
-            lbl_BlocksPlacedText.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // lbl_GamesPlayedText
-            // 
-            lbl_GamesPlayedText.AutoSize = true;
-            lbl_GamesPlayedText.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            lbl_GamesPlayedText.Location = new System.Drawing.Point(17, 145);
-            lbl_GamesPlayedText.Name = "lbl_GamesPlayedText";
-            lbl_GamesPlayedText.Size = new System.Drawing.Size(91, 15);
-            lbl_GamesPlayedText.TabIndex = 38;
-            lbl_GamesPlayedText.Text = "Games Played";
-            lbl_GamesPlayedText.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // lbl_MovesText
-            // 
-            lbl_MovesText.AutoSize = true;
-            lbl_MovesText.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            lbl_MovesText.Location = new System.Drawing.Point(17, 160);
-            lbl_MovesText.Name = "lbl_MovesText";
-            lbl_MovesText.Size = new System.Drawing.Size(87, 15);
-            lbl_MovesText.TabIndex = 39;
-            lbl_MovesText.Text = "Lines Cleared";
-            lbl_MovesText.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // lbl_Moves
-            // 
-            lbl_Moves.AutoSize = true;
-            lbl_Moves.Location = new System.Drawing.Point(124, 160);
-            lbl_Moves.Name = "lbl_Moves";
-            lbl_Moves.Size = new System.Drawing.Size(99, 15);
-            lbl_Moves.TabIndex = 45;
-            lbl_Moves.Text = "{LINES_CLEARED]";
-            lbl_Moves.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // lbl_GamesPlayed
-            // 
-            lbl_GamesPlayed.AutoSize = true;
-            lbl_GamesPlayed.Location = new System.Drawing.Point(124, 145);
-            lbl_GamesPlayed.Name = "lbl_GamesPlayed";
-            lbl_GamesPlayed.Size = new System.Drawing.Size(100, 15);
-            lbl_GamesPlayed.TabIndex = 44;
-            lbl_GamesPlayed.Text = "[GAMES_PLAYED]";
-            lbl_GamesPlayed.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // lbl_BlocksPlaced
-            // 
-            lbl_BlocksPlaced.AutoSize = true;
-            lbl_BlocksPlaced.Location = new System.Drawing.Point(124, 130);
-            lbl_BlocksPlaced.Name = "lbl_BlocksPlaced";
-            lbl_BlocksPlaced.Size = new System.Drawing.Size(106, 15);
-            lbl_BlocksPlaced.TabIndex = 43;
-            lbl_BlocksPlaced.Text = "[BLOCKS_PLACED]";
-            lbl_BlocksPlaced.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // lbl_PRs
-            // 
-            lbl_PRs.AutoSize = true;
-            lbl_PRs.Location = new System.Drawing.Point(124, 115);
-            lbl_PRs.Name = "lbl_PRs";
-            lbl_PRs.Size = new System.Drawing.Size(35, 15);
-            lbl_PRs.TabIndex = 42;
-            lbl_PRs.Text = "[PRS]";
-            lbl_PRs.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // lbl_TotalScore
-            // 
-            lbl_TotalScore.AutoSize = true;
-            lbl_TotalScore.Location = new System.Drawing.Point(124, 100);
-            lbl_TotalScore.Name = "lbl_TotalScore";
-            lbl_TotalScore.Size = new System.Drawing.Size(88, 15);
-            lbl_TotalScore.TabIndex = 41;
-            lbl_TotalScore.Text = "[TOTAL_SCORE]";
-            lbl_TotalScore.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // lbl_HighScore
-            // 
-            lbl_HighScore.AutoSize = true;
-            lbl_HighScore.Location = new System.Drawing.Point(124, 85);
-            lbl_HighScore.Name = "lbl_HighScore";
-            lbl_HighScore.Size = new System.Drawing.Size(85, 15);
-            lbl_HighScore.TabIndex = 40;
-            lbl_HighScore.Text = "[HIGH_SCORE]";
-            lbl_HighScore.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            lbl_Statistics.AutoSize = true;
+            lbl_Statistics.Location = new System.Drawing.Point(147, 85);
+            lbl_Statistics.MaximumSize = new System.Drawing.Size(150, 90);
+            lbl_Statistics.MinimumSize = new System.Drawing.Size(150, 90);
+            lbl_Statistics.Name = "lbl_Statistics";
+            lbl_Statistics.Size = new System.Drawing.Size(150, 90);
+            lbl_Statistics.TabIndex = 40;
+            lbl_Statistics.Text = "[HIGH_SCORE]\r\n[TOTAL_SCORE]\r\n[PRS]\r\n[BLOCKS_PLACED]\r\n[GAMES_PLAYED]\r\n[LINES_CLEARED]";
+            lbl_Statistics.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // checkedListBox1
             // 
@@ -251,18 +138,8 @@ namespace AS_Coursework.forms
             ClientSize = new System.Drawing.Size(309, 195);
             ControlBox = false;
             Controls.Add(checkedListBox1);
-            Controls.Add(lbl_Moves);
-            Controls.Add(lbl_GamesPlayed);
-            Controls.Add(lbl_BlocksPlaced);
-            Controls.Add(lbl_PRs);
-            Controls.Add(lbl_TotalScore);
-            Controls.Add(lbl_HighScore);
-            Controls.Add(lbl_MovesText);
-            Controls.Add(lbl_GamesPlayedText);
-            Controls.Add(lbl_BlocksPlacedText);
-            Controls.Add(lbl_PRsText);
-            Controls.Add(lbl_TotalScoreText);
-            Controls.Add(lbl_HighScoreText);
+            Controls.Add(lbl_Statistics);
+            Controls.Add(lbl_Categories);
             Controls.Add(lbl_username);
             Controls.Add(lbl_name);
             Controls.Add(pic_PlayerAvatar);
@@ -287,18 +164,8 @@ namespace AS_Coursework.forms
         private controls.CircularPictureBox pic_PlayerAvatar;
         private System.Windows.Forms.Label lbl_name;
         private System.Windows.Forms.Label lbl_username;
-        private System.Windows.Forms.Label lbl_HighScoreText;
-        private System.Windows.Forms.Label lbl_TotalScoreText;
-        private System.Windows.Forms.Label lbl_PRsText;
-        private System.Windows.Forms.Label lbl_BlocksPlacedText;
-        private System.Windows.Forms.Label lbl_GamesPlayedText;
-        private System.Windows.Forms.Label lbl_MovesText;
-        private System.Windows.Forms.Label lbl_Moves;
-        private System.Windows.Forms.Label lbl_GamesPlayed;
-        private System.Windows.Forms.Label lbl_BlocksPlaced;
-        private System.Windows.Forms.Label lbl_PRs;
-        private System.Windows.Forms.Label lbl_TotalScore;
-        private System.Windows.Forms.Label lbl_HighScore;
+        private System.Windows.Forms.Label lbl_Categories;
+        private System.Windows.Forms.Label lbl_Statistics;
         private System.Windows.Forms.CheckedListBox checkedListBox1;
         private controls.CircularPictureBox circularPictureBox1;
     }

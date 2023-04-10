@@ -16,12 +16,14 @@ namespace AS_Coursework.forms
             pic_PlayerAvatar.Image = GameIOManager.Avatars[player.Avatar];
             lbl_name.Text = player.Forename + " " + player.Surname;
             lbl_username.Text = player.Username;
-            lbl_HighScore.Text = player.HighScore.ToString();
-            lbl_TotalScore.Text = player.AllScore.ToString();
-            lbl_PRs.Text = player.PersonalRecords.ToString();
-            lbl_BlocksPlaced.Text = player.BlocksPlaced.ToString();
-            lbl_GamesPlayed.Text = player.Games.ToString();
-            lbl_Moves.Text = player.ClearedLines + " Lines";
+            string statistics = "";
+            statistics += player.HighScore.ToString() + "\n";
+            statistics += player.AllScore.ToString() + "\n";
+            statistics += player.PersonalRecords.ToString() + "\n";
+            statistics += player.BlocksPlaced.ToString() + "\n";
+            statistics += player.Games.ToString() + "\n";
+            statistics += player.ClearedLines;
+            lbl_Statistics.Text = statistics;
         }
 
         private void ExitButton_OnClick(object sender, EventArgs e)

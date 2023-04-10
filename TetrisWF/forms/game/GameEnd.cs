@@ -55,14 +55,14 @@ namespace AS_Coursework.forms.game
             lbl_SecondsRemaining.ForeColor = color;
             lbl_GameStatus.ForeColor = color;
             lbl_Title.ForeColor = color;
-            btn_ExitProgram.BackColor = color;
+            btn_Skip.BackColor = color;
 
-            ReturnToMenuTimer.Start();
+            ReturnTimer.Start();
             exitTimer = 0;
             lbl_SecondsRemaining.Text = "15 seconds...";
         }
 
-        private void ReturnToMenuTimer_Tick(object sender, EventArgs e)
+        private void ReturnTimer_Tick(object sender, EventArgs e)
         {
             exitTimer++;
             if (exitTimer >= 15)
@@ -75,7 +75,7 @@ namespace AS_Coursework.forms.game
             }
         }
 
-        private void ExitButton_OnClick(object sender, EventArgs e)
+        private void SkipButton_OnClick(object sender, EventArgs e)
         {
             Close();
         }
@@ -84,11 +84,6 @@ namespace AS_Coursework.forms.game
         {
             AudioController.PlaySoundEffect("cancel");
             SessionManager.MainMenuForm.Show();
-        }
-
-        private void lbl_HighScore_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
