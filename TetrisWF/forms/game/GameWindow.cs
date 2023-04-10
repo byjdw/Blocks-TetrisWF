@@ -4,11 +4,9 @@ using AS_Coursework.io;
 using AS_Coursework.io.audio;
 using AS_Coursework.models;
 using AS_Coursework.Properties;
-using Microsoft.VisualBasic.Devices;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -51,7 +49,7 @@ namespace AS_Coursework.forms.game
 
             bool musicMuted = false;
             session = new GameSession(this);
-            lbl_currentPlayer.Text = SessionManager.CurrentPlayer!.Username;
+            lbl_Player.Text = SessionManager.CurrentPlayer!.Username;
             pic_PlayerAvatar.Image = GameIOManager.Avatars[SessionManager.CurrentPlayer!.Avatar];
             gameInterval = GameTimer.Interval;
             BackgroundImage = GameIOManager.Backgrounds[Random.Shared.Next(0, GameIOManager.Backgrounds.Count - 1)];
@@ -82,7 +80,7 @@ namespace AS_Coursework.forms.game
             }
 
             session = new GameSession(this, gameState);
-            lbl_currentPlayer.Text = SessionManager.CurrentPlayer!.Username;
+            lbl_Player.Text = SessionManager.CurrentPlayer!.Username;
             pic_PlayerAvatar.Image = GameIOManager.Avatars[SessionManager.CurrentPlayer!.Avatar];
             gameInterval = GameTimer.Interval;
             ForceRender(TilesFromString(gameState.Tiles), gameState.Tags);
@@ -110,10 +108,10 @@ namespace AS_Coursework.forms.game
             get
             {
                 var tiles = new List<Image>();
-                foreach (PictureBox tile in tlp_GameBoard.Controls)
+                foreach (PictureBox cell in tlp_GameBoard.Controls)
                 {
-                    var image = tile.Image;
-                    if (Convert.ToString(tile.Tag)!.Equals("Empty")) image.Tag = "Empty";
+                    var image = cell.Image;
+                    if (Convert.ToString(cell.Tag)!.Equals("Empty")) image.Tag = "Empty";
                     tiles.Add(image);
                 }
 
@@ -131,10 +129,6 @@ namespace AS_Coursework.forms.game
             }
         }
 
-        private void pic_GameScreen_Click(object sender, EventArgs e)
-        {
-        }
-
         private async void GameWindow_VisibilityChanged(object sender, EventArgs e)
         {
             if (!Visible)
@@ -148,10 +142,6 @@ namespace AS_Coursework.forms.game
                 GameTimer.Start();
                 AudioController.PlayBackgroundMusic();
             }
-        }
-
-        private void GameWindow_Load(object sender, EventArgs e)
-        {
         }
 
         private async Task PlayStartCutscene()
@@ -172,8 +162,8 @@ namespace AS_Coursework.forms.game
                 }
                 Color c = Colors[Random.Shared.Next(0, Colors.Count - 1)];
                 // Update the label with the current countdown number
-                lbl_countdown.Text = i.ToString();
-                lbl_countdown.BackColor = c;
+                lbl_Countdown.Text = i.ToString();
+                lbl_Countdown.BackColor = c;
                 Colors.Remove(c);
                 // Play the sound effect for the current countdown number
                 Task.Run(() => AudioController.PlaySoundEffect("count"));
@@ -186,10 +176,10 @@ namespace AS_Coursework.forms.game
 
             // Update the label to indicate the end of the cutscene
             Task.Run(() => AudioController.PlaySoundEffect("start"));
-            lbl_countdown.Text = "GO!";
-            lbl_countdown.BackColor = Colors[0];
+            lbl_Countdown.Text = "GO!";
+            lbl_Countdown.BackColor = Colors[0];
             await Task.Delay(1000);
-            lbl_countdown.Visible = false;
+            lbl_Countdown.Visible = false;
         }
 
 
@@ -314,10 +304,10 @@ namespace AS_Coursework.forms.game
         private void HidePauseIndicator()
         {
             tlp_GameIndicator.Visible = false;
-            lbl_exitText1.Visible = false;
-            lbl_exitText2.Visible = false;
-            lbl_exitText3.Visible = false;
-            lbl_exitText4.Visible = false;
+            lbl_IndicatorText1.Visible = false;
+            lbl_IndicatorText2.Visible = false;
+            lbl_IndicatorText3.Visible = false;
+            lbl_IndicatorText4.Visible = false;
         }
 
         private void ClearPauseIndicator()
@@ -345,13 +335,8 @@ namespace AS_Coursework.forms.game
 
         public void RemoveRow(int row)
         {
-            var tiles = new List<Image>();
-            var tags = new List<string>();
-            foreach (PictureBox tile in tlp_GameBoard.Controls)
-            {
-                tiles.Add(tile.Image);
-                tags.Add((string)tile.Tag);
-            }
+            var tiles = new List<Image>(Tiles);
+            var tags = new List<string>(Tags);
 
             tiles.RemoveRange(tlp_GameBoard.Controls.Count - boardWidth * (boardHeight - row), boardWidth);
             tags.RemoveRange(tlp_GameBoard.Controls.Count - boardWidth * (boardHeight - row), boardWidth);
@@ -363,7 +348,7 @@ namespace AS_Coursework.forms.game
 
             ForceRender(tiles, tags);
             session.LinesCleared += 1;
-            if (session.LinesCleared > 5 && session.LinesCleared % 10 == 0 && session.Multiplier < 9.95)
+            if (session.LinesCleared > 5 && session.LinesCleared % 10 == 0 && session.Multiplier < 9.90)
             {
                 session.Multiplier += 0.20;
                 AudioController.PlaySoundEffect("levelup");
@@ -459,19 +444,19 @@ namespace AS_Coursework.forms.game
         {
             if (session.HeldBlock != null)
             {
-                var hudImg = pic_hold;
+                var hudImg = pic_Hold;
                 var index = (int)session.HeldBlock.Type;
                 var previewImg = GameIOManager.Previews[index];
                 hudImg.Image = previewImg;
             }
 
-            pic_nextUp1.Image = GameIOManager.Previews[(int)session.BlockQueue[0].Type];
-            pic_nextUp2.Image = GameIOManager.Previews[(int)session.BlockQueue[1].Type];
-            pic_nextUp3.Image = GameIOManager.Previews[(int)session.BlockQueue[2].Type];
+            pic_Queue1.Image = GameIOManager.Previews[(int)session.BlockQueue[0].Type];
+            pic_Queue2.Image = GameIOManager.Previews[(int)session.BlockQueue[1].Type];
+            Pic_Queue3.Image = GameIOManager.Previews[(int)session.BlockQueue[2].Type];
             pic_nextUp4.Image = GameIOManager.Previews[(int)session.BlockQueue[3].Type];
             lbl_GameScore.Text = session.Score.ToString();
             lbl_LinesCleared.Text = session.LinesCleared.ToString() + " Lines";
-            lbl_SpeedMultiplier.Text = Math.Round(session.Multiplier, 2).ToString("0.00") + "x Speed";
+            lbl_GameSpeed.Text = Math.Round(session.Multiplier, 2).ToString("0.00") + "x Speed";
         }
 
         private void Form_OnClosing(object sender, FormClosingEventArgs e)
@@ -488,10 +473,10 @@ namespace AS_Coursework.forms.game
                 {
                     GameTimer.Stop();
                     exitTicks++;
-                    lbl_exitText1.Visible = true;
-                    lbl_exitText2.Visible = true;
-                    lbl_exitText3.Visible = true;
-                    lbl_exitText4.Visible = true;
+                    lbl_IndicatorText1.Visible = true;
+                    lbl_IndicatorText2.Visible = true;
+                    lbl_IndicatorText3.Visible = true;
+                    lbl_IndicatorText4.Visible = true;
                     tlp_GameIndicator.Visible = true;
                     // Console.WriteLine(exitTicks);
                     var totalTiles = boardWidth * boardHeight;
@@ -503,11 +488,32 @@ namespace AS_Coursework.forms.game
             }
             else
             {
+                ExitTimer.Stop();
                 AudioController.PlaySoundEffect("pause");
                 AudioController.StopBackgroundMusic();
-                ExitTimer.Stop();
-                await Task.Delay(250);
+                lbl_IndicatorText1.Visible = false;
+                lbl_IndicatorText2.Visible = false;
+                lbl_IndicatorText4.Visible = false;
+                if (SessionManager.CurrentPlayer.IsGuest)
+                {
+                    lbl_IndicatorText3.Visible = false;
+                    ForceRenderIndicator(Resources.Ghost);
+                    GameOver();
+                    return;
+                }
+
+                lbl_IndicatorText3.Text = "SAVING...";
+                ForceRenderIndicator(Resources.Board_S);
+                await Task.Delay(2500);
                 session.Save(this, TilesToString(Tiles), Tags);
+            }
+        }
+
+        private void ForceRenderIndicator(Image boardTile)
+        {
+            foreach (PictureBox Cell in tlp_GameIndicator.Controls)
+            {
+                Cell.Image = boardTile;
             }
         }
 

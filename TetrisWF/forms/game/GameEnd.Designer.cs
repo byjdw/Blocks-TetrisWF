@@ -37,10 +37,10 @@
             lbl_PlayerScored = new System.Windows.Forms.Label();
             lbl_HighScore = new System.Windows.Forms.Label();
             lbl_GameStatus = new System.Windows.Forms.Label();
-            ReturnToMenuTimer = new System.Windows.Forms.Timer(components);
+            ReturnTimer = new System.Windows.Forms.Timer(components);
             lbl_ReturnText = new System.Windows.Forms.Label();
             lbl_SecondsRemaining = new System.Windows.Forms.Label();
-            btn_ExitProgram = new System.Windows.Forms.Button();
+            btn_Skip = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)pic_SideBar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -107,7 +107,6 @@
             lbl_HighScore.Size = new System.Drawing.Size(152, 40);
             lbl_HighScore.TabIndex = 17;
             lbl_HighScore.Text = "High Score: [Score]\r\n\r\n";
-            lbl_HighScore.Click += lbl_HighScore_Click;
             // 
             // lbl_GameStatus
             // 
@@ -121,8 +120,8 @@
             // 
             // ReturnToMenuTimer
             // 
-            ReturnToMenuTimer.Interval = 1000;
-            ReturnToMenuTimer.Tick += ReturnToMenuTimer_Tick;
+            ReturnTimer.Interval = 1000;
+            ReturnTimer.Tick += ReturnTimer_Tick;
             // 
             // lbl_ReturnText
             // 
@@ -148,17 +147,17 @@
             // 
             // btn_ExitProgram
             // 
-            btn_ExitProgram.BackColor = System.Drawing.Color.IndianRed;
-            btn_ExitProgram.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            btn_ExitProgram.ForeColor = System.Drawing.SystemColors.Window;
-            btn_ExitProgram.Location = new System.Drawing.Point(266, 312);
-            btn_ExitProgram.Margin = new System.Windows.Forms.Padding(0);
-            btn_ExitProgram.Name = "btn_ExitProgram";
-            btn_ExitProgram.Size = new System.Drawing.Size(51, 23);
-            btn_ExitProgram.TabIndex = 21;
-            btn_ExitProgram.Text = "▶▶";
-            btn_ExitProgram.UseVisualStyleBackColor = false;
-            btn_ExitProgram.Click += ExitButton_OnClick;
+            btn_Skip.BackColor = System.Drawing.Color.IndianRed;
+            btn_Skip.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            btn_Skip.ForeColor = System.Drawing.SystemColors.Window;
+            btn_Skip.Location = new System.Drawing.Point(266, 312);
+            btn_Skip.Margin = new System.Windows.Forms.Padding(0);
+            btn_Skip.Name = "btn_ExitProgram";
+            btn_Skip.Size = new System.Drawing.Size(51, 23);
+            btn_Skip.TabIndex = 21;
+            btn_Skip.Text = "▶▶";
+            btn_Skip.UseVisualStyleBackColor = false;
+            btn_Skip.Click += SkipButton_OnClick;
             // 
             // GameEnd
             // 
@@ -166,7 +165,7 @@
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(629, 341);
             ControlBox = false;
-            Controls.Add(btn_ExitProgram);
+            Controls.Add(btn_Skip);
             Controls.Add(lbl_SecondsRemaining);
             Controls.Add(lbl_ReturnText);
             Controls.Add(lbl_GameStatus);
@@ -198,9 +197,9 @@
         private System.Windows.Forms.Label lbl_PlayerScored;
         private System.Windows.Forms.Label lbl_HighScore;
         private System.Windows.Forms.Label lbl_GameStatus;
-        private System.Windows.Forms.Timer ReturnToMenuTimer;
+        private System.Windows.Forms.Timer ReturnTimer;
         private System.Windows.Forms.Label lbl_ReturnText;
         private System.Windows.Forms.Label lbl_SecondsRemaining;
-        private System.Windows.Forms.Button btn_ExitProgram;
+        private System.Windows.Forms.Button btn_Skip;
     }
 }

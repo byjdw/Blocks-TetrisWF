@@ -50,6 +50,7 @@ namespace AS_Coursework.forms
             // txt_username
             // 
             txt_username.Location = new Point(12, 118);
+            txt_username.MaxLength = 18;
             txt_username.Name = "txt_username";
             txt_username.PlaceholderText = "Username";
             txt_username.Size = new Size(181, 23);
@@ -58,6 +59,7 @@ namespace AS_Coursework.forms
             // txt_password
             // 
             txt_password.Location = new Point(12, 160);
+            txt_password.MaxLength = 24;
             txt_password.Name = "txt_password";
             txt_password.PasswordChar = '·';
             txt_password.PlaceholderText = "Password";

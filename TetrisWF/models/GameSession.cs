@@ -19,13 +19,12 @@ namespace AS_Coursework.models
         public int LinesCleared { get; set; }
         public int Score { get; private set; }
         public double Multiplier { get; set; }
-        public int BlocksPlaced => BlocksSpawned + 1;
-        public int Ticks { get; private set; }
 
         // Block Storage
         public Block CurrentBlock { get; private set; }
         public Block HeldBlock { get; private set; }
         public List<Block> BlockQueue { get; }
+        public int BlocksPlaced => BlocksSpawned + 1;
 
         public GameSession(GameWindow gameWindow)
         {
@@ -99,7 +98,6 @@ namespace AS_Coursework.models
                 return;
             }
 
-            Ticks += 1;
             // Console.WriteLine($"Cleared Lines: {clearedLines}");
             // Console.WriteLine($"Multiplier: {Multiplier}");
             // Console.WriteLine($"Interval: {gameWindow.Interval}");
@@ -140,18 +138,12 @@ namespace AS_Coursework.models
         /// <summary>
         ///     It adjusts the X value of the current block by the supplied value.
         /// </summary>
-        public void MoveHorizontally(int x)
-        {
-            CurrentBlock.MoveHorizontally(gameWindow, x);
-        }
+        public void MoveHorizontally(int x) => CurrentBlock.MoveHorizontally(gameWindow, x);
 
         /// <summary>
         ///     It rotates the current block.
         /// </summary>
-        public void RotateClockwise()
-        {
-            CurrentBlock.RotateClockwise(gameWindow);
-        }
+        public void RotateClockwise() => CurrentBlock.RotateClockwise(gameWindow);
 
 
         /// <summary>
@@ -168,9 +160,9 @@ namespace AS_Coursework.models
             /* Getting the current player from the session manager. */
             var Player = SessionManager.CurrentPlayer;
             if (Player == null) return;
+            if (Player.IsGuest) return;
             /* Adding the score to the player's total score, and if the score is greater than the player's high
             score, it sets the player's high score to the score and increments the player's personal records. */
-            if (Player.IsGuest) return;
             Player.AllScore += Score;
             if (Score > Player.HighScore)
             {
@@ -199,11 +191,7 @@ namespace AS_Coursework.models
         {
             var Player = SessionManager.CurrentPlayer;
             if (Player == null) return;
-            if (Player.IsGuest)
-            {
-                gameWindow.GameOver();
-                return;
-            }
+            if (Player.IsGuest) return;
 
             gameWindow.Hide();
             gameWindow.Dispose();
