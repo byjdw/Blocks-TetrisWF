@@ -62,6 +62,11 @@ namespace AS_Coursework.models
             this.gameWindow = gameWindow;
         }
 
+        /// <summary>
+        ///     This function executes every tick of the game loop. If the current block is null, set the current block to the next block.
+        ///     If the current block is not null, move the current block down. If the current block is idle, set the current block to null.
+        ///     If the current block is idle, check for lines.
+        /// </summary>
         public void Tick()
         {
             if (gameWindow.Halt) return;
@@ -97,10 +102,6 @@ namespace AS_Coursework.models
                 gameWindow.CheckLines();
                 return;
             }
-
-            // Console.WriteLine($"Cleared Lines: {clearedLines}");
-            // Console.WriteLine($"Multiplier: {Multiplier}");
-            // Console.WriteLine($"Interval: {gameWindow.Interval}");
         }
 
         /// <summary>
@@ -136,25 +137,21 @@ namespace AS_Coursework.models
         }
 
         /// <summary>
-        ///     It adjusts the X value of the current block by the supplied value.
+        ///     Adjusts the X value of the current block by the supplied value.
         /// </summary>
         public void MoveHorizontally(int x) => CurrentBlock.MoveHorizontally(gameWindow, x);
 
         /// <summary>
-        ///     It rotates the current block.
+        ///     Rotates the current block.
         /// </summary>
         public void RotateClockwise() => CurrentBlock.RotateClockwise(gameWindow);
 
 
         /// <summary>
-        ///     It gets the current player from the session manager, adds the score to the player's total score, and
-        ///     if the score is greater than the player's high score, it sets the player's high score to the score
-        ///     and increments the player's personal records. It also records other misc statistics, overwrites the
-        ///     SessionManager's player cache, and saves the player's data to a file
+        ///     It gets the current player from the session manager, records the relevant
+        ///     player statistics, overwrites the SessionManager's player cache, and 
+        ///     saves the player's data to a file
         /// </summary>
-        /// <returns>
-        ///     The player's data.
-        /// </returns>
         public void GameOver()
         {
             /* Getting the current player from the session manager. */
@@ -182,7 +179,7 @@ namespace AS_Coursework.models
         }
 
         /// <summary>
-        ///     It saves the current game state to a file
+        ///     Saves the current game state to a file
         /// </summary>
         /// <param name="GameWindow">The current gameWindow of the game window.</param>
         /// <param name="tiles">A list of strings that represent the tiles on the board.</param>
@@ -223,7 +220,7 @@ namespace AS_Coursework.models
 
 
         /// <summary>
-        ///     "Add the score based on the number of lines cleared and the adjustment value provided."
+        ///     Add the score based on the number of lines cleared and the adjustment value provided.
         /// </summary>
         /// <param name="lines">The number of lines cleared.</param>
         /// <param name="adj">The adjustment value.</param>
