@@ -126,6 +126,9 @@ namespace AS_Coursework.models
             set => previousGameState = value;
         }
 
+        /// <summary>
+        ///     The function "ClearGameState" sets the value of the variable "previousGameState" to null.
+        /// </summary>
         public void ClearGameState()
         {
             previousGameState = null;

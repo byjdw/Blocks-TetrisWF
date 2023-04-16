@@ -158,6 +158,16 @@ namespace AS_Coursework.models
             moves++;
         }
 
+    /// <summary>
+    /// An overload function of RenderTile that fetches a cell from the game window using the x and y coordinates of the tile.
+    /// </summary>
+    /// <param name="GameWindow">A class representing the game window or screen where the tiles will be
+    /// rendered.</param>
+    /// <param name="x">The x-coordinate of the tile's position on the game window.</param>
+    /// <param name="y">The y-coordinate of the tile's position on the game window.</param>
+    /// <param name="Image">The image to be rendered on the tile.</param>
+    /// <param name="tag">The tag parameter is a string that is used to identify the tile being rendered. It
+    /// can be used to associate additional information or behavior with the tile.</param>
         private void RenderTile(GameWindow gameWindow, float x, float y, Image tile, string tag)
         {
             PictureBox cell = gameWindow.GetCellFromCoordinates((int)Math.Round(x), (int)Math.Round(y));
@@ -165,6 +175,13 @@ namespace AS_Coursework.models
         }
 
 
+        /// <summary>
+        /// This function sets the image and tag of a game board cell.
+        /// </summary>
+        /// <param name="PictureBox">A Windows Forms control that displays an image.</param>
+        /// <param name="Image">The image to be rendered on the Cell.</param>
+        /// <param name="tag">The tag parameter is a string that can be used to store additional information
+        /// about the tile being rendered. It can be used to identify the Block Type of the tile.</param>
         private void RenderTile(PictureBox cell, Image tile, string tag)
         {
             if (cell != null)
@@ -174,6 +191,18 @@ namespace AS_Coursework.models
             }
         }
 
+        /// <summary>
+        /// This function generates the positions of a ghost block in a Tetris game.
+        /// </summary>
+        /// <param name="GameWindow">It is an object that represents the game window or screen where the game is
+        /// being played. It is used to validate the positions of the ghost block and ensure that it does not
+        /// overlap with any existing blocks on the screen or go out of bounds..</param>
+        /// <param name="x">The x-coordinate of the block's position.</param>
+        /// <param name="y">The y-coordinate of the block's position.</param>
+        /// <param name="rotation">The rotation of the block, in degrees.</param>
+        /// <returns>
+        /// The method returns a List of Position objects representing the positions of the ghost block.
+        /// </returns>
         private List<Position> GenerateGhostBlockPositions(GameWindow gameWindow, float x, float y, int rotation)
         {
             int row = (int)Math.Round(x);
@@ -193,7 +222,7 @@ namespace AS_Coursework.models
         }
 
         /// <summary>
-        ///     It hides the block by replacing the tiles with empty tiles
+        ///     It hides the block by replacing its tiles with empty tiles
         /// </summary> 
         /// <param name="GameWindow">The gameWindow of the game window.</param>
         public void Hide(GameWindow gameWindow)
@@ -211,8 +240,8 @@ namespace AS_Coursework.models
         ///     It takes a row, column, and rotation, and returns a list of positions that represent the block in
         ///     that state.
         /// </summary>
-        /// <param name="row">the row of the block</param>
-        /// <param name="column">the column of the block</param>
+        /// <param name="row">the row of the cell</param>
+        /// <param name="column">the column of the cell</param>
         /// <param name="r">rotation</param>
         /// <returns>
         ///     A list of positions.

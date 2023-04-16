@@ -76,11 +76,32 @@ namespace AS_Coursework.io
             SavePlayers();
         }
 
+        /// <summary>
+        ///     The function checks if a player with a given username exists in a list of players.
+        /// </summary>
+        /// <param name="username">a string representing the username of a player.</param>
+        /// <returns>
+        /// A boolean value indicating whether a player with the specified username exists in the "players"
+        /// collection.
+        /// </returns>
         public static bool DoesPlayerExist(string username)
         {
             return players.Any(player => player.Username == username);
         }
 
+        /// <summary>
+        ///     The function checks if a given password matches a stored hash.
+        /// </summary>
+        /// <param name="password">The password is a string that represents the user's input for their password.
+        /// It is the value that needs to be checked against the stored hash to determine if it is correct or
+        /// not.</param>
+        /// <param name="storedHash">The stored hash is a string that represents the hashed version of a
+        /// password that was previously stored in a database or other storage medium. It is used to compare
+        /// against a newly hashed password to determine if they match, indicating that the correct password was
+        /// entered.</param>
+        /// <returns>
+        /// Returns a boolean value that indicates whether the password provided matches the stored hash value.
+        /// </returns>
         public static bool IsPasswordCorrect(string password, string storedHash)
         {
             string hashedString = GetHashString(password);

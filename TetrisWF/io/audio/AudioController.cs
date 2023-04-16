@@ -11,6 +11,11 @@ namespace AS_Coursework.io.audio
     {
         private static WaveOut? SoundtrackWaveOut;
 
+        /// <summary>
+        ///     The function plays a sound effect from a given resource stream using the WaveOut class.
+        /// </summary>
+        /// <param name="soundName">A string representing the name of the sound effect to be played. This is
+        /// used to retrieve the sound resource from the application's resources.</param>
         public static void PlaySoundEffect(string soundName)
         {
             Stream soundResource = Resources.ResourceManager.GetStream(soundName);
@@ -30,6 +35,9 @@ namespace AS_Coursework.io.audio
         }
 
 
+        /// <summary>
+        ///     This function plays background music using a looped audio stream.
+        /// </summary>
         public static async Task PlayBackgroundMusic()
         {
             using (var soundEffectStream = Resources.soundtrack)
@@ -41,9 +49,11 @@ namespace AS_Coursework.io.audio
                 SoundtrackWaveOut.Play();
                 await Task.Delay(-1).ConfigureAwait(false);
             }
-
         }
 
+        /// <summary>
+        ///     This function stops and disposes of any currently playing background music.
+        /// </summary>
         public static void StopBackgroundMusic()
         {
             if (SoundtrackWaveOut != null)

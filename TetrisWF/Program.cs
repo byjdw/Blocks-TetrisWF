@@ -7,6 +7,10 @@ namespace AS_Coursework
 {
     internal static class Program
     {
+    /// <summary>
+    /// The Main function initializes the application configuration, reads player data, and launches the
+    /// login screen, with error handling in case of exceptions.
+    /// </summary>
         [STAThread]
         private static void Main()
         {

@@ -104,7 +104,7 @@ namespace AS_Coursework.models
         {
             return new Position(self.x / other, self.y / other);
         }
-
+        
         public static implicit operator PointF(Position self)
         {
             return new PointF(self.x, self.y);
