@@ -34,6 +34,15 @@ namespace AS_Coursework.forms
             }
         }
 
+        /// <summary>
+        ///     This function returns a label control from a specified position on a scoreboard table layout panel.
+        /// </summary>
+        /// <param name="x">The column index of the control in the TableLayoutPanel.</param>
+        /// <param name="y">The y parameter represents the vertical position of the control in the
+        /// TableLayoutPanel. It is used to locate a control in the specified row.</param>
+        /// <returns>
+        /// The method is returning a Label object or null if there is no control at the specified coordinates.
+        /// </returns>
         public Label? GetLabelFromCoordinates(int x, int y)
         {
             Control control;

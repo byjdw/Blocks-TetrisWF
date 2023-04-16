@@ -143,6 +143,9 @@ namespace AS_Coursework.forms.game
             }
         }
 
+        /// <summary>
+        ///     This function plays a start cutscene for the game, including a countdown and sound effects.
+        /// </summary>
         private async Task PlayStartCutscene()
         {
             tlp_GameIndicator.Visible = true;
@@ -303,6 +306,9 @@ namespace AS_Coursework.forms.game
             }
         }
 
+        /// <summary>
+        ///     The function hides the pause indicator and its associated text labels.
+        /// </summary>
         private void HidePauseIndicator()
         {
             tlp_GameIndicator.Visible = false;
@@ -312,6 +318,10 @@ namespace AS_Coursework.forms.game
             lbl_IndicatorText4.Visible = false;
         }
 
+        /// <summary>
+        ///     The function clears the pause indicator by setting the image of each PictureBox in a
+        ///     TableLayoutPanel to an empty resource.
+        /// </summary>
         private void ClearPauseIndicator()
         {
             foreach (PictureBox Cell in tlp_GameIndicator.Controls)
@@ -320,6 +330,16 @@ namespace AS_Coursework.forms.game
             }
         }
 
+        /// <summary>
+        ///     The function returns a PictureBox control from a TableLayoutPanel based on its coordinates, or null
+        ///     if it doesn't exist.
+        /// </summary>
+        /// <param name="x">The x-coordinate of the cell on the game board.</param>
+        /// <param name="y">The y parameter of the cell on the game board.</param>
+        /// <returns>
+        /// A PictureBox control or null if there is no control at the specified position in the
+        /// TableLayoutPanel.
+        /// </returns>
         public PictureBox? GetCellFromCoordinates(int x, int y)
         {
             Control control;
@@ -335,6 +355,11 @@ namespace AS_Coursework.forms.game
             return (PictureBox)control;
         }
 
+        /// <summary>
+        /// This function removes a row of images from a game board and updates the game session statistics.
+        /// </summary>
+        /// <param name="row">The row parameter is an integer that represents the index of the row to be removed
+        /// from the game board.</param>
         public void RemoveRow(int row)
         {
             var tiles = new List<Image>(Tiles);
@@ -388,6 +413,15 @@ namespace AS_Coursework.forms.game
             return tiles;
         }
 
+        /// <summary>
+        /// The function updates the images and tags of PictureBox controls in a TableLayoutPanel with the
+        /// provided lists of images and tags.
+        /// </summary>
+        /// <param name="tiles">A list of Image objects representing the images to be displayed on a game
+        /// board.</param>
+        /// <param name="tags">The `tags` parameter is a list of strings that contains tags for each image in
+        /// the `tiles` list. These tags can be used to identify and manipulate specific images in the
+        /// `tlp_GameBoard` control.</param>
         public void ForceRender(List<Image> tiles, List<string> tags)
         {
             for (var i = 0; i < tlp_GameBoard.Controls.Count; i++)
@@ -397,6 +431,10 @@ namespace AS_Coursework.forms.game
             }
         }
 
+        /// <summary>
+        ///     Checks for full lines in a game board and removes them, updating the score and HUD
+        ///     accordingly.
+        /// </summary>
         public void CheckLines()
         {
             var lines = 0;
@@ -418,6 +456,10 @@ namespace AS_Coursework.forms.game
             UpdateHud();
         }
 
+        /// <summary>
+        ///     Stops the game timer, triggers a game over cutscene, displays the player's high score,
+        ///     ends the game session, hides the current game window, and disposes of it.
+        /// </summary>
         public async void GameOver()
         {
             GameTimer.Stop();
@@ -429,6 +471,10 @@ namespace AS_Coursework.forms.game
             Dispose();
         }
 
+        /// <summary>
+        ///     Plays a game over cutscene by hiding the current block, stopping background music, and
+        ///     changing the images of non-empty cells on the game board.
+        /// </summary>
         private async Task GameOverCutscene()
         {
             session.CurrentBlock.Hide(this);
@@ -442,6 +488,10 @@ namespace AS_Coursework.forms.game
             await Task.Delay(2250);
         }
 
+        /// <summary>
+        ///     Updates the game's heads-up display with information about the player's held block,
+        ///     block queue, score, lines cleared, and game speed.
+        /// </summary>
         private void UpdateHud()
         {
             if (session.HeldBlock != null)
@@ -511,6 +561,13 @@ namespace AS_Coursework.forms.game
             }
         }
 
+        /// <summary>
+        ///     The function updates the image of all PictureBox controls in a TableLayoutPanel to a specified
+        ///     image.
+        /// </summary>
+        /// <param name="Image">The Image parameter is an object that represents a graphic image. In this
+        /// method, it is used as the boardTile parameter, which is the image that will be set as the image of
+        /// each PictureBox control in the tlp_GameIndicator container.</param>
         private void ForceRenderIndicator(Image boardTile)
         {
             foreach (PictureBox Cell in tlp_GameIndicator.Controls)
@@ -519,6 +576,10 @@ namespace AS_Coursework.forms.game
             }
         }
 
+        /// <summary>
+        ///     This function changes the wallpaper by selecting a random image from a list of available
+        ///     backgrounds.
+        /// </summary>
         public void ChangeWallpaper()
         {
             BackgroundImage = GameIOManager.Backgrounds[Random.Shared.Next(0, GameIOManager.Backgrounds.Count - 1)];
