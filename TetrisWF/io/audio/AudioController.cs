@@ -2,6 +2,7 @@
 using AS_Coursework.Properties;
 using NAudio.Wave;
 using System.IO;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace AS_Coursework.io.audio
@@ -40,6 +41,7 @@ namespace AS_Coursework.io.audio
                 SoundtrackWaveOut.Play();
                 await Task.Delay(-1).ConfigureAwait(false);
             }
+
         }
 
         public static void StopBackgroundMusic()
