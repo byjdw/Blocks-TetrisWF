@@ -35,7 +35,7 @@
             lbl_GameRulesHeader = new System.Windows.Forms.Label();
             lbl_GameRules = new System.Windows.Forms.Label();
             lbl_GameControlsHeader = new System.Windows.Forms.Label();
-            label1 = new System.Windows.Forms.Label();
+            lbl_GameControls = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)pic_TitleCard).BeginInit();
             SuspendLayout();
             // 
@@ -90,9 +90,9 @@
             lbl_GameRules.AutoSize = true;
             lbl_GameRules.Location = new System.Drawing.Point(16, 123);
             lbl_GameRules.Name = "lbl_GameRules";
-            lbl_GameRules.Size = new System.Drawing.Size(316, 60);
+            lbl_GameRules.Size = new System.Drawing.Size(93, 15);
             lbl_GameRules.TabIndex = 35;
-            lbl_GameRules.Text = "• Fill up lines to earn points and gain score;\r\n• The more lines you fill up, the more score you get:\r\n• If the board fills up to the top and there is no more room,\r\n   its game over.\r\n";
+            lbl_GameRules.Text = "Game Rules Text";
             // 
             // lbl_GameControlsHeader
             // 
@@ -104,23 +104,23 @@
             lbl_GameControlsHeader.TabIndex = 36;
             lbl_GameControlsHeader.Text = "GAME CONTROLS";
             // 
-            // label1
+            // lbl_GameControls
             // 
-            label1.AutoSize = true;
-            label1.Location = new System.Drawing.Point(16, 213);
-            label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(338, 240);
-            label1.TabIndex = 37;
-            label1.Text = resources.GetString("label1.Text");
+            lbl_GameControls.AutoSize = true;
+            lbl_GameControls.Location = new System.Drawing.Point(16, 213);
+            lbl_GameControls.Name = "lbl_GameControls";
+            lbl_GameControls.Size = new System.Drawing.Size(110, 15);
+            lbl_GameControls.TabIndex = 37;
+            lbl_GameControls.Text = "Game Controls Text";
             // 
             // HelpPane
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             BackColor = System.Drawing.Color.AliceBlue;
-            ClientSize = new System.Drawing.Size(431, 384);
+            ClientSize = new System.Drawing.Size(431, 391);
             ControlBox = false;
-            Controls.Add(label1);
+            Controls.Add(lbl_GameControls);
             Controls.Add(lbl_GameControlsHeader);
             Controls.Add(lbl_GameRules);
             Controls.Add(lbl_GameRulesHeader);
@@ -148,6 +148,6 @@
         private System.Windows.Forms.Label lbl_GameRulesHeader;
         private System.Windows.Forms.Label lbl_GameRules;
         private System.Windows.Forms.Label lbl_GameControlsHeader;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lbl_GameControls;
     }
 }

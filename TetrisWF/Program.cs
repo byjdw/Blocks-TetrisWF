@@ -1,6 +1,7 @@
 using AS_Coursework.forms;
 using AS_Coursework.io;
 using System;
+using System.IO;
 using System.Windows.Forms;
 
 namespace AS_Coursework
@@ -22,9 +23,17 @@ namespace AS_Coursework
             }
             catch (Exception e)
             {
-                MessageBox.Show("An error occurred: " + e.Message
-                    + "\nPlease delete PlayerDetails.json and try relaunching the application.");
-                Environment.Exit(1);
+                DialogResult choice = MessageBox.Show("An error occurred: " + e.Message
+                    + "\nWould you like to delete PlayerDetails.json and try relaunching the application?",
+                    "Blocks · Error", MessageBoxButtons.YesNo);
+                if (choice == DialogResult.Yes)
+                {
+                    File.Delete("./PlayerDetails.json");
+                    Main();
+                } else
+                {
+                    Environment.Exit(1);
+                }
             }
         }
     }

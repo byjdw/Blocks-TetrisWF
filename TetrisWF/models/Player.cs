@@ -1,6 +1,7 @@
 ﻿using AS_Coursework.exceptions;
 using AS_Coursework.io;
 using System;
+using System.Linq;
 
 namespace AS_Coursework.models
 {
@@ -31,6 +32,8 @@ namespace AS_Coursework.models
             {
                 if (string.IsNullOrEmpty(value))
                     throw new InvalidPlayerException("Username cannot be empty.");
+                if (value.All(c => char.IsWhiteSpace(c)))
+                    throw new InvalidPlayerException("Username cannot be empty.");
                 if (GameIOManager.DoesPlayerExist(value))
                     throw new InvalidPlayerException("Username is already in use.");
                 if (value.ToLower() == "guest" && !IsGuest) // IsGuest property must be set to True before attempting to set the username as "Guest".
@@ -52,6 +55,8 @@ namespace AS_Coursework.models
             {
                 if (string.IsNullOrEmpty(value))
                     throw new InvalidPlayerException("Forename cannot be empty.");
+                if (value.All(c => char.IsWhiteSpace(c)))
+                    throw new InvalidPlayerException("Forename cannot be empty.");
                 forename = value;
             }
         }
@@ -62,6 +67,8 @@ namespace AS_Coursework.models
             set
             {
                 if (string.IsNullOrEmpty(value))
+                    throw new InvalidPlayerException("Surname cannot be empty.");
+                if (value.All(c => char.IsWhiteSpace(c)))
                     throw new InvalidPlayerException("Surname cannot be empty.");
                 surname = value;
             }

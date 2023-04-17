@@ -8,9 +8,10 @@ using System.Windows.Forms;
 
 namespace AS_Coursework.forms
 {
-
     public partial class GameMenu : Form
     {
+        bool HelpAvailable = false;
+
         public GameMenu()
         {
             InitializeComponent();
@@ -29,6 +30,19 @@ namespace AS_Coursework.forms
             else
             {
                 lbl_currentPlayer.Text = "Guest";
+            }
+
+            try
+            {
+                GameIOManager.ReadHelpFile();
+                btn_Help.Text = "❔";
+                btn_Help.ForeColor = Color.Black;
+                HelpAvailable = true;
+            } catch
+            {
+                btn_Help.Text = "🚫";
+                btn_Help.ForeColor = Color.IndianRed;
+                HelpAvailable = false;
             }
 
             if (CurrentPlayer.IsGuest)
@@ -137,6 +151,7 @@ namespace AS_Coursework.forms
 
         private void HelpButton_OnClick(object sender, EventArgs e)
         {
+            if (!HelpAvailable) return;
             AudioController.PlaySoundEffect("select");
             new HelpPane().Show();
             Hide();

@@ -1,0 +1,19 @@
+• Fill up lines to earn points and gain score;
+• The more lines you fill up, the more score you get;
+• If the board fills up to the top and there is no more room,
+   its game over.:• UP ARROW/W → Rotates the current block.
+• LEFT ARROW/A → Move block by one cell to the left.
+• DOWN ARROW/S → Make block fall at a faster rate.
+• RIGHT ARROW/D → Move block by one cell to the right.
+• SPACE → Make block fall at the fastest rate.
+• C → Holds the current block to the side, and swaps it with the
+           block in the hold if one is present.
+________________________
+
+• ESC (HOLD) → Hold to exit, and save the game if signed in.
+• M → Press to mute/unmute the soundtrack.
+________________________
+
+• F10 → Enable Developer Mode
+• TAB (HOLD) → Freeze Time
+• Q → Clear bottom row.

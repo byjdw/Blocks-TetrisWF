@@ -1,6 +1,7 @@
 using AS_Coursework.exceptions;
 using AS_Coursework.models;
 using AS_Coursework.Properties;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
@@ -179,6 +180,32 @@ namespace AS_Coursework.io
         {
             return players;
         }
+
+        /// <summary>
+        ///     Reads the Help Text file's contents and returns them.
+        /// </summary>
+        /// <returns>
+        ///     A string containing the contents of "HelpText.txt"
+        /// </returns>
+        public static string ReadHelpFile()
+        {
+            String rawHelpText = "";
+            try
+            {
+                // Open the text file using a stream reader.
+                using (var sr = new StreamReader("Resources/HelpText.txt"))
+                {
+                    // Read the stream as a string, and write the string to the console.
+                    rawHelpText = sr.ReadToEnd();
+                }
+            }
+            catch (IOException e)
+            {
+                throw new Exception($"The file could not be read:\n{e.Message}");
+            }
+            return rawHelpText;
+        }
+               
 
         /// <summary>
         ///     It takes a string, converts it to a byte array, and then hashes it using the SHA256 algorithm
