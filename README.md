@@ -10,8 +10,10 @@ Please download the latest release from the releases tab or download the resposi
 
 Only compatible with Windows, you may use Wine to run it on Linux or Parallels on MacOS, however these methods have not been tested.
 
-
-
+## 🙏 Credits
+- Board, and block assets from TETR.IO
+- Sound effects from Nintendo
+- Other assets from Upsplash & Reddit
     
 ## 🧑‍💻 Authors
 
