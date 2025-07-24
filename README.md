@@ -17,4 +17,4 @@ Only compatible with Windows, you may use Wine to run it on Linux or Parallels o
     
 ## 🧑‍💻 Authors
 
-- [@jam3swilk](https://github.com/jam3swilk)
+- [@byjdw](https://github.com/byjdw)
